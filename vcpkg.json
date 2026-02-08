@@ -1,0 +1,9 @@
+{
+    "name": "mytifflib",
+    "version": "0.1",
+    "dependencies": [
+        "tiff",
+        "opencv4",
+        "gtest"
+    ]
+}

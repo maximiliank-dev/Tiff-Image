@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_gray_image" kind="class" language="C++" prot="public">
+    <compoundname>GrayImage</compoundname>
+    <basecompoundref refid="class_bitlevel_image" prot="public" virt="non-virtual">BitlevelImage</basecompoundref>
+    <includes refid="tiff__writer-image_8hpp" local="no">tiff_writer-image.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_gray_image_1ae6b8e2090602cb0af8301471213facba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GrayImage::GrayImage</definition>
+        <argsstring>(TiffWriterHeader header, std::shared_ptr&lt; ImageContainer&lt; uint8_t &gt; &gt; img, std::basic_ostream&lt; char &gt; &amp;stream)</argsstring>
+        <name>GrayImage</name>
+        <qualifiedname>GrayImage::GrayImage</qualifiedname>
+        <param>
+          <type><ref refid="class_tiff_writer_header" kindref="compound">TiffWriterHeader</ref></type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; uint8_t &gt; &gt;</type>
+          <declname>img</declname>
+        </param>
+        <param>
+          <type>std::basic_ostream&lt; char &gt; &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="37" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_gray_image_1ac40f9610f2afc5aced6abc10dc96b170" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void GrayImage::tags_to_set</definition>
+        <argsstring>()</argsstring>
+        <name>tags_to_set</name>
+        <qualifiedname>GrayImage::tags_to_set</qualifiedname>
+        <reimplements refid="class_bitlevel_image_1a0b5ca3810a9903a48699dd7aa4b10d8d">tags_to_set</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the basic TIFF Settings Must be used in all image types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="39" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="39" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class configuration for Grey Images Data are 8 Bits long White is 0xFF, Black is 0x0 </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BitlevelImage</label>
+        <link refid="class_bitlevel_image"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GrayImage</label>
+        <link refid="class_gray_image"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TiffWriterImgType</label>
+        <link refid="class_tiff_write_data"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BitlevelImage</label>
+        <link refid="class_bitlevel_image"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GrayImage</label>
+        <link refid="class_gray_image"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>TiffWriterImgType</label>
+        <link refid="class_tiff_write_data"/>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="34" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="34" bodyend="44"/>
+    <listofallmembers>
+      <member refid="class_tiff_write_data_1a3e96a0b22f782b501727f8197b8a456c" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>_endian_handler</name></member>
+      <member refid="class_tiff_write_data_1a36752192c10b9bda446cfd18e4c88c4c" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>_img</name></member>
+      <member refid="class_tiff_write_data_1aad7d0b0a69d492f4d5b6ea442be7838a" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>_numerTDF</name></member>
+      <member refid="class_tiff_write_data_1aafe6ad4c9ac4907e62df872700affed3" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>_offset</name></member>
+      <member refid="class_tiff_write_data_1aaaf9120d464dac2601324be3e0db9758" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>_offset_data</name></member>
+      <member refid="class_tiff_write_data_1a9adb1e4720cdc047276d7c61e84d85f7" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>_stream</name></member>
+      <member refid="class_tiff_write_data_1a9e35bf4bbb6b08c110f8dacd8309f3d8" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>_values</name></member>
+      <member refid="class_bitlevel_image_1aa9a69c44df6e00d9151f9344bc9b564b" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>BitlevelImage</name></member>
+      <member refid="class_tiff_write_data_1a80596079ac6cff544b4f9c01315ec4bb" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>convert_to_SetElement</name></member>
+      <member refid="class_gray_image_1ae6b8e2090602cb0af8301471213facba" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>GrayImage</name></member>
+      <member refid="class_tiff_write_data_1adb1fd073e0b25e18899fa5bf1bcaecf9" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>next_offset</name></member>
+      <member refid="class_tiff_write_data_1a2e31a40e91cd93b2f0b9ed5e6238262d" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>SetElement</name></member>
+      <member refid="class_tiff_write_data_1af88e89fe01366c6a950b2602f8f215be" prot="protected" virt="non-virtual"><scope>GrayImage</scope><name>SetType</name></member>
+      <member refid="class_gray_image_1ac40f9610f2afc5aced6abc10dc96b170" prot="public" virt="virtual"><scope>GrayImage</scope><name>tags_to_set</name></member>
+      <member refid="class_tiff_write_data_1ac1e7c932a382f63c575214cbcfdcff15" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>TiffWriteData</name></member>
+      <member refid="class_tiff_write_data_1afc97471637974c130127cf486d9e4001" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>write</name></member>
+      <member refid="class_tiff_write_data_1af24727e79177b188e67051b748cd5de8" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>write_ifd_element</name></member>
+      <member refid="class_tiff_write_data_1a255115187a8ff6e66df298a19bfa05d4" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>write_IFDs</name></member>
+      <member refid="class_tiff_write_data_1a92abc3268d0f65f80047ff38e5dcd045" prot="public" virt="non-virtual"><scope>GrayImage</scope><name>write_image_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

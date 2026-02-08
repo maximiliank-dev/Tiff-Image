@@ -1,114 +1,166 @@
 #pragma once
 
-#include <vector>
-#include <iterator>
-#include <format>
-#include <string>
-#include <iostream>
 #include <array>
+#include <format>
+#include <iostream>
+#include <iterator>
+#include <string>
+#include <vector>
 
-template<typename T>
+template <typename T>
 concept Iterable = std::ranges::range<T>;  // begin/end valid
 
-
-template<typename T>
+template <typename T>
 concept Sizeable = requires(T a) {
     { a.size() } -> std::same_as<std::size_t>;
 };
 
-template<typename T>
+template <typename T>
 concept IterableSize = Iterable<T> && Sizeable<T>;
 
-template<typename T>
-concept Pixel = requires (T a, T b) {
-    a+b;
-};
-
-struct RGB {
-    using element_type = uint8_t;
-    std::array<uint8_t, 3> values{};
-
-    uint8_t& r() { return this->values.at(0);};
-    uint8_t& g() { return this->values.at(1);};
-    uint8_t& b() { return this->values.at(2);};
-
-    static constexpr std::size_t size() { return 3; }
-
-    uint8_t& operator[](std::size_t i) {
-        return values.at(i);
-    }
-
-
-};
-std::string to_string(RGB& px);
-RGB operator+(const RGB& a, const RGB& b);
-
-
-template<typename PT>
+/**
+ * Image Container
+ * Data is stored in row major order
+ */
+template <typename PT>
 class ImageContainer {
+   private:
+    std::vector<PT> _img;
 
-private:
-    std::vector<std::vector<PT>> _img;
+    size_t _row_length;
+    size_t _pixel_number_of_colors;
 
-    const size_t _col_size; 
-    const size_t _pixel_number_of_colors;
-
-public:
-
-    ImageContainer(const size_t col_size, const size_t pixel_number_of_colors) : _col_size(col_size), _pixel_number_of_colors(pixel_number_of_colors) {}
+   public:
+    ImageContainer(const size_t row_length, const size_t pixel_number_of_colors)
+        : _row_length(row_length),
+          _pixel_number_of_colors(pixel_number_of_colors) {}
+    ImageContainer(ImageContainer&& other)
+        : _row_length(other._row_length),
+          _pixel_number_of_colors(other._pixel_number_of_colors),
+          _img(std::move(other._img)) {}
 
     ~ImageContainer() = default;
 
-
-    uint64_t get_width() noexcept {
-        return this->_col_size;
+    size_t get_column_length() const noexcept {
+        return static_cast<uint64_t>(this->_row_length);
     }
 
-    uint64_t get_hight() noexcept {
-        return static_cast<uint64_t>(_img->size())/this->col_size;
+    size_t get_height() const noexcept {
+        return this->_img.size() /
+               (this->_row_length * this->_pixel_number_of_colors);
     }
 
-    uint64_t get_total_size() noexcept {
-        return this->_col_size*this->_img.size();
+    size_t get_width() const noexcept {
+        return static_cast<uint64_t>(this->_row_length);
     }
 
+    size_t get_total_size() const noexcept { return this->_img.size(); }
 
-    template<IterableSize T>
-    void append_columns(T container) {
-        if(container.size() % (this->_col_size*this->_pixel_number_of_colors) != 0) {
-            throw std::runtime_error(std::format("error container size is {} expected {} \n", container.size(), this->_col_size));
+    size_t get_pixel_number_of_colors() const noexcept {
+        return this->_pixel_number_of_colors;
+    }
+
+    size_t get_bytes_per_row() const noexcept {
+        return this->_row_length * this->_pixel_number_of_colors - 1;
+    }
+
+    /**
+     * Move assignment
+     */
+    ImageContainer& operator=(ImageContainer&& other) {
+        this->_row_length = other._row_length;
+        this->_pixel_number_of_colors = other._pixel_number_of_colors;
+        this->_img = std::move(other._img);
+        return *this;
+    }
+
+    template <IterableSize T>
+    void append_row(T container) {
+        if (container.size() %
+                (this->_row_length * this->_pixel_number_of_colors) !=
+            0) {
+            throw std::runtime_error(
+                std::format("error container size is {} expected {}",
+                            container.size(),
+                            this->_row_length));
         }
 
-        _img.reserve(this->_col_size);
-        for(auto it = container.begin(); it != container.end(); it++) {
-            _img.push_back(std::vector<PT>(this->_pixel_number_of_colors));
-
-            std::vector<PT>& px = _img.back();
-            //split the list into the datatype 
-            for(std::size_t i = 0; i < this->_pixel_number_of_colors; ++i) {
-                //error detection if there are too few elements in the container
-                if(it == container.end()) {
-                    throw std::runtime_error(std::format("Error: Data is not subdividable into blocks of {} elements", 
-                        this->_pixel_number_of_colors));
-                }
-            
-                px[i] = (*it);
-                it++;
-            }
+        _img.reserve(container.size());
+        for (auto it = container.begin(); it != container.end(); it++) {
+            _img.push_back(*it);
         }
+    }
+
+    /**
+     * Resize the image size
+     * @param rows: number of rows of the new image
+     */
+    void resize(size_t rows) {
+        this->img_.clear();
+
+        const size_t size = rows*this->_row_length * this->_pixel_number_of_colors;
+        this->_img.resize(size, 0);
     }
 
     void print() {
         std::cout << "Image Data\n";
-        for(auto it : this->_img) {
+        size_t elements_per_row =
+            this->_row_length * this->_pixel_number_of_colors;
+        size_t cnt = 0;
+        for (auto it : this->_img) {
             std::cout << (*it).to_string() << " ";
+            cnt++;
+            if (cnt == elements_per_row) {
+                std::cout << "\n";
+                cnt = 0;
+            }
         }
-        std::cout << "\n";
     }
 
-    const std::vector<std::vector<PT>> get_data() const {
-        return this->_img;
+    const std::vector<PT>& get_data() const { return this->_img; }
+
+    /**
+     * Easy access function for the image data
+     */
+    PT at(size_t row, size_t col, size_t px) const {
+        if (this->get_height() <= row) {
+            throw std::runtime_error(
+                std::format("Error: invalid row id: got {} max {}",
+                            row,
+                            this->get_height()));
+        }
+        if (this->get_width() <= col) {
+            throw std::runtime_error(
+                std::format("Error: invalid col id: got {} max {}",
+                            col,
+                            this->get_width()));
+        }
+        if (this->_pixel_number_of_colors <= px) {
+            throw std::runtime_error(
+                std::format("Error: invalid pixel id: got {} max {}",
+                            px,
+                            this->_pixel_number_of_colors));
+        }
+        const size_t cols = this->get_width();
+        const size_t pixels = this->_pixel_number_of_colors;
+
+        return this->_img.at(row * (cols * pixels) + col * pixels + px);
     }
 
+    /**
+     * create a new image with transposed image data
+     */
+    ImageContainer transpose() {
+        ImageContainer img_t(this->_row_length, this->_pixel_number_of_colors);
+        img_t.resize(this->get_height());
 
+        for(size_t i = 0; i < this->get_height(); i++) {
+            for(size_t j = 0; j < this->get_width(); j++) {
+                for(size_t k = 0; k < this->_pixel_number_of_colors; k++) {
+                    img_t.at(j,i,k) = this->at(i,j,k);
+                }
+            }
+        }
+        return img_t;
+    }
 };

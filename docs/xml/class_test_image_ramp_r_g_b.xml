@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_test_image_ramp_r_g_b" kind="class" language="C++" prot="public">
+    <compoundname>TestImageRampRGB</compoundname>
+    <basecompoundref refid="class_test_abstract_image" prot="public" virt="non-virtual">TestAbstractImage&lt; uint8_t &gt;</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_test_image_ramp_r_g_b_1ae1ba056ee8eeddce6836e9a4b2b358b6" prot="private" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t TestImageRampRGB::_color_min</definition>
+        <argsstring></argsstring>
+        <name>_color_min</name>
+        <qualifiedname>TestImageRampRGB::_color_min</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="24" column="19" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_ramp_r_g_b_1a1237c2a2fa788dd169fc3094fbd95b37" prot="private" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t TestImageRampRGB::_color_max</definition>
+        <argsstring></argsstring>
+        <name>_color_max</name>
+        <qualifiedname>TestImageRampRGB::_color_max</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="25" column="19" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_ramp_r_g_b_1a8ec9cce4231bb96bd0e95299fd3731fe" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageRampRGB::_rows</definition>
+        <argsstring></argsstring>
+        <name>_rows</name>
+        <qualifiedname>TestImageRampRGB::_rows</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="26" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_ramp_r_g_b_1a79837820fa00dc411ddbcf38e6b20b01" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageRampRGB::_columns</definition>
+        <argsstring></argsstring>
+        <name>_columns</name>
+        <qualifiedname>TestImageRampRGB::_columns</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="27" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_ramp_r_g_b_1a31b9dd915fce76dd5d18d8c9b654f277" prot="private" static="no" mutable="no">
+        <type>const RampType</type>
+        <definition>const RampType TestImageRampRGB::_type</definition>
+        <argsstring></argsstring>
+        <name>_type</name>
+        <qualifiedname>TestImageRampRGB::_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="29" column="20" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_ramp_r_g_b_1a79cad8f7253076b75b2799cf18438f9f" prot="private" static="no" mutable="no">
+        <type>const std::array&lt; size_t, 3 &gt;</type>
+        <definition>const std::array&lt;size_t, 3&gt; TestImageRampRGB::_idx</definition>
+        <argsstring></argsstring>
+        <name>_idx</name>
+        <qualifiedname>TestImageRampRGB::_idx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="30" column="22" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_image_ramp_r_g_b_1adb60f6ae367ab062148c6d2d007f6e73" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestImageRampRGB::TestImageRampRGB</definition>
+        <argsstring>(const size_t n, const size_t m, RampType type, const uint8_t color_min, const uint8_t color_max, const std::array&lt; size_t, 3 &gt; idx)</argsstring>
+        <name>TestImageRampRGB</name>
+        <qualifiedname>TestImageRampRGB::TestImageRampRGB</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>RampType</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>color_min</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>color_max</declname>
+        </param>
+        <param>
+          <type>const std::array&lt; size_t, 3 &gt;</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="33" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_image_ramp_r_g_b_1a97cba0c1bb17f31f1399edc5e3f9acf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TestImageRampRGB::generateImage</definition>
+        <argsstring>()</argsstring>
+        <name>generateImage</name>
+        <qualifiedname>TestImageRampRGB::generateImage</qualifiedname>
+        <reimplements refid="class_test_abstract_image_1ab735ea9fcd3d6e2680b96980a9c69d5b">generateImage</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs the image according to the </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="35" column="14" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="60" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_test_image_ramp_r_g_b_1a5e4e1436ff9f4099a95e45b8b177fbf4" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::array&lt; uint8_t, 3 &gt;</type>
+        <definition>std::array&lt; uint8_t, 3 &gt; TestImageRampRGB::calc_function</definition>
+        <argsstring>(const size_t i, const size_t j)</argsstring>
+        <name>calc_function</name>
+        <qualifiedname>TestImageRampRGB::calc_function</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>helper Function to compute the ramp&apos;s RGB values based on the given type (this-&gt;_type) @Args: i: row index j: column index </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="45" column="23" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="28" bodyend="58"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>TestAbstractImage&lt; uint8_t &gt;</label>
+        <link refid="class_test_abstract_image"/>
+      </node>
+      <node id="1">
+        <label>TestImageRampRGB</label>
+        <link refid="class_test_image_ramp_r_g_b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>TestAbstractImage&lt; uint8_t &gt;</label>
+        <link refid="class_test_abstract_image"/>
+      </node>
+      <node id="1">
+        <label>TestImageRampRGB</label>
+        <link refid="class_test_image_ramp_r_g_b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="22" column="1" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="22" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_test_image_ramp_r_g_b_1a1237c2a2fa788dd169fc3094fbd95b37" prot="private" virt="non-virtual"><scope>TestImageRampRGB</scope><name>_color_max</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1ae1ba056ee8eeddce6836e9a4b2b358b6" prot="private" virt="non-virtual"><scope>TestImageRampRGB</scope><name>_color_min</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1a79837820fa00dc411ddbcf38e6b20b01" prot="private" virt="non-virtual"><scope>TestImageRampRGB</scope><name>_columns</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1a79cad8f7253076b75b2799cf18438f9f" prot="private" virt="non-virtual"><scope>TestImageRampRGB</scope><name>_idx</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1a8ec9cce4231bb96bd0e95299fd3731fe" prot="private" virt="non-virtual"><scope>TestImageRampRGB</scope><name>_rows</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1a31b9dd915fce76dd5d18d8c9b654f277" prot="private" virt="non-virtual"><scope>TestImageRampRGB</scope><name>_type</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1a5e4e1436ff9f4099a95e45b8b177fbf4" prot="private" virt="non-virtual"><scope>TestImageRampRGB</scope><name>calc_function</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1a97cba0c1bb17f31f1399edc5e3f9acf5" prot="public" virt="virtual"><scope>TestImageRampRGB</scope><name>generateImage</name></member>
+      <member refid="class_test_abstract_image_1ab0f20b56dcaaa6d3d6567f4e38c07749" prot="public" virt="non-virtual"><scope>TestImageRampRGB</scope><name>get_image</name></member>
+      <member refid="class_test_abstract_image_1a21fb264272d6a586ec628c3eb90431c1" prot="public" virt="non-virtual"><scope>TestImageRampRGB</scope><name>ImageType</name></member>
+      <member refid="class_test_abstract_image_1a83ca82249a2f29b3bb24cada988dbea7" prot="protected" virt="non-virtual"><scope>TestImageRampRGB</scope><name>img</name></member>
+      <member refid="class_test_abstract_image_1aceaebdca09a586d9b3be5d59edfe44d6" prot="public" virt="non-virtual"><scope>TestImageRampRGB</scope><name>TestAbstractImage</name></member>
+      <member refid="class_test_image_ramp_r_g_b_1adb60f6ae367ab062148c6d2d007f6e73" prot="public" virt="non-virtual"><scope>TestImageRampRGB</scope><name>TestImageRampRGB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

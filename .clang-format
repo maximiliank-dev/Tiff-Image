@@ -1,0 +1,48 @@
+# Base on Google C++ style guide
+BasedOnStyle: Google
+
+# Indentation
+IndentWidth: 4                       
+TabWidth: 4
+UseTab: Never                       
+
+# Line length
+ColumnLimit: 80                       
+
+# Braces
+BreakBeforeBraces: Attach             # opening brace on same line
+
+# Includes
+SortIncludes: CaseSensitive           # sort #includes alphabetically
+IncludeBlocks: Regroup                
+
+# Namespaces
+NamespaceIndentation: None            
+CompactNamespaces: false
+
+# Classes
+AccessModifierOffset: -1             
+
+# Function arguments
+AllowAllArgumentsOnNextLine: false
+BinPackArguments: false              
+
+# Templates
+AlwaysBreakTemplateDeclarations: Yes  # template<...> on its own line
+
+# Constructors
+BreakConstructorInitializers: BeforeColon  # break before : in initializer list
+
+# Short constructs — keep on one line or not
+AllowShortFunctionsOnASingleLine: Inline   # only inline class methods on one line
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+
+# Spaces
+SpaceBeforeParens: ControlStatements  
+SpaceAfterTemplateKeyword: true
+SpacesInAngles: Never                 # no spaces in <int> template args
+
+# Pointer alignment
+PointerAlignment: Left                # int* p  not  int *p

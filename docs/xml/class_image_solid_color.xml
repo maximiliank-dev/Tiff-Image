@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_image_solid_color" kind="class" language="C++" prot="public">
+    <compoundname>ImageSolidColor</compoundname>
+    <basecompoundref refid="class_image_container" prot="public" virt="non-virtual">ImageContainer&lt; u_int8_t &gt;</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_image_solid_color_1aad6d9da4831248cfde56aa42bbbe6d1c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ImageSolidColor::ImageSolidColor</definition>
+        <argsstring>()</argsstring>
+        <name>ImageSolidColor</name>
+        <qualifiedname>ImageSolidColor::ImageSolidColor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageSolidColor.hpp" line="8" column="5" bodyfile="D:/Projects/ImageConverter/src/ImageSolidColor.hpp" bodystart="8" bodyend="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ImageContainer&lt; u_int8_t &gt;</label>
+        <link refid="class_image_container"/>
+      </node>
+      <node id="1">
+        <label>ImageSolidColor</label>
+        <link refid="class_image_solid_color"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ImageContainer&lt; u_int8_t &gt;</label>
+        <link refid="class_image_container"/>
+      </node>
+      <node id="1">
+        <label>ImageSolidColor</label>
+        <link refid="class_image_solid_color"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/ImageSolidColor.hpp" line="5" column="1" bodyfile="D:/Projects/ImageConverter/src/ImageSolidColor.hpp" bodystart="5" bodyend="12"/>
+    <listofallmembers>
+      <member refid="class_image_container_1a119a41b9269f922e45b62a4e6c3e7c85" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>append_row</name></member>
+      <member refid="class_image_container_1ad7aaeafde43b88a4d09d57c7d2351786" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>at</name></member>
+      <member refid="class_image_container_1a7b4052a4d23e5f9c7edccf1556c3c781" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>get_bytes_per_row</name></member>
+      <member refid="class_image_container_1aef57b88aad224a67e49982109ea0ed9a" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>get_column_length</name></member>
+      <member refid="class_image_container_1a095618585b8a584536cdbbd36c15e045" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>get_data</name></member>
+      <member refid="class_image_container_1a6276a865dc0aff243a1a732342a69993" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>get_height</name></member>
+      <member refid="class_image_container_1a77af01a6d767fa49b5c74733612ae649" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>get_pixel_number_of_colors</name></member>
+      <member refid="class_image_container_1ad33af16fe1626c6edfc6f8a1cce55d9c" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>get_total_size</name></member>
+      <member refid="class_image_container_1a629a5791a960e810f7922f41997b04f5" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>get_width</name></member>
+      <member refid="class_image_container_1a245642bf97c373c940edf3b08be36383" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>ImageContainer</name></member>
+      <member refid="class_image_solid_color_1aad6d9da4831248cfde56aa42bbbe6d1c" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>ImageSolidColor</name></member>
+      <member refid="class_image_container_1a9e501f6a9362bcfb67e06b191d6c5c94" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>operator=</name></member>
+      <member refid="class_image_container_1ae38c8875d6ab84b5439c8cc9b13eb1ff" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>print</name></member>
+      <member refid="class_image_container_1a5316da6559c414b1600dc223c7d0f1fb" prot="public" virt="non-virtual"><scope>ImageSolidColor</scope><name>~ImageContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

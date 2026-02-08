@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ImageConverter Documentation &mdash; TiffWriterDoc 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ce1a22f8" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tiff Feature Support" href="FeatureSupport.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            TiffWriterDoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="FeatureSupport.html">Tiff Feature Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TiffReader-diagram.html">TiffReader Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TiffWriter-diagram.html">TiffWriter Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code-classes.html">Overview of all C++ classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">TiffWriterDoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ImageConverter Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="imageconverter-documentation">
+<h1>ImageConverter Documentation<a class="headerlink" href="#imageconverter-documentation" title="Link to this heading"></a></h1>
+<p>ImageConverter is a C++ library for reading and writing TIFF image files.
+It supports grayscale, binary (bit-level), and RGB image formats, with
+PackBits compression and configurable endianness.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The library consists of two main subsystems:</p>
+<ul class="simple">
+<li><p><strong>TiffWriter</strong> — encodes an <code class="docutils literal notranslate"><span class="pre">ImageContainer</span></code> to a TIFF file on disk,
+writing the TIFF header, IFD metadata tags, and raw image strip data.</p></li>
+<li><p><strong>TiffReader</strong> — parses a TIFF file from disk, reads the IFD tags and
+strip data, and reconstructs an <code class="docutils literal notranslate"><span class="pre">ImageContainer</span></code>.</p></li>
+</ul>
+<p>Both subsystems share a common <code class="docutils literal notranslate"><span class="pre">ImageContainer&lt;PT&gt;</span></code> data structure that
+stores pixel data in row-major order, and a <code class="docutils literal notranslate"><span class="pre">VirtualEndianHandler</span></code>
+abstraction for portable byte-order handling.</p>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<p>The diagram below shows the class hierarchy of the writer subsystem.</p>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h2>
+<p>The project uses <a class="reference external" href="https://vcpkg.io">vcpkg</a> to manage C++ dependencies:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">opencv4</span></code></p></td>
+<td><p>Used in the test suite to read back written TIFF files for validation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gtest</span></code></p></td>
+<td><p>Google Test framework for unit and integration tests</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tiff</span></code></p></td>
+<td><p>Reference TIFF library (vcpkg dependency)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Build tools required:</p>
+<ul class="simple">
+<li><p><strong>CMake</strong> ≥ 3.20</p></li>
+<li><p><strong>Visual Studio 2026</strong> (generator: <em>Visual Studio 18 2026</em>)</p></li>
+<li><p><strong>vcpkg</strong> with the <code class="docutils literal notranslate"><span class="pre">VCPKG_ROOT</span></code> environment variable set</p></li>
+</ul>
+</section>
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Link to this heading"></a></h2>
+<p>Configure and build using the bundled CMake preset:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>cmake --preset default
+cmake --build --preset default
+</pre></div>
+</div>
+<p>The preset configures the <code class="docutils literal notranslate"><span class="pre">x64-windows</span></code> vcpkg triplet and places build
+output in the <code class="docutils literal notranslate"><span class="pre">build/</span></code> directory. vcpkg will automatically install all
+declared dependencies on first configure.</p>
+</section>
+<section id="running-the-tests">
+<h2>Running the Tests<a class="headerlink" href="#running-the-tests" title="Link to this heading"></a></h2>
+<p>The test suite lives in the <code class="docutils literal notranslate"><span class="pre">test/</span></code> subdirectory and is a separate CMake
+project. It uses <strong>Google Test</strong> and <strong>OpenCV</strong> for validating written and
+read-back TIFF files.</p>
+<p>Configure and build the tests:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> test
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=<span class="nv">%VCPKG_ROOT%</span>\scripts\buildsystems\vcpkg.cmake
+cmake --build build --config Release
+</pre></div>
+</div>
+<p>Run all tests:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> test\build
+ctest -C Release --output-on-failure
+</pre></div>
+</div>
+<p>Or run the test binary directly:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>test\build\Release\hello_test.exe
+</pre></div>
+</div>
+<p>Test files covered:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_read.cc</span></code> — TIFF file reading</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_rgb.cpp</span></code> — RGB image round-trip (write + read back)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_metadata.cpp</span></code> — IFD tag parsing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_ramp_image.cpp</span></code> — gradient/ramp image generation</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="tiffwriter-class-hierarchy">
+<h3>TiffWriter Class Hierarchy<a class="headerlink" href="#tiffwriter-class-hierarchy" title="Link to this heading"></a></h3>
+<div class="graphviz"><object data="_images/graphviz-dfa6b344df4485ccb27dc81be9ce8fc86974dddc.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph TiffWriter {
+    rankdir=TB
+    node [shape=none, margin=0, fontname=&quot;Helvetica&quot;, fontsize=10]
+    edge [fontname=&quot;Helvetica&quot;, fontsize=9]
+
+    TiffWriter [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#922B21&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;TiffWriter&lt;/B&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _file : ofstream&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _header : optional&amp;lt;TiffWriterHeader&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _writer : unique_ptr&amp;lt;TiffWriteData&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + write()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    TiffWriterHeader [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#E74C3C&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;TiffWriterHeader&lt;/B&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _stream : ostream&amp;amp;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _magic_num : ushort_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _endian : tiff_header_endian&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _idf_offset : uint_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + write_header()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + get_idf_offset() : uint_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + create_endian_handler()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    TiffWriteData [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#E74C3C&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;TiffWriteData&amp;lt;TP&amp;gt;&lt;/B&gt;&lt;/FONT&gt;&lt;BR/&gt;&lt;FONT COLOR=&quot;white&quot; POINT-SIZE=&quot;8&quot;&gt;«abstract template»&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            # _img : ImageContainer&amp;lt;TP&amp;gt;*&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _stream : ostream&amp;amp;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _values : map&amp;lt;TiffTagType, TiffDataVariant&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _endian_handler : shared_ptr&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _strip_byte_count : size_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _offset_data : uint64_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + write()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + write_IFDs()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + write_image_data()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + compress(data)&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + apply_PhotometricInterpretation(data)&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + tags_to_set() «pure virtual»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    BitlevelImage [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#F1948A&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;BitlevelImage&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _config : TiffWriterConfig&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + tags_to_set() «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    GrayImage [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#FADBD8&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;GrayImage&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(inherits all)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + tags_to_set() «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    RGBImage [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#FADBD8&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;RGBImage&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(inherits all)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + tags_to_set() «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    VirtualEndianHandler [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#1E8449&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;VirtualEndianHandler&lt;/B&gt;&lt;/FONT&gt;&lt;BR/&gt;&lt;FONT COLOR=&quot;white&quot; POINT-SIZE=&quot;8&quot;&gt;«abstract»&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(no fields)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + convert(...) «pure virtual»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + convert_to_array(...) «pure virtual»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    LittleEndian_TIFF [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#52BE80&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;LittleEndian_TIFF&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(no fields)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + convert(...) «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + convert_to_array(...) «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    ImageContainer [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#7D3C98&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;ImageContainer&amp;lt;PT&amp;gt;&lt;/B&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _img : vector&amp;lt;PT&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _row_length : size_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _pixel_number_of_colors : size_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + at(row, col, px) : PT&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + get_width() / get_height()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + get_data() : vector&amp;lt;PT&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    PackBits [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#616A6B&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;PackBits&lt;/B&gt;&lt;/FONT&gt;&lt;BR/&gt;&lt;FONT COLOR=&quot;white&quot; POINT-SIZE=&quot;8&quot;&gt;«utility»&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(no fields)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + compress(data) «static»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + decompress(data) «static»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    // Inheritance (hollow triangle)
+    BitlevelImage     -&gt; TiffWriteData    [arrowhead=onormal, style=solid]
+    GrayImage         -&gt; BitlevelImage    [arrowhead=onormal, style=solid]
+    RGBImage          -&gt; BitlevelImage    [arrowhead=onormal, style=solid]
+    LittleEndian_TIFF -&gt; VirtualEndianHandler [arrowhead=onormal, style=solid]
+
+    // TiffWriter composes its parts
+    TiffWriter -&gt; TiffWriterHeader [arrowhead=open, style=dashed, label=&quot;uses&quot;]
+    TiffWriter -&gt; TiffWriteData    [arrowhead=open, style=dashed, label=&quot;owns&quot;]
+
+    // TiffWriteData dependencies
+    TiffWriteData -&gt; VirtualEndianHandler [arrowhead=open, style=dashed]
+    TiffWriteData -&gt; ImageContainer       [arrowhead=open, style=dashed, label=&quot;reads&quot;]
+    TiffWriteData -&gt; PackBits             [arrowhead=open, style=dashed, label=&quot;uses&quot;]
+}</p></object></div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FeatureSupport.html" class="btn btn-neutral float-right" title="Tiff Feature Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Maximilian.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

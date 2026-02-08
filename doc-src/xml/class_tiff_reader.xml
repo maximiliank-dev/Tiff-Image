@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_tiff_reader" kind="class" language="C++" prot="public">
+    <compoundname>TiffReader</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tiff_reader_1aac6c88641cb49c7881db05737841bf64" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="class_t_i_f_f_header" kindref="compound">TIFFHeader</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TIFFHeader&gt; TiffReader::_header</definition>
+        <argsstring></argsstring>
+        <name>_header</name>
+        <qualifiedname>TiffReader::_header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="11" column="21" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tiff_reader_1a839cda3a5bb9c51efa8918365facc5f7" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="class_tiff_i_f_d" kindref="compound">TiffIFD</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TiffIFD&gt; TiffReader::_ifds</definition>
+        <argsstring></argsstring>
+        <name>_ifds</name>
+        <qualifiedname>TiffReader::_ifds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="12" column="21" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tiff_reader_1a2c197699249d7cd30b30c62cdef75fa4" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="class_tiff_read_strips" kindref="compound">TiffReadStrips</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;TiffReadStrips&gt; TiffReader::_strips</definition>
+        <argsstring></argsstring>
+        <name>_strips</name>
+        <qualifiedname>TiffReader::_strips</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="13" column="21" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tiff_reader_1a29c3b32c5ba9fdc995af21d8df8293cd" prot="private" static="no" mutable="no">
+        <type>std::ifstream</type>
+        <definition>std::ifstream TiffReader::_file</definition>
+        <argsstring></argsstring>
+        <name>_file</name>
+        <qualifiedname>TiffReader::_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="15" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tiff_reader_1ae1e028f200d848a05b0446821c813410" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool TiffReader::_data_valid</definition>
+        <argsstring></argsstring>
+        <name>_data_valid</name>
+        <qualifiedname>TiffReader::_data_valid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="17" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tiff_reader_1af5513b6e5e4332b99091dc0f89026ee1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TiffReader::TiffReader</definition>
+        <argsstring>(std::filesystem::path image_path, std::shared_ptr&lt; ImageContainer&lt; uint8_t &gt; &gt; img)</argsstring>
+        <name>TiffReader</name>
+        <qualifiedname>TiffReader::TiffReader</qualifiedname>
+        <param>
+          <type>std::filesystem::path</type>
+          <declname>image_path</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; uint8_t &gt; &gt;</type>
+          <declname>img</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="20" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="20" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tiff_reader_1a9625894c47223e53834917f55fe06510" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void TiffReader::read</definition>
+        <argsstring>()</argsstring>
+        <name>read</name>
+        <qualifiedname>TiffReader::read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="31" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="31" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tiff_reader_1a43a7af40aaa98ec77cc9f30468c7a096" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; uint8_t &gt;</type>
+        <definition>ImageContainer&lt; uint8_t &gt; TiffReader::get_image</definition>
+        <argsstring>()</argsstring>
+        <name>get_image</name>
+        <qualifiedname>TiffReader::get_image</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="39" column="20" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="39" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="10" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="10" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_tiff_reader_1ae1e028f200d848a05b0446821c813410" prot="private" virt="non-virtual"><scope>TiffReader</scope><name>_data_valid</name></member>
+      <member refid="class_tiff_reader_1a29c3b32c5ba9fdc995af21d8df8293cd" prot="private" virt="non-virtual"><scope>TiffReader</scope><name>_file</name></member>
+      <member refid="class_tiff_reader_1aac6c88641cb49c7881db05737841bf64" prot="private" virt="non-virtual"><scope>TiffReader</scope><name>_header</name></member>
+      <member refid="class_tiff_reader_1a839cda3a5bb9c51efa8918365facc5f7" prot="private" virt="non-virtual"><scope>TiffReader</scope><name>_ifds</name></member>
+      <member refid="class_tiff_reader_1a2c197699249d7cd30b30c62cdef75fa4" prot="private" virt="non-virtual"><scope>TiffReader</scope><name>_strips</name></member>
+      <member refid="class_tiff_reader_1a43a7af40aaa98ec77cc9f30468c7a096" prot="public" virt="non-virtual"><scope>TiffReader</scope><name>get_image</name></member>
+      <member refid="class_tiff_reader_1a9625894c47223e53834917f55fe06510" prot="public" virt="non-virtual"><scope>TiffReader</scope><name>read</name></member>
+      <member refid="class_tiff_reader_1af5513b6e5e4332b99091dc0f89026ee1" prot="public" virt="non-virtual"><scope>TiffReader</scope><name>TiffReader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

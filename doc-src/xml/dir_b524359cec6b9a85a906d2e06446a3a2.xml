@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_b524359cec6b9a85a906d2e06446a3a2" kind="dir">
+    <compoundname>D:/Projects/ImageConverter/src/tiff-reader</compoundname>
+    <innerfile refid="tiff-data_8hpp">tiff-data.hpp</innerfile>
+    <innerfile refid="tiff-header_8hpp">tiff-header.hpp</innerfile>
+    <innerfile refid="tiff-reader_8hpp">tiff-reader.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/"/>
+  </compounddef>
+</doxygen>
