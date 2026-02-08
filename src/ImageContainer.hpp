@@ -19,6 +19,7 @@ concept Sizeable = requires(T a) {
 template<typename T>
 concept IterableSize = Iterable<T> && Sizeable<T>;
 
+/*
 template<typename T>
 concept Pixel = requires (T a, T b) {
     a+b;
@@ -42,7 +43,7 @@ struct RGB {
 };
 std::string to_string(RGB& px);
 RGB operator+(const RGB& a, const RGB& b);
-
+*/
 
 template<typename PT>
 class ImageContainer {
@@ -65,7 +66,7 @@ public:
     }
 
     uint64_t get_hight() noexcept {
-        return static_cast<uint64_t>(_img->size())/this->col_size;
+        return static_cast<uint64_t>(_img->size())/this->_col_size;
     }
 
     uint64_t get_total_size() noexcept {

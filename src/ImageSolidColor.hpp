@@ -2,11 +2,11 @@
 
 #include "ImageContainer.hpp"
 
-template<P>
-class ImageSolidColor : public ImageContainer<P> {
+class ImageSolidColor : public ImageContainer<u_int8_t> {
 
     public:
-    ImageSolidColor()
+    ImageSolidColor() {
 
+    }
 
 };

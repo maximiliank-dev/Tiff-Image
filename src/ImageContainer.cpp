@@ -1,5 +1,6 @@
 #include "ImageContainer.hpp"
 
+/*
 std::string to_string( RGB& px) {
     return std::format("({} {} {})", px.r(), px.g(), px.g());
 }
@@ -12,3 +13,5 @@ RGB operator+(const RGB& a, const RGB& b) {
 
     return c;
 }
+
+*/

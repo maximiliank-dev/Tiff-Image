@@ -6,8 +6,8 @@
 #include<memory>
 #include<sstream>
 
-#include "tiff-config/types.hpp"
-#include "tiff-config/tiff-types.hpp"
+#include "../tiff-config/types.hpp"
+#include "../tiff-config/tiff-types.hpp"
 
 #include "../endianHandler.hpp"
 #include "../ImageContainer.hpp"
@@ -54,11 +54,11 @@ public:
 /**
  * 
  */
-template<typename T>
+template<typename TP>
 class TiffWriteData {
 
 private:
-    std::shared_ptr<ImageContainer<T>> _img;
+    std::shared_ptr<ImageContainer<TP>> _img;
     std::basic_ostream<char>& _stream;
 
     TiffTagType _width; 
@@ -78,7 +78,7 @@ private:
     bool idfs_written = false;
 
 public:
-    TiffWriteData(TiffWriterHeader header, std::shared_ptr<ImageContainer<T>> img, std::basic_ostream<char>& stream) : _img(img), 
+    TiffWriteData(TiffWriterHeader header, std::shared_ptr<ImageContainer<TP>> img, std::basic_ostream<char>& stream) : _img(img), 
         _offset(header.get_idf_offset()), _stream(stream) 
     {
         this->_endian_handler = header.create_endian_handler();
@@ -94,7 +94,7 @@ public:
 
         // write the IDF count
         std::array<char, 2 > tmp = this->_endian_handler->convert_to_array(this->_numerTDF);
-        write_char( tmp, this->_stream );
+        write_char<2>( tmp, this->_stream );
 
         std::cout << "writeIDFs " << this->_values.size() <<  "\n";
 
@@ -117,16 +117,16 @@ public:
                     write_char(el, this->_stream);
                 } else if constexpr(std::is_same<T, uint8_t>::value) { //use the implemented array conversion function
                     std::array<char, 1> array = this->_endian_handler->convert_to_array(el);
-                    write_char(array, this->_stream);
+                    write_char<1>(array, this->_stream);
                 } else if constexpr(std::is_same<T, ushort_t>::value) { //use the implemented array conversion function
                     std::array<char, 2> array = this->_endian_handler->convert_to_array(el);
-                    write_char(array, this->_stream);
+                    write_char<2>(array, this->_stream);
                 } else if constexpr(std::is_same<T, uint_t>::value) { //use the implemented array conversion function
                     std::array<char, 4> array = this->_endian_handler->convert_to_array(el);
-                    write_char(array, this->_stream);
+                    write_char<4>(array, this->_stream);
                 } else if constexpr(std::is_same<T, uint64_t>::value) { //use the implemented array conversion function
                     std::array<char, 8> array = this->_endian_handler->convert_to_array(el);
-                    write_char(array, this->_stream);
+                    write_char<8>(array, this->_stream);
                 } else {
                     throw std::runtime_error("Type not implemented");
                 }
@@ -143,7 +143,7 @@ public:
             throw std::runtime_error("Error writeIDFs() function must be called before");
         }
 
-        for(const std::vector<T>& el : this->_img->get_data() ) {
+        for(const std::vector<TP>& el : this->_img->get_data() ) {
             //for
             //write_char(el, this->_stream);
         }
@@ -151,14 +151,7 @@ public:
         this->idfs_written = false;
     };
 
-    virtual void tags_to_set() {
-        // this->_values.clear();
-        this->_values.emplace(std::make_tuple(TiffTagType::ImageWidth, static_cast<uint64_t>(this->_img->get_width())));
-        this->_values.emplace(std::make_tuple(TiffTagType::ImageLength, static_cast<uint64_t>(this->_img->get_total_size())));
-        this->_values.emplace(std::make_tuple(TiffTagType::Compression, static_cast<uint64_t>(0)));
-
-        
-    };
+    virtual void tags_to_set() = 0;
 
     void write() {
         this->writeIDFs(this->_offset);
@@ -167,7 +160,28 @@ public:
 
 };
 
-template<typename T>
-class BitlevelImage : public TiffWriteData<T> {
+template<typename TP>
+void TiffWriteData<TP>::tags_to_set() {
+    // this->_values.clear();
+    this->_values.emplace(std::make_tuple(TiffTagType::ImageWidth, static_cast<uint64_t>(this->_img->get_width())));
+    this->_values.emplace(std::make_tuple(TiffTagType::ImageLength, static_cast<uint64_t>(this->_img->get_total_size())));
+    this->_values.emplace(std::make_tuple(TiffTagType::Compression, static_cast<uint64_t>(0)));
+    
+};
 
+template<typename TP>
+class BitlevelImage : public TiffWriteData<uint8_t> {
+
+    BitlevelImage(TiffWriterHeader header, std::shared_ptr<ImageContainer<TP>> img, std::basic_ostream<char>& stream) : _img(img), 
+        _offset(header.get_idf_offset()), _stream(stream) 
+    {
+        this->_endian_handler = header.create_endian_handler();
+    }
+
+    void tags_to_set() {
+        TiffWriteData<uint8_t>::tags_to_set();
+        this->_values.emplace(std::make_tuple(TiffTagType::NewSubfileType, 0x00FE));
+        this->_values.emplace(std::make_tuple(TiffTagType::ImageLength, static_cast<uint64_t>(this->_img->get_total_size())));
+        this->_values.emplace(std::make_tuple(TiffTagType::Compression, static_cast<uint64_t>(0)));
+    }
 };

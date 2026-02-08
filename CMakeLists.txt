@@ -8,11 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_COMPILE_FEATURES "-O0 -g -Wall -Wextra -Wswitch")
 
 
+
 file(GLOB_RECURSE APP_SOURCES
     CONFIGURE_DEPENDS
     src/io/*.cpp
     src/*.cpp
-    src/*.ixx
 )
 
 add_executable(my_app ${APP_SOURCES})
