@@ -305,7 +305,7 @@ public:
 
 
         std::string strips = this->readStrips();
-        result.append_columns<std::string>(strips);
+        result.append_row<std::string>(strips);
 
         return result;
     }

@@ -34,21 +34,38 @@ inline TiffDataVariant make_variant(const TiffDataType type) {
     throw std::runtime_error("Error type is not supported");
 }
 
+
 /**
  * Map the Tiff data type to the TiffDataVariant entries
  */
 template<typename T>
-inline TiffDataVariant make_variant(const TiffDataType type, T value) {
+inline TiffDataVariant make_variant(const TiffDataType type, const T value) {
     switch(type) {
         case TiffDataType::BYTE: return safe_convert<uint8_t>(value);
         case TiffDataType::ASCII: return std::to_string(value);
         case TiffDataType::SHORT: return safe_convert<ushort_t>(value);
         case TiffDataType::LONG: return safe_convert<uint_t>(value);
         case TiffDataType::RATIONAL: return safe_convert<uint64_t>(value);
+        default:
+            throw std::runtime_error("Error type is not supported");
     }
+}
+
+/**
+ * specialization for strings
+ */
+template<>
+inline TiffDataVariant make_variant<std::string>(const TiffDataType type, const std::string value) {
+    if(type == TiffDataType::ASCII)
+        return value;
+
     throw std::runtime_error("Error type is not supported");
 }
 
+/**
+ * Converts any uint64_t to the type required by the TiffTag
+ * WARNING: If the tiff tag contains not the type rational, then there is the possibility data will be lost
+ */
 inline TiffDataVariant make_variant(const TiffTagType tag, uint64_t value ) {
     auto type = get_tag_data_type(tag);
     return make_variant(type, value);

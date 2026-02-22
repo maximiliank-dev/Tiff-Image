@@ -36,6 +36,9 @@ template<> struct TagTypeValue<TiffTagType::StripOffsets> { using type = ushort_
 template<> struct TagTypeValue<TiffTagType::XResolution> { using type = uint64_t; };
 template<> struct TagTypeValue<TiffTagType::YResolution> { using type = uint64_t; };
 
+/**
+ * Get the element type
+ */
 inline TiffDataType get_tag_data_type(TiffTagType tag) {
     switch(tag) {
         case TiffTagType::NewSubfileType:
@@ -74,8 +77,27 @@ inline std::string to_string(TiffDataType type) {
         case TiffDataType::SHORT: return "SHORT";
         case TiffDataType::LONG: return "LONG";
         case TiffDataType::RATIONAL: return "RATIONAL";
+        default:
+            return "unknown";
     }
-    return "unknown";
+}
+
+/**
+ * returns the size of each supported tiff type
+ * returns an uint16_t since the type is in the tiff spec is 2 bytes long
+ */
+inline uint16_t get_tiff_type_size(TiffDataType type) {
+    switch(type) {
+        case TiffDataType::BYTE: return 1;
+        // case TiffDataType::ASCII: return 1; //only 1 byte 
+        case TiffDataType::SHORT: return 2;
+        case TiffDataType::LONG: return 4;
+        case TiffDataType::RATIONAL: return 8;
+        default:
+            // convert to unsigned int, otherwise MSVC complains
+            throw std::runtime_error(std::format("Error type {} is not supported ", 
+                static_cast<unsigned int>(type)) );
+    }
 }
 
 inline std::string to_string(TiffTagType type) {
@@ -107,3 +129,5 @@ inline std::string to_string(TiffTagType type) {
 }
 
 enum class tiff_header_endian : uint16_t { LITTLE=0x4949, BIG=0x4D4D }; 
+
+
