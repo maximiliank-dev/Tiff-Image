@@ -1,7 +1,7 @@
 #pragma once
 
 #include<ostream>
-#include<set>
+#include<map>
 #include<tuple>
 #include<memory>
 #include<sstream>
@@ -12,7 +12,11 @@
 #include "../endianHandler.hpp"
 #include "../ImageContainer.hpp"
 
-
+/**
+ * Writes the basic tiff Header
+ * @Params: endian: sets ths the endianess of the image 
+ *          stream: the ofstream owning the file on disk 
+ */
 class TiffWriterHeader {
 
 private:
@@ -26,7 +30,6 @@ private:
 public:
     TiffWriterHeader(std::basic_ostream<char>& stream) : _stream(stream) {}
     TiffWriterHeader(std::basic_ostream<char>& stream, const tiff_header_endian endian) : _endian(endian), _stream(stream) {}
-    TiffWriterHeader(std::basic_ostream<char>& stream, const uint_t idf_offset) : _idf_offset(idf_offset), _stream(stream) {}
     TiffWriterHeader(std::basic_ostream<char>& stream, const tiff_header_endian endian, const uint_t idf_offset) : _endian(endian),  _idf_offset(idf_offset), _stream(stream) {}
 
     uint_t get_idf_offset() {
@@ -56,6 +59,8 @@ public:
  */
 template<typename TP>
 class TiffWriteData {
+    // type checking
+    static_assert(std::is_integral_v<TP> && std::is_unsigned_v<TP>, "TP must be of unsigned type");
 
 private:
     TiffTagType _width; 
@@ -71,22 +76,21 @@ protected:
     std::shared_ptr<ImageContainer<TP>> _img;
     std::basic_ostream<char>& _stream;
 
-    using SetElement = std::tuple<TiffTagType, TiffDataVariant>;
+    using SetElement = std::pair<TiffTagType, TiffDataVariant>;
 
     /**
      * implement the ascending sorting for SetElement
      * Required from the TIFF spec
      */
     struct less_tiff {
-        constexpr bool operator()(const SetElement & lhs, const SetElement & rhs ) const {
-            TiffTagType tag_lhs = std::get<0>(lhs);
-            TiffTagType tag_rhs = std::get<0>(rhs);
+        constexpr bool operator()(const TiffTagType & lhs, const TiffTagType & rhs ) const {
 
-            return static_cast<uint64_t>(tag_lhs) < static_cast<uint64_t>(tag_rhs);
+            return static_cast<uint64_t>(lhs) < static_cast<uint64_t>(rhs);
         }
     };
 
-    using SetType = std::set<SetElement, less_tiff>; 
+    // using SetType = std::set<SetElement, less_tiff>; 
+    using SetType = std::map<TiffTagType, TiffDataVariant, less_tiff>; 
 
     SetType _values;
     std::shared_ptr<VirtualEndianHandler> _endian_handler;
@@ -112,13 +116,7 @@ public:
      * Params: element: the TiffTag
      *         rational_values: data structure to store the values of ags with data type RATIONAL
      */
-    void write_ifd_element(SetElement element, std::vector<uint64_t>& rational_values) {
-            TiffTagType tag;
-            TiffDataVariant variant;
-
-            // get the tag value
-            tag = std::get<0>(element); //tag
-            variant = std::get<1>(element);
+    void write_ifd_element(TiffTagType tag, TiffDataVariant variant, std::vector<uint64_t>& rational_values) {
             TiffDataType type = get_tag_data_type(tag);
 
             // write the IFD
@@ -193,11 +191,11 @@ public:
         write_char<2>( tmp, this->_stream );
 
         // add the offset of the image data StripOffsets
-        this->_values.insert( std::make_tuple( TiffTagType::StripOffsets, make_variant(TiffTagType::StripOffsets, this->_offset_data)) );
+        this->_values.emplace( TiffTagType::StripOffsets, make_variant(TiffTagType::StripOffsets, this->_offset_data) );
 
         // write the rest
         for(auto it = this->_values.begin(); it != this->_values.end(); it++ ) {
-            this->write_ifd_element(*it, rational_values);
+            this->write_ifd_element(it->first, it->second, rational_values);
         }
 
         // write the next IDF offset (is 0 in this case)
@@ -222,13 +220,24 @@ public:
     void write_image_data() {
 
         const std::vector<TP>& data = this->_img->get_data();
+        // compute the size of a row
+        const size_t size_row = this->_img->get_width()+this->_img->get_pixel_number_of_colors()-1;
+
+        constexpr TP max = std::numeric_limits<TP>::max();
+
         for(size_t i = 0; i < this->_img->get_height(); i++ ) {
             for(size_t j = 0; j < this->_img->get_width(); j++) {
                 for(size_t k = 0; k < this->_img->get_pixel_number_of_colors(); k++) {
-                    // compute the size of a row
-                    const size_t size_row = this->_img->get_width()+this->_img->get_pixel_number_of_colors()-1;
-                    auto array = this->_endian_handler->convert_to_array(data[i*size_row + j+k]);
-                    write_char(array, this->_stream);
+                    //check if the value range is inverted in a Grayscale or Bitlevel image
+                    if( this->_values[TiffTagType::PhotometricInterpretation] == 
+                        make_variant(TiffTagType::PhotometricInterpretation, 0x0) ) {
+                        TP diff = max - data[i*size_row + j+k];
+                        auto array = this->_endian_handler->convert_to_array(diff);
+                        write_char(array, this->_stream);
+                    } else {
+                        auto array = this->_endian_handler->convert_to_array(data[i*size_row + j+k]);
+                        write_char(array, this->_stream);
+                    }
                 }
             }
         }
@@ -243,67 +252,22 @@ public:
 
 };
 
+/**
+ * Set the basic TIFF Settings
+ * Must be used in all image types
+ */
 template<typename TP>
 void TiffWriteData<TP>::tags_to_set() {
     this->_values.clear();
-    this->_values.insert( std::make_tuple( TiffTagType::ImageWidth, make_variant(TiffTagType::ImageWidth, this->_img->get_width())) );
-    this->_values.insert( std::make_tuple(TiffTagType::ImageLength, make_variant(TiffTagType::ImageLength, this->_img->get_height())));
-    this->_values.insert( std::make_tuple(TiffTagType::Compression, make_variant(TiffTagType::Compression, 1)));
+    this->_values.emplace( TiffTagType::ImageWidth, make_variant(TiffTagType::ImageWidth, this->_img->get_width()) );
+    this->_values.emplace( TiffTagType::ImageLength, make_variant(TiffTagType::ImageLength, this->_img->get_height()) );
+    this->_values.emplace( TiffTagType::Compression, make_variant(TiffTagType::Compression, 1) );
+
+    this->_values.emplace( TiffTagType::PhotometricInterpretation, make_variant(TiffTagType::PhotometricInterpretation, 0x0001) );
+    this->_values.emplace( TiffTagType::RowsPerStrip,  make_variant(TiffTagType::RowsPerStrip, this->_img->get_height()) );
+    this->_values.emplace( TiffTagType::StripByteCounts, 
+                make_variant(TiffTagType::StripByteCounts, this->_img->get_bytes_per_row()) );
 };
 
 
-/**
- * Class configuration for Binary Images
- */
-template<typename TP>
-class BitlevelImage : public TiffWriteData<uint8_t> {
 
-public:
-    BitlevelImage(TiffWriterHeader header, std::shared_ptr<ImageContainer<TP>> img, std::basic_ostream<char>& stream) : TiffWriteData<uint8_t>(header, img, stream) 
-    { 
-
-    }
-
-    void tags_to_set() {
-        TiffWriteData<uint8_t>::tags_to_set();
-
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::NewSubfileType, 0x00FE ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::PhotometricInterpretation, 0x0001));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::RowsPerStrip, this->_img->get_height() ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::StripByteCounts, 
-                    this->_img->get_width()*this->_img->get_pixel_number_of_colors() ));
-        
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::XResolution, 1 ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::YResolution, 1 ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::ResolutionUnit, 1 ));
-
-    }
-};
-
-/**
- * Class configuration for Grey Images
- * Data are 8 Bits long
- * White is 0xFF, Black is 0x0
- */
-class GrayImage : public TiffWriteData<uint8_t> {
-
-public:
-    GrayImage(TiffWriterHeader header, std::shared_ptr<ImageContainer<uint8_t>> img, std::basic_ostream<char>& stream) : TiffWriteData<uint8_t>(header, img, stream) 
-    { 
-
-    }
-
-    void tags_to_set() {
-        TiffWriteData<uint8_t>::tags_to_set();
-
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::PhotometricInterpretation, 0x0001));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::RowsPerStrip, this->_img->get_height() ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::StripByteCounts, 
-                    this->_img->get_bytes_per_row() ));
-        
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::XResolution, 1 ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::YResolution, 1 ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::ResolutionUnit, 1 ));
-        this->_values.emplace(this->convert_to_SetElement(TiffTagType::BitsPerSample, 8 ));
-    }
-};

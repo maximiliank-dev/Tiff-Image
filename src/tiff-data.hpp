@@ -27,7 +27,7 @@ struct TiffTagRead {
 };
 
 
-std::string read_char_str(std::basic_istream<char>& stream, const size_t length) {
+inline std::string read_char_str(std::basic_istream<char>& stream, const size_t length) {
     if(!stream) {
         std::cout << "Fail " << stream.rdstate() << " pos " << stream.tellg() << "\n";
         throw std::invalid_argument("File Stream is invalid");
@@ -250,6 +250,8 @@ public:
 
     TiffReadStrips(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : _ifd(ifd), _stream(ifd.get_stream()), _endian_handler(endian_handler) {}
 
+    virtual void reformat_strip(std::string& strip) {}
+
     TiffTagRead get_metadata_tag(TiffTagType tag, const size_t size) const {
         TiffTag width = this->_ifd.getTag(tag);
 
@@ -275,21 +277,26 @@ public:
 
 
         std::cout << "planar_config " << to_ulong(planar_config.data[0]) << "\n";
+        std::cout << "planar_config2 " << to_ulong(planar_config.data[0]) << "\n";
 
         TiffDataVariant one = uint_t{1};
-        // TODO formula
-        //TiffDataVariant strips_in_image_var = ((image_length.data[0])* (rows_per_strip.data[0]-one) ) / rows_per_strip.data[0];
-        // 
+
         TiffDataVariant strips_in_image_var = (image_length.data[0] + rows_per_strip.data[0] - one ) / rows_per_strip.data[0];
         uint64_t strips_in_image = std::get<uint64_t>(strips_in_image_var);
 
+        std::cout << "strips_in_image " << strips_in_image << "\n";
+
+
         std::string image_data;
         for(uint64_t i = 0; i < strips_in_image; ++i) {
+
+            std::cout << "offset " <<  to_ulong(strip_offset.data.at(i)) << "\n";
             if(i < strip_offset.data.size()) {
                 this->_stream.seekg(to_ulong(strip_offset.data.at(i)));
                 uint64_t bytes_read = to_ulong(strip_byte_count.data[0]);
 
                 std::string strip = read_char_str(this->_stream, bytes_read);
+                reformat_strip(strip);
                 image_data.append(strip);
             }
         }
@@ -310,4 +317,15 @@ public:
         return result;
     }
 
+};
+
+
+
+class TiffReadStrips_RGB : public TiffReadStrips {
+
+    TiffReadStrips_RGB(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : TiffReadStrips(ifd, endian_handler) {}
+
+    void reformat_strip(std::string& strip) {
+
+    }
 };

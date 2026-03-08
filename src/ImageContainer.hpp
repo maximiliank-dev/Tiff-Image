@@ -36,23 +36,23 @@ public:
     ~ImageContainer() = default;
 
 
-    size_t get_height() noexcept {
+    size_t get_height() const noexcept {
         return this->_img.size()/(this->_row_length * this->_pixel_number_of_colors);
     }
 
-    size_t get_width() noexcept {
+    size_t get_width() const noexcept {
         return static_cast<uint64_t>(this->_row_length);
     }
 
-    size_t get_total_size() noexcept {
+    size_t get_total_size() const noexcept {
         return this->_img.size();
     }
 
-    size_t get_pixel_number_of_colors() {
+    size_t get_pixel_number_of_colors() const noexcept {
         return this->_pixel_number_of_colors;
     }
 
-    size_t get_bytes_per_row() {
+    size_t get_bytes_per_row() const noexcept {
         return this->_row_length*this->_pixel_number_of_colors-1;
     }
 
@@ -80,5 +80,24 @@ public:
         return this->_img;
     }
 
+    /**
+     * Easy access function for the image data
+     */
+    PT at(size_t row, size_t col, size_t px) const {
+
+        if( this->get_height() <= row) {
+            throw std::runtime_error(std::format("Error: invalid row id: got {} max {}", row, this->get_height()));
+        }
+        if( this->get_width() <= col) {
+            throw std::runtime_error(std::format("Error: invalid col id: got {} max {}", col, this->get_width()));
+        }
+        if( this->_pixel_number_of_colors <= px) {
+            throw std::runtime_error(std::format("Error: invalid pixel id: got {} max {}", px, this->_pixel_number_of_colors));
+        }
+        const size_t cols = this->get_width();
+        const size_t pixels = this->_pixel_number_of_colors;
+
+        return this->_img.at(row*(cols*pixels) + col*pixels + px );
+    }
 
 };

@@ -70,3 +70,7 @@ std::array<char, 8> LittleEndian_TIFF::convert_to_array(uint64_t v) const {
 
     return a;
 }
+
+tiff_header_endian LittleEndian_TIFF::get_endian_value() const {
+    return tiff_header_endian::LITTLE;
+}

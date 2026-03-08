@@ -8,7 +8,7 @@
 #include "tiff-data.hpp"
 #include "io/FileReader.hpp"
 #include "ImageContainer.hpp"
-#include "tiff-writer/tiff-writer-header.hpp"
+#include "tiff-writer/tiff_writer-image.hpp"
 
 
 int main() {

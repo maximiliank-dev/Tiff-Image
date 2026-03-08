@@ -131,3 +131,7 @@ inline std::string to_string(TiffTagType type) {
 enum class tiff_header_endian : uint16_t { LITTLE=0x4949, BIG=0x4D4D }; 
 
 
+enum class tiff_photometric_interpretation { WhiteIsZero=0, BlackIsZero=1, RGB=2, PaletteColor=3, TransparencyMask=4 };
+inline ushort_t to_uint64(tiff_photometric_interpretation pi) {
+    return static_cast<ushort_t>(pi);
+}
