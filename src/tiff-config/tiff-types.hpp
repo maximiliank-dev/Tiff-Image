@@ -6,6 +6,9 @@
 #include "types.hpp"
 
 
+/**
+ * Tiff IFD structure on the file system
+ */
 struct TiffTag {
     ushort_t TagID;
     ushort_t DataType;
@@ -14,13 +17,16 @@ struct TiffTag {
 };
 constexpr unsigned int TiffTag_size = sizeof(TiffTag);
 
+// Defined data type of a tif image
 enum class TiffDataType { BYTE=1, ASCII=2, SHORT=3, LONG=4, RATIONAL=5 };
 
+// List of suported tags
 enum class TiffTagType { NewSubfileType=254, ImageWidth=256, ImageLength=257, BitsPerSample=258, Compression=259, 
     PhotometricInterpretation=262, StripOffsets=273, Orientation=274,
     SamplesPerPixel=277, RowsPerStrip=278, StripByteCounts=279, 
     XResolution=282, YResolution=283, PlanarConfiguration=284, PageName=285,
-    ResolutionUnit=296, PageNumber=287, TileWidth=322, TileLength=323, TileOffsets=324, TileByteCounts=325, SampleFormat=339  };
+    ResolutionUnit=296, PageNumber=287, TileWidth=322, TileLength=323, TileOffsets=324, TileByteCounts=325, 
+    ExtraSamples=338, SampleFormat=339  };
 
 
 // define the type for each Tiff Tag Field
@@ -65,8 +71,18 @@ inline TiffDataType get_tag_data_type(TiffTagType tag) {
             return TiffDataType::SHORT;
         case TiffTagType::StripByteCounts:
             return TiffDataType::SHORT;
+        case TiffTagType::SamplesPerPixel:
+            return TiffDataType::SHORT;
+        case TiffTagType::PlanarConfiguration:
+            return TiffDataType::SHORT;
+        case TiffTagType::ExtraSamples:
+            return TiffDataType::SHORT;
+        case TiffTagType::SampleFormat:
+            return TiffDataType::SHORT;
+        case TiffTagType::Orientation:
+            return TiffDataType::SHORT;
         default:
-            throw std::runtime_error("Error type not specified");
+            throw std::runtime_error("Error tag data type not specified");
     }
 }
 
@@ -124,6 +140,7 @@ inline std::string to_string(TiffTagType type) {
         case TiffTagType::TileByteCounts: return "TileByteCounts";
         case TiffTagType::PageName: return "PageName";
         case TiffTagType::SampleFormat: return "SampleFormat";
+        case TiffTagType::ExtraSamples: return "ExtraSamples";
     }
     return std::format("unkwon - {}", 0);
 }

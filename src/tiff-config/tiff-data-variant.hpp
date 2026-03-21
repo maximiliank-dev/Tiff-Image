@@ -1,13 +1,33 @@
 #pragma once
 
 #include <variant>
+#include <vector>
+#include <functional>
+#include <execution>
+#include <algorithm>
 
 #include "types.hpp"
 #include "tiff-types.hpp"
 
 
-using TiffDataVariant = std::variant<uint8_t, ushort_t, uint_t, uint64_t, std::string>;
+using TiffDataVariant = std::variant<std::vector<uint8_t>, std::vector<ushort_t>, std::vector<uint_t>, std::vector<uint64_t>, std::string>;
 
+//helper functions
+//value is true when vector contains an integral type parameter
+template<typename T>
+struct is_integral_vector : std::false_type {};
+
+template<typename T>
+struct is_integral_vector<std::vector<T>> : std::bool_constant<std::is_integral_v<T>> {};
+
+//extract the vector template type
+template<typename T>
+struct vector_element;
+
+template<typename T>
+struct vector_element<std::vector<T>> {
+    using type = T;
+};
 
 template<typename T>
 inline T safe_convert(uint64_t value) {
@@ -25,66 +45,139 @@ inline T safe_convert(uint64_t value) {
  */
 inline TiffDataVariant make_variant(const TiffDataType type) {
     switch(type) {
-        case TiffDataType::BYTE: return uint8_t{};
-        case TiffDataType::ASCII: return std::string{"\t"};
-        case TiffDataType::SHORT: return ushort_t{};
-        case TiffDataType::LONG: return uint_t{};
-        case TiffDataType::RATIONAL: return uint64_t{};
-    }
-    throw std::runtime_error("Error type is not supported");
-}
-
-
-/**
- * Map the Tiff data type to the TiffDataVariant entries
- */
-template<typename T>
-inline TiffDataVariant make_variant(const TiffDataType type, const T value) {
-    switch(type) {
-        case TiffDataType::BYTE: return safe_convert<uint8_t>(value);
-        case TiffDataType::ASCII: return std::to_string(value);
-        case TiffDataType::SHORT: return safe_convert<ushort_t>(value);
-        case TiffDataType::LONG: return safe_convert<uint_t>(value);
-        case TiffDataType::RATIONAL: return safe_convert<uint64_t>(value);
+        case TiffDataType::BYTE: return std::vector<uint8_t>();
+        case TiffDataType::ASCII: return "";
+        case TiffDataType::SHORT: return std::vector<ushort_t>();
+        case TiffDataType::LONG: return std::vector<uint_t>();
+        case TiffDataType::RATIONAL: return std::vector<uint64_t>();
         default:
             throw std::runtime_error("Error type is not supported");
     }
 }
 
 /**
- * specialization for strings
+ * Map the Tiff data type to the TiffDataVariant entries
  */
-template<>
-inline TiffDataVariant make_variant<std::string>(const TiffDataType type, const std::string value) {
-    if(type == TiffDataType::ASCII)
-        return value;
+template<typename T>
+inline TiffDataVariant make_variant(const T value) {
+    if constexpr( std::is_same_v<T, uint8_t>) {
+        return std::vector<uint8_t>{safe_convert<uint8_t>(value)};
+    } else if constexpr (std::is_same_v<T, std::string>) {
+        return std::to_string(value);
+    } else if constexpr (std::is_same_v<T, ushort_t>) {
+        return std::vector<ushort_t>{safe_convert<ushort_t>(value)};
+    } else if constexpr(std::is_same_v<T, uint_t>) {
+        return std::vector<uint_t>{safe_convert<uint_t>(value)};
+    } else if constexpr(std::is_same_v<T, uint64_t>) {
+        return std::vector<uint64_t>{safe_convert<uint64_t>(value)};
+    } else {
+        throw std::runtime_error("Error type is not supported");
+    }
+}
 
-    throw std::runtime_error("Error type is not supported");
+/**
+ * Helper Function to make the variant's vector out of an initializer list
+ */
+template<typename T, typename V>
+inline std::vector<V> make_variant_vector(std::initializer_list<T> values) {
+    std::vector<V> vec;
+    vec.reserve(values.size());
+    for(const T& el : values) {
+        vec.push_back(safe_convert<V>(el));
+    }
+    return vec;
+}
+
+/**
+ * Map the Tiff data type to the TiffDataVariant entries
+ */
+inline TiffDataVariant make_variant(const TiffDataType type, const std::initializer_list<uint64_t> values) {
+    switch(type) {
+        case TiffDataType::BYTE:  return make_variant_vector<uint64_t, uint8_t>(values);
+        case TiffDataType::ASCII: {
+            std::string s;
+            s.reserve(values.size());
+            for (uint64_t v : values) {
+                s.push_back(static_cast<char>(v)); 
+            }
+            return s;
+        }
+        case TiffDataType::SHORT: return make_variant_vector<uint64_t, ushort_t>(values);
+        case TiffDataType::LONG:  return make_variant_vector<uint64_t, uint_t>(values);
+        case TiffDataType::RATIONAL: return make_variant_vector<uint64_t, uint64_t>(values);
+        default:
+            throw std::runtime_error("Error type is not supported");
+    }
 }
 
 /**
  * Converts any uint64_t to the type required by the TiffTag
- * WARNING: If the tiff tag contains not the type rational, then there is the possibility data will be lost
  */
-inline TiffDataVariant make_variant(const TiffTagType tag, uint64_t value ) {
+inline TiffDataVariant make_variant(const TiffTagType tag, std::initializer_list<uint64_t> value ) {
     auto type = get_tag_data_type(tag);
     return make_variant(type, value);
 }
 
+/**
+ * Converts any uint64_t to the type required by the TiffTag
+ */
+//template<typename T>
+inline TiffDataVariant make_variant(const TiffTagType tag, uint64_t value ) {
+    return make_variant(tag, {value});
+}
+
+
+/**
+ * Get the element size of the container
+ */
 inline std::size_t get_variant_element_size(const TiffDataVariant variant) {
     return std::visit( [](auto& el ){
-        return sizeof(el);
+        using T = std::decay_t<decltype(el)>;
+
+        return sizeof(T::value_type);
     }, variant);
 }
+
+template<template<typename> typename F>
+inline TiffDataVariant calc_binary(const TiffDataVariant& a, const TiffDataVariant& b) 
+{
+    return std::visit([](auto& x, auto& y) -> TiffDataVariant {
+        using A = std::decay_t<decltype(x)>;
+        using B = std::decay_t<decltype(y)>;
+
+        if constexpr (is_integral_vector<A>::value && is_integral_vector<A>::value ) { 
+            using Ta = A::value_type;
+            using Tb = B::value_type;
+            std::vector<uint64_t> result(x.size());
+ 
+            std::transform(x.begin(), x.end(), y.begin(), result.begin(), [](const Ta& ela, const Tb& elb) {
+                //call the operation struct of the STL
+                return F<uint64_t>{}(static_cast<uint64_t>(ela), static_cast<uint64_t>(elb));
+            });
+            return result;
+        } else {
+            throw std::runtime_error("Error operator F : variant is not of integral type");
+        }
+    }, a, b);
+}
+
 
 inline TiffDataVariant operator+(const TiffDataVariant& a, const TiffDataVariant& b)
 {
     return std::visit([](auto& x, auto& y) -> TiffDataVariant {
         using A = std::decay_t<decltype(x)>;
         using B = std::decay_t<decltype(y)>;
-        
-        if constexpr (std::is_integral<A>::value && std::is_integral<B>::value ) { // && std::is_integral<B> 
-            return static_cast<uint64_t>(x) + static_cast<uint64_t>(y);
+
+        if constexpr (is_integral_vector<A>::value && std::is_same_v<A, B> ) { 
+            using Ta = vector_element<A>::type;
+            using Tb = vector_element<B>::type;
+            using T = std::common_type_t<Ta, Tb>;
+            std::vector<uint64_t> result(x.size());
+ 
+            std::transform(x.begin(), x.end(), y.begin(), result.begin(), [](const Ta& ela, const Tb& elb) {
+                return static_cast<uint64_t>(ela) + static_cast<uint64_t>(elb);
+            });
+            return result;
         } else {
             throw std::runtime_error("Error operator + : variant is not of integral type");
         }
@@ -93,68 +186,98 @@ inline TiffDataVariant operator+(const TiffDataVariant& a, const TiffDataVariant
 
 inline TiffDataVariant operator-(const TiffDataVariant& a, const TiffDataVariant& b)
 {
-    return std::visit([](auto& a, auto& b) -> TiffDataVariant {
-        using A = std::decay_t<decltype(a)>;
-        using B = std::decay_t<decltype(b)>;
-        
-        if constexpr (std::is_integral<A>::value && std::is_integral<B>::value ) {
-            return static_cast<uint64_t>(a) - static_cast<uint64_t>(b); 
-        } else {
-            throw std::runtime_error("Error operator - : variant is not of integral type");
-        }
-    }, a, b);
+    return calc_binary<std::minus>(a, b);
 }
 
 inline TiffDataVariant operator*(const TiffDataVariant& a, const TiffDataVariant& b)
 {
-    return std::visit([](auto& a, auto& b) -> TiffDataVariant {
-        using A = std::decay_t<decltype(a)>;
-        using B = std::decay_t<decltype(b)>;
-        
-        if constexpr ( std::is_integral<A>::value && std::is_integral<B>::value ) {
-            return static_cast<uint64_t>(a) * static_cast<uint64_t>(b); 
-        } else {
-            throw std::runtime_error("Error operator * : variant is not of integral type");
-        }
-    }, a, b);
+    return calc_binary<std::multiplies>(a, b);
 }
 
+/**
+ * Returns a bool
+ */
+inline bool operator==(const TiffDataVariant& a, const TiffDataVariant& b)
+{
+    return std::visit([](auto& x, auto& y) -> bool {
+        using A = std::decay_t<decltype(x)>;
+        using B = std::decay_t<decltype(y)>;
+
+        if constexpr (is_integral_vector<A>::value && is_integral_vector<A>::value ) { 
+            if(x.size() != y.size()) {
+                return false;
+            }            
+            return std::equal(x.begin(), x.end(), y.begin(), y.end(), [](auto el1, auto el2) {
+                return static_cast<uint64_t>(el1) == static_cast<uint64_t>(el2);
+            });
+        } else {
+            throw std::runtime_error("Error operator == : variant is not of integral type");
+        }
+    }, a, b);}
 
 inline TiffDataVariant operator/(const TiffDataVariant& a, const TiffDataVariant& b)
 {
-    return std::visit([](auto& a, auto& b) -> TiffDataVariant {
-        using A = std::decay_t<decltype(a)>;
-        using B = std::decay_t<decltype(b)>;
-        
-        if constexpr ( std::is_integral<A>::value && std::is_integral<B>::value ) {
-            return static_cast<uint64_t>(a) / static_cast<uint64_t>(b); 
-        } else {
-            throw std::runtime_error("Error operator / : variant is not of integral type");
-        }
-    }, a, b);
+    return calc_binary<std::divides>(a, b);
 }
 
 inline uint64_t to_ulong(const TiffDataVariant& a) {
 
     return std::visit( [](auto& el) -> uint64_t {
         using A = std::decay_t<decltype(el)>;
-        if constexpr ( std::is_integral<A>::value) {
-            return static_cast<uint64_t>(el);
+
+        if(el.size() != 1 ) {
+            throw std::runtime_error("Error in to_ulong: vector size must be 1");
         }
-        std::string k =  std::format("Conversion Error: variant is not of integral type got {}", typeid(A).name());
-        throw std::domain_error(std::format("Conversion Error: variant is not of integral type got {}", typeid(A).name()));
+
+        if constexpr ( is_integral_vector<A>::value) {
+            return static_cast<uint64_t>(el.at(0));
+        } else {
+            throw std::domain_error(std::format("Conversion Error: variant is not of integral type got {}", typeid(A).name()));
+        }
     }, a);
 }
 
-/**
- * Convert the variant to a size_t type
- */
 inline size_t to_size_t(const TiffDataVariant& a) {
-    uint64_t v = to_ulong(a);
-    if( v > static_cast<uint64_t>(std::numeric_limits<size_t>::max()) ) {
-        throw std::out_of_range("Value too large for size_t");
-    }
-    return static_cast<size_t>(v);
+
+    return std::visit( [](auto& el) -> size_t {
+        using A = std::decay_t<decltype(el)>;
+
+        if(el.size() != 1 ) {
+            throw std::runtime_error("Error in to_ulong: vector size must be 1");
+        }
+
+        if constexpr ( is_integral_vector<A>::value) {
+            uint64_t value = static_cast<uint64_t>(el.at(0));
+            if (value <= std::numeric_limits<size_t>::max()) {
+                return static_cast<size_t>(value);
+            } else {
+                throw std::runtime_error("Error uint64_t is too large: size_t overflows");
+            }
+        } else {
+            throw std::domain_error(std::format("Conversion Error: variant is not of integral type got {}", typeid(A).name()));
+        }
+    }, a);
+}
+
+inline std::string to_string(TiffDataVariant a) {
+    return std::visit(
+        [](auto &el) -> std::string {
+            using A = std::decay_t<decltype(el)>;
+
+            std::string s{""};
+            if constexpr(is_integral_vector<A>::value) {
+                using T = A::value_type; //element type of a vector
+
+                for(T& v : el) {
+                    s += std::to_string(v);
+                }
+                return s;
+            } else if constexpr(std::is_same_v<A, std::string>) {
+                return el;
+            } else {
+                throw std::domain_error(std::format("Conversion Error: variant is not of std::vector with integral or of std::string type got {}", typeid(A).name()));
+            }
+        }, a);
 }
 
 // /**

@@ -83,12 +83,13 @@ public:
                 << "\n";
     }
 
-    void printTag(const TiffTagRead tag) {
-        std::cout << to_string(TiffTagType(tag.TagID)) << " ";
+    void printTagRead(const TiffTagRead tag) {
+        std::cout << "---------------------------------------------\n";
+        std::cout << "TagID: " << static_cast<int>(tag.TagID) << " " << to_string(tag.TagID) << "\n";
 
         for(auto i : tag.data) {
-            std::visit([] (const auto& el){
-                std::cout << el;
+            std::visit([] (auto el){
+                std::cout << to_string(el);
             }, i);
             std::cout << "\n";
         }
@@ -105,7 +106,7 @@ public:
             });
 
         if (ret == this->_tagList.end()) {
-            throw std::range_error("Element was not found");
+            throw std::range_error(std::format("TiffTagType was not found {}", static_cast<int>(tag_type)));
         }
 
         return *ret;
@@ -125,19 +126,19 @@ public:
                     std::visit([&,this](auto& el) {
                     using T = std::decay_t<decltype(el)>;
                     
-                    if constexpr( std::is_same_v<T, ushort_t>) {
+                    if constexpr( std::is_same_v<T, std::vector<ushort_t>>) {
                         if(i > 1) {
                             throw std::runtime_error("Error: i must <= 1");
                         }
-                        el = this->_endian_handler->convert(offset, i);
-                    } else if constexpr ( std::is_same_v<T, uint_t>) {
+                        el.push_back( this->_endian_handler->convert(offset, i) );
+                    } else if constexpr ( std::is_same_v<T, std::vector<uint_t>>) {
                         if(i > 0) {
                             throw std::runtime_error("Error: i must be 0");
                         }
-                        el = offset;
-                    } else if constexpr ( std::is_same_v<T, uint64_t>) {
+                        el.push_back( offset );
+                    } else if constexpr ( std::is_same_v<T, std::vector<uint64_t>>) {
                         throw std::logic_error("uint64 not valid");
-                    } else if constexpr ( std::is_same_v<T, uint8_t>) {
+                    } else if constexpr ( std::is_same_v<T, std::vector<uint8_t>>) {
                         throw std::logic_error("uint8_t not valid");
                     } else if constexpr ( std::is_same_v<T, std::string>) {
                         throw std::logic_error("string not valid");
@@ -156,22 +157,22 @@ public:
                 std::visit([&, this](auto& el) {
                     using T = std::decay_t<decltype(el)>;
 
-                    if constexpr( std::is_same_v<T, uint8_t>) {
+                    if constexpr( std::is_same_v<T, std::vector<uint8_t>>) {
                         std::array<char, 1> arr; 
                         read_char<1>(arr, this->_stream);
-                        el = this->_endian_handler->convert(arr);
-                    } else if constexpr( std::is_same_v<T, ushort_t>) {
+                        el.push_back( this->_endian_handler->convert(arr) );
+                    } else if constexpr( std::is_same_v<T, std::vector<ushort_t>>) {
                         std::array<char, 2> arr; 
                         read_char<2>(arr, this->_stream);
-                        el = this->_endian_handler->convert(arr);
-                    } else if constexpr ( std::is_same_v<T, uint_t>) {
+                        el.push_back( this->_endian_handler->convert(arr) );
+                    } else if constexpr ( std::is_same_v<T, std::vector<uint_t>>) {
                         std::array<char, 4> arr; 
                         read_char<4>(arr, this->_stream);
-                        el =  this->_endian_handler->convert(arr);
-                    } else if constexpr ( std::is_same_v<T, uint64_t>) {
+                        el.push_back(  this->_endian_handler->convert(arr) );
+                    } else if constexpr ( std::is_same_v<T, std::vector<uint64_t>>) {
                         std::array<char, 8> arr; 
                         read_char<8>(arr, this->_stream);
-                        el = this->_endian_handler->convert(arr);
+                        el.push_back( this->_endian_handler->convert(arr) );
                     } else if constexpr ( std::is_same_v<T, std::string>) {
                         el = read_char_str(this->_stream, data_count);
                     } else {
@@ -206,11 +207,11 @@ public:
             std::streampos pos = this->_stream.tellg();
             read_char<TiffTag_size>(tag_char, this->_stream);
 
-
             auto tag = this->convert_to_tag(tag_char);
             this->_tagList.push_back(
                 tag
             ); 
+            std::cout << "printing tag " << std::endl;
             this->printTag(tag);
         }
 
@@ -224,12 +225,10 @@ public:
         std::cout << "stream good " << this->_stream.good() << "\n";
 
         std::cout << "-------\n";
-//        TiffTagRead tag0 = this->read_tiff_tag(this->_tagList[13]);
-//        this->printTag(tag0);
 
         for(auto el : this->_tagList) {
             TiffTagRead tag0 = this->read_tiff_tag(el);
-            this->printTag(tag0);
+            this->printTagRead(tag0);
         }
     };
 
@@ -250,9 +249,14 @@ public:
 
     TiffReadStrips(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : _ifd(ifd), _stream(ifd.get_stream()), _endian_handler(endian_handler) {}
 
+
     virtual void reformat_strip(std::string& strip) {}
 
     TiffTagRead get_metadata_tag(TiffTagType tag, const size_t size) const {
+        if(!this->_stream) {
+            throw std::runtime_error("Error: file stream not valid");
+        }
+
         TiffTag width = this->_ifd.getTag(tag);
 
         TiffTagRead res = this->_ifd.read_tiff_tag(width);
@@ -265,6 +269,9 @@ public:
     }
 
     std::string readStrips() {
+        if(!this->_stream) {
+            throw std::runtime_error("Error: file stream not valid");
+        }
         //TiffTag getTag
         //ImageX
         const TiffTagRead image_width = this->get_metadata_tag(TiffTagType::ImageWidth, 1);
@@ -273,27 +280,31 @@ public:
         const TiffTagRead strip_offset = this->get_metadata_tag(TiffTagType::StripOffsets, 1);
         const TiffTagRead rows_per_strip = this->get_metadata_tag(TiffTagType::RowsPerStrip, 1);
         const TiffTagRead samples_per_pixel = this->get_metadata_tag(TiffTagType::SamplesPerPixel, 1);
-        const TiffTagRead planar_config = this->get_metadata_tag(TiffTagType::PlanarConfiguration, 1);
 
+        std::cout << "samples_per_pixel " << to_ulong(samples_per_pixel.data[0]) << "\n";
 
-        std::cout << "planar_config " << to_ulong(planar_config.data[0]) << "\n";
-        std::cout << "planar_config2 " << to_ulong(planar_config.data[0]) << "\n";
+        TiffDataVariant one = make_variant(uint_t{1});
 
-        TiffDataVariant one = uint_t{1};
+        if( samples_per_pixel.data[0] != one) {
+            const TiffTagRead planar_config = this->get_metadata_tag(TiffTagType::PlanarConfiguration, 1);
+            std::cout << "planar_config " << to_ulong(planar_config.data[0]) << "\n";
+        }
 
         TiffDataVariant strips_in_image_var = (image_length.data[0] + rows_per_strip.data[0] - one ) / rows_per_strip.data[0];
-        uint64_t strips_in_image = std::get<uint64_t>(strips_in_image_var);
+        uint64_t strips_in_image = to_ulong( strips_in_image_var );
 
+        std::cout << "Data length " << to_string(image_length.data[0] + rows_per_strip.data[0] - one )  << "\n";
         std::cout << "strips_in_image " << strips_in_image << "\n";
-
 
         std::string image_data;
         for(uint64_t i = 0; i < strips_in_image; ++i) {
 
-            std::cout << "offset " <<  to_ulong(strip_offset.data.at(i)) << "\n";
+            std::cout << "offset " <<  to_size_t(strip_offset.data.at(i)) << "\n";
             if(i < strip_offset.data.size()) {
-                this->_stream.seekg(to_ulong(strip_offset.data.at(i)));
+                this->_stream.seekg(to_size_t(strip_offset.data.at(i)));
                 uint64_t bytes_read = to_ulong(strip_byte_count.data[0]);
+                std::cout << "bytes_read " << bytes_read << std::endl;
+
 
                 std::string strip = read_char_str(this->_stream, bytes_read);
                 reformat_strip(strip);
@@ -308,7 +319,8 @@ public:
      */
     ImageContainer<uint8_t> getImage() {
         const TiffTagRead image_width = this->get_metadata_tag(TiffTagType::ImageWidth, 1);
-        ImageContainer<uint8_t> result(to_ulong(image_width.data[0]), 3);
+        const TiffTagRead image_ppc = this->get_metadata_tag(TiffTagType::SamplesPerPixel, 1);
+        ImageContainer<uint8_t> result(to_size_t(image_width.data[0]), 3);
 
 
         std::string strips = this->readStrips();

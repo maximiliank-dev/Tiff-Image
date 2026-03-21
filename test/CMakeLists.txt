@@ -10,6 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -21,6 +22,7 @@ FetchContent_Declare(
   opencv
   GIT_REPOSITORY https://github.com/opencv/opencv.git
   GIT_TAG 4.11.0
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 # Disable OpenCV tests/examples before fetching
@@ -36,6 +38,7 @@ FetchContent_MakeAvailable(opencv)
 add_executable(
   hello_test
   src/tests/test_read.cc
+  src/tests/test_rgb.cpp
 
 )
 
@@ -51,6 +54,9 @@ target_include_directories(hello_test PRIVATE
   ${opencv_SOURCE_DIR}/include
   ${opencv_BINARY_DIR}           # for opencv2/opencv_modules.hpp, etc.
 )
+
+
+
 
 target_include_directories(hello_test PRIVATE
         ${OPENCV_CONFIG_FILE_INCLUDE_DIR}

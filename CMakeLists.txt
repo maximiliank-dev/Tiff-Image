@@ -14,6 +14,7 @@ target_sources(tiffLib PRIVATE
     src/endianHandler.cpp
     src/ImageContainer.cpp
     src/ImageSolidColor.cpp
+    src/image-generation/TestRGBImages.cpp
 )
 
 target_include_directories(tiffLib PUBLIC 
@@ -21,14 +22,18 @@ target_include_directories(tiffLib PUBLIC
         src/tiff_config 
         src/io 
         src/tiff-reader 
-        src/tiff-writer )
+        src/tiff-writer
+        src/image-generation )
+
+# target_compile_features(tiffLib PRIVATE cxx_std_17 cxx_std_20)
+
+target_compile_definitions(tiffLib PRIVATE PRINT_LOGS)
 
 enable_testing()
 include(GoogleTest)
 add_subdirectory(test)
 
-# add_executable(my_app ${APP_SOURCES})
-add_executable(my_app  src/main.cpp )
+add_executable(my_app src/main.cpp )
 target_link_libraries(my_app PUBLIC tiffLib)
 
 
