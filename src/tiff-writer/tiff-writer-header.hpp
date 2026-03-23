@@ -129,8 +129,9 @@ public:
             std::array<char, 2> type_array = this->_endian_handler->convert_to_array(static_cast<ushort_t>(type));
             write_char<2>(type_array, this->_stream);
 
+#if PRINT == 1
             std::cout << "tag " <<  int(tag) << " " << to_string(tag) << std::endl;
-
+#endif
             // value (in offset)
             std::visit([this, &rational_values](auto& el) -> void {
                 using T = std::decay_t<decltype(el)>;
@@ -191,8 +192,6 @@ public:
                     throw std::runtime_error("Type not implemented");
                 }
             }, variant);
-            this->_stream.flush();
-            std::cout << "\n";
     }
 
     /**
@@ -225,15 +224,11 @@ public:
         // write the rest
         for(auto it = this->_values.begin(); it != this->_values.end(); it++ ) {
             this->write_ifd_element(it->first, it->second, rational_values);
-            std::cout << "position " << this->_stream.tellp() << std::endl;
         }
 
         // write the next IDF offset (is 0 in this case)
         std::array<char, 4 > tmp4 = this->_endian_handler->convert_to_array(uint_t{0x0});
         write_char<4>( tmp4, this->_stream );
-        this->_stream.flush();
-        std::cout << "position begin IFD " << offset_tiff_data << std::endl;
-        std::cout << "position end IFD " << this->_stream.tellp() << std::endl;
 
         for(auto el : rational_values) {
             std::visit( [this](auto& vec) {
@@ -263,7 +258,6 @@ public:
                     }
                 }
             }, el);
-            this->_stream.flush();
         }
 
         // set the pointer to the IFD Offset in the header
@@ -313,6 +307,7 @@ public:
     void write() {
         this->write_image_data();
         this->write_IFDs();
+        this->_stream.flush();
     };
 
 };

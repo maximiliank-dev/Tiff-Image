@@ -20,6 +20,7 @@ template<typename T>
 concept IterableSize = Iterable<T> && Sizeable<T>;
 
 /**
+ * Image Container
  * Data is stored in row major order
  */
 template<typename PT>

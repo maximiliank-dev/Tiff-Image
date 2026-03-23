@@ -43,21 +43,24 @@ inline std::string read_char_str(std::basic_istream<char>& stream, const size_t 
     return s;
 }
 
-// read the Tif image file directory
+/**
+ *  Class for reading the Tif image file directory
+ * 
+ * */
+
 class TiffIFD {
 
 private:
     std::basic_istream<char>& _stream;
     uint_t _address;
 
-    ushort_t    _NumDirEntries;    /* Number of Tags in IFD  */
-	//TIFTAG  TagList[];        /* Array of Tags  */
-	uint_t   _NextIFDOffset;    /* Offset to next IFD  */
-    std::vector<TiffTag> _tagList;
-
+    ushort_t    _NumDirEntries;    // Number of Tags in IFD
+	uint_t   _NextIFDOffset;    // Offset to next IFD
+    std::vector<TiffTag> _tagList; // List of Tags
+ 
     std::shared_ptr<VirtualEndianHandler> _endian_handler;
 public:
-
+    TiffIFD() : _stream(std::cin), _address(0x0), _endian_handler(std::make_shared<LittleEndian_TIFF>()) {}
     TiffIFD(std::basic_istream<char>& stream, uint_t address, std::shared_ptr<VirtualEndianHandler> endian_handler) : _stream(stream), _address(address), _endian_handler(endian_handler) {}
 
     TiffTag convert_to_tag(std::array<char, TiffTag_size> data) {
@@ -76,14 +79,17 @@ public:
     }
 
     void printTag(const TiffTag tag) {
+#if PRINT == 1 
         std::cout << "TagID " << std::format("0x{:02X} ", tag.TagID) << to_string(TiffTagType(tag.TagID))
                 << " DataType " << std::format("0x{:02X} ", tag.DataType) << to_string(TiffDataType(tag.DataType))
                 << " DataCount " << std::format("0x{:04X}", tag.DataCount)
                 << " DataOffset " << std::format("0x{:04X}", tag.DataOffset)
                 << "\n";
+#endif
     }
 
     void printTagRead(const TiffTagRead tag) {
+#if PRINT == 1 
         std::cout << "---------------------------------------------\n";
         std::cout << "TagID: " << static_cast<int>(tag.TagID) << " " << to_string(tag.TagID) << "\n";
 
@@ -93,6 +99,7 @@ public:
             }, i);
             std::cout << "\n";
         }
+#endif
     }
 
     std::basic_istream<char>& get_stream() {
@@ -198,9 +205,7 @@ public:
         this->_NumDirEntries = this->_endian_handler->convert(numEntries_char);
         
         auto pos0 = this->_stream.tellg();
-        std::cout << "pos0 " << pos0 << "\n";
 
-        std::cout << "Tiff Size " << sizeof(TiffTag) << "\n";
         std::array<char, TiffTag_size> tag_char;
         
         for(uint_t i = 0; i < this->_NumDirEntries; i++) {
@@ -211,7 +216,6 @@ public:
             this->_tagList.push_back(
                 tag
             ); 
-            std::cout << "printing tag " << std::endl;
             this->printTag(tag);
         }
 
@@ -219,12 +223,10 @@ public:
         read_char<2>(next_idf_offset_char, this->_stream);
         this->_NextIFDOffset = this->_endian_handler->convert(next_idf_offset_char);
 
+#if PRINT == 1
         std::cout << "_NextIFDOffset " << this->_NextIFDOffset << "\n";
- 
-        std::cout << "converted\n";
         std::cout << "stream good " << this->_stream.good() << "\n";
-
-        std::cout << "-------\n";
+#endif
 
         for(auto el : this->_tagList) {
             TiffTagRead tag0 = this->read_tiff_tag(el);
@@ -247,7 +249,8 @@ class TiffReadStrips {
     const std::shared_ptr<VirtualEndianHandler> _endian_handler;
 public:
 
-    TiffReadStrips(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : _ifd(ifd), _stream(ifd.get_stream()), _endian_handler(endian_handler) {}
+    explicit TiffReadStrips() : _ifd(TiffIFD()), _stream(std::cin), _endian_handler(std::make_shared<LittleEndian_TIFF>()) {}
+    explicit TiffReadStrips(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : _ifd(ifd), _stream(ifd.get_stream()), _endian_handler(endian_handler) {}
 
 
     virtual void reformat_strip(std::string& strip) {}
@@ -317,7 +320,7 @@ public:
     /**
      * Return an rgb image
      */
-    ImageContainer<uint8_t> getImage() {
+    ImageContainer<uint8_t> get_image() {
         const TiffTagRead image_width = this->get_metadata_tag(TiffTagType::ImageWidth, 1);
         const TiffTagRead image_ppc = this->get_metadata_tag(TiffTagType::SamplesPerPixel, 1);
         ImageContainer<uint8_t> result(to_size_t(image_width.data[0]), 3);

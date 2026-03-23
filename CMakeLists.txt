@@ -27,7 +27,7 @@ target_include_directories(tiffLib PUBLIC
 
 # target_compile_features(tiffLib PRIVATE cxx_std_17 cxx_std_20)
 
-target_compile_definitions(tiffLib PRIVATE PRINT_LOGS)
+target_compile_definitions(tiffLib PUBLIC PRINT=0)
 
 enable_testing()
 include(GoogleTest)

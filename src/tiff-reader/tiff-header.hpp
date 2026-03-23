@@ -24,9 +24,10 @@ private:
     bool err = 0;
 
     std::shared_ptr<VirtualEndianHandler> endian_handler;
-public:
+public: 
 
-    TIFFHeader(std::basic_istream<char>& stream) : _stream(stream) {}
+    explicit TIFFHeader() : _stream(std::cin) {}
+    explicit TIFFHeader(std::basic_istream<char>& stream) : _stream(stream) {}
 
 
     template<unsigned int N>
@@ -63,9 +64,6 @@ public:
         } else {
             std::cout << "Error got " << this->endian[0] << " " << this->endian[1] << "\n"; 
         }
-
-        //this->endian_handler = std::make_shared<LittleEndian_TIFF>();
-
 
         std::array<char, 2> arr_magic_number{0, 0};
         read<2>(arr_magic_number);

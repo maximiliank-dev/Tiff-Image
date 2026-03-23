@@ -15,6 +15,8 @@
 #include "tiff-data.hpp"
 #include "tiff-writer.hpp"
 #include "TestRGBImages.hpp"
+#include "../test-helpers/opencv-init.hpp"
+#include "tiff-reader.hpp"
 
 struct Config {
     size_t rows;
@@ -107,14 +109,13 @@ protected:
 // Demonstrate some basic assertions.
 TEST_P(SingleColorTB, BasicAssertions) {
 
-  TestImageSingleColor im(7, 6, get_px_position(), get_color()); 
+  TestImageSingleColor im(get_rows(), get_cols(), get_px_position(), get_color()); 
   im.generateImage();
 
   std::string filename = "imgg"+get_file_extension()+".tif";
   TiffWriter tiff_writer = TiffWriter(filename, SupportedImageTypes::RGB, im.get_image());
   tiff_writer.write();
 
-  std::cout << "fff \n";
   // const std::filesystem::path test_path = std::filesystem::path(TEST_DATA_DIR) / "strips-red.tif";
   const std::filesystem::path test_path = filename;
   // const std::filesystem::path test_path = "test-red.tif";
@@ -124,11 +125,7 @@ TEST_P(SingleColorTB, BasicAssertions) {
   ASSERT_TRUE(file.good()) << "Could not open: " << test_path.string();
 
 
-  // ASSERT_TRUE(0);
-
-
   TIFFHeader header(file);
-
   header.parse_header();
 
   TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
@@ -136,38 +133,30 @@ TEST_P(SingleColorTB, BasicAssertions) {
   TiffReadStrips strips(ifd, ifd.get_endian_handler());
   ImageContainer<uint8_t> img_ptr = strips.getImage();
 
+  
+  cv::Mat M = get_tiff_image_opencv(test_path);
 
-  // image is BGR by default
-  cv::Mat M_brg = cv::imread(test_path.string(), cv::IMREAD_COLOR);
-  ASSERT_FALSE(M_brg.empty()) << "OpenCV could not read: " << test_path.string();
-
-  cv::Mat M;
-  cv::cvtColor(M_brg, M, cv::COLOR_BGR2RGB);
-
-
-  std::cout << "CV rows " << M.rows << "\n";
-  std::cout << "CV cols " << M.cols << "\n";
-  std::cout << "M type " << M.type() << std::endl;
-  std::cout << "M channels " << M.channels() << std::endl;
-
+  //check the channels and the image dimensions
   EXPECT_EQ(M.channels(), 3);
   EXPECT_EQ(M.rows, img_ptr.get_height());
   EXPECT_EQ(M.cols, img_ptr.get_width());
+  EXPECT_EQ(M.rows, get_rows());
+  EXPECT_EQ(M.cols, get_cols());
 
-  for(size_t i = 0; i < 3; i++) {
-    for(size_t j = 0; j < M.cols; j++) {
+  for(int i = 0; i < 3; i++) {
+    for(int j = 0; j < M.cols; j++) {
       cv::Vec3b el = M.at<cv::Vec3b>(i, j);
       for(size_t k = 0; k < 3; k++) {
         uint8_t M_el = el[k];
         uint8_t I_el = img_ptr.at(i,j,k);
 
-        std::cout << "i " << i << " j " << j << " k " << k << " M " << 
-          static_cast<int>(M_el) << " img " << 
-          static_cast<int>(I_el) << std::endl; 
+        // std::cout << "i " << i << " j " << j << " k " << k << " M " << 
+        //   static_cast<int>(M_el) << " img " << 
+        //   static_cast<int>(I_el) << std::endl; 
         EXPECT_EQ(M_el, I_el);
-        // if( k == get_px_position() ) {
-        //   EXPECT_EQ(I_el, get_color()) << "Color is not " << get_color() << " at pixel position " << get_px_position();
-        // }
+        if( k == get_px_position() ) {
+          EXPECT_EQ(I_el, get_color()) << "Color is not " << get_color() << " at pixel position " << get_px_position();
+        }
       }
     }
   }
@@ -178,9 +167,9 @@ INSTANTIATE_TEST_SUITE_P(
     CompressionSuite,
     SingleColorTB,
     ::testing::Combine(
-        ::testing::Values(6),             // width
-        ::testing::Values(5, 20),         // height
+        ::testing::Values(6, 20, 100),             // width
+        ::testing::Values(5, 20, 100),         // height
         ::testing::Values(0, 1, 2),       // Color pixel
-        ::testing::Values(250, 125)       // Color levels
+        ::testing::Values(250, 125, 90)       // Color levels
     )
 );

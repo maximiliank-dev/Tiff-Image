@@ -40,7 +40,7 @@ TEST(TestRead22, BasicAssertions) {
   TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
   ifd.read();
   TiffReadStrips strips(ifd, ifd.get_endian_handler());
-  ImageContainer<uint8_t> img_ptr = strips.getImage();
+  ImageContainer<uint8_t> img_ptr = strips.get_image();
 
   std::cout << "CV rows " << M.rows << "\n";
   std::cout << "CV cols " << M.cols << "\n";
