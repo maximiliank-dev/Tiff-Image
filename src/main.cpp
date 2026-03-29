@@ -28,7 +28,7 @@ int main() {
     TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
     ifd.read();
     TiffReadStrips strips(ifd, ifd.get_endian_handler());
-    strips.getImage();
+    strips.get_image();
 
 
     char c = -128; //-128
