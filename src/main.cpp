@@ -10,6 +10,7 @@
 #include "ImageContainer.hpp"
 #include "tiff-writer/tiff_writer-image.hpp"
 
+using namespace tifflib;
 
 int main() {
 

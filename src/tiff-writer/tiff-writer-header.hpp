@@ -12,6 +12,9 @@
 #include "../endianHandler.hpp"
 #include "../ImageContainer.hpp"
 
+namespace tifflib {
+ 
+
 /**
  * Writes the basic tiff Header
  * @Params: endian: sets ths the endianess of the image 
@@ -337,3 +340,4 @@ void TiffWriteData<TP>::tags_to_set() {
 
 
 
+};

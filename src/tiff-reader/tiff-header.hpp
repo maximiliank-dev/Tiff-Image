@@ -10,6 +10,9 @@
 #include "tiff-config/types.hpp"
 #include "endianHandler.hpp"
 
+namespace tifflib {
+
+
 class TIFFHeader {
 
 private:
@@ -50,7 +53,7 @@ public:
     }
 
     void parse_header() {
-        //endan
+        //endian
         this->err = read<2>(endian);
 
         std::cout << endian[0] << " 1 " << endian[1] << "\n";
@@ -81,5 +84,7 @@ public:
 
     }
 
+
+};
 
 };

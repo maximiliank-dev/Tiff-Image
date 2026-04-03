@@ -16,6 +16,7 @@
 #include "tiff-writer.hpp"
 #include "TestRGBImages.hpp"
 #include "../test-helpers/opencv-init.hpp"
+#include "../test-helpers/test-init-methods.hpp"
 #include "tiff-reader.hpp"
 
 struct Config {
@@ -112,26 +113,29 @@ TEST_P(SingleColorTB, BasicAssertions) {
   im.generateImage();
 
   std::string filename = "rgb-single"+get_file_extension()+".tif";
-  TiffWriter tiff_writer = TiffWriter(filename, SupportedImageTypes::RGB, im.get_image());
-  tiff_writer.write();
+  // TiffWriter tiff_writer = TiffWriter(filename, SupportedImageTypes::RGB, im.get_image());
+  // tiff_writer.write();
 
-  // const std::filesystem::path test_path = std::filesystem::path(TEST_DATA_DIR) / "strips-red.tif";
-  const std::filesystem::path test_path = filename;
-  // const std::filesystem::path test_path = "test-red.tif";
-  std::cout << "test_path " << test_path.string() << "\n";
+  // // const std::filesystem::path test_path = std::filesystem::path(TEST_DATA_DIR) / "strips-red.tif";
+  // const std::filesystem::path test_path = filename;
+  // // const std::filesystem::path test_path = "test-red.tif";
+  // std::cout << "test_path " << test_path.string() << "\n";
 
-  std::ifstream file(test_path, std::ios::binary);
-  ASSERT_TRUE(file.good()) << "Could not open: " << test_path.string();
+  // std::ifstream file(test_path, std::ios::binary);
+  // ASSERT_TRUE(file.good()) << "Could not open: " << test_path.string();
 
 
-  TIFFHeader header(file);
-  header.parse_header();
+  // TIFFHeader header(file);
+  // header.parse_header();
 
-  TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
-  ifd.read();
-  TiffReadStrips strips(ifd, ifd.get_endian_handler());
-  ImageContainer<uint8_t> img_ptr = strips.get_image();
+  // TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
+  // ifd.read();
+  // TiffReadStrips strips(ifd, ifd.get_endian_handler());
+  // ImageContainer<uint8_t> img_ptr = strips.get_image();
 
+  ImageContainer<uint8_t> img_ptr(0, 0);
+  std::filesystem::path test_path;
+  std::tie(img_ptr, test_path) = write_image_and_read(filename, im.get_image());
   
   cv::Mat M = get_tiff_image_opencv(test_path);
 
@@ -208,26 +212,29 @@ TEST_P(RampTB, BasicAssertions) {
   im.generateImage();
 
   std::string filename = "rgb-ramp-"+get_file_extension()+".tif";
-  TiffWriter tiff_writer = TiffWriter(filename, SupportedImageTypes::RGB, im.get_image());
-  tiff_writer.write();
+  // TiffWriter tiff_writer = TiffWriter(filename, SupportedImageTypes::RGB, im.get_image());
+  // tiff_writer.write();
 
-  // const std::filesystem::path test_path = std::filesystem::path(TEST_DATA_DIR) / "strips-red.tif";
-  const std::filesystem::path test_path = filename;
-  // const std::filesystem::path test_path = "test-red.tif";
-  std::cout << "test_path " << test_path.string() << "\n";
+  // // const std::filesystem::path test_path = std::filesystem::path(TEST_DATA_DIR) / "strips-red.tif";
+  // const std::filesystem::path test_path = filename;
+  // // const std::filesystem::path test_path = "test-red.tif";
+  // std::cout << "test_path " << test_path.string() << "\n";
 
-  std::ifstream file(test_path, std::ios::binary);
-  ASSERT_TRUE(file.good()) << "Could not open: " << test_path.string();
+  // std::ifstream file(test_path, std::ios::binary);
+  // ASSERT_TRUE(file.good()) << "Could not open: " << test_path.string();
 
 
-  TIFFHeader header(file);
-  header.parse_header();
+  // TIFFHeader header(file);
+  // header.parse_header();
 
-  TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
-  ifd.read();
-  TiffReadStrips strips(ifd, ifd.get_endian_handler());
-  ImageContainer<uint8_t> img_ptr = strips.get_image();
+  // TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
+  // ifd.read();
+  // TiffReadStrips strips(ifd, ifd.get_endian_handler());
+  // ImageContainer<uint8_t> img_ptr = strips.get_image();
 
+  ImageContainer<uint8_t> img_ptr(0, 0);
+  std::filesystem::path test_path;
+  std::tie(img_ptr, test_path) = write_image_and_read(filename, im.get_image());
   
   cv::Mat M = get_tiff_image_opencv(test_path);
 

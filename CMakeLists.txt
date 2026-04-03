@@ -25,7 +25,12 @@ target_include_directories(tiffLib PUBLIC
         src/tiff-writer
         src/image-generation )
 
-# target_compile_features(tiffLib PRIVATE cxx_std_17 cxx_std_20)
+#enable warning for the switch statements covering enum classes
+if (MSVC)
+    target_compile_options(tiffLib PRIVATE /w14062)
+else()
+    target_compile_options(tiffLib PRIVATE -Wswitch)
+endif()
 
 target_compile_definitions(tiffLib PUBLIC PRINT=0)
 
@@ -37,4 +42,25 @@ add_executable(my_app src/main.cpp )
 target_link_libraries(my_app PUBLIC tiffLib)
 
 
+#Sphix build
+find_program(SPHINX_EXECUTABLE sphinx-build
+    HINTS $ENV{SPHINX_DIR}
+    DOC "Sphinx documentation generator"
+)
+file(TO_NATIVE_PATH "${CMAKE_BINARY_DIR}/doxygen/xml" DOXYGEN_XML_PATH)
 
+message("Sphinx ${SPHINX_EXECUTABLE}")
+if(SPHINX_EXECUTABLE)
+    set(SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/docs/source)
+    set(SPHINX_BUILD  ${CMAKE_CURRENT_BINARY_DIR}/docs)
+
+    add_custom_target(docs
+        COMMAND ${SPHINX_EXECUTABLE}
+            -b html
+            ${SPHINX_SOURCE}
+            ${SPHINX_BUILD}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating documentation with Sphinx"
+        VERBATIM
+    )
+endif()

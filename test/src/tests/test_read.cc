@@ -33,13 +33,13 @@ TEST(TestRead22, BasicAssertions) {
   cv::Mat M;
   cv::cvtColor(M_brg, M, cv::COLOR_BGR2RGB);
 
-  TIFFHeader header(file);
+  tifflib::TIFFHeader header(file);
 
   header.parse_header();
 
-  TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
+  tifflib::TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
   ifd.read();
-  TiffReadStrips strips(ifd, ifd.get_endian_handler());
+  tifflib::TiffReadStrips strips(ifd, ifd.get_endian_handler());
   ImageContainer<uint8_t> img_ptr = strips.get_image();
 
   std::cout << "CV rows " << M.rows << "\n";

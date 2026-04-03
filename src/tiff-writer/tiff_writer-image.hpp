@@ -2,6 +2,9 @@
 
 #include "tiff-writer-header.hpp"
 
+namespace tifflib {
+
+
 enum class SupportedImageTypes { Bitlevel, Grayscale, RGB};
 using TiffWriterImgType = TiffWriteData<uint8_t>;
 
@@ -73,4 +76,6 @@ public:
         this->_values[TiffTagType::SampleFormat] = make_variant(TiffTagType::SampleFormat, {1, 1, 1});
 
     }
+};
+
 };

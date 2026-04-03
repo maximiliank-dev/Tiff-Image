@@ -19,6 +19,7 @@
 #include "endianHandler.hpp"
 #include "ImageContainer.hpp"
 
+namespace tifflib {
 
 
 struct TiffTagRead {
@@ -242,7 +243,10 @@ public:
 };
 
 
-
+/**
+ * Class to read the image data
+ * IFDs must be read before creating this class
+ */
 class TiffReadStrips {
     std::basic_istream<char>& _stream;
     const TiffIFD& _ifd;
@@ -255,6 +259,9 @@ public:
 
     virtual void reformat_strip(std::string& strip) {}
 
+    /**
+     * Read the metadata
+     */
     TiffTagRead get_metadata_tag(TiffTagType tag, const size_t size) const {
         if(!this->_stream) {
             throw std::runtime_error("Error: file stream not valid");
@@ -271,6 +278,9 @@ public:
         return res;
     }
 
+    /**
+     * Read the image data
+     */
     std::string readStrips() {
         if(!this->_stream) {
             throw std::runtime_error("Error: file stream not valid");
@@ -302,12 +312,9 @@ public:
         std::string image_data;
         for(uint64_t i = 0; i < strips_in_image; ++i) {
 
-            std::cout << "offset " <<  to_size_t(strip_offset.data.at(i)) << "\n";
             if(i < strip_offset.data.size()) {
                 this->_stream.seekg(to_size_t(strip_offset.data.at(i)));
                 uint64_t bytes_read = to_ulong(strip_byte_count.data[0]);
-                std::cout << "bytes_read " << bytes_read << std::endl;
-
 
                 std::string strip = read_char_str(this->_stream, bytes_read);
                 reformat_strip(strip);
@@ -339,8 +346,6 @@ public:
 class TiffReadStrips_RGB : public TiffReadStrips {
 
     TiffReadStrips_RGB(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : TiffReadStrips(ifd, endian_handler) {}
+};
 
-    void reformat_strip(std::string& strip) {
-
-    }
 };

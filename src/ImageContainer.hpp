@@ -29,8 +29,8 @@ class ImageContainer {
 private:
     std::vector<PT> _img;
 
-    const size_t _row_length; 
-    const size_t _pixel_number_of_colors;
+    size_t _row_length;
+    size_t _pixel_number_of_colors;
 
 public:
 
@@ -63,14 +63,12 @@ public:
         return this->_row_length*this->_pixel_number_of_colors-1;
     }
 
+    /**
+     * Move assignment
+     */
     ImageContainer& operator=(ImageContainer&& other) {
-        if(other.get_column_length() != this->get_column_length()) {
-            throw std::runtime_error("Can not move the object: column length do not match");
-        }
-        if(other.get_pixel_number_of_colors() != this->get_pixel_number_of_colors()) {
-            throw std::runtime_error("Can not move the object: number of colors per pixel do not match");
-        }
-
+        this->_row_length = other._row_length;
+        this->_pixel_number_of_colors = other._pixel_number_of_colors;
         this->_img = std::move(other._img);
         return *this;
     }

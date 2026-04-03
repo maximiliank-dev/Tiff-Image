@@ -7,6 +7,9 @@
 #include "tiff-data.hpp"
 #include "../ImageContainer.hpp"
 
+namespace tifflib {
+
+
 class TiffReader {
     std::unique_ptr<TIFFHeader> _header;
     std::unique_ptr<TiffIFD> _ifds;
@@ -43,4 +46,6 @@ public:
 
         return ImageContainer<uint8_t>(0, 0);
     }
+};
+
 };

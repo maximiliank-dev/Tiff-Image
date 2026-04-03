@@ -6,6 +6,8 @@ class TestImageSingleColor : public TestAbstractImage<uint8_t> {
     const size_t _columns;
     const size_t _pixel;
 
+    static constexpr size_t pixel_size = 3;
+
     public:
         explicit TestImageSingleColor(const size_t n, const size_t m, size_t pixel, const uint8_t color);
         void generateImage();
@@ -17,7 +19,7 @@ class TestImageSingleColor : public TestAbstractImage<uint8_t> {
  * HORIZAONTAL: color increases with increasing column index
  * VERTICAL: color increases with increasing row index
  */
-enum class RampType{HORIZONTAL, VERTICAL};
+enum class RampType{HORIZONTAL, VERTICAL, DIAGONAL};
 
 class TestImageRampRGB : public TestAbstractImage<uint8_t> {
     //member variables
@@ -28,6 +30,8 @@ class TestImageRampRGB : public TestAbstractImage<uint8_t> {
 
     const RampType _type;
     const std::array<size_t, 3> _idx;
+
+    static constexpr size_t pixel_size = 3;
 
     public:
         explicit TestImageRampRGB(const size_t n, const size_t m, RampType type, const uint8_t color_min, 
@@ -41,8 +45,10 @@ class TestImageRampRGB : public TestAbstractImage<uint8_t> {
      * @Args:
      *      i: row index
      *      j: column index
+     *      theta: angle
      */
-    inline std::array<uint8_t, 3> calc_function(const size_t i, const size_t j);
+    inline std::array<uint8_t, 3> calc_function(const size_t i, const size_t j, const double theta,
+    const uint8_t max_i, const uint8_t max_j);
 
 };
 
