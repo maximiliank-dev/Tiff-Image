@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>D:/Projects/ImageConverter/src</compoundname>
+    <innerdir refid="dir_3bf9da16c5f898b80f45f16c379ffa4a">D:/Projects/ImageConverter/src/image-generation</innerdir>
+    <innerdir refid="dir_c184e51c84f2c3f0345bbc8a0d75d3e1">D:/Projects/ImageConverter/src/io</innerdir>
+    <innerdir refid="dir_6ddc509b8b38759a20dec5cad25f05d6">D:/Projects/ImageConverter/src/tiff-config</innerdir>
+    <innerdir refid="dir_b524359cec6b9a85a906d2e06446a3a2">D:/Projects/ImageConverter/src/tiff-reader</innerdir>
+    <innerdir refid="dir_7bc4c60d5477c62c61ab7a7de06978cc">D:/Projects/ImageConverter/src/tiff-writer</innerdir>
+    <innerfile refid="endian_handler_8cpp">endianHandler.cpp</innerfile>
+    <innerfile refid="endian_handler_8hpp">endianHandler.hpp</innerfile>
+    <innerfile refid="_image_container_8cpp">ImageContainer.cpp</innerfile>
+    <innerfile refid="_image_container_8hpp">ImageContainer.hpp</innerfile>
+    <innerfile refid="_image_solid_color_8cpp">ImageSolidColor.cpp</innerfile>
+    <innerfile refid="_image_solid_color_8hpp">ImageSolidColor.hpp</innerfile>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/"/>
+  </compounddef>
+</doxygen>

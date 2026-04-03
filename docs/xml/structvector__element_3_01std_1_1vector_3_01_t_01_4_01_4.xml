@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>vector_element&lt; std::vector&lt; T &gt; &gt;</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4_1aff8a4dce5e6335d95d86df5cb4596057" prot="public" static="no">
+        <type>T</type>
+        <definition>using vector_element&lt; std::vector&lt; T &gt; &gt;::type = T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>vector_element&lt; std::vector&lt; T &gt; &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-data-variant.hpp" line="29" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-data-variant.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-data-variant.hpp" line="28" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-data-variant.hpp" bodystart="28" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4_1aff8a4dce5e6335d95d86df5cb4596057" prot="public" virt="non-virtual"><scope>vector_element&lt; std::vector&lt; T &gt; &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

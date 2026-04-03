@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="tiff-writer_8hpp" kind="file" language="C++">
+    <compoundname>tiff-writer.hpp</compoundname>
+    <includes local="no">filesystem</includes>
+    <includes local="no">string</includes>
+    <includes local="no">format</includes>
+    <includes local="no">memory</includes>
+    <includes refid="_file_reader_8hpp" local="yes">../io/FileReader.hpp</includes>
+    <includes refid="tiff-writer-header_8hpp" local="yes">tiff-writer-header.hpp</includes>
+    <includes refid="tiff__writer-image_8hpp" local="yes">tiff_writer-image.hpp</includes>
+    <incdepgraph>
+      <node id="22">
+        <label>../ImageContainer.hpp</label>
+        <link refid="_image_container_8hpp_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>../endianHandler.hpp</label>
+        <link refid="endian_handler_8hpp_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>../io/FileReader.hpp</label>
+        <link refid="_file_reader_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>../tiff-config/tiff-types.hpp</label>
+        <link refid="tiff-types_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>../tiff-config/types.hpp</label>
+        <link refid="types_8hpp_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>tiff-writer-header.hpp</label>
+        <link refid="tiff-writer-header_8hpp_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp</label>
+        <link refid="tiff-writer_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>tiff_writer-image.hpp</label>
+        <link refid="tiff__writer-image_8hpp_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>array</label>
+      </node>
+      <node id="15">
+        <label>cstdint</label>
+      </node>
+      <node id="2">
+        <label>filesystem</label>
+      </node>
+      <node id="4">
+        <label>format</label>
+      </node>
+      <node id="7">
+        <label>fstream</label>
+      </node>
+      <node id="18">
+        <label>iostream</label>
+      </node>
+      <node id="16">
+        <label>istream</label>
+      </node>
+      <node id="23">
+        <label>iterator</label>
+      </node>
+      <node id="11">
+        <label>map</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="10">
+        <label>ostream</label>
+      </node>
+      <node id="13">
+        <label>sstream</label>
+      </node>
+      <node id="8">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="12">
+        <label>tuple</label>
+      </node>
+      <node id="17">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_tiff_writer" prot="public">TiffWriter</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;format&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../io/FileReader.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tiff-writer-header.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;tiff_writer-image.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="class_tiff_writer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TiffWriter<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ofstream<sp/>_file;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;TiffWriterHeader&gt;<sp/>_header;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;<sp/>_writer;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>TiffWriter(std::filesystem::path<sp/>image_path,<sp/>SupportedImageTypes<sp/>type,<sp/>std::shared_ptr&lt;<ref refid="class_image_container" kindref="compound">ImageContainer&lt;uint8_t&gt;</ref>&gt;<sp/>img<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;_file<sp/>=<sp/>std::ofstream(image_path,<sp/>std::ios::binary);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!this-&gt;_file)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(std::format(</highlight><highlight class="stringliteral">&quot;Error,<sp/>could<sp/>not<sp/>access<sp/>file<sp/>in<sp/>path<sp/>{}\n&quot;</highlight><highlight class="normal">,<sp/>22));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>throw<sp/>std::runtime_error(std::format(&quot;Error,<sp/>could<sp/>not<sp/>access<sp/>file<sp/>in<sp/>path<sp/>{}\n&quot;,<sp/>image_path));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;_header<sp/>=<sp/>std::unique_ptr&lt;TiffWriterHeader&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_tiff_writer_header" kindref="compound">TiffWriterHeader</ref>(this-&gt;_file<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(type)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SupportedImageTypes::Bitlevel:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;_writer<sp/>=<sp/>std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_bitlevel_image" kindref="compound">BitlevelImage</ref>(*(this-&gt;_header),<sp/>img,<sp/>this-&gt;_file)<sp/>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SupportedImageTypes::Grayscale:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;_writer<sp/>=<sp/>std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_gray_image" kindref="compound">GrayImage</ref>(*(this-&gt;_header),<sp/>img,<sp/>this-&gt;_file)<sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SupportedImageTypes::RGB:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;_writer<sp/>=<sp/>std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_r_g_b_image" kindref="compound">RGBImage</ref>(*(this-&gt;_header),<sp/>img,<sp/>this-&gt;_file)<sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write()<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;_header-&gt;write_header();<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;_writer-&gt;write();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp"/>
+  </compounddef>
+</doxygen>
