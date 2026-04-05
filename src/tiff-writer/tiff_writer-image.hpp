@@ -14,7 +14,7 @@ using TiffWriterImgType = TiffWriteData<uint8_t>;
 class BitlevelImage : public TiffWriterImgType {
 
 public:
-    BitlevelImage(TiffWriterHeader header, std::shared_ptr<ImageContainer<uint8_t>> img, std::basic_ostream<char>& stream) : TiffWriterImgType(header, img, stream) { }
+    BitlevelImage(TiffWriterHeader header, const ImageContainer<uint8_t>* img, std::basic_ostream<char>& stream) : TiffWriterImgType(header, img, stream) { }
 
     void tags_to_set() {
         TiffWriterImgType::tags_to_set();
@@ -37,7 +37,7 @@ public:
 class GrayImage : public BitlevelImage {
 
 public:
-    GrayImage(TiffWriterHeader header, std::shared_ptr<ImageContainer<uint8_t>> img, std::basic_ostream<char>& stream) : BitlevelImage(header, img, stream) { }
+    GrayImage(TiffWriterHeader header, const ImageContainer<uint8_t>* img, std::basic_ostream<char>& stream) : BitlevelImage(header, img, stream) { }
 
     void tags_to_set() {
         BitlevelImage::tags_to_set();        
@@ -54,7 +54,7 @@ public:
 class RGBImage : public BitlevelImage {
 
 public:
-    RGBImage(TiffWriterHeader header, std::shared_ptr<ImageContainer<uint8_t>> img, std::basic_ostream<char>& stream) : BitlevelImage(header, img, stream) 
+    RGBImage(TiffWriterHeader header, const ImageContainer<uint8_t>* img, std::basic_ostream<char>& stream) : BitlevelImage(header, img, stream) 
     { 
         if(this->_img->get_pixel_number_of_colors() != 3) {
             throw std::runtime_error("Error img must have 3 pixels per color");

@@ -61,7 +61,10 @@ private:
  
     std::shared_ptr<VirtualEndianHandler> _endian_handler;
 public:
-    TiffIFD() : _stream(std::cin), _address(0x0), _endian_handler(std::make_shared<LittleEndian_TIFF>()) {}
+
+    //delete the default constructor, such that the user always has a valid stream 
+    TiffIFD() = delete;
+
     TiffIFD(std::basic_istream<char>& stream, uint_t address, std::shared_ptr<VirtualEndianHandler> endian_handler) : _stream(stream), _address(address), _endian_handler(endian_handler) {}
 
     TiffTag convert_to_tag(std::array<char, TiffTag_size> data) {
@@ -253,9 +256,10 @@ class TiffReadStrips {
     const std::shared_ptr<VirtualEndianHandler> _endian_handler;
 public:
 
-    explicit TiffReadStrips() : _ifd(TiffIFD()), _stream(std::cin), _endian_handler(std::make_shared<LittleEndian_TIFF>()) {}
-    explicit TiffReadStrips(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : _ifd(ifd), _stream(ifd.get_stream()), _endian_handler(endian_handler) {}
+    // delete the default constructor. 
+    TiffReadStrips() = delete;
 
+    explicit TiffReadStrips(TiffIFD& ifd, std::shared_ptr<VirtualEndianHandler> endian_handler) : _ifd(ifd), _stream(ifd.get_stream()), _endian_handler(endian_handler) {}
 
     virtual void reformat_strip(std::string& strip) {}
 
@@ -313,8 +317,8 @@ public:
         for(uint64_t i = 0; i < strips_in_image; ++i) {
 
             if(i < strip_offset.data.size()) {
-                this->_stream.seekg(to_size_t(strip_offset.data.at(i)));
-                uint64_t bytes_read = to_ulong(strip_byte_count.data[0]);
+                this->_stream.seekg(static_cast<std::streamoff>(to_size_t(strip_offset.data.at(i))));
+                size_t bytes_read = static_cast<size_t>(to_ulong(strip_byte_count.data[0]));
 
                 std::string strip = read_char_str(this->_stream, bytes_read);
                 reformat_strip(strip);

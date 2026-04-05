@@ -235,6 +235,7 @@ TEST_P(RampTB, BasicAssertions) {
   ImageContainer<uint8_t> img_ptr(0, 0);
   std::filesystem::path test_path;
   std::tie(img_ptr, test_path) = write_image_and_read(filename, im.get_image());
+  // ImageContainer<uint8_t> img_ptr = write_image_and_read(filename, im.get_image(), test_path);
   
   cv::Mat M = get_tiff_image_opencv(test_path);
 

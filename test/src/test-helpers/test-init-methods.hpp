@@ -14,7 +14,7 @@ inline std::tuple<ImageContainer<uint8_t>, std::filesystem::path> write_image_an
     std::shared_ptr<ImageContainer<uint8_t>> img
     ) {
 
-    tifflib::TiffWriter tiff_writer(filename, tifflib::SupportedImageTypes::RGB, img);
+    tifflib::TiffWriter tiff_writer(filename, tifflib::SupportedImageTypes::RGB, img.get());
     tiff_writer.write();
 
     const std::filesystem::path test_path = filename;
@@ -25,13 +25,10 @@ inline std::tuple<ImageContainer<uint8_t>, std::filesystem::path> write_image_an
         throw std::runtime_error(std::format("Could not open: {}", test_path.string()));
     }
 
-    tifflib::TIFFHeader header(file);
-    header.parse_header();
+    tifflib::TiffReader reader(test_path);
+    reader.read();
 
-    tifflib::TiffIFD ifd(file, header.get_idf_offset(), header.get_endian_handler());
-    ifd.read();
-    tifflib::TiffReadStrips strips(ifd, ifd.get_endian_handler());
-    ImageContainer<uint8_t> img_ptr = strips.get_image();
+    ImageContainer<uint8_t> img_ptr = reader.get_image();
 
     return std::make_tuple(std::move(img_ptr), test_path);
 }

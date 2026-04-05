@@ -76,7 +76,7 @@ protected:
     uint_t next_offset = 0;
     uint64_t _offset_data = 0x8; // data come after the HEADER like in GIMP
 
-    std::shared_ptr<ImageContainer<TP>> _img;
+    const ImageContainer<TP>* _img;
     std::basic_ostream<char>& _stream;
 
     using SetElement = std::pair<TiffTagType, TiffDataVariant>;
@@ -100,7 +100,7 @@ protected:
 
 
 public:
-    TiffWriteData(TiffWriterHeader header, std::shared_ptr<ImageContainer<TP>> img, std::basic_ostream<char>& stream) : _img(img), 
+    TiffWriteData(TiffWriterHeader header, const ImageContainer<TP>* img, std::basic_ostream<char>& stream) : _img(img), 
         _offset(header.get_idf_offset()), _stream(stream) 
     {
         this->_endian_handler = header.create_endian_handler();
