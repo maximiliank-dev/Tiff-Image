@@ -5,16 +5,23 @@
 namespace tifflib {
 
 enum class SupportedImageTypes { Bitlevel, Grayscale, RGB };
+
+struct TiffWriterConfig {
+    TiffCompression compression = TiffCompression::None;
+};
+
 using TiffWriterImgType = TiffWriteData<uint8_t>;
 
 /**
  * Class configuration for Binary Images
  */
 class BitlevelImage : public TiffWriterImgType {
+   TiffWriterConfig _config;
    public:
     BitlevelImage(TiffWriterHeader header, const ImageContainer<uint8_t>* img,
-                  std::basic_ostream<char>& stream)
-        : TiffWriterImgType(header, img, stream) {}
+                  std::basic_ostream<char>& stream,
+                  TiffWriterConfig config)
+        : TiffWriterImgType(header, img, stream), _config(config) {}
 
     void tags_to_set() {
         TiffWriterImgType::tags_to_set();
@@ -31,6 +38,10 @@ class BitlevelImage : public TiffWriterImgType {
         // set to unsigned type
         this->_values[TiffTagType::Orientation] =
             make_variant(TiffTagType::Orientation, 1);
+
+        this->_values[TiffTagType::Compression] =
+            make_variant(TiffTagType::Compression, 
+                static_cast<uint64_t>(this->_config.compression));
     }
 };
 
@@ -42,8 +53,9 @@ class BitlevelImage : public TiffWriterImgType {
 class GrayImage : public BitlevelImage {
    public:
     GrayImage(TiffWriterHeader header, const ImageContainer<uint8_t>* img,
-              std::basic_ostream<char>& stream)
-        : BitlevelImage(header, img, stream) {}
+              std::basic_ostream<char>& stream,
+              TiffWriterConfig config)
+        : BitlevelImage(header, img, stream, config) {}
 
     void tags_to_set() {
         BitlevelImage::tags_to_set();
@@ -61,8 +73,9 @@ class GrayImage : public BitlevelImage {
 class RGBImage : public BitlevelImage {
    public:
     RGBImage(TiffWriterHeader header, const ImageContainer<uint8_t>* img,
-             std::basic_ostream<char>& stream)
-        : BitlevelImage(header, img, stream) {
+             std::basic_ostream<char>& stream,
+             TiffWriterConfig config)
+        : BitlevelImage(header, img, stream, config) {
         if (this->_img->get_pixel_number_of_colors() != 3) {
             throw std::runtime_error("Error img must have 3 pixels per color");
         }

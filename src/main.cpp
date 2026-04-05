@@ -55,7 +55,7 @@ int main() {
     TiffWriterHeader header_writer(file_out);
     header_writer.write_header();
 
-    GrayImage data(header_writer, img.get(), header_writer.get_stream());
+    GrayImage data(header_writer, img.get(), header_writer.get_stream(), TiffWriterConfig());
     data.write();
 
 

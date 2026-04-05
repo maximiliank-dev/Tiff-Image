@@ -41,18 +41,19 @@ class TiffWriter {
 
         this->_header.emplace(this->_file);
 
+        TiffWriterConfig config;
         switch (type) {
             case SupportedImageTypes::Bitlevel:
                 this->_writer = std::unique_ptr<TiffWriteData<uint8_t>>(
-                    new BitlevelImage(*(this->_header), img, this->_file));
+                    new BitlevelImage(*(this->_header), img, this->_file, config));
                 break;
             case SupportedImageTypes::Grayscale:
                 this->_writer = std::unique_ptr<TiffWriteData<uint8_t>>(
-                    new GrayImage(*(this->_header), img, this->_file));
+                    new GrayImage(*(this->_header), img, this->_file, config));
                 break;
             case SupportedImageTypes::RGB:
                 this->_writer = std::unique_ptr<TiffWriteData<uint8_t>>(
-                    new RGBImage(*(this->_header), img, this->_file));
+                    new RGBImage(*(this->_header), img, this->_file, config));
                 break;
         }
     };

@@ -25,6 +25,12 @@ enum class TiffDataType {
     RATIONAL = 5
 };
 
+enum class TiffCompression { 
+    None=1, 
+    PackBits=32773
+};
+
+
 // List of suported tags
 enum class TiffTagType {
     NewSubfileType = 254,

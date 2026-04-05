@@ -305,6 +305,19 @@ class TiffWriteData {
         this->_stream.seekp(std::ios::app);
     }
 
+    void apply_PhotometricInterpretation(std::vector<TP>& data) {
+        constexpr TP max = std::numeric_limits<TP>::max();
+
+        if (this->_values[TiffTagType::PhotometricInterpretation] ==
+            make_variant(TiffTagType::PhotometricInterpretation,
+                            {0x0})) {
+            for(auto& element : data) {
+                TP diff = max - element;
+                element = diff;
+            }
+        }
+    }
+
     /**
      * Writes the image data to a file
      */
@@ -312,32 +325,17 @@ class TiffWriteData {
         const std::vector<TP>& data = this->_img->get_data();
         // compute the size of a row
         const size_t num_pixels = this->_img->get_pixel_number_of_colors();
-        const size_t size_row = this->_img->get_width() * num_pixels;
 
-        constexpr TP max = std::numeric_limits<TP>::max();
+        std::vector<TP> data_copy(data);
 
-        for (size_t i = 0; i < this->_img->get_height(); i++) {
-            for (size_t j = 0; j < this->_img->get_width(); j++) {
-                for (size_t k = 0; k < this->_img->get_pixel_number_of_colors();
-                     k++) {
-                    // check if the value range is inverted in a Grayscale or
-                    // Bitlevel image
-                    if (this->_values[TiffTagType::PhotometricInterpretation] ==
-                        make_variant(TiffTagType::PhotometricInterpretation,
-                                     {0x0})) {
-                        TP diff =
-                            max - data[i * size_row + j * num_pixels * +k];
-                        auto array =
-                            this->_endian_handler->convert_to_array(diff);
-                        write_char(array, this->_stream);
-                    } else {
-                        TP dat = data[i * size_row + j * num_pixels + k];
-                        auto array =
-                            this->_endian_handler->convert_to_array(dat);
-                        write_char(array, this->_stream);
-                    }
-                }
-            }
+        //apply PhotometricInterpretation
+        this->apply_PhotometricInterpretation(data_copy);
+
+        for(size_t i = 0; i < data_copy.size(); i++) {
+            TP dat = data_copy[i];
+            auto array =
+                this->_endian_handler->convert_to_array(dat);
+            write_char(array, this->_stream);
         }
     };
 
