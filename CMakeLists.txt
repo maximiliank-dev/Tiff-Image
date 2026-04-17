@@ -35,6 +35,7 @@ endif()
 target_compile_definitions(tiffLib PUBLIC PRINT=0)
 
 enable_testing()
+find_package(GTest REQUIRED)
 include(GoogleTest)
 add_subdirectory(test)
 

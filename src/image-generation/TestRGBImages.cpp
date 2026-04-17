@@ -105,8 +105,8 @@ void TestImageRampRGB::generateImage() {
     const uint8_t rows = (this->_rows <= std::numeric_limits<uint8_t>::max())
                              ? static_cast<uint8_t>(this->_rows)
                              : std::numeric_limits<uint8_t>::max();
-    const uint8_t cols = (n <= std::numeric_limits<uint8_t>::max())
-                             ? static_cast<uint8_t>(n)
+    const uint8_t cols = (this->_columns <= std::numeric_limits<uint8_t>::max())
+                             ? static_cast<uint8_t>(this->_columns)
                              : std::numeric_limits<uint8_t>::max();
 
     for (size_t i = 0; i < this->_rows; i++) {

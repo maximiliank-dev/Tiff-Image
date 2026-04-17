@@ -30,6 +30,10 @@ enum class TiffCompression {
     PackBits=32773
 };
 
+enum class TiffPhotometricInterpretation { 
+    WhiteIsZero=0, 
+    BlackIsZero=1
+};
 
 // List of suported tags
 enum class TiffTagType {

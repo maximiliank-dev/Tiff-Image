@@ -10,6 +10,7 @@
 #include "../endianHandler.hpp"
 #include "../tiff-config/tiff-types.hpp"
 #include "../tiff-config/types.hpp"
+#include "../compression/packbits.hpp"
 
 namespace tifflib {
 
@@ -97,16 +98,13 @@ class TiffWriteData {
     std::shared_ptr<VirtualEndianHandler> _endian_handler;
 
    public:
+    //should not be instantiated as const
+    TiffWriteData(const TiffWriteData&) = delete;
+
     TiffWriteData(TiffWriterHeader header, const ImageContainer<TP>* img,
                   std::basic_ostream<char>& stream)
         : _img(img), _offset(header.get_idf_offset()), _stream(stream) {
         this->_endian_handler = header.create_endian_handler();
-    }
-
-    SetElement convert_to_SetElement(TiffTagType tag, uint64_t value) {
-        TiffDataVariant variant = make_variant(tag, {value});
-
-        return std::make_tuple(tag, variant);
     }
 
     /**
@@ -262,7 +260,7 @@ class TiffWriteData {
                 [this](auto& vec) {
                     using T = std::decay_t<decltype(vec)>;
                     using element_type = T::value_type;
-                    for (auto element : vec) {
+                    for (auto& element : vec) {
                         if constexpr (std::is_same_v<element_type, char>) {
                             std::array<char, 1> tmp = {element};
                             write_char<1>(tmp, this->_stream);
@@ -302,15 +300,18 @@ class TiffWriteData {
             this->_endian_handler->convert_to_array(
                 static_cast<uint_t>(offset_tiff_data));
         write_char<4>(offset_idf_header, this->_stream);
-        this->_stream.seekp(std::ios::app);
     }
 
+    /**
+     * Applies the PhotometricInterpretation setting to the data
+     * Modifies the image data in place
+     */
     void apply_PhotometricInterpretation(std::vector<TP>& data) {
         constexpr TP max = std::numeric_limits<TP>::max();
 
         if (this->_values[TiffTagType::PhotometricInterpretation] ==
             make_variant(TiffTagType::PhotometricInterpretation,
-                            {0x0})) {
+                static_cast<uint64_t>(TiffPhotometricInterpretation::BlackIsZero))) {
             for(auto& element : data) {
                 TP diff = max - element;
                 element = diff;
@@ -319,17 +320,29 @@ class TiffWriteData {
     }
 
     /**
+     * Apply the compression algorithms
+     */
+    void compress(std::vector<TP>& data) {
+        if (this->_values[TiffTagType::Compression] ==
+            make_variant(TiffTagType::Compression,
+                static_cast<uint64_t>(TiffCompression::PackBits)) ) {
+            data = compression::PackBits::compress(data);
+        }
+    }
+
+    /**
      * Writes the image data to a file
      */
     void write_image_data() {
         const std::vector<TP>& data = this->_img->get_data();
-        // compute the size of a row
-        const size_t num_pixels = this->_img->get_pixel_number_of_colors();
 
         std::vector<TP> data_copy(data);
 
         //apply PhotometricInterpretation
         this->apply_PhotometricInterpretation(data_copy);
+
+        this->compress(data_copy);
+
 
         for(size_t i = 0; i < data_copy.size(); i++) {
             TP dat = data_copy[i];
