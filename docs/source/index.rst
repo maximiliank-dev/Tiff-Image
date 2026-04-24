@@ -1,21 +1,15 @@
 .. TiffWriterDoc documentation master file, created by
    sphinx-quickstart on Sun Mar 29 15:02:48 2026.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 TiffWriterDoc documentation
 ===========================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+A C++ library for reading and writing TIFF image files, supporting grayscale,
+RGB, and compressed image formats.
 
+See the :doc:`contents` page for the full table of contents.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
 
-   FeatureSupport
-   TiffReader
-   code-classes
-
+   contents
