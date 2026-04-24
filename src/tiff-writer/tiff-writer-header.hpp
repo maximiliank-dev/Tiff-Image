@@ -74,6 +74,7 @@ class TiffWriteData {
     uint16_t _numerTDF = 3;
     uint_t next_offset = 0;
     uint64_t _offset_data = 0x8;  // data come after the HEADER like in GIMP
+    size_t _strip_byte_count = 0;  // actual bytes written (may differ from uncompressed size)
 
     const ImageContainer<TP>* _img;
     std::basic_ostream<char>& _stream;
@@ -221,6 +222,11 @@ class TiffWriteData {
         // setup the set of TIFF IFD entries
         this->tags_to_set();
 
+        // Override StripByteCounts with the actual written byte count
+        // (tags_to_set uses the uncompressed size; after compression it may differ)
+        this->_values[TiffTagType::StripByteCounts] =
+            make_variant(TiffTagType::StripByteCounts, {this->_strip_byte_count});
+
         // backup the beginning of the IFD
         std::streampos offset_tiff_data = this->_stream.tellp();
 
@@ -343,6 +349,7 @@ class TiffWriteData {
 
         this->compress(data_copy);
 
+        this->_strip_byte_count = data_copy.size();
 
         for(size_t i = 0; i < data_copy.size(); i++) {
             TP dat = data_copy[i];
@@ -359,6 +366,7 @@ class TiffWriteData {
      * image data is written first
      */
     void write() {
+        this->tags_to_set();  // populate _values so compress() and apply_PhotometricInterpretation() can read them
         this->write_image_data();
         this->write_IFDs();
         this->_stream.flush();

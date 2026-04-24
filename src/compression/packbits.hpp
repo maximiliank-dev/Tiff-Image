@@ -19,26 +19,26 @@ static std::vector<uint8_t> compress(std::vector<uint8_t>& c) {
 
 
     for(auto it = (std::ranges::cbegin(c)+1); it != std::ranges::cend(c); it++) {
-        
-        //corner case more the 127 time the same byte
-        if(last_byte == *it && cnt == 127) {
-            compressed.push_back(cnt);
-            last_byte = -last_byte+1;
-            compressed.push_back(reinterpret_cast<uint8_t&>(last_byte));
 
-            cnt  =1;
+        // corner case: run of 127 identical bytes — flush and restart
+        if(last_byte == *it && cnt == 127) {
+            compressed.push_back(static_cast<uint8_t>(static_cast<int8_t>(1 - cnt)));
+            compressed.push_back(last_byte);
+            cnt = 1;
             last_byte = *it;
         } else if(last_byte == *it) {
             cnt++;
         } else {
-            compressed.push_back(cnt);
-            last_byte = -last_byte+1;
-            compressed.push_back(reinterpret_cast<uint8_t&>(last_byte));
-
-            cnt  =1;
+            compressed.push_back(static_cast<uint8_t>(static_cast<int8_t>(1 - cnt)));
+            compressed.push_back(last_byte);
+            cnt = 1;
             last_byte = *it;
         }
     }
+
+    // Bug 1 fix: flush the final run (was never emitted before)
+    compressed.push_back(static_cast<uint8_t>(static_cast<int8_t>(1 - cnt)));
+    compressed.push_back(last_byte);
 
     return compressed;
 };

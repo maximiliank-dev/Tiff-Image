@@ -53,3 +53,21 @@ class TestImageRampRGB : public TestAbstractImage<uint8_t> {
                                                 const uint8_t max_i,
                                                 const uint8_t max_j);
 };
+
+/**
+ * Generate an image with increasing color values starting at 0
+ * If image reaches 255, then the color is reset to 0
+ * Useful to inspect structural bugs
+ */
+class TestImageIncreasing : public TestAbstractImage<uint8_t> {
+    const uint8_t _color;
+    const size_t _rows;
+    const size_t _columns;
+    const size_t _pixel;
+
+    static constexpr size_t pixel_size = 3;
+
+   public:
+    explicit TestImageIncreasing(const size_t n, const size_t m, const std::array<size_t, 3> idx);
+    void generateImage();
+};

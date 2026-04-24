@@ -4,6 +4,7 @@
 #include <array>
 #include <cmath>
 #include <vector>
+#include <cstdint>
 
 TestImageSingleColor::TestImageSingleColor(size_t n, size_t m, size_t pixel,
                                            uint8_t color)
@@ -122,6 +123,30 @@ void TestImageRampRGB::generateImage() {
                                     cols);
             for (size_t k = 0; k < 3; ++k) {
                 v[j + k] = dt[k];
+            }
+        }
+        this->img->append_row(v);
+    }
+}
+
+/**
+ * Generate an image where the colors are an increasing ramp from 0 to 255
+ */
+void TestImageIncreasing::generateImage() {
+    size_t n = this->img->get_column_length() *
+               this->img->get_pixel_number_of_colors();
+    std::vector<uint8_t> v(n, uint8_t{0});
+
+
+    uint32_t  cnt = 0;
+    for (size_t i = 0; i < this->_rows; i++) {
+        v = std::vector<uint8_t>(n, uint8_t{0});
+        for (size_t j = 0; j < n;
+             j += this->img->get_pixel_number_of_colors()) {
+            cnt = (cnt+1) % 255; // not to exceed the uint8_t space
+            // j/3 is because each pixel has 3 values
+            for (size_t k = 0; k < 3; ++k) {
+                v[j + k] = cnt;
             }
         }
         this->img->append_row(v);

@@ -31,8 +31,8 @@ class ImageContainer {
     size_t _pixel_number_of_colors;
 
    public:
-    ImageContainer(const size_t col_size, const size_t pixel_number_of_colors)
-        : _row_length(col_size),
+    ImageContainer(const size_t row_length, const size_t pixel_number_of_colors)
+        : _row_length(row_length),
           _pixel_number_of_colors(pixel_number_of_colors) {}
     ImageContainer(ImageContainer&& other)
         : _row_length(other._row_length),
@@ -91,6 +91,17 @@ class ImageContainer {
         }
     }
 
+    /**
+     * Resize the image size
+     * @param rows: number of rows of the new image
+     */
+    void resize(size_t rows) {
+        this->img_.clear();
+
+        const size_t size = rows*this->_row_length * this->_pixel_number_of_colors;
+        this->_img.resize(size, 0);
+    }
+
     void print() {
         std::cout << "Image Data\n";
         size_t elements_per_row =
@@ -134,5 +145,22 @@ class ImageContainer {
         const size_t pixels = this->_pixel_number_of_colors;
 
         return this->_img.at(row * (cols * pixels) + col * pixels + px);
+    }
+
+    /**
+     * create a new image with transposed image data
+     */
+    ImageContainer transpose() {
+        ImageContainer img_t(this->_row_length, this->_pixel_number_of_colors);
+        img_t.resize(this->get_height());
+
+        for(size_t i = 0; i < this->get_height(); i++) {
+            for(size_t j = 0; j < this->get_width(); j++) {
+                for(size_t k = 0; k < this->_pixel_number_of_colors; k++) {
+                    img_t.at(j,i,k) = this->at(i,j,k);
+                }
+            }
+        }
+        return img_t;
     }
 };
