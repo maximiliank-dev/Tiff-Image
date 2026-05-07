@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TiffWriter Class Hierarchy &mdash; TiffWriterDoc 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ce1a22f8" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview of all C++ classes" href="code-classes.html" />
+    <link rel="prev" title="TiffReader Class Hierarchy" href="TiffReader-diagram.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TiffWriterDoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="FeatureSupport.html">Tiff Feature Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TiffReader-diagram.html">TiffReader Class Hierarchy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TiffWriter Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code-classes.html">Overview of all C++ classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TiffWriterDoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">TiffWriter Class Hierarchy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/TiffWriter-diagram.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tiffwriter-class-hierarchy">
+<h1>TiffWriter Class Hierarchy<a class="headerlink" href="#tiffwriter-class-hierarchy" title="Link to this heading"></a></h1>
+<div class="graphviz"><object data="_images/graphviz-29e517e94ff68af6cf9c37bf0593f71f03469e75.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph TiffWriter {
+    rankdir=TB
+    node [shape=none, margin=0, fontname=&quot;Helvetica&quot;, fontsize=10]
+    edge [fontname=&quot;Helvetica&quot;, fontsize=9]
+
+    TiffWriter [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#922B21&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;TiffWriter&lt;/B&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _file : ofstream&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _header : optional&amp;lt;TiffWriterHeader&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _writer : unique_ptr&amp;lt;TiffWriteData&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + write()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    TiffWriterHeader [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#E74C3C&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;TiffWriterHeader&lt;/B&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _stream : ostream&amp;amp;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _magic_num : ushort_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _endian : tiff_header_endian&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _idf_offset : uint_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + write_header()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + get_idf_offset() : uint_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + create_endian_handler()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    TiffWriteData [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#E74C3C&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;TiffWriteData&amp;lt;TP&amp;gt;&lt;/B&gt;&lt;/FONT&gt;&lt;BR/&gt;&lt;FONT COLOR=&quot;white&quot; POINT-SIZE=&quot;8&quot;&gt;«abstract template»&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            # _img : ImageContainer&amp;lt;TP&amp;gt;*&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _stream : ostream&amp;amp;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _values : map&amp;lt;TiffTagType, TiffDataVariant&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _endian_handler : shared_ptr&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _strip_byte_count : size_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            # _offset_data : uint64_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + write()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + write_IFDs()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + write_image_data()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + compress(data)&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + apply_PhotometricInterpretation(data)&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + tags_to_set() «pure virtual»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    BitlevelImage [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#F1948A&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;BitlevelImage&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _config : TiffWriterConfig&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + tags_to_set() «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    GrayImage [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#FADBD8&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;GrayImage&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(inherits all)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + tags_to_set() «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    RGBImage [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#FADBD8&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;RGBImage&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(inherits all)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + tags_to_set() «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    VirtualEndianHandler [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#1E8449&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;VirtualEndianHandler&lt;/B&gt;&lt;/FONT&gt;&lt;BR/&gt;&lt;FONT COLOR=&quot;white&quot; POINT-SIZE=&quot;8&quot;&gt;«abstract»&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(no fields)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + convert(...) «pure virtual»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + convert_to_array(...) «pure virtual»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    LittleEndian_TIFF [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#52BE80&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;LittleEndian_TIFF&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(no fields)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + convert(...) «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + convert_to_array(...) «override»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    ImageContainer [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#7D3C98&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;ImageContainer&amp;lt;PT&amp;gt;&lt;/B&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            - _img : vector&amp;lt;PT&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _row_length : size_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            - _pixel_number_of_colors : size_t&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + at(row, col, px) : PT&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + get_width() / get_height()&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + get_data() : vector&amp;lt;PT&amp;gt;&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    PackBits [label=&lt;
+        &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+        &lt;TR&gt;&lt;TD BGCOLOR=&quot;#616A6B&quot; ALIGN=&quot;CENTER&quot;&gt;&lt;FONT COLOR=&quot;white&quot;&gt;&lt;B&gt;PackBits&lt;/B&gt;&lt;/FONT&gt;&lt;BR/&gt;&lt;FONT COLOR=&quot;white&quot; POINT-SIZE=&quot;8&quot;&gt;«utility»&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;&lt;I&gt;(no fields)&lt;/I&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;&lt;TD ALIGN=&quot;LEFT&quot; BALIGN=&quot;LEFT&quot;&gt;
+            + compress(data) «static»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+            + decompress(data) «static»&lt;BR ALIGN=&quot;LEFT&quot;/&gt;
+        &lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TABLE&gt;
+    &gt;]
+
+    // Inheritance (hollow triangle)
+    BitlevelImage     -&gt; TiffWriteData    [arrowhead=onormal, style=solid]
+    GrayImage         -&gt; BitlevelImage    [arrowhead=onormal, style=solid]
+    RGBImage          -&gt; BitlevelImage    [arrowhead=onormal, style=solid]
+    LittleEndian_TIFF -&gt; VirtualEndianHandler [arrowhead=onormal, style=solid]
+
+    // TiffWriter composes its parts
+    TiffWriter -&gt; TiffWriterHeader [arrowhead=open, style=dashed, label=&quot;uses&quot;]
+    TiffWriter -&gt; TiffWriteData    [arrowhead=open, style=dashed, label=&quot;owns&quot;]
+
+    // TiffWriteData dependencies
+    TiffWriteData -&gt; VirtualEndianHandler [arrowhead=open, style=dashed]
+    TiffWriteData -&gt; ImageContainer       [arrowhead=open, style=dashed, label=&quot;reads&quot;]
+    TiffWriteData -&gt; PackBits             [arrowhead=open, style=dashed, label=&quot;uses&quot;]
+}</p></object></div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="TiffReader-diagram.html" class="btn btn-neutral float-left" title="TiffReader Class Hierarchy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="code-classes.html" class="btn btn-neutral float-right" title="Overview of all C++ classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Maximilian.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
