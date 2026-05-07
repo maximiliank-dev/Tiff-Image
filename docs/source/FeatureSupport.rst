@@ -28,3 +28,5 @@ The library supports the following TIFF Features:
    +----------------------+-----------+
    | LZW Compression      | 🚧        |
    +----------------------+-----------+
+
+end of the table
