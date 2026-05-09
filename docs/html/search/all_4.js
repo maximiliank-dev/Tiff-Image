@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['generateimage_0',['generateImage',['../class_test_abstract_image.html#ab735ea9fcd3d6e2680b96980a9c69d5b',1,'TestAbstractImage::generateImage()'],['../class_test_image_single_color.html#ae0498235ce5afe9779f2cd9cfc9ae4b4',1,'TestImageSingleColor::generateImage()'],['../class_test_image_ramp_r_g_b.html#a97cba0c1bb17f31f1399edc5e3f9acf5',1,'TestImageRampRGB::generateImage()']]],
-  ['get_5fimage_1',['get_image',['../class_tiff_read_strips.html#a77cc709410faf192ada2654b8880e63a',1,'TiffReadStrips']]],
-  ['grayimage_2',['GrayImage',['../class_gray_image.html',1,'']]]
-];
