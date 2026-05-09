@@ -26,6 +26,16 @@ if errorlevel 9009 (
 if "%1" == "" goto help
 
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+if "%1" == "html" (
+	if exist "%BUILDDIR%\html" (
+		xcopy /E /I /Y "%BUILDDIR%\html" "..\docs"
+		type nul > "..\docs\.nojekyll"
+		echo.Copied HTML output to docs\
+	)
+)
+
+
+
 goto end
 
 :help
