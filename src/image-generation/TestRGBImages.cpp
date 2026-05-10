@@ -5,6 +5,7 @@
 #include <cmath>
 #include <vector>
 #include <cstdint>
+#include <numbers>
 
 TestImageSingleColor::TestImageSingleColor(size_t n, size_t m, size_t pixel,
                                            uint8_t color)
@@ -86,6 +87,7 @@ void TestImageRampRGB::generateImage() {
     size_t n = this->img->get_column_length() *
                this->img->get_pixel_number_of_colors();
     std::vector<uint8_t> v(n, uint8_t{0});
+    const double pi = std::numbers::pi;
 
     double theta = 0.0;
     switch (this->_type) {
@@ -94,11 +96,11 @@ void TestImageRampRGB::generateImage() {
             break;
         case RampType::VERTICAL:
             // vertical is 90 degree
-            theta = 3.1415926 / 2.0;
+            theta = pi / 2.0;
             break;
         case RampType::DIAGONAL:
             // diagonal is 45 degree
-            theta = 3.1415926 / 4.0;
+            theta = pi / 4.0;
             break;
     }
 
