@@ -27,6 +27,8 @@ Architecture
 
 The diagram below shows the class hierarchy of the writer subsystem.
 
+See :doc:`TiffWriter-diagram` for the full class diagram.
+
 Dependencies
 ------------
 
