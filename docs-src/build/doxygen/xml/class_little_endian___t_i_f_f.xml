@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_little_endian___t_i_f_f" kind="class" language="C++" prot="public">
+    <compoundname>LittleEndian_TIFF</compoundname>
+    <basecompoundref refid="class_virtual_endian_handler" prot="public" virt="non-virtual">VirtualEndianHandler</basecompoundref>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1a4571b09f756ada53262e1756f5cf71ea" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t LittleEndian_TIFF::convert</definition>
+        <argsstring>(std::array&lt; char, 1 &gt; c) const override</argsstring>
+        <name>convert</name>
+        <qualifiedname>LittleEndian_TIFF::convert</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1aca9a966dd27e3542361a1c1a750e7e7c">convert</reimplements>
+        <param>
+          <type>std::array&lt; char, 1 &gt;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="36" column="13" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="3" bodyend="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1a1a771dc9cf9f7d86e88945acb07859f1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>ushort_t</type>
+        <definition>ushort_t LittleEndian_TIFF::convert</definition>
+        <argsstring>(std::array&lt; char, 2 &gt; c) const override</argsstring>
+        <name>convert</name>
+        <qualifiedname>LittleEndian_TIFF::convert</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1a4f36a353fb35559f459d779f85cbea55">convert</reimplements>
+        <param>
+          <type>std::array&lt; char, 2 &gt;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="37" column="14" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1a0a6ca26a62add2b581b6a8b3ab7ff7b6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>uint_t</type>
+        <definition>uint_t LittleEndian_TIFF::convert</definition>
+        <argsstring>(std::array&lt; char, 4 &gt; c) const override</argsstring>
+        <name>convert</name>
+        <qualifiedname>LittleEndian_TIFF::convert</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1add666b26317a6d8873907bab09a9c562">convert</reimplements>
+        <param>
+          <type>std::array&lt; char, 4 &gt;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="38" column="12" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1ad7092a83acd0b84cf83ef306855bc296" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t LittleEndian_TIFF::convert</definition>
+        <argsstring>(std::array&lt; char, 8 &gt; c) const override</argsstring>
+        <name>convert</name>
+        <qualifiedname>LittleEndian_TIFF::convert</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1a92c8324c32146015018b458a5fda3c02">convert</reimplements>
+        <param>
+          <type>std::array&lt; char, 8 &gt;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="39" column="14" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="16" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1af97e3db5638d4d8e6513ebdaf40f350a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>ushort_t</type>
+        <definition>ushort_t LittleEndian_TIFF::convert</definition>
+        <argsstring>(uint_t c, size_t idx) const override</argsstring>
+        <name>convert</name>
+        <qualifiedname>LittleEndian_TIFF::convert</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1a1cf334d89f60272c790d360b4ae5f5e5">convert</reimplements>
+        <param>
+          <type>uint_t</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>mark all member functions constant, since no member variable is used </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="40" column="14" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="26" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1a266864560f3240c19c4d30ffcb0634d5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::array&lt; char, 1 &gt;</type>
+        <definition>std::array&lt; char, 1 &gt; LittleEndian_TIFF::convert_to_array</definition>
+        <argsstring>(uint8_t v) const override</argsstring>
+        <name>convert_to_array</name>
+        <qualifiedname>LittleEndian_TIFF::convert_to_array</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1ab8b50e8722e40c0a9a87d3162a4d7401">convert_to_array</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="42" column="16" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1a949221a7957b03b68b24029ea4cee441" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::array&lt; char, 2 &gt;</type>
+        <definition>std::array&lt; char, 2 &gt; LittleEndian_TIFF::convert_to_array</definition>
+        <argsstring>(ushort_t v) const override</argsstring>
+        <name>convert_to_array</name>
+        <qualifiedname>LittleEndian_TIFF::convert_to_array</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1a11280abbd96e76c8d47e2274d42459df">convert_to_array</reimplements>
+        <param>
+          <type>ushort_t</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="43" column="16" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="39" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1a9e3753cc5c6b9312af6d1b3e12454a2e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::array&lt; char, 4 &gt;</type>
+        <definition>std::array&lt; char, 4 &gt; LittleEndian_TIFF::convert_to_array</definition>
+        <argsstring>(uint_t v) const override</argsstring>
+        <name>convert_to_array</name>
+        <qualifiedname>LittleEndian_TIFF::convert_to_array</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1ab9a64b068884ead9624649f84320d4e6">convert_to_array</reimplements>
+        <param>
+          <type>uint_t</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="44" column="16" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="47" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1aabe4a91ee42ff32a07664f2995d63f81" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::array&lt; char, 8 &gt;</type>
+        <definition>std::array&lt; char, 8 &gt; LittleEndian_TIFF::convert_to_array</definition>
+        <argsstring>(uint64_t v) const override</argsstring>
+        <name>convert_to_array</name>
+        <qualifiedname>LittleEndian_TIFF::convert_to_array</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1a8a895096163549a9d2a3fd312bc070a5">convert_to_array</reimplements>
+        <param>
+          <type>uint64_t</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="45" column="16" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="57" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_little_endian___t_i_f_f_1afb920ba7255242bf13ceecea08d48b13" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>tiff_header_endian</type>
+        <definition>tiff_header_endian LittleEndian_TIFF::get_endian_value</definition>
+        <argsstring>() const override</argsstring>
+        <name>get_endian_value</name>
+        <qualifiedname>LittleEndian_TIFF::get_endian_value</qualifiedname>
+        <reimplements refid="class_virtual_endian_handler_1a0cc8e299945cf7ef020ae6fdffeea9ca">get_endian_value</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="47" column="24" bodyfile="D:/Projects/ImageConverter/src/endianHandler.cpp" bodystart="71" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>LittleEndian_TIFF</label>
+        <link refid="class_little_endian___t_i_f_f"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>VirtualEndianHandler</label>
+        <link refid="class_virtual_endian_handler"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>LittleEndian_TIFF</label>
+        <link refid="class_little_endian___t_i_f_f"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>VirtualEndianHandler</label>
+        <link refid="class_virtual_endian_handler"/>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="35" column="1" bodyfile="D:/Projects/ImageConverter/src/endianHandler.hpp" bodystart="35" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_little_endian___t_i_f_f_1a4571b09f756ada53262e1756f5cf71ea" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert</name></member>
+      <member refid="class_little_endian___t_i_f_f_1a1a771dc9cf9f7d86e88945acb07859f1" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert</name></member>
+      <member refid="class_little_endian___t_i_f_f_1a0a6ca26a62add2b581b6a8b3ab7ff7b6" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert</name></member>
+      <member refid="class_little_endian___t_i_f_f_1ad7092a83acd0b84cf83ef306855bc296" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert</name></member>
+      <member refid="class_little_endian___t_i_f_f_1af97e3db5638d4d8e6513ebdaf40f350a" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert</name></member>
+      <member refid="class_little_endian___t_i_f_f_1a266864560f3240c19c4d30ffcb0634d5" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert_to_array</name></member>
+      <member refid="class_little_endian___t_i_f_f_1a949221a7957b03b68b24029ea4cee441" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert_to_array</name></member>
+      <member refid="class_little_endian___t_i_f_f_1a9e3753cc5c6b9312af6d1b3e12454a2e" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert_to_array</name></member>
+      <member refid="class_little_endian___t_i_f_f_1aabe4a91ee42ff32a07664f2995d63f81" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>convert_to_array</name></member>
+      <member refid="class_little_endian___t_i_f_f_1afb920ba7255242bf13ceecea08d48b13" prot="private" virt="virtual"><scope>LittleEndian_TIFF</scope><name>get_endian_value</name></member>
+      <member refid="class_virtual_endian_handler_1a072b536340cff2460e7b38ca11b95739" prot="public" virt="virtual"><scope>LittleEndian_TIFF</scope><name>~VirtualEndianHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

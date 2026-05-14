@@ -1,0 +1,98 @@
+\doxysection{tiff\+\_\+writer-\/image.hpp}
+\hypertarget{tiff__writer-image_8hpp_source}{}\label{tiff__writer-image_8hpp_source}\index{D:/Projects/ImageConverter/src/tiff-\/writer/tiff\_writer-\/image.hpp@{D:/Projects/ImageConverter/src/tiff-\/writer/tiff\_writer-\/image.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}tiff-\/writer-\/header.hpp"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }tifflib\ \{}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{enum\ class}\ SupportedImageTypes\ \{\ Bitlevel,\ Grayscale,\ RGB\ \};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{TiffWriterConfig}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ TiffCompression\ compression\ =\ TiffCompression::None;}
+\DoxyCodeLine{00011\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ }TiffWriterImgType\ =\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data}{TiffWriteData<uint8\_t>}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }BitlevelImage\ :\ \textcolor{keyword}{public}\ TiffWriterImgType\ \{}
+\DoxyCodeLine{00019\ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{TiffWriterConfig}}\ \_config;}
+\DoxyCodeLine{00020\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ BitlevelImage(\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_header}{TiffWriterHeader}}\ header,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}*\ img,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::basic\_ostream<char>\&\ stream,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{TiffWriterConfig}}\ config)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ :\ TiffWriterImgType(header,\ img,\ stream),\ \_config(config)\ \{\}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classtifflib_1_1_bitlevel_image_ac8341896307488b03c0f474a05ff53c3}{tags\_to\_set}}()\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data_a75680ae2dcb2cadd9b7d4b5f44913d4e}{TiffWriterImgType::tags\_to\_set}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::XResolution]\ =}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::XResolution,\ 122333);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::YResolution]\ =}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::YResolution,\ 133333);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::ResolutionUnit]\ =}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::ResolutionUnit,\ 2);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ to\ unsigned\ type}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::SampleFormat]\ =}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::SampleFormat,\ 1);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ to\ unsigned\ type}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::Orientation]\ =}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::Orientation,\ 1);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::Compression]\ =}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::Compression,\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(this-\/>\_config.compression));}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }GrayImage\ :\ \textcolor{keyword}{public}\ BitlevelImage\ \{}
+\DoxyCodeLine{00054\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ \ \ \ \ GrayImage(\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_header}{TiffWriterHeader}}\ header,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}*\ img,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::basic\_ostream<char>\&\ stream,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{TiffWriterConfig}}\ config)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ :\ BitlevelImage(header,\ img,\ stream,\ config)\ \{\}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classtifflib_1_1_gray_image_af094506b85dedef895792bf56b67d2ff}{tags\_to\_set}}()\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classtifflib_1_1_bitlevel_image_ac8341896307488b03c0f474a05ff53c3}{BitlevelImage::tags\_to\_set}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::BitsPerSample]\ =}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::BitsPerSample,\ 8);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }RGBImage\ :\ \textcolor{keyword}{public}\ BitlevelImage\ \{}
+\DoxyCodeLine{00074\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00075\ \ \ \ \ RGBImage(\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_header}{TiffWriterHeader}}\ header,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}*\ img,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::basic\_ostream<char>\&\ stream,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{TiffWriterConfig}}\ config)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ :\ BitlevelImage(header,\ img,\ stream,\ config)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_img-\/>get\_pixel\_number\_of\_colors()\ !=\ 3)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ img\ must\ have\ 3\ pixels\ per\ color"{}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\_img-\/>get\_total\_size()\ \%\ 3\ !=\ 0)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ img\ size\ must\ be\ dividable\ by\ 3"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classtifflib_1_1_r_g_b_image_aedd86cd69079cbba650f70c072fb7180}{tags\_to\_set}}()\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classtifflib_1_1_bitlevel_image_ac8341896307488b03c0f474a05ff53c3}{BitlevelImage::tags\_to\_set}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::SamplesPerPixel]\ =}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::SamplesPerPixel,\ 3);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pixel\ are\ stored\ in\ order}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::PlanarConfiguration]\ =}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::PlanarConfiguration,\ 1);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::PhotometricInterpretation]\ =}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::PhotometricInterpretation,\ 2);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::BitsPerSample]\ =}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::BitsPerSample,\ \{8,\ 8,\ 8\});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ this-\/>\_values[TiffTagType::SampleFormat]\ =}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ make\_variant(TiffTagType::SampleFormat,\ \{1,\ 1,\ 1\});}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \};\ \ \textcolor{comment}{//\ namespace\ tifflib}}
+
+\end{DoxyCode}

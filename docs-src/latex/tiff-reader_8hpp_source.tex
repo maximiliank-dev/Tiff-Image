@@ -1,0 +1,52 @@
+\doxysection{tiff-\/reader.hpp}
+\hypertarget{tiff-reader_8hpp_source}{}\label{tiff-reader_8hpp_source}\index{D:/Projects/ImageConverter/src/tiff-\/reader/tiff-\/reader.hpp@{D:/Projects/ImageConverter/src/tiff-\/reader/tiff-\/reader.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}tiff-\/header.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}tiff-\/data.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../ImageContainer.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }TiffReader\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ std::unique\_ptr<TIFFHeader>\ \_header;}
+\DoxyCodeLine{00012\ \ \ \ \ std::unique\_ptr<TiffIFD>\ \_ifds;}
+\DoxyCodeLine{00013\ \ \ \ \ std::unique\_ptr<TiffReadStrips>\ \_strips;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ std::ifstream\ \_file;\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_data\_valid;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{explicit}\ TiffReader(std::filesystem::path\ image\_path,\ std::shared\_ptr<\doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}>\ img\ )\ :\ \_data\_valid(\textcolor{keyword}{false})}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ this-\/>\_file\ =\ std::ifstream(image\_path,\ std::ios::binary);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!this-\/>\_file)\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(std::format(\textcolor{stringliteral}{"{}Error,\ could\ not\ access\ file\ in\ path\ \{\}\(\backslash\)n"{}},\ 22));}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ throw\ std::runtime\_error(std::format("{}Error,\ could\ not\ access\ file\ in\ path\ \{\}\(\backslash\)n"{},\ image\_path));}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ this-\/>\_header\ =\ std::unique\_ptr<TIFFHeader>(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_t_i_f_f_header}{TIFFHeader}}(this-\/>\_file\ )\ );}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ read()\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ this-\/>\_header-\/>parse\_header();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this-\/>\_ifds(this-\/>file,\ this-\/>\_header.get\_idf\_offset(),\ this-\/>\_header.get\_endian\_handler());}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this-\/>ifds.read();}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this-\/>\_strips(this-\/>ifds,\ this-\/>ifds.get\_endian\_handler());}}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}\ get\_image()\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>\_data\_valid)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\_strips-\/>get\_image();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}(0,\ 0);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \};}
+
+\end{DoxyCode}

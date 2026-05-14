@@ -1,0 +1,67 @@
+\doxysection{types.\+hpp}
+\hypertarget{types_8hpp_source}{}\label{types_8hpp_source}\index{D:/Projects/ImageConverter/src/tiff-\/config/types.hpp@{D:/Projects/ImageConverter/src/tiff-\/config/types.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include<cstdint>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include<istream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include<ostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include<string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include<vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ }uint8\_t\ =\ std::uint8\_t;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ }uint\_t\ =\ std::uint32\_t;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ }ushort\_t\ =\ std::uint16\_t;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ }uint64\_t\ =\ std::uint64\_t;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}<\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{bool}\ read\_char(std::array<char,\ N>\&\ buffer,\ std::basic\_istream<char>\&\ stream)\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ stream.read(buffer.data(),\ buffer.size());}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}(!stream)\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}error\ stream\ is\ invalid"{}});}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{template}<\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00026\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ write\_char(std::array<char,\ N>\ data,\ std::basic\_ostream<char>\&\ stream)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ stream.write(data.data(),\ data.size());}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}(!stream)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}error\ stream\ is\ invalid"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ write\_char(std::vector<char>\&\ data,\ std::basic\_ostream<char>\&\ stream)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ stream.write(data.data(),\ data.size());}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}(!stream)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}error\ stream\ is\ invalid"{}});}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ write\_char(std::string\&\ data,\ std::basic\_ostream<char>\&\ stream)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ stream.write(data.data(),\ data.size());}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}(!stream)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}error\ stream\ is\ invalid"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ write\_char(\textcolor{keywordtype}{char}\ data,\ std::basic\_ostream<char>\&\ stream)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{char}\ d\ =\ data;}
+\DoxyCodeLine{00055\ \ \ \ \ stream.write(\&d,\ 1);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{if}(!stream)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}error\ stream\ is\ invalid"{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}

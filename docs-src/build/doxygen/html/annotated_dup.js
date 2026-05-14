@@ -1,0 +1,44 @@
+var annotated_dup =
+[
+    [ "compression", null, [
+      [ "PackBits", "classcompression_1_1_pack_bits.html", null ]
+    ] ],
+    [ "tifflib", null, [
+      [ "TiffTagRead", "structtifflib_1_1_tiff_tag_read.html", null ],
+      [ "TiffIFD", "classtifflib_1_1_tiff_i_f_d.html", null ],
+      [ "TiffReadStrips", "classtifflib_1_1_tiff_read_strips.html", "classtifflib_1_1_tiff_read_strips" ],
+      [ "TiffReadStrips_RGB", "classtifflib_1_1_tiff_read_strips___r_g_b.html", null ],
+      [ "TIFFHeader", "classtifflib_1_1_t_i_f_f_header.html", null ],
+      [ "TiffReader", "classtifflib_1_1_tiff_reader.html", "classtifflib_1_1_tiff_reader" ],
+      [ "TiffWriterHeader", "classtifflib_1_1_tiff_writer_header.html", null ],
+      [ "TiffWriteData", "classtifflib_1_1_tiff_write_data.html", "classtifflib_1_1_tiff_write_data" ],
+      [ "TiffWriter", "classtifflib_1_1_tiff_writer.html", "classtifflib_1_1_tiff_writer" ],
+      [ "TiffWriterConfig", "structtifflib_1_1_tiff_writer_config.html", null ],
+      [ "BitlevelImage", "classtifflib_1_1_bitlevel_image.html", "classtifflib_1_1_bitlevel_image" ],
+      [ "GrayImage", "classtifflib_1_1_gray_image.html", "classtifflib_1_1_gray_image" ],
+      [ "RGBImage", "classtifflib_1_1_r_g_b_image.html", "classtifflib_1_1_r_g_b_image" ]
+    ] ],
+    [ "FileReader", "class_file_reader.html", null ],
+    [ "ImageContainer", "class_image_container.html", "class_image_container" ],
+    [ "ImageSolidColor", "class_image_solid_color.html", null ],
+    [ "is_integral_vector", "structis__integral__vector.html", null ],
+    [ "is_integral_vector&lt; std::vector&lt; T &gt; &gt;", "structis__integral__vector_3_01std_1_1vector_3_01_t_01_4_01_4.html", null ],
+    [ "LittleEndian_TIFF", "class_little_endian___t_i_f_f.html", null ],
+    [ "TagTypeValue", "struct_tag_type_value.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::BitsPerSample &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_bits_per_sample_01_4.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::Compression &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_compression_01_4.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::ImageLength &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_image_length_01_4.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::ImageWidth &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_image_width_01_4.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::PhotometricInterpretation &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_photometric_interpretation_01_4.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::StripOffsets &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_strip_offsets_01_4.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::XResolution &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_x_resolution_01_4.html", null ],
+    [ "TagTypeValue&lt; TiffTagType::YResolution &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_y_resolution_01_4.html", null ],
+    [ "TestAbstractImage", "class_test_abstract_image.html", "class_test_abstract_image" ],
+    [ "TestImageIncreasing", "class_test_image_increasing.html", "class_test_image_increasing" ],
+    [ "TestImageRampRGB", "class_test_image_ramp_r_g_b.html", "class_test_image_ramp_r_g_b" ],
+    [ "TestImageSingleColor", "class_test_image_single_color.html", "class_test_image_single_color" ],
+    [ "TiffTag", "struct_tiff_tag.html", null ],
+    [ "vector_element", "structvector__element.html", null ],
+    [ "vector_element&lt; std::vector&lt; T &gt; &gt;", "structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4.html", null ],
+    [ "VirtualEndianHandler", "class_virtual_endian_handler.html", "class_virtual_endian_handler" ]
+];

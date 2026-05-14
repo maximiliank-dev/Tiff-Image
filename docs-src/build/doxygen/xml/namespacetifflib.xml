@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacetifflib" kind="namespace" language="C++">
+    <compoundname>tifflib</compoundname>
+    <innerclass refid="structtifflib_1_1_tiff_tag_read" prot="public">tifflib::TiffTagRead</innerclass>
+    <innerclass refid="classtifflib_1_1_tiff_i_f_d" prot="public">tifflib::TiffIFD</innerclass>
+    <innerclass refid="classtifflib_1_1_tiff_read_strips" prot="public">tifflib::TiffReadStrips</innerclass>
+    <innerclass refid="classtifflib_1_1_tiff_read_strips___r_g_b" prot="public">tifflib::TiffReadStrips_RGB</innerclass>
+    <innerclass refid="classtifflib_1_1_t_i_f_f_header" prot="public">tifflib::TIFFHeader</innerclass>
+    <innerclass refid="classtifflib_1_1_tiff_reader" prot="public">tifflib::TiffReader</innerclass>
+    <innerclass refid="classtifflib_1_1_tiff_writer_header" prot="public">tifflib::TiffWriterHeader</innerclass>
+    <innerclass refid="classtifflib_1_1_tiff_write_data" prot="public">tifflib::TiffWriteData</innerclass>
+    <innerclass refid="classtifflib_1_1_tiff_writer" prot="public">tifflib::TiffWriter</innerclass>
+    <innerclass refid="structtifflib_1_1_tiff_writer_config" prot="public">tifflib::TiffWriterConfig</innerclass>
+    <innerclass refid="classtifflib_1_1_bitlevel_image" prot="public">tifflib::BitlevelImage</innerclass>
+    <innerclass refid="classtifflib_1_1_gray_image" prot="public">tifflib::GrayImage</innerclass>
+    <innerclass refid="classtifflib_1_1_r_g_b_image" prot="public">tifflib::RGBImage</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4ad" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>SupportedImageTypes</name>
+        <qualifiedname>tifflib::SupportedImageTypes</qualifiedname>
+        <enumvalue id="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4adad37a3d05b5bdeece0b90f0ecc9c5944e" prot="public">
+          <name>Bitlevel</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4adad3f6975213fb5546d8486b54b025dbd7" prot="public">
+          <name>Grayscale</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4ada889574aebacda6bfd3e534e2b49b8028" prot="public">
+          <name>RGB</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="7" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="7" bodyend="7"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tiff__writer-image_8hpp_1a3fe015659010bb2e1a2995c1abfe8db1" prot="public" static="no">
+        <type><ref refid="classtifflib_1_1_tiff_write_data" kindref="compound">TiffWriteData</ref>&lt; uint8_t &gt;</type>
+        <definition>using tifflib::TiffWriterImgType = TiffWriteData&lt;uint8_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>TiffWriterImgType</name>
+        <qualifiedname>tifflib::TiffWriterImgType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="13" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="tiff-data_8hpp_1afd5e7b63939a75b508b1433420aaded4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string tifflib::read_char_str</definition>
+        <argsstring>(std::basic_istream&lt; char &gt; &amp;stream, const size_t length)</argsstring>
+        <name>read_char_str</name>
+        <qualifiedname>tifflib::read_char_str</qualifiedname>
+        <param>
+          <type>std::basic_istream&lt; char &gt; &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="28" column="20" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="28" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="21" column="1"/>
+  </compounddef>
+</doxygen>

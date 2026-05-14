@@ -1,0 +1,38 @@
+\doxysection{tifflib::\+Tiff\+Writer\+Header Class Reference}
+\hypertarget{classtifflib_1_1_tiff_writer_header}{}\label{classtifflib_1_1_tiff_writer_header}\index{tifflib::TiffWriterHeader@{tifflib::TiffWriterHeader}}
+
+
+{\ttfamily \+\#include $<$tiff-\/writer-\/header.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a63cd93bedbdfa178197cfa6cc90a936d}\label{classtifflib_1_1_tiff_writer_header_a63cd93bedbdfa178197cfa6cc90a936d} 
+{\bfseries Tiff\+Writer\+Header} (std::\+basic\+\_\+ostream$<$ char $>$ \&stream)
+\item 
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a87135727992408f158104ae5adcaae11}\label{classtifflib_1_1_tiff_writer_header_a87135727992408f158104ae5adcaae11} 
+{\bfseries Tiff\+Writer\+Header} (std::\+basic\+\_\+ostream$<$ char $>$ \&stream, const tiff\+\_\+header\+\_\+endian endian)
+\item 
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a8924cd72633d3cebd7c5d05826ee22bb}\label{classtifflib_1_1_tiff_writer_header_a8924cd72633d3cebd7c5d05826ee22bb} 
+{\bfseries Tiff\+Writer\+Header} (std::\+basic\+\_\+ostream$<$ char $>$ \&stream, const tiff\+\_\+header\+\_\+endian endian, const uint\+\_\+t idf\+\_\+offset)
+\item 
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a5f7088a43913946a860ac7edec909031}\label{classtifflib_1_1_tiff_writer_header_a5f7088a43913946a860ac7edec909031} 
+uint\+\_\+t {\bfseries get\+\_\+idf\+\_\+offset} ()
+\item 
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a316de801be75d38374706f035eefe574}\label{classtifflib_1_1_tiff_writer_header_a316de801be75d38374706f035eefe574} 
+void {\bfseries write\+\_\+header} ()
+\item 
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a307dfbfb0695681d845d015779fd395b}\label{classtifflib_1_1_tiff_writer_header_a307dfbfb0695681d845d015779fd395b} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ {\bfseries create\+\_\+endian\+\_\+handler} ()
+\item 
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a5ed18d82eda04b81fb0a5880640ea7b0}\label{classtifflib_1_1_tiff_writer_header_a5ed18d82eda04b81fb0a5880640ea7b0} 
+std::\+basic\+\_\+ostream$<$ char $>$ \& {\bfseries get\+\_\+stream} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Writes the basic tiff Header @\+Params:\+ endian:\+ sets ths the endianess of the image stream:\+ the ofstream owning the file on disk 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+tiff-\/writer/\+tiff-\/writer-\/header.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,98 @@
+\doxysection{Image\+Container\texorpdfstring{$<$}{<} PT \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_image_container}{}\label{class_image_container}\index{ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}}
+
+
+{\ttfamily \+\#include $<$Image\+Container.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_image_container_a5e8d126b6ba7e3f582668545a61490a6}\label{class_image_container_a5e8d126b6ba7e3f582668545a61490a6} 
+{\bfseries Image\+Container} (const size\+\_\+t row\+\_\+length, const size\+\_\+t pixel\+\_\+number\+\_\+of\+\_\+colors)
+\item 
+\Hypertarget{class_image_container_a8905e9423dacb6d35d425b3687ca0d89}\label{class_image_container_a8905e9423dacb6d35d425b3687ca0d89} 
+{\bfseries Image\+Container} (\doxymbox{\hyperlink{class_image_container}{Image\+Container}} \&\&other)
+\item 
+\Hypertarget{class_image_container_aef57b88aad224a67e49982109ea0ed9a}\label{class_image_container_aef57b88aad224a67e49982109ea0ed9a} 
+size\+\_\+t {\bfseries get\+\_\+column\+\_\+length} () const noexcept
+\item 
+\Hypertarget{class_image_container_a6276a865dc0aff243a1a732342a69993}\label{class_image_container_a6276a865dc0aff243a1a732342a69993} 
+size\+\_\+t {\bfseries get\+\_\+height} () const noexcept
+\item 
+\Hypertarget{class_image_container_a629a5791a960e810f7922f41997b04f5}\label{class_image_container_a629a5791a960e810f7922f41997b04f5} 
+size\+\_\+t {\bfseries get\+\_\+width} () const noexcept
+\item 
+\Hypertarget{class_image_container_ad33af16fe1626c6edfc6f8a1cce55d9c}\label{class_image_container_ad33af16fe1626c6edfc6f8a1cce55d9c} 
+size\+\_\+t {\bfseries get\+\_\+total\+\_\+size} () const noexcept
+\item 
+\Hypertarget{class_image_container_a77af01a6d767fa49b5c74733612ae649}\label{class_image_container_a77af01a6d767fa49b5c74733612ae649} 
+size\+\_\+t {\bfseries get\+\_\+pixel\+\_\+number\+\_\+of\+\_\+colors} () const noexcept
+\item 
+\Hypertarget{class_image_container_a7b4052a4d23e5f9c7edccf1556c3c781}\label{class_image_container_a7b4052a4d23e5f9c7edccf1556c3c781} 
+size\+\_\+t {\bfseries get\+\_\+bytes\+\_\+per\+\_\+row} () const noexcept
+\item 
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}} \& \doxymbox{\hyperlink{class_image_container_a9e501f6a9362bcfb67e06b191d6c5c94}{operator=}} (\doxymbox{\hyperlink{class_image_container}{Image\+Container}} \&\&other)
+\item 
+\Hypertarget{class_image_container_a119a41b9269f922e45b62a4e6c3e7c85}\label{class_image_container_a119a41b9269f922e45b62a4e6c3e7c85} 
+{\footnotesize template$<$\doxymbox{\hyperlink{concept_iterable_size}{Iterable\+Size}} T$>$ }\\void {\bfseries append\+\_\+row} (T container)
+\item 
+void \doxymbox{\hyperlink{class_image_container_ab48d7cb402902f4df63ed28c514cf60a}{resize}} (size\+\_\+t rows)
+\item 
+\Hypertarget{class_image_container_ae38c8875d6ab84b5439c8cc9b13eb1ff}\label{class_image_container_ae38c8875d6ab84b5439c8cc9b13eb1ff} 
+void {\bfseries print} ()
+\item 
+\Hypertarget{class_image_container_a095618585b8a584536cdbbd36c15e045}\label{class_image_container_a095618585b8a584536cdbbd36c15e045} 
+const std::\+vector$<$ PT $>$ \& {\bfseries get\+\_\+data} () const
+\item 
+PT \doxymbox{\hyperlink{class_image_container_ad7aaeafde43b88a4d09d57c7d2351786}{at}} (size\+\_\+t row, size\+\_\+t col, size\+\_\+t px) const
+\item 
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}} \doxymbox{\hyperlink{class_image_container_a150c9b165303727997dd3b6d38b94ccb}{transpose}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename PT$>$\newline
+class Image\+Container$<$ PT $>$}
+Image Container Data is stored in row major order 
+
+\label{doc-func-members}
+\Hypertarget{class_image_container_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_image_container_ad7aaeafde43b88a4d09d57c7d2351786}\index{ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}!at@{at}}
+\index{at@{at}!ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily \label{class_image_container_ad7aaeafde43b88a4d09d57c7d2351786} 
+template$<$typename PT$>$ \\
+PT \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ PT $>$::\+at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{row}{, }\item[{size\+\_\+t}]{col}{, }\item[{size\+\_\+t}]{px}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Easy access function for the image data \Hypertarget{class_image_container_a9e501f6a9362bcfb67e06b191d6c5c94}\index{ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_image_container_a9e501f6a9362bcfb67e06b191d6c5c94} 
+template$<$typename PT$>$ \\
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}} \& \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ PT $>$::\+operator= (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ PT $>$ \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Move assignment \Hypertarget{class_image_container_ab48d7cb402902f4df63ed28c514cf60a}\index{ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}!resize@{resize}}
+\index{resize@{resize}!ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily \label{class_image_container_ab48d7cb402902f4df63ed28c514cf60a} 
+template$<$typename PT$>$ \\
+void \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ PT $>$::\+resize (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{rows}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Resize the image size 
+\begin{DoxyParams}{Parameters}
+{\em rows} & number of rows of the new image \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_image_container_a150c9b165303727997dd3b6d38b94ccb}\index{ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}!transpose@{transpose}}
+\index{transpose@{transpose}!ImageContainer$<$ PT $>$@{ImageContainer$<$ PT $>$}}
+\doxysubsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily \label{class_image_container_a150c9b165303727997dd3b6d38b94ccb} 
+template$<$typename PT$>$ \\
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}} \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ PT $>$::\+transpose (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+create a new image with transposed image data 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+Image\+Container.\+hpp\end{DoxyCompactItemize}

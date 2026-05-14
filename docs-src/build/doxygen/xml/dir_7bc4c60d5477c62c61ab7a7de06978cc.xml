@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_7bc4c60d5477c62c61ab7a7de06978cc" kind="dir">
+    <compoundname>D:/Projects/ImageConverter/src/tiff-writer</compoundname>
+    <innerfile refid="tiff-writer-header_8hpp">tiff-writer-header.hpp</innerfile>
+    <innerfile refid="tiff-writer_8hpp">tiff-writer.hpp</innerfile>
+    <innerfile refid="tiff__writer-image_8hpp">tiff_writer-image.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/"/>
+  </compounddef>
+</doxygen>

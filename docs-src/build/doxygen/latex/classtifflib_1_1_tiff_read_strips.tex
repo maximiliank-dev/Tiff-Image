@@ -1,0 +1,58 @@
+\doxysection{tifflib::\+Tiff\+Read\+Strips Class Reference}
+\hypertarget{classtifflib_1_1_tiff_read_strips}{}\label{classtifflib_1_1_tiff_read_strips}\index{tifflib::TiffReadStrips@{tifflib::TiffReadStrips}}
+
+
+{\ttfamily \+\#include $<$tiff-\/data.\+hpp$>$}
+
+Inheritance diagram for tifflib::\+Tiff\+Read\+Strips:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classtifflib_1_1_tiff_read_strips}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classtifflib_1_1_tiff_read_strips_ae416d0de65c0f0cdd990e9aaaba2805d}\label{classtifflib_1_1_tiff_read_strips_ae416d0de65c0f0cdd990e9aaaba2805d} 
+{\bfseries Tiff\+Read\+Strips} (\doxymbox{\hyperlink{classtifflib_1_1_tiff_i_f_d}{Tiff\+IFD}} \&ifd, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ endian\+\_\+handler)
+\item 
+\Hypertarget{classtifflib_1_1_tiff_read_strips_a85beb6aab8ddbe779040564d2b47a387}\label{classtifflib_1_1_tiff_read_strips_a85beb6aab8ddbe779040564d2b47a387} 
+virtual void {\bfseries reformat\+\_\+strip} (std::\+string \&strip)
+\item 
+\doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{Tiff\+Tag\+Read}} \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\+\_\+metadata\+\_\+tag}} (Tiff\+Tag\+Type tag, const size\+\_\+t size) const
+\item 
+std::\+string \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_a2f3434878de328111093eb62e4451401}{read\+Strips}} ()
+\item 
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aa591a9f93de290f316b1b0c9b27ea05b}{get\+\_\+image}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to read the image data IFDs must be read before creating this class 
+
+\label{doc-func-members}
+\Hypertarget{classtifflib_1_1_tiff_read_strips_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtifflib_1_1_tiff_read_strips_aa591a9f93de290f316b1b0c9b27ea05b}\index{tifflib::TiffReadStrips@{tifflib::TiffReadStrips}!get\_image@{get\_image}}
+\index{get\_image@{get\_image}!tifflib::TiffReadStrips@{tifflib::TiffReadStrips}}
+\doxysubsubsection{\texorpdfstring{get\_image()}{get\_image()}}
+{\footnotesize\ttfamily \label{classtifflib_1_1_tiff_read_strips_aa591a9f93de290f316b1b0c9b27ea05b} 
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ tifflib::\+\+Tiff\+Read\+Strips::\+get\+\_\+image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return an rgb image \Hypertarget{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}\index{tifflib::TiffReadStrips@{tifflib::TiffReadStrips}!get\_metadata\_tag@{get\_metadata\_tag}}
+\index{get\_metadata\_tag@{get\_metadata\_tag}!tifflib::TiffReadStrips@{tifflib::TiffReadStrips}}
+\doxysubsubsection{\texorpdfstring{get\_metadata\_tag()}{get\_metadata\_tag()}}
+{\footnotesize\ttfamily \label{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159} 
+\doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{Tiff\+Tag\+Read}} tifflib::\+\+Tiff\+Read\+Strips::\+get\+\_\+metadata\+\_\+tag (\begin{DoxyParamCaption}\item[{Tiff\+Tag\+Type}]{tag}{, }\item[{const size\+\_\+t}]{size}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Read the metadata \Hypertarget{classtifflib_1_1_tiff_read_strips_a2f3434878de328111093eb62e4451401}\index{tifflib::TiffReadStrips@{tifflib::TiffReadStrips}!readStrips@{readStrips}}
+\index{readStrips@{readStrips}!tifflib::TiffReadStrips@{tifflib::TiffReadStrips}}
+\doxysubsubsection{\texorpdfstring{readStrips()}{readStrips()}}
+{\footnotesize\ttfamily \label{classtifflib_1_1_tiff_read_strips_a2f3434878de328111093eb62e4451401} 
+std::\+string tifflib::\+\+Tiff\+Read\+Strips::\+read\+Strips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Read the image data 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+tiff-\/reader/\+tiff-\/data.\+hpp\end{DoxyCompactItemize}

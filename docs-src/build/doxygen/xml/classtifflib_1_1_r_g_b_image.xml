@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classtifflib_1_1_r_g_b_image" kind="class" language="C++" prot="public">
+    <compoundname>tifflib::RGBImage</compoundname>
+    <basecompoundref refid="classtifflib_1_1_bitlevel_image" prot="public" virt="non-virtual">tifflib::BitlevelImage</basecompoundref>
+    <includes refid="tiff__writer-image_8hpp" local="no">tiff_writer-image.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtifflib_1_1_r_g_b_image_1a6a0c5aa8f248daaeabb4cce2d03313ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::RGBImage::RGBImage</definition>
+        <argsstring>(TiffWriterHeader header, const ImageContainer&lt; uint8_t &gt; *img, std::basic_ostream&lt; char &gt; &amp;stream, TiffWriterConfig config)</argsstring>
+        <name>RGBImage</name>
+        <qualifiedname>tifflib::RGBImage::RGBImage</qualifiedname>
+        <param>
+          <type><ref refid="classtifflib_1_1_tiff_writer_header" kindref="compound">TiffWriterHeader</ref></type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; uint8_t &gt; *</type>
+          <declname>img</declname>
+        </param>
+        <param>
+          <type>std::basic_ostream&lt; char &gt; &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="structtifflib_1_1_tiff_writer_config" kindref="compound">TiffWriterConfig</ref></type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="75" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="75" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_r_g_b_image_1aedd86cd69079cbba650f70c072fb7180" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void tifflib::RGBImage::tags_to_set</definition>
+        <argsstring>()</argsstring>
+        <name>tags_to_set</name>
+        <qualifiedname>tifflib::RGBImage::tags_to_set</qualifiedname>
+        <reimplements refid="classtifflib_1_1_bitlevel_image_1ac8341896307488b03c0f474a05ff53c3">tags_to_set</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the basic TIFF Settings Must be used in all image types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="88" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="88" bodyend="102"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class configuration for RGB Images Data are 8 Bits long Max color is 0xFF, min color is 0x0 </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>TiffWriterImgType</label>
+        <link refid="classtifflib_1_1_tiff_write_data"/>
+      </node>
+      <node id="2">
+        <label>tifflib::BitlevelImage</label>
+        <link refid="classtifflib_1_1_bitlevel_image"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tifflib::RGBImage</label>
+        <link refid="classtifflib_1_1_r_g_b_image"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>TiffWriterImgType</label>
+        <link refid="classtifflib_1_1_tiff_write_data"/>
+      </node>
+      <node id="2">
+        <label>tifflib::BitlevelImage</label>
+        <link refid="classtifflib_1_1_bitlevel_image"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tifflib::RGBImage</label>
+        <link refid="classtifflib_1_1_r_g_b_image"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" line="73" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff_writer-image.hpp" bodystart="73" bodyend="103"/>
+    <listofallmembers>
+      <member refid="classtifflib_1_1_tiff_write_data_1aa036c6306728f07cfcc33439408e0393" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_endian_handler</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a4a68901ea36f348f128ac4a85b3bd4e2" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_img</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a269674958e3114558f42c4b6b61c17e5" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_numerTDF</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a70e0fe4b4ba471db7fddb0d8233fe5e4" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_offset</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1aa75f1399a3f47fb186bd07804332f4a6" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_offset_data</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a3f58d92217243683fa1d73d8c7c4b768" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_stream</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ac6e9eb958f8b8877413a50ac39eec62d" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_strip_byte_count</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ada6f0f531e8df58e68e21f850871344f" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>_values</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1af23c876cc8705eb69f06a5d77bea213c" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>apply_PhotometricInterpretation</name></member>
+      <member refid="classtifflib_1_1_bitlevel_image_1a72d99bdc8d991f6ae6b3bc437e7ee2d7" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>BitlevelImage</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ab685513f1f71f4022d25879c00ac5726" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>compress</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1afb47fca05411cff05ebdc7f6a8229cd6" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>next_offset</name></member>
+      <member refid="classtifflib_1_1_r_g_b_image_1a6a0c5aa8f248daaeabb4cce2d03313ed" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>RGBImage</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ab643e0357d42fc6cc01d1d4a1aa1bea8" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>SetElement</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a0a343d64f58fce2c0d1f9bc822f33d9b" prot="protected" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>SetType</name></member>
+      <member refid="classtifflib_1_1_r_g_b_image_1aedd86cd69079cbba650f70c072fb7180" prot="public" virt="virtual"><scope>tifflib::RGBImage</scope><name>tags_to_set</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ae9d9142d9e1de98c3285150f65e6466f" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>TiffWriteData</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1aba9904ba033a16cac7fdc3c0afa9b118" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>TiffWriteData</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a1a5cf6d41683b069d81d822b1b02c070" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>write</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a15f0ab768d2bf2531a6d7660fc4e09ac" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>write_ifd_element</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a3c72a4be58c86637e9e8ae0991dd9aa0" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>write_IFDs</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a4740a62c6cdad8bf0adc2a213b10b92a" prot="public" virt="non-virtual"><scope>tifflib::RGBImage</scope><name>write_image_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,62 @@
+\doxysection{Test\+Image\+Increasing Class Reference}
+\hypertarget{class_test_image_increasing}{}\label{class_test_image_increasing}\index{TestImageIncreasing@{TestImageIncreasing}}
+
+
+{\ttfamily \+\#include $<$Test\+RGBImages.\+hpp$>$}
+
+Inheritance diagram for Test\+Image\+Increasing:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_test_image_increasing}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_test_image_increasing_a30e9b50803e198f39d969250d22ccee6}\label{class_test_image_increasing_a30e9b50803e198f39d969250d22ccee6} 
+{\bfseries Test\+Image\+Increasing} (const size\+\_\+t n, const size\+\_\+t m, const std::\+array$<$ size\+\_\+t, 3 $>$ idx)
+\item 
+void \doxymbox{\hyperlink{class_test_image_increasing_ac19f141fd976ec58bc868a67955c45c4}{generate\+Image}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_test_abstract_image}{Test\+Abstract\+Image$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Test\+Abstract\+Image} (const size\+\_\+t n, const size\+\_\+t k)
+\item 
+const std::\+shared\+\_\+ptr$<$ Image\+Type $>$ {\bfseries get\+\_\+image} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{class_test_abstract_image}{Test\+Abstract\+Image$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries Image\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_test_abstract_image}{Test\+Abstract\+Image$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+shared\+\_\+ptr$<$ Image\+Type $>$ {\bfseries img}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generate an image with increasing color values starting at 0 If image reaches 255, then the color is reset to 0 Useful to inspect structural bugs 
+
+\label{doc-func-members}
+\Hypertarget{class_test_image_increasing_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_test_image_increasing_ac19f141fd976ec58bc868a67955c45c4}\index{TestImageIncreasing@{TestImageIncreasing}!generateImage@{generateImage}}
+\index{generateImage@{generateImage}!TestImageIncreasing@{TestImageIncreasing}}
+\doxysubsubsection{\texorpdfstring{generateImage()}{generateImage()}}
+{\footnotesize\ttfamily \label{class_test_image_increasing_ac19f141fd976ec58bc868a67955c45c4} 
+void Test\+Image\+Increasing::\+generate\+Image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Generate an image where the colors are an increasing ramp from 0 to 255 
+
+Implements \doxymbox{\hyperlink{class_test_abstract_image_ab735ea9fcd3d6e2680b96980a9c69d5b}{Test\+Abstract\+Image$<$ uint8\+\_\+t $>$}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+image-\/generation/\+Test\+RGBImages.\+hpp\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+image-\/generation/\+Test\+RGBImages.\+cpp\end{DoxyCompactItemize}

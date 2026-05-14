@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structtifflib_1_1_tiff_tag_read" kind="struct" language="C++" prot="public">
+    <compoundname>tifflib::TiffTagRead</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtifflib_1_1_tiff_tag_read_1a9a07e0d883d54ea3b503a7452975f5f8" prot="public" static="no" mutable="no">
+        <type>TiffTagType</type>
+        <definition>TiffTagType tifflib::TiffTagRead::TagID</definition>
+        <argsstring></argsstring>
+        <name>TagID</name>
+        <qualifiedname>tifflib::TiffTagRead::TagID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="24" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtifflib_1_1_tiff_tag_read_1a404884d3d04b55de682839295b7a1dce" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; TiffDataVariant &gt;</type>
+        <definition>std::vector&lt;TiffDataVariant&gt; tifflib::TiffTagRead::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>tifflib::TiffTagRead::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="25" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="23" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="23" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structtifflib_1_1_tiff_tag_read_1a404884d3d04b55de682839295b7a1dce" prot="public" virt="non-virtual"><scope>tifflib::TiffTagRead</scope><name>data</name></member>
+      <member refid="structtifflib_1_1_tiff_tag_read_1a9a07e0d883d54ea3b503a7452975f5f8" prot="public" virt="non-virtual"><scope>tifflib::TiffTagRead</scope><name>TagID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

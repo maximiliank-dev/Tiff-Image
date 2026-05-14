@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_test_image_increasing" kind="class" language="C++" prot="public">
+    <compoundname>TestImageIncreasing</compoundname>
+    <basecompoundref refid="class_test_abstract_image" prot="public" virt="non-virtual">TestAbstractImage&lt; uint8_t &gt;</basecompoundref>
+    <includes refid="_test_r_g_b_images_8hpp" local="no">TestRGBImages.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_test_image_increasing_1ad4b3c42b4a7ef78ffb5a9f84a78ce0a8" prot="private" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t TestImageIncreasing::_color</definition>
+        <argsstring></argsstring>
+        <name>_color</name>
+        <qualifiedname>TestImageIncreasing::_color</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="63" column="19" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_increasing_1a059014a44665a8aed8a953a8eb6f25f7" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageIncreasing::_rows</definition>
+        <argsstring></argsstring>
+        <name>_rows</name>
+        <qualifiedname>TestImageIncreasing::_rows</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="64" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_increasing_1a761fadf97530d244c1e011b4f6da2e4f" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageIncreasing::_columns</definition>
+        <argsstring></argsstring>
+        <name>_columns</name>
+        <qualifiedname>TestImageIncreasing::_columns</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="65" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_increasing_1a6491f5f74ed0841ad4d3500a985bbe77" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageIncreasing::_pixel</definition>
+        <argsstring></argsstring>
+        <name>_pixel</name>
+        <qualifiedname>TestImageIncreasing::_pixel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="66" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_test_image_increasing_1a0a230014eac7daa34b0b8e329f7a8ee2" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t TestImageIncreasing::pixel_size</definition>
+        <argsstring></argsstring>
+        <name>pixel_size</name>
+        <qualifiedname>TestImageIncreasing::pixel_size</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="68" column="29" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_image_increasing_1a30e9b50803e198f39d969250d22ccee6" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestImageIncreasing::TestImageIncreasing</definition>
+        <argsstring>(const size_t n, const size_t m, const std::array&lt; size_t, 3 &gt; idx)</argsstring>
+        <name>TestImageIncreasing</name>
+        <qualifiedname>TestImageIncreasing::TestImageIncreasing</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>const std::array&lt; size_t, 3 &gt;</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="71" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_image_increasing_1ac19f141fd976ec58bc868a67955c45c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TestImageIncreasing::generateImage</definition>
+        <argsstring>()</argsstring>
+        <name>generateImage</name>
+        <qualifiedname>TestImageIncreasing::generateImage</qualifiedname>
+        <reimplements refid="class_test_abstract_image_1ab735ea9fcd3d6e2680b96980a9c69d5b">generateImage</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate an image where the colors are an increasing ramp from 0 to 255 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="72" column="10" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="135" bodyend="154"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Generate an image with increasing color values starting at 0 If image reaches 255, then the color is reset to 0 Useful to inspect structural bugs </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>TestAbstractImage&lt; uint8_t &gt;</label>
+        <link refid="class_test_abstract_image"/>
+      </node>
+      <node id="1">
+        <label>TestImageIncreasing</label>
+        <link refid="class_test_image_increasing"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>TestAbstractImage&lt; uint8_t &gt;</label>
+        <link refid="class_test_abstract_image"/>
+      </node>
+      <node id="1">
+        <label>TestImageIncreasing</label>
+        <link refid="class_test_image_increasing"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="62" column="1" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="62" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_test_image_increasing_1ad4b3c42b4a7ef78ffb5a9f84a78ce0a8" prot="private" virt="non-virtual"><scope>TestImageIncreasing</scope><name>_color</name></member>
+      <member refid="class_test_image_increasing_1a761fadf97530d244c1e011b4f6da2e4f" prot="private" virt="non-virtual"><scope>TestImageIncreasing</scope><name>_columns</name></member>
+      <member refid="class_test_image_increasing_1a6491f5f74ed0841ad4d3500a985bbe77" prot="private" virt="non-virtual"><scope>TestImageIncreasing</scope><name>_pixel</name></member>
+      <member refid="class_test_image_increasing_1a059014a44665a8aed8a953a8eb6f25f7" prot="private" virt="non-virtual"><scope>TestImageIncreasing</scope><name>_rows</name></member>
+      <member refid="class_test_image_increasing_1ac19f141fd976ec58bc868a67955c45c4" prot="public" virt="virtual"><scope>TestImageIncreasing</scope><name>generateImage</name></member>
+      <member refid="class_test_abstract_image_1ab0f20b56dcaaa6d3d6567f4e38c07749" prot="public" virt="non-virtual"><scope>TestImageIncreasing</scope><name>get_image</name></member>
+      <member refid="class_test_abstract_image_1a21fb264272d6a586ec628c3eb90431c1" prot="public" virt="non-virtual"><scope>TestImageIncreasing</scope><name>ImageType</name></member>
+      <member refid="class_test_abstract_image_1a83ca82249a2f29b3bb24cada988dbea7" prot="protected" virt="non-virtual"><scope>TestImageIncreasing</scope><name>img</name></member>
+      <member refid="class_test_image_increasing_1a0a230014eac7daa34b0b8e329f7a8ee2" prot="private" virt="non-virtual"><scope>TestImageIncreasing</scope><name>pixel_size</name></member>
+      <member refid="class_test_abstract_image_1aceaebdca09a586d9b3be5d59edfe44d6" prot="public" virt="non-virtual"><scope>TestImageIncreasing</scope><name>TestAbstractImage</name></member>
+      <member refid="class_test_image_increasing_1a30e9b50803e198f39d969250d22ccee6" prot="public" virt="non-virtual"><scope>TestImageIncreasing</scope><name>TestImageIncreasing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

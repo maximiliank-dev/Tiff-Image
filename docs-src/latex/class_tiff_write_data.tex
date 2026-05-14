@@ -1,0 +1,111 @@
+\doxysection{Tiff\+Write\+Data\texorpdfstring{$<$}{<} TP \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_tiff_write_data}{}\label{class_tiff_write_data}\index{TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_tiff_write_data_1_1less__tiff}{less\+\_\+tiff}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tiff_write_data_ac1e7c932a382f63c575214cbcfdcff15}\label{class_tiff_write_data_ac1e7c932a382f63c575214cbcfdcff15} 
+{\bfseries Tiff\+Write\+Data} (\doxymbox{\hyperlink{class_tiff_writer_header}{Tiff\+Writer\+Header}} header, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ TP $>$ $>$ img, std::\+basic\+\_\+ostream$<$ char $>$ \&stream)
+\item 
+\Hypertarget{class_tiff_write_data_a80596079ac6cff544b4f9c01315ec4bb}\label{class_tiff_write_data_a80596079ac6cff544b4f9c01315ec4bb} 
+Set\+Element {\bfseries convert\+\_\+to\+\_\+\+Set\+Element} (Tiff\+Tag\+Type tag, uint64\+\_\+t value)
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_af24727e79177b188e67051b748cd5de8}{write\+\_\+ifd\+\_\+element}} (Tiff\+Tag\+Type tag, Tiff\+Data\+Variant variant, std::\+vector$<$ Tiff\+Data\+Variant $>$ \&rational\+\_\+values)
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_a255115187a8ff6e66df298a19bfa05d4}{write\+\_\+\+IFDs}} ()
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_a92abc3268d0f65f80047ff38e5dcd045}{write\+\_\+image\+\_\+data}} ()
+\item 
+virtual void \doxymbox{\hyperlink{class_tiff_write_data_a12c0d9567ebf402c3e78a74a102888ed}{tags\+\_\+to\+\_\+set}} ()=0
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_afc97471637974c130127cf486d9e4001}{write}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tiff_write_data_a2e31a40e91cd93b2f0b9ed5e6238262d}\label{class_tiff_write_data_a2e31a40e91cd93b2f0b9ed5e6238262d} 
+using {\bfseries Set\+Element} = std::\+pair$<$Tiff\+Tag\+Type, Tiff\+Data\+Variant$>$
+\item 
+\Hypertarget{class_tiff_write_data_af88e89fe01366c6a950b2602f8f215be}\label{class_tiff_write_data_af88e89fe01366c6a950b2602f8f215be} 
+using {\bfseries Set\+Type} = std::\+map$<$Tiff\+Tag\+Type, Tiff\+Data\+Variant, \doxymbox{\hyperlink{struct_tiff_write_data_1_1less__tiff}{less\+\_\+tiff}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tiff_write_data_aafe6ad4c9ac4907e62df872700affed3}\label{class_tiff_write_data_aafe6ad4c9ac4907e62df872700affed3} 
+uint64\+\_\+t {\bfseries \+\_\+offset} = 0x0
+\item 
+\Hypertarget{class_tiff_write_data_aad7d0b0a69d492f4d5b6ea442be7838a}\label{class_tiff_write_data_aad7d0b0a69d492f4d5b6ea442be7838a} 
+uint16\+\_\+t {\bfseries \+\_\+numer\+TDF} = 3
+\item 
+\Hypertarget{class_tiff_write_data_adb1fd073e0b25e18899fa5bf1bcaecf9}\label{class_tiff_write_data_adb1fd073e0b25e18899fa5bf1bcaecf9} 
+uint\+\_\+t {\bfseries next\+\_\+offset} = 0
+\item 
+\Hypertarget{class_tiff_write_data_aaaf9120d464dac2601324be3e0db9758}\label{class_tiff_write_data_aaaf9120d464dac2601324be3e0db9758} 
+uint64\+\_\+t {\bfseries \+\_\+offset\+\_\+data} = 0x8
+\item 
+\Hypertarget{class_tiff_write_data_a36752192c10b9bda446cfd18e4c88c4c}\label{class_tiff_write_data_a36752192c10b9bda446cfd18e4c88c4c} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ TP $>$ $>$ {\bfseries \+\_\+img}
+\item 
+\Hypertarget{class_tiff_write_data_a9adb1e4720cdc047276d7c61e84d85f7}\label{class_tiff_write_data_a9adb1e4720cdc047276d7c61e84d85f7} 
+std::\+basic\+\_\+ostream$<$ char $>$ \& {\bfseries \+\_\+stream}
+\item 
+\Hypertarget{class_tiff_write_data_a9e35bf4bbb6b08c110f8dacd8309f3d8}\label{class_tiff_write_data_a9e35bf4bbb6b08c110f8dacd8309f3d8} 
+Set\+Type {\bfseries \+\_\+values}
+\item 
+\Hypertarget{class_tiff_write_data_a3e96a0b22f782b501727f8197b8a456c}\label{class_tiff_write_data_a3e96a0b22f782b501727f8197b8a456c} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ {\bfseries \+\_\+endian\+\_\+handler}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_tiff_write_data_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tiff_write_data_a12c0d9567ebf402c3e78a74a102888ed}\index{TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}!tags\_to\_set@{tags\_to\_set}}
+\index{tags\_to\_set@{tags\_to\_set}!TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}}
+\doxysubsubsection{\texorpdfstring{tags\_to\_set()}{tags\_to\_set()}}
+{\footnotesize\ttfamily \label{class_tiff_write_data_a12c0d9567ebf402c3e78a74a102888ed} 
+template$<$typename TP$>$ \\
+void \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data}}$<$ TP $>$::\+tags\+\_\+to\+\_\+set (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Set the basic TIFF Settings Must be used in all image types 
+
+Implemented in \doxymbox{\hyperlink{class_bitlevel_image_a0b5ca3810a9903a48699dd7aa4b10d8d}{Bitlevel\+Image}}, \doxymbox{\hyperlink{class_gray_image_ac40f9610f2afc5aced6abc10dc96b170}{Gray\+Image}}, and \doxymbox{\hyperlink{class_r_g_b_image_a50e8a9f227196932dbdaaf345f0aedcb}{RGBImage}}.
+
+\Hypertarget{class_tiff_write_data_afc97471637974c130127cf486d9e4001}\index{TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}!write@{write}}
+\index{write@{write}!TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{class_tiff_write_data_afc97471637974c130127cf486d9e4001} 
+template$<$typename TP$>$ \\
+void \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data}}$<$ TP $>$::\+write (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write IFDs and image data image data is written first \Hypertarget{class_tiff_write_data_af24727e79177b188e67051b748cd5de8}\index{TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}!write\_ifd\_element@{write\_ifd\_element}}
+\index{write\_ifd\_element@{write\_ifd\_element}!TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}}
+\doxysubsubsection{\texorpdfstring{write\_ifd\_element()}{write\_ifd\_element()}}
+{\footnotesize\ttfamily \label{class_tiff_write_data_af24727e79177b188e67051b748cd5de8} 
+template$<$typename TP$>$ \\
+void \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data}}$<$ TP $>$::\+write\+\_\+ifd\+\_\+element (\begin{DoxyParamCaption}\item[{Tiff\+Tag\+Type}]{tag}{, }\item[{Tiff\+Data\+Variant}]{variant}{, }\item[{std::\+vector$<$ Tiff\+Data\+Variant $>$ \&}]{rational\+\_\+values}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write the element to the tiff file modifies the offset field of the class Params:\+ element:\+ the \doxylink{struct_tiff_tag}{Tiff\+Tag} rational\+\_\+values:\+ data structure to store the values of ags with data type RATIONAL \Hypertarget{class_tiff_write_data_a255115187a8ff6e66df298a19bfa05d4}\index{TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}!write\_IFDs@{write\_IFDs}}
+\index{write\_IFDs@{write\_IFDs}!TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}}
+\doxysubsubsection{\texorpdfstring{write\_IFDs()}{write\_IFDs()}}
+{\footnotesize\ttfamily \label{class_tiff_write_data_a255115187a8ff6e66df298a19bfa05d4} 
+template$<$typename TP$>$ \\
+void \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data}}$<$ TP $>$::\+write\+\_\+\+IFDs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write all IDF \Hypertarget{class_tiff_write_data_a92abc3268d0f65f80047ff38e5dcd045}\index{TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}!write\_image\_data@{write\_image\_data}}
+\index{write\_image\_data@{write\_image\_data}!TiffWriteData$<$ TP $>$@{TiffWriteData$<$ TP $>$}}
+\doxysubsubsection{\texorpdfstring{write\_image\_data()}{write\_image\_data()}}
+{\footnotesize\ttfamily \label{class_tiff_write_data_a92abc3268d0f65f80047ff38e5dcd045} 
+template$<$typename TP$>$ \\
+void \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data}}$<$ TP $>$::\+write\+\_\+image\+\_\+data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Writes the image data to a file 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+tiff-\/writer/\+tiff-\/writer-\/header.\+hpp\end{DoxyCompactItemize}

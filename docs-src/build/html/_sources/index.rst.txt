@@ -1,10 +1,10 @@
 .. TiffWriterDoc documentation master file, created by
    sphinx-quickstart on Sun Mar 29 15:02:48 2026.
 
-ImageConverter Documentation
+Tifflib Documentation
 =============================
 
-ImageConverter is a C++ library for reading and writing TIFF image files.
+Tifflib is a C++ library for reading and writing TIFF image files.
 It supports grayscale, binary (bit-level), and RGB image formats, with
 PackBits compression and configurable endianness.
 

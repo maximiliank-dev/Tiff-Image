@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_test_image_single_color" kind="class" language="C++" prot="public">
+    <compoundname>TestImageSingleColor</compoundname>
+    <basecompoundref refid="class_test_abstract_image" prot="public" virt="non-virtual">TestAbstractImage&lt; uint8_t &gt;</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_test_image_single_color_1a866fa7a000fad92955325080c3c765a6" prot="private" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t TestImageSingleColor::_color</definition>
+        <argsstring></argsstring>
+        <name>_color</name>
+        <qualifiedname>TestImageSingleColor::_color</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="4" column="19" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_single_color_1a98fc14267a1d69fd2b5cd366025f3391" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageSingleColor::_rows</definition>
+        <argsstring></argsstring>
+        <name>_rows</name>
+        <qualifiedname>TestImageSingleColor::_rows</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="5" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_single_color_1acb4f1860b263cbbac4e0e7b2cd557111" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageSingleColor::_columns</definition>
+        <argsstring></argsstring>
+        <name>_columns</name>
+        <qualifiedname>TestImageSingleColor::_columns</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="6" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_test_image_single_color_1a993390ea15cc6d3c9b4bd5c1b3f0d06a" prot="private" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t TestImageSingleColor::_pixel</definition>
+        <argsstring></argsstring>
+        <name>_pixel</name>
+        <qualifiedname>TestImageSingleColor::_pixel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="7" column="18" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_test_image_single_color_1a6c0224301c94a43f9463d659f2ba89a0" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>size_t</type>
+        <definition>size_t TestImageSingleColor::pixel_size</definition>
+        <argsstring></argsstring>
+        <name>pixel_size</name>
+        <qualifiedname>TestImageSingleColor::pixel_size</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="9" column="29" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_test_image_single_color_1a5633d07856ccfe8212d6338e8a92dee3" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestImageSingleColor::TestImageSingleColor</definition>
+        <argsstring>(const size_t n, const size_t m, size_t pixel, const uint8_t color)</argsstring>
+        <name>TestImageSingleColor</name>
+        <qualifiedname>TestImageSingleColor::TestImageSingleColor</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>pixel</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="12" column="14" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="9" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_test_image_single_color_1ae0498235ce5afe9779f2cd9cfc9ae4b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TestImageSingleColor::generateImage</definition>
+        <argsstring>()</argsstring>
+        <name>generateImage</name>
+        <qualifiedname>TestImageSingleColor::generateImage</qualifiedname>
+        <reimplements refid="class_test_abstract_image_1ab735ea9fcd3d6e2680b96980a9c69d5b">generateImage</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs the image according to the </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="14" column="10" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="17" bodyend="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>TestAbstractImage&lt; uint8_t &gt;</label>
+        <link refid="class_test_abstract_image"/>
+      </node>
+      <node id="1">
+        <label>TestImageSingleColor</label>
+        <link refid="class_test_image_single_color"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>TestAbstractImage&lt; uint8_t &gt;</label>
+        <link refid="class_test_abstract_image"/>
+      </node>
+      <node id="1">
+        <label>TestImageSingleColor</label>
+        <link refid="class_test_image_single_color"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="3" column="1" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" bodystart="3" bodyend="15"/>
+    <listofallmembers>
+      <member refid="class_test_image_single_color_1a866fa7a000fad92955325080c3c765a6" prot="private" virt="non-virtual"><scope>TestImageSingleColor</scope><name>_color</name></member>
+      <member refid="class_test_image_single_color_1acb4f1860b263cbbac4e0e7b2cd557111" prot="private" virt="non-virtual"><scope>TestImageSingleColor</scope><name>_columns</name></member>
+      <member refid="class_test_image_single_color_1a993390ea15cc6d3c9b4bd5c1b3f0d06a" prot="private" virt="non-virtual"><scope>TestImageSingleColor</scope><name>_pixel</name></member>
+      <member refid="class_test_image_single_color_1a98fc14267a1d69fd2b5cd366025f3391" prot="private" virt="non-virtual"><scope>TestImageSingleColor</scope><name>_rows</name></member>
+      <member refid="class_test_image_single_color_1ae0498235ce5afe9779f2cd9cfc9ae4b4" prot="public" virt="virtual"><scope>TestImageSingleColor</scope><name>generateImage</name></member>
+      <member refid="class_test_abstract_image_1ab0f20b56dcaaa6d3d6567f4e38c07749" prot="public" virt="non-virtual"><scope>TestImageSingleColor</scope><name>get_image</name></member>
+      <member refid="class_test_abstract_image_1a21fb264272d6a586ec628c3eb90431c1" prot="public" virt="non-virtual"><scope>TestImageSingleColor</scope><name>ImageType</name></member>
+      <member refid="class_test_abstract_image_1a83ca82249a2f29b3bb24cada988dbea7" prot="protected" virt="non-virtual"><scope>TestImageSingleColor</scope><name>img</name></member>
+      <member refid="class_test_image_single_color_1a6c0224301c94a43f9463d659f2ba89a0" prot="private" virt="non-virtual"><scope>TestImageSingleColor</scope><name>pixel_size</name></member>
+      <member refid="class_test_abstract_image_1aceaebdca09a586d9b3be5d59edfe44d6" prot="public" virt="non-virtual"><scope>TestImageSingleColor</scope><name>TestAbstractImage</name></member>
+      <member refid="class_test_image_single_color_1a5633d07856ccfe8212d6338e8a92dee3" prot="public" virt="non-virtual"><scope>TestImageSingleColor</scope><name>TestImageSingleColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

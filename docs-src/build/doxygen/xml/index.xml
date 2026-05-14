@@ -1,0 +1,431 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.16.1" xml:lang="en-US">
+  <compound refid="classtifflib_1_1_bitlevel_image" kind="class"><name>tifflib::BitlevelImage</name>
+    <member refid="classtifflib_1_1_bitlevel_image_1af6c7245310985cd1ffa705b1a2bd6a78" kind="variable"><name>_config</name></member>
+    <member refid="classtifflib_1_1_bitlevel_image_1a72d99bdc8d991f6ae6b3bc437e7ee2d7" kind="function"><name>BitlevelImage</name></member>
+    <member refid="classtifflib_1_1_bitlevel_image_1ac8341896307488b03c0f474a05ff53c3" kind="function"><name>tags_to_set</name></member>
+  </compound>
+  <compound refid="class_file_reader" kind="class"><name>FileReader</name>
+    <member refid="class_file_reader_1acf020f59228bafca1b2e52eb4c38f803" kind="variable"><name>_fstream</name></member>
+    <member refid="class_file_reader_1a19a8ea85bc7867ee2845375d6cb2d4fa" kind="function"><name>FileReader</name></member>
+    <member refid="class_file_reader_1a484b93220c3c21aa9c64a53c88329204" kind="function"><name>seekg</name></member>
+    <member refid="class_file_reader_1a0b46d58a3ccfcac10afde28701cb2835" kind="function"><name>tellg</name></member>
+    <member refid="class_file_reader_1adee359bd04534cb513f60b11e424e02f" kind="function"><name>sync</name></member>
+    <member refid="class_file_reader_1a24952f157193d2848fd5c24e1c85ac55" kind="function"><name>read</name></member>
+    <member refid="class_file_reader_1a2382e1713bd66aa987a8d522e418f7f5" kind="function"><name>good</name></member>
+    <member refid="class_file_reader_1a2b7942e92d52897e7630aeb89d3de7d4" kind="function"><name>eof</name></member>
+    <member refid="class_file_reader_1a409cfc6623fbcaa6c919c5fef013bf03" kind="function"><name>fail</name></member>
+    <member refid="class_file_reader_1a8ee34ec51879f26732467b967abf72e8" kind="function"><name>bad</name></member>
+    <member refid="class_file_reader_1a54bd5c714b4bff0f914c0fd57eb5d454" kind="function"><name>operator bool</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_gray_image" kind="class"><name>tifflib::GrayImage</name>
+    <member refid="classtifflib_1_1_gray_image_1ad678cf2685cec92bffbdcf8f428fc1ca" kind="function"><name>GrayImage</name></member>
+    <member refid="classtifflib_1_1_gray_image_1af094506b85dedef895792bf56b67d2ff" kind="function"><name>tags_to_set</name></member>
+  </compound>
+  <compound refid="class_image_container" kind="class"><name>ImageContainer</name>
+    <member refid="class_image_container_1aad1083283fa974afbf6bad1d0e789d6a" kind="variable"><name>_img</name></member>
+    <member refid="class_image_container_1a7ce62ec9eced49511948464b9b1822be" kind="variable"><name>_row_length</name></member>
+    <member refid="class_image_container_1a8ef9757dc2878aa2538caa77f626174d" kind="variable"><name>_pixel_number_of_colors</name></member>
+    <member refid="class_image_container_1a5e8d126b6ba7e3f582668545a61490a6" kind="function"><name>ImageContainer</name></member>
+    <member refid="class_image_container_1a8905e9423dacb6d35d425b3687ca0d89" kind="function"><name>ImageContainer</name></member>
+    <member refid="class_image_container_1a5316da6559c414b1600dc223c7d0f1fb" kind="function"><name>~ImageContainer</name></member>
+    <member refid="class_image_container_1aef57b88aad224a67e49982109ea0ed9a" kind="function"><name>get_column_length</name></member>
+    <member refid="class_image_container_1a6276a865dc0aff243a1a732342a69993" kind="function"><name>get_height</name></member>
+    <member refid="class_image_container_1a629a5791a960e810f7922f41997b04f5" kind="function"><name>get_width</name></member>
+    <member refid="class_image_container_1ad33af16fe1626c6edfc6f8a1cce55d9c" kind="function"><name>get_total_size</name></member>
+    <member refid="class_image_container_1a77af01a6d767fa49b5c74733612ae649" kind="function"><name>get_pixel_number_of_colors</name></member>
+    <member refid="class_image_container_1a7b4052a4d23e5f9c7edccf1556c3c781" kind="function"><name>get_bytes_per_row</name></member>
+    <member refid="class_image_container_1a9e501f6a9362bcfb67e06b191d6c5c94" kind="function"><name>operator=</name></member>
+    <member refid="class_image_container_1a119a41b9269f922e45b62a4e6c3e7c85" kind="function"><name>append_row</name></member>
+    <member refid="class_image_container_1ab48d7cb402902f4df63ed28c514cf60a" kind="function"><name>resize</name></member>
+    <member refid="class_image_container_1ae38c8875d6ab84b5439c8cc9b13eb1ff" kind="function"><name>print</name></member>
+    <member refid="class_image_container_1a095618585b8a584536cdbbd36c15e045" kind="function"><name>get_data</name></member>
+    <member refid="class_image_container_1ad7aaeafde43b88a4d09d57c7d2351786" kind="function"><name>at</name></member>
+    <member refid="class_image_container_1a150c9b165303727997dd3b6d38b94ccb" kind="function"><name>transpose</name></member>
+  </compound>
+  <compound refid="class_image_solid_color" kind="class"><name>ImageSolidColor</name>
+    <member refid="class_image_solid_color_1aad6d9da4831248cfde56aa42bbbe6d1c" kind="function"><name>ImageSolidColor</name></member>
+  </compound>
+  <compound refid="structis__integral__vector" kind="struct"><name>is_integral_vector</name>
+  </compound>
+  <compound refid="structis__integral__vector_3_01std_1_1vector_3_01_t_01_4_01_4" kind="struct"><name>is_integral_vector&lt; std::vector&lt; T &gt; &gt;</name>
+  </compound>
+  <compound refid="structtifflib_1_1_tiff_write_data_1_1less__tiff" kind="struct"><name>tifflib::TiffWriteData::less_tiff</name>
+    <member refid="structtifflib_1_1_tiff_write_data_1_1less__tiff_1a3f089ee7fd386b4a1894626bd24b6c0d" kind="function"><name>operator()</name></member>
+  </compound>
+  <compound refid="class_little_endian___t_i_f_f" kind="class"><name>LittleEndian_TIFF</name>
+    <member refid="class_little_endian___t_i_f_f_1a4571b09f756ada53262e1756f5cf71ea" kind="function"><name>convert</name></member>
+    <member refid="class_little_endian___t_i_f_f_1a1a771dc9cf9f7d86e88945acb07859f1" kind="function"><name>convert</name></member>
+    <member refid="class_little_endian___t_i_f_f_1a0a6ca26a62add2b581b6a8b3ab7ff7b6" kind="function"><name>convert</name></member>
+    <member refid="class_little_endian___t_i_f_f_1ad7092a83acd0b84cf83ef306855bc296" kind="function"><name>convert</name></member>
+    <member refid="class_little_endian___t_i_f_f_1af97e3db5638d4d8e6513ebdaf40f350a" kind="function"><name>convert</name></member>
+    <member refid="class_little_endian___t_i_f_f_1a266864560f3240c19c4d30ffcb0634d5" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_little_endian___t_i_f_f_1a949221a7957b03b68b24029ea4cee441" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_little_endian___t_i_f_f_1a9e3753cc5c6b9312af6d1b3e12454a2e" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_little_endian___t_i_f_f_1aabe4a91ee42ff32a07664f2995d63f81" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_little_endian___t_i_f_f_1afb920ba7255242bf13ceecea08d48b13" kind="function"><name>get_endian_value</name></member>
+  </compound>
+  <compound refid="classcompression_1_1_pack_bits" kind="class"><name>compression::PackBits</name>
+    <member refid="classcompression_1_1_pack_bits_1a35751f6fcd1ff404f15ad0fc9d073544" kind="function"><name>compress</name></member>
+    <member refid="classcompression_1_1_pack_bits_1a2bf8e68b6df8d4e36833f86154ad7b38" kind="function"><name>decompress</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_r_g_b_image" kind="class"><name>tifflib::RGBImage</name>
+    <member refid="classtifflib_1_1_r_g_b_image_1a6a0c5aa8f248daaeabb4cce2d03313ed" kind="function"><name>RGBImage</name></member>
+    <member refid="classtifflib_1_1_r_g_b_image_1aedd86cd69079cbba650f70c072fb7180" kind="function"><name>tags_to_set</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value" kind="struct"><name>TagTypeValue</name>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_bits_per_sample_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::BitsPerSample &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_bits_per_sample_01_4_1a415229b23aa875855d7f151e207ef028" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_compression_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::Compression &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_compression_01_4_1a7d8f6c4c72f550fbc4741fc7d5886dc9" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_image_length_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::ImageLength &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_image_length_01_4_1a0604ee75ca4859585d42d123bc6a556b" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_image_width_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::ImageWidth &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_image_width_01_4_1a0ce43e85ddd567614c79fbe3055f2009" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_photometric_interpretation_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::PhotometricInterpretation &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_photometric_interpretation_01_4_1a18e746cc7c97459f3931bcffbef4660f" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_strip_offsets_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::StripOffsets &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_strip_offsets_01_4_1a377e916f7c77df49552cf093eb542868" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_x_resolution_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::XResolution &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_x_resolution_01_4_1a03123776720df98fd74d6daa54adfb05" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_y_resolution_01_4" kind="struct"><name>TagTypeValue&lt; TiffTagType::YResolution &gt;</name>
+    <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_y_resolution_01_4_1a595a716cddca699792238d54d8a79751" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="class_test_abstract_image" kind="class"><name>TestAbstractImage</name>
+    <member refid="class_test_abstract_image_1a21fb264272d6a586ec628c3eb90431c1" kind="typedef"><name>ImageType</name></member>
+    <member refid="class_test_abstract_image_1a83ca82249a2f29b3bb24cada988dbea7" kind="variable"><name>img</name></member>
+    <member refid="class_test_abstract_image_1aceaebdca09a586d9b3be5d59edfe44d6" kind="function"><name>TestAbstractImage</name></member>
+    <member refid="class_test_abstract_image_1ab735ea9fcd3d6e2680b96980a9c69d5b" kind="function"><name>generateImage</name></member>
+    <member refid="class_test_abstract_image_1ab0f20b56dcaaa6d3d6567f4e38c07749" kind="function"><name>get_image</name></member>
+  </compound>
+  <compound refid="class_test_image_increasing" kind="class"><name>TestImageIncreasing</name>
+    <member refid="class_test_image_increasing_1ad4b3c42b4a7ef78ffb5a9f84a78ce0a8" kind="variable"><name>_color</name></member>
+    <member refid="class_test_image_increasing_1a059014a44665a8aed8a953a8eb6f25f7" kind="variable"><name>_rows</name></member>
+    <member refid="class_test_image_increasing_1a761fadf97530d244c1e011b4f6da2e4f" kind="variable"><name>_columns</name></member>
+    <member refid="class_test_image_increasing_1a6491f5f74ed0841ad4d3500a985bbe77" kind="variable"><name>_pixel</name></member>
+    <member refid="class_test_image_increasing_1a0a230014eac7daa34b0b8e329f7a8ee2" kind="variable"><name>pixel_size</name></member>
+    <member refid="class_test_image_increasing_1a30e9b50803e198f39d969250d22ccee6" kind="function"><name>TestImageIncreasing</name></member>
+    <member refid="class_test_image_increasing_1ac19f141fd976ec58bc868a67955c45c4" kind="function"><name>generateImage</name></member>
+  </compound>
+  <compound refid="class_test_image_ramp_r_g_b" kind="class"><name>TestImageRampRGB</name>
+    <member refid="class_test_image_ramp_r_g_b_1ae1ba056ee8eeddce6836e9a4b2b358b6" kind="variable"><name>_color_min</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1a1237c2a2fa788dd169fc3094fbd95b37" kind="variable"><name>_color_max</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1a8ec9cce4231bb96bd0e95299fd3731fe" kind="variable"><name>_rows</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1a79837820fa00dc411ddbcf38e6b20b01" kind="variable"><name>_columns</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1a31b9dd915fce76dd5d18d8c9b654f277" kind="variable"><name>_type</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1a79cad8f7253076b75b2799cf18438f9f" kind="variable"><name>_idx</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1ad9f90373d33837771b4135ac225930b9" kind="variable"><name>pixel_size</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1adb60f6ae367ab062148c6d2d007f6e73" kind="function"><name>TestImageRampRGB</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1a97cba0c1bb17f31f1399edc5e3f9acf5" kind="function"><name>generateImage</name></member>
+    <member refid="class_test_image_ramp_r_g_b_1a9e1551a8e854b6e1e206c613af263c28" kind="function"><name>calc_function</name></member>
+  </compound>
+  <compound refid="class_test_image_single_color" kind="class"><name>TestImageSingleColor</name>
+    <member refid="class_test_image_single_color_1a866fa7a000fad92955325080c3c765a6" kind="variable"><name>_color</name></member>
+    <member refid="class_test_image_single_color_1a98fc14267a1d69fd2b5cd366025f3391" kind="variable"><name>_rows</name></member>
+    <member refid="class_test_image_single_color_1acb4f1860b263cbbac4e0e7b2cd557111" kind="variable"><name>_columns</name></member>
+    <member refid="class_test_image_single_color_1a993390ea15cc6d3c9b4bd5c1b3f0d06a" kind="variable"><name>_pixel</name></member>
+    <member refid="class_test_image_single_color_1a6c0224301c94a43f9463d659f2ba89a0" kind="variable"><name>pixel_size</name></member>
+    <member refid="class_test_image_single_color_1a5633d07856ccfe8212d6338e8a92dee3" kind="function"><name>TestImageSingleColor</name></member>
+    <member refid="class_test_image_single_color_1ae0498235ce5afe9779f2cd9cfc9ae4b4" kind="function"><name>generateImage</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_t_i_f_f_header" kind="class"><name>tifflib::TIFFHeader</name>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1afd22946d226afdb6f20f63dcfc2bb762" kind="variable"><name>_stream</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a2835a089aca0b770f4d4a0e54e1c4bea" kind="variable"><name>endian</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a96684a8ace1a5636f39323ea0f7e4f11" kind="variable"><name>magic_num</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a0b6d7fc1b344a3cc63cc509686545c7a" kind="variable"><name>version</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1aa613b0084a0f27add2ac066fe85d42e0" kind="variable"><name>idf_offset</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a2c2fc4a30553b6ebf30d5e4cc39a627f" kind="variable"><name>err</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a3c5bc2b1a6547737132a7038b926c103" kind="variable"><name>endian_handler</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1af0d3bfd20ca5adc66592a8d752a01cfd" kind="function"><name>TIFFHeader</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a951ffb196ef8df983316051868fe82b1" kind="function"><name>TIFFHeader</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a01524461df0f823d2fe12451a483db3b" kind="function"><name>read</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1ac375806174788d310bc13de31305b89a" kind="function"><name>get_endian_handler</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1a45b07d86fa88ef24a47599ef71920e65" kind="function"><name>get_idf_offset</name></member>
+    <member refid="classtifflib_1_1_t_i_f_f_header_1af44d2968d2e4e713d52687000a471e5c" kind="function"><name>parse_header</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_tiff_i_f_d" kind="class"><name>tifflib::TiffIFD</name>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1a0c74aa6458cad92cdfe708b318bb487e" kind="variable"><name>_stream</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1a50153fc2b9125c6b1ccd7a35fb3e3793" kind="variable"><name>_address</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1ad73fcfac84b493c3788bdabc6309c9c6" kind="variable"><name>_NumDirEntries</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1adc98537d5e268cf1dd59f6ec9c0a870f" kind="variable"><name>_NextIFDOffset</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1aacc87701abdbe6ed76b3d1fe54d97674" kind="variable"><name>_tagList</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1a864c05f5b3b065c0ec0e21ec2696acff" kind="variable"><name>_endian_handler</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1af1ec70707f80001b86d3191e2e50ce88" kind="function"><name>TiffIFD</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1a10628a1aaf3b9717e330055a2e4c1d18" kind="function"><name>TiffIFD</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1ab36f16c22b5ff8b5655ff0275cd9d50d" kind="function"><name>convert_to_tag</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1aa64ba8b75fa7ff792dfa829c001134e4" kind="function"><name>printTag</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1a9725bd8ee4d47e74141d75b0348bf3a1" kind="function"><name>printTagRead</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1aef2aad70493c5a2d9348c0d2d6398eaa" kind="function"><name>get_stream</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1a2bc22f09ac9e29601d5216866889bf2a" kind="function"><name>getTag</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1af9e82e585f63733a98d71305cd51ca4d" kind="function"><name>read_tiff_tag</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1aa19e9ca1b0d25d0e9f46fc9c4256eba3" kind="function"><name>read</name></member>
+    <member refid="classtifflib_1_1_tiff_i_f_d_1a5bf5e3c208f754d39ea0ce9f63665ed9" kind="function"><name>get_endian_handler</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_tiff_reader" kind="class"><name>tifflib::TiffReader</name>
+    <member refid="classtifflib_1_1_tiff_reader_1aaef49d5ca434b0f2bf1c85d2c263385b" kind="variable"><name>_header</name></member>
+    <member refid="classtifflib_1_1_tiff_reader_1a6059f1e8c0d2596d7171f1093281d40d" kind="variable"><name>_ifds</name></member>
+    <member refid="classtifflib_1_1_tiff_reader_1a805180ec5774e4caa466de78b6beb65b" kind="variable"><name>_strips</name></member>
+    <member refid="classtifflib_1_1_tiff_reader_1aa7e2026be0c72b00da1feff850252d30" kind="variable"><name>_file</name></member>
+    <member refid="classtifflib_1_1_tiff_reader_1ae589342364a800e51fce77352ebac48a" kind="variable"><name>_data_valid</name></member>
+    <member refid="classtifflib_1_1_tiff_reader_1a13f51f042ce45d4b50178672b1edbe7c" kind="function"><name>TiffReader</name></member>
+    <member refid="classtifflib_1_1_tiff_reader_1a30f8c03d06fc3062682d31992958193e" kind="function"><name>read</name></member>
+    <member refid="classtifflib_1_1_tiff_reader_1a8343bf36072340c48fbd5f6ac06d73dc" kind="function"><name>get_image</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_tiff_read_strips" kind="class"><name>tifflib::TiffReadStrips</name>
+    <member refid="classtifflib_1_1_tiff_read_strips_1a8b929b18e0e9c18480fd27953cdd2ce0" kind="variable"><name>_stream</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1ab2831d6beb774771986b89c931e0f7b5" kind="variable"><name>_ifd</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1a88ec9b83bd7e008294d67f72b0b86f77" kind="variable"><name>_endian_handler</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1a29aac33572cb0ba8d1c74dcfe8142c67" kind="function"><name>TiffReadStrips</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1ae416d0de65c0f0cdd990e9aaaba2805d" kind="function"><name>TiffReadStrips</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1a85beb6aab8ddbe779040564d2b47a387" kind="function"><name>reformat_strip</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1aea7e27f9717519d322aac04309088159" kind="function"><name>get_metadata_tag</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1a2f3434878de328111093eb62e4451401" kind="function"><name>readStrips</name></member>
+    <member refid="classtifflib_1_1_tiff_read_strips_1aa591a9f93de290f316b1b0c9b27ea05b" kind="function"><name>get_image</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_tiff_read_strips___r_g_b" kind="class"><name>tifflib::TiffReadStrips_RGB</name>
+    <member refid="classtifflib_1_1_tiff_read_strips___r_g_b_1ac0879531020ceec62202733be09dc8cf" kind="function"><name>TiffReadStrips_RGB</name></member>
+  </compound>
+  <compound refid="struct_tiff_tag" kind="struct"><name>TiffTag</name>
+    <member refid="struct_tiff_tag_1a4ed16307624b3f00045afc4ae283ca23" kind="variable"><name>TagID</name></member>
+    <member refid="struct_tiff_tag_1a5faba26ebc69774967535ababef4ba97" kind="variable"><name>DataType</name></member>
+    <member refid="struct_tiff_tag_1acd08d531c18eb05cd04663b14386356b" kind="variable"><name>DataCount</name></member>
+    <member refid="struct_tiff_tag_1a516ba359a0cf7265e1382f2d0f1bf570" kind="variable"><name>DataOffset</name></member>
+  </compound>
+  <compound refid="structtifflib_1_1_tiff_tag_read" kind="struct"><name>tifflib::TiffTagRead</name>
+    <member refid="structtifflib_1_1_tiff_tag_read_1a9a07e0d883d54ea3b503a7452975f5f8" kind="variable"><name>TagID</name></member>
+    <member refid="structtifflib_1_1_tiff_tag_read_1a404884d3d04b55de682839295b7a1dce" kind="variable"><name>data</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_tiff_write_data" kind="class"><name>tifflib::TiffWriteData</name>
+    <member refid="classtifflib_1_1_tiff_write_data_1ab643e0357d42fc6cc01d1d4a1aa1bea8" kind="typedef"><name>SetElement</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a0a343d64f58fce2c0d1f9bc822f33d9b" kind="typedef"><name>SetType</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a6bc9732d1ced87e9ae128523dbb630b9" kind="variable"><name>_width</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a71b6663fff485fc22bd774dc334525dc" kind="variable"><name>_length</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a3298e79666585531f35d6f5454d13265" kind="variable"><name>_compression</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a70e0fe4b4ba471db7fddb0d8233fe5e4" kind="variable"><name>_offset</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a269674958e3114558f42c4b6b61c17e5" kind="variable"><name>_numerTDF</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1afb47fca05411cff05ebdc7f6a8229cd6" kind="variable"><name>next_offset</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1aa75f1399a3f47fb186bd07804332f4a6" kind="variable"><name>_offset_data</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1ac6e9eb958f8b8877413a50ac39eec62d" kind="variable"><name>_strip_byte_count</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a4a68901ea36f348f128ac4a85b3bd4e2" kind="variable"><name>_img</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a3f58d92217243683fa1d73d8c7c4b768" kind="variable"><name>_stream</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1ada6f0f531e8df58e68e21f850871344f" kind="variable"><name>_values</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1aa036c6306728f07cfcc33439408e0393" kind="variable"><name>_endian_handler</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1ae9d9142d9e1de98c3285150f65e6466f" kind="function"><name>TiffWriteData</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1aba9904ba033a16cac7fdc3c0afa9b118" kind="function"><name>TiffWriteData</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a15f0ab768d2bf2531a6d7660fc4e09ac" kind="function"><name>write_ifd_element</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a3c72a4be58c86637e9e8ae0991dd9aa0" kind="function"><name>write_IFDs</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1af23c876cc8705eb69f06a5d77bea213c" kind="function"><name>apply_PhotometricInterpretation</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1ab685513f1f71f4022d25879c00ac5726" kind="function"><name>compress</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a4740a62c6cdad8bf0adc2a213b10b92a" kind="function"><name>write_image_data</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a75680ae2dcb2cadd9b7d4b5f44913d4e" kind="function"><name>tags_to_set</name></member>
+    <member refid="classtifflib_1_1_tiff_write_data_1a1a5cf6d41683b069d81d822b1b02c070" kind="function"><name>write</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_tiff_writer" kind="class"><name>tifflib::TiffWriter</name>
+    <member refid="classtifflib_1_1_tiff_writer_1a6a5cf8fbf094049ff6849311a7ba408f" kind="variable"><name>_file</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_1a4e40514b2c0abbf70e22245f32e0a36c" kind="variable"><name>_header</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_1abe1583dbff2117cffbd7b80e6a9da843" kind="variable"><name>_writer</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_1ad09028cf4950aecf1bdd2133f4301de8" kind="function"><name>TiffWriter</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_1a4526cda1bd0b68a337f289773a371cc9" kind="function"><name>write</name></member>
+  </compound>
+  <compound refid="structtifflib_1_1_tiff_writer_config" kind="struct"><name>tifflib::TiffWriterConfig</name>
+    <member refid="structtifflib_1_1_tiff_writer_config_1af6b8b787b88dd9c1e4cb05f685db7828" kind="variable"><name>compression</name></member>
+  </compound>
+  <compound refid="classtifflib_1_1_tiff_writer_header" kind="class"><name>tifflib::TiffWriterHeader</name>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a28f57b915cde4aace8d9e1ca76a971e1" kind="variable"><name>_stream</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a7235ebb00f41186cf93f6bc559cb8b4f" kind="variable"><name>_magic_num</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a2adfe2ba37cbd3db55ddd756b21f0ec1" kind="variable"><name>_endian</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a2acbe8a028045aba5a4c7e91ba99ebb9" kind="variable"><name>_idf_offset</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a63cd93bedbdfa178197cfa6cc90a936d" kind="function"><name>TiffWriterHeader</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a87135727992408f158104ae5adcaae11" kind="function"><name>TiffWriterHeader</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a8924cd72633d3cebd7c5d05826ee22bb" kind="function"><name>TiffWriterHeader</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a5f7088a43913946a860ac7edec909031" kind="function"><name>get_idf_offset</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a316de801be75d38374706f035eefe574" kind="function"><name>write_header</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a307dfbfb0695681d845d015779fd395b" kind="function"><name>create_endian_handler</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_header_1a5ed18d82eda04b81fb0a5880640ea7b0" kind="function"><name>get_stream</name></member>
+  </compound>
+  <compound refid="structvector__element" kind="struct"><name>vector_element</name>
+  </compound>
+  <compound refid="structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4" kind="struct"><name>vector_element&lt; std::vector&lt; T &gt; &gt;</name>
+    <member refid="structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4_1aff8a4dce5e6335d95d86df5cb4596057" kind="typedef"><name>type</name></member>
+  </compound>
+  <compound refid="class_virtual_endian_handler" kind="class"><name>VirtualEndianHandler</name>
+    <member refid="class_virtual_endian_handler_1a1cf334d89f60272c790d360b4ae5f5e5" kind="function"><name>convert</name></member>
+    <member refid="class_virtual_endian_handler_1aca9a966dd27e3542361a1c1a750e7e7c" kind="function"><name>convert</name></member>
+    <member refid="class_virtual_endian_handler_1a4f36a353fb35559f459d779f85cbea55" kind="function"><name>convert</name></member>
+    <member refid="class_virtual_endian_handler_1add666b26317a6d8873907bab09a9c562" kind="function"><name>convert</name></member>
+    <member refid="class_virtual_endian_handler_1a92c8324c32146015018b458a5fda3c02" kind="function"><name>convert</name></member>
+    <member refid="class_virtual_endian_handler_1ab8b50e8722e40c0a9a87d3162a4d7401" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_virtual_endian_handler_1a11280abbd96e76c8d47e2274d42459df" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_virtual_endian_handler_1ab9a64b068884ead9624649f84320d4e6" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_virtual_endian_handler_1a8a895096163549a9d2a3fd312bc070a5" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_virtual_endian_handler_1a0cc8e299945cf7ef020ae6fdffeea9ca" kind="function"><name>get_endian_value</name></member>
+    <member refid="class_virtual_endian_handler_1a072b536340cff2460e7b38ca11b95739" kind="function"><name>~VirtualEndianHandler</name></member>
+  </compound>
+  <compound refid="concept_iterable" kind="concept"><name>Iterable</name>
+  </compound>
+  <compound refid="concept_iterable_size" kind="concept"><name>IterableSize</name>
+  </compound>
+  <compound refid="concept_sizeable" kind="concept"><name>Sizeable</name>
+  </compound>
+  <compound refid="namespacecompression" kind="namespace"><name>compression</name>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="namespacetifflib" kind="namespace"><name>tifflib</name>
+    <member refid="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4ad" kind="enum"><name>SupportedImageTypes</name></member>
+    <member refid="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4adad37a3d05b5bdeece0b90f0ecc9c5944e" kind="enumvalue"><name>Bitlevel</name></member>
+    <member refid="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4adad3f6975213fb5546d8486b54b025dbd7" kind="enumvalue"><name>Grayscale</name></member>
+    <member refid="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4ada889574aebacda6bfd3e534e2b49b8028" kind="enumvalue"><name>RGB</name></member>
+    <member refid="tiff__writer-image_8hpp_1a3fe015659010bb2e1a2995c1abfe8db1" kind="typedef"><name>TiffWriterImgType</name></member>
+    <member refid="tiff-data_8hpp_1afd5e7b63939a75b508b1433420aaded4" kind="function"><name>read_char_str</name></member>
+  </compound>
+  <compound refid="packbits_8hpp" kind="file"><name>packbits.hpp</name>
+  </compound>
+  <compound refid="endian_handler_8cpp" kind="file"><name>endianHandler.cpp</name>
+  </compound>
+  <compound refid="endian_handler_8hpp" kind="file"><name>endianHandler.hpp</name>
+  </compound>
+  <compound refid="_test_abstract_image_8hpp" kind="file"><name>TestAbstractImage.hpp</name>
+  </compound>
+  <compound refid="_test_r_g_b_images_8cpp" kind="file"><name>TestRGBImages.cpp</name>
+  </compound>
+  <compound refid="_test_r_g_b_images_8hpp" kind="file"><name>TestRGBImages.hpp</name>
+    <member refid="_test_r_g_b_images_8hpp_1a04ed6770f42862195d7144c27be9b3eb" kind="enum"><name>RampType</name></member>
+    <member refid="_test_r_g_b_images_8hpp_1a04ed6770f42862195d7144c27be9b3eba86e5d0d8407ce71f7e2004ef3949894e" kind="enumvalue"><name>HORIZONTAL</name></member>
+    <member refid="_test_r_g_b_images_8hpp_1a04ed6770f42862195d7144c27be9b3eba3e1b74251c07310c5f1b968145bf00dc" kind="enumvalue"><name>VERTICAL</name></member>
+    <member refid="_test_r_g_b_images_8hpp_1a04ed6770f42862195d7144c27be9b3ebad3fbf8a4dbb33b1e296fcaa32703b66d" kind="enumvalue"><name>DIAGONAL</name></member>
+  </compound>
+  <compound refid="_image_container_8cpp" kind="file"><name>ImageContainer.cpp</name>
+  </compound>
+  <compound refid="_image_container_8hpp" kind="file"><name>ImageContainer.hpp</name>
+  </compound>
+  <compound refid="_image_solid_color_8cpp" kind="file"><name>ImageSolidColor.cpp</name>
+  </compound>
+  <compound refid="_image_solid_color_8hpp" kind="file"><name>ImageSolidColor.hpp</name>
+  </compound>
+  <compound refid="_file_reader_8cpp" kind="file"><name>FileReader.cpp</name>
+  </compound>
+  <compound refid="_file_reader_8hpp" kind="file"><name>FileReader.hpp</name>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="tiff-data-variant_8hpp" kind="file"><name>tiff-data-variant.hpp</name>
+    <member refid="tiff-data-variant_8hpp_1a2bc6f086dd45f5ef75935e22e28dd3d1" kind="typedef"><name>TiffDataVariant</name></member>
+    <member refid="tiff-data-variant_8hpp_1ac0b12550e148008e9ae5fc582c8fc600" kind="function"><name>safe_convert</name></member>
+    <member refid="tiff-data-variant_8hpp_1ae070713028c1142fb4d5896a11469088" kind="function"><name>make_variant</name></member>
+    <member refid="tiff-data-variant_8hpp_1a24b5f6b7ffea9aec59bc90120529dc3f" kind="function"><name>make_variant</name></member>
+    <member refid="tiff-data-variant_8hpp_1a4ce2c842c6e0e7a2caccc95d7dbae9bc" kind="function"><name>make_variant_vector</name></member>
+    <member refid="tiff-data-variant_8hpp_1ae031ad2f48cfda78513f7bf7cdbc1295" kind="function"><name>make_variant</name></member>
+    <member refid="tiff-data-variant_8hpp_1a62622095310c4783053c31dda4bf0ea4" kind="function"><name>make_variant</name></member>
+    <member refid="tiff-data-variant_8hpp_1a2babf129eb98da719ac0ac8104847f2d" kind="function"><name>make_variant</name></member>
+    <member refid="tiff-data-variant_8hpp_1a47c17369b51b89d361b4591bec786cc7" kind="function"><name>get_variant_element_size</name></member>
+    <member refid="tiff-data-variant_8hpp_1a74689a0fb96cd3994b91ddc16987f824" kind="function"><name>calc_binary</name></member>
+    <member refid="tiff-data-variant_8hpp_1a24911d0f927cff5d7a45d63eeef27ae0" kind="function"><name>operator+</name></member>
+    <member refid="tiff-data-variant_8hpp_1ab6b43f805ce0eaf24fd6ce274d84b6f7" kind="function"><name>operator-</name></member>
+    <member refid="tiff-data-variant_8hpp_1a9d9067dcc4735bf6da5c6165e0886b09" kind="function"><name>operator*</name></member>
+    <member refid="tiff-data-variant_8hpp_1a8b7ce0b6b3e34908fa62fbf1dc090123" kind="function"><name>operator==</name></member>
+    <member refid="tiff-data-variant_8hpp_1a494d141a09f55fc6a4de6b42cb3e32bc" kind="function"><name>operator/</name></member>
+    <member refid="tiff-data-variant_8hpp_1a0555317b9a394d031338b78f49a51e02" kind="function"><name>to_ulong</name></member>
+    <member refid="tiff-data-variant_8hpp_1ab006e1b7aba82532b72bd06962c2c965" kind="function"><name>to_size_t</name></member>
+    <member refid="tiff-data-variant_8hpp_1a91615230628806c615ed852b94393ed2" kind="function"><name>to_string</name></member>
+  </compound>
+  <compound refid="tiff-types_8hpp" kind="file"><name>tiff-types.hpp</name>
+    <member refid="tiff-types_8hpp_1a485c5b197ea1f90fd2f161a25ab5573e" kind="enum"><name>TiffDataType</name></member>
+    <member refid="tiff-types_8hpp_1a485c5b197ea1f90fd2f161a25ab5573eae409eb2ba6eb6801f52763ae370c350e" kind="enumvalue"><name>BYTE</name></member>
+    <member refid="tiff-types_8hpp_1a485c5b197ea1f90fd2f161a25ab5573ead2cd8253361a9c732d21ca1d336599cc" kind="enumvalue"><name>ASCII</name></member>
+    <member refid="tiff-types_8hpp_1a485c5b197ea1f90fd2f161a25ab5573eaa35c2b02966b1563e5bf7b81b8b0cf77" kind="enumvalue"><name>SHORT</name></member>
+    <member refid="tiff-types_8hpp_1a485c5b197ea1f90fd2f161a25ab5573eac1fabfea54ec6011e694f211f3ffebf3" kind="enumvalue"><name>LONG</name></member>
+    <member refid="tiff-types_8hpp_1a485c5b197ea1f90fd2f161a25ab5573ea75e33ef57f63402e3e5f003a10841651" kind="enumvalue"><name>RATIONAL</name></member>
+    <member refid="tiff-types_8hpp_1afa0395a434e2c26e44275061087d1c4d" kind="enum"><name>TiffCompression</name></member>
+    <member refid="tiff-types_8hpp_1afa0395a434e2c26e44275061087d1c4da6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
+    <member refid="tiff-types_8hpp_1afa0395a434e2c26e44275061087d1c4da307876499c0fd2e24399514f7cbf9360" kind="enumvalue"><name>PackBits</name></member>
+    <member refid="tiff-types_8hpp_1ac7f8aac2ff2f06fbf2a9fe47e171b09b" kind="enum"><name>TiffPhotometricInterpretation</name></member>
+    <member refid="tiff-types_8hpp_1ac7f8aac2ff2f06fbf2a9fe47e171b09ba27f254f841c0e52db717b32b1f8f3df3" kind="enumvalue"><name>WhiteIsZero</name></member>
+    <member refid="tiff-types_8hpp_1ac7f8aac2ff2f06fbf2a9fe47e171b09ba01a0f8150a2090ca521332ca31f3d13f" kind="enumvalue"><name>BlackIsZero</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06d" kind="enum"><name>TiffTagType</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06dae12f2c4a45ef682f76e780e1dfd97e94" kind="enumvalue"><name>NewSubfileType</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da2b338d127c66bb3101680dd17f5b1ca6" kind="enumvalue"><name>ImageWidth</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da01ba5b8c3f36ed5ab64e0a16236f430d" kind="enumvalue"><name>ImageLength</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06dab5a288cd3c2b0abcae3975dbb4d60615" kind="enumvalue"><name>BitsPerSample</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da82af841589057aa8922b1ac3bb4a28a4" kind="enumvalue"><name>Compression</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06dacab6f3b103c25f1eff216e3ae350dad3" kind="enumvalue"><name>PhotometricInterpretation</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da9cdf70e029eb2ef624d02575cd3c70ff" kind="enumvalue"><name>StripOffsets</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06daabbd64f40c34c537d3a571af068fce29" kind="enumvalue"><name>Orientation</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06daaaa016faee3713beb851394787722424" kind="enumvalue"><name>SamplesPerPixel</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da94452b08fc50cd081764cb192674aa53" kind="enumvalue"><name>RowsPerStrip</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da9f3528bb3dfee984b4852ac5e5216e87" kind="enumvalue"><name>StripByteCounts</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da224a06771f0ea5f7915d6a5630d6b47e" kind="enumvalue"><name>XResolution</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06daec94a6d23403264da7173df45812e50c" kind="enumvalue"><name>YResolution</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da59b8064aaba9e1f38b76da5a1347d417" kind="enumvalue"><name>PlanarConfiguration</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da474b330821317837469ccaeb29f29778" kind="enumvalue"><name>PageName</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06daf1e140a94fdfc137c6fea4f97f1ba411" kind="enumvalue"><name>ResolutionUnit</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da30844578151522babbfde2fe9b3a7a22" kind="enumvalue"><name>PageNumber</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da2a5505d158f1c33a5c9d30492edce2ac" kind="enumvalue"><name>TileWidth</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da18cb3901139e07483e3ba9c6c44307c6" kind="enumvalue"><name>TileLength</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da9ed7960c2e512cfaca23a083a6b732aa" kind="enumvalue"><name>TileOffsets</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da0a92badade9f9ef0e06633fde348a0d0" kind="enumvalue"><name>TileByteCounts</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06da6d866fc05286c51bb02601cf5a98be5a" kind="enumvalue"><name>ExtraSamples</name></member>
+    <member refid="tiff-types_8hpp_1ad18facb28859216c01199120845ac06daa8d9ec43af9bc095a5013b5a374b824a" kind="enumvalue"><name>SampleFormat</name></member>
+    <member refid="tiff-types_8hpp_1a5bde4d9bc018cb2e8c5e7c3a7512e4ba" kind="enum"><name>tiff_header_endian</name></member>
+    <member refid="tiff-types_8hpp_1a5bde4d9bc018cb2e8c5e7c3a7512e4baa1314341b466dcb5e2c880b76414c49fe" kind="enumvalue"><name>LITTLE</name></member>
+    <member refid="tiff-types_8hpp_1a5bde4d9bc018cb2e8c5e7c3a7512e4baaa60c6c694491d75b439073b8cb05b139" kind="enumvalue"><name>BIG</name></member>
+    <member refid="tiff-types_8hpp_1a6f9a8418c6972a4ca5cd2234434f0a2a" kind="enum"><name>tiff_photometric_interpretation</name></member>
+    <member refid="tiff-types_8hpp_1a6f9a8418c6972a4ca5cd2234434f0a2aa27f254f841c0e52db717b32b1f8f3df3" kind="enumvalue"><name>WhiteIsZero</name></member>
+    <member refid="tiff-types_8hpp_1a6f9a8418c6972a4ca5cd2234434f0a2aa01a0f8150a2090ca521332ca31f3d13f" kind="enumvalue"><name>BlackIsZero</name></member>
+    <member refid="tiff-types_8hpp_1a6f9a8418c6972a4ca5cd2234434f0a2aa889574aebacda6bfd3e534e2b49b8028" kind="enumvalue"><name>RGB</name></member>
+    <member refid="tiff-types_8hpp_1a6f9a8418c6972a4ca5cd2234434f0a2aaa0bfea3196a6ae9528ccf78e37cdec38" kind="enumvalue"><name>PaletteColor</name></member>
+    <member refid="tiff-types_8hpp_1a6f9a8418c6972a4ca5cd2234434f0a2aa6915416f23ac394a0e644f7cd9878fbb" kind="enumvalue"><name>TransparencyMask</name></member>
+    <member refid="tiff-types_8hpp_1a4622cc6c1d36eff0029cb1cff0d88f88" kind="variable"><name>TiffTag_size</name></member>
+    <member refid="tiff-types_8hpp_1a938133474c91a62f422a1c7b36e1911a" kind="function"><name>get_tag_data_type</name></member>
+    <member refid="tiff-types_8hpp_1a7907e34cdffd4c3ff8b923cd37f277c8" kind="function"><name>to_string</name></member>
+    <member refid="tiff-types_8hpp_1a7b68499aad7e5a53b42a7092eeef39d9" kind="function"><name>get_tiff_type_size</name></member>
+    <member refid="tiff-types_8hpp_1ab6692bca44c1ed4de9bb2035c5254e14" kind="function"><name>to_string</name></member>
+    <member refid="tiff-types_8hpp_1a5f330f25648467ed1b57ad9cae2ad844" kind="function"><name>to_uint64</name></member>
+  </compound>
+  <compound refid="types_8hpp" kind="file"><name>types.hpp</name>
+    <member refid="types_8hpp_1ab83d5f0c064cbee3702ccc57cea87f14" kind="typedef"><name>uint8_t</name></member>
+    <member refid="types_8hpp_1a050f2956fee2785f77bf37589a25c6bb" kind="typedef"><name>uint_t</name></member>
+    <member refid="types_8hpp_1a829ea0d4327aa7f112d05632587d3a6b" kind="typedef"><name>ushort_t</name></member>
+    <member refid="types_8hpp_1a339c01c5b79a3378ee67ee5a6f293cc7" kind="typedef"><name>uint64_t</name></member>
+    <member refid="types_8hpp_1a39e368a7379428372d0c0a604f436b92" kind="function"><name>read_char</name></member>
+    <member refid="types_8hpp_1a0363300dfe8f4af9b09849e8fd4ce547" kind="function"><name>write_char</name></member>
+    <member refid="types_8hpp_1a20202f1c09220c05f77d10d04dd476df" kind="function"><name>write_char</name></member>
+    <member refid="types_8hpp_1a0f5ea640787bbc9295f619fa435441eb" kind="function"><name>write_char</name></member>
+    <member refid="types_8hpp_1aeea2bf456bf4af09eca89b980be2b71b" kind="function"><name>write_char</name></member>
+  </compound>
+  <compound refid="tiff-data_8hpp" kind="file"><name>tiff-data.hpp</name>
+  </compound>
+  <compound refid="tiff-header_8hpp" kind="file"><name>tiff-header.hpp</name>
+  </compound>
+  <compound refid="tiff-reader_8hpp" kind="file"><name>tiff-reader.hpp</name>
+  </compound>
+  <compound refid="tiff-writer-header_8hpp" kind="file"><name>tiff-writer-header.hpp</name>
+  </compound>
+  <compound refid="tiff-writer_8hpp" kind="file"><name>tiff-writer.hpp</name>
+  </compound>
+  <compound refid="tiff__writer-image_8hpp" kind="file"><name>tiff_writer-image.hpp</name>
+  </compound>
+  <compound refid="dir_40ed6a89610fc2370cf3ffcd6469b940" kind="dir"><name>D:/Projects/ImageConverter/src/compression</name>
+  </compound>
+  <compound refid="dir_3bf9da16c5f898b80f45f16c379ffa4a" kind="dir"><name>D:/Projects/ImageConverter/src/image-generation</name>
+  </compound>
+  <compound refid="dir_c184e51c84f2c3f0345bbc8a0d75d3e1" kind="dir"><name>D:/Projects/ImageConverter/src/io</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>D:/Projects/ImageConverter/src</name>
+  </compound>
+  <compound refid="dir_6ddc509b8b38759a20dec5cad25f05d6" kind="dir"><name>D:/Projects/ImageConverter/src/tiff-config</name>
+  </compound>
+  <compound refid="dir_b524359cec6b9a85a906d2e06446a3a2" kind="dir"><name>D:/Projects/ImageConverter/src/tiff-reader</name>
+  </compound>
+  <compound refid="dir_7bc4c60d5477c62c61ab7a7de06978cc" kind="dir"><name>D:/Projects/ImageConverter/src/tiff-writer</name>
+  </compound>
+</doxygenindex>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_tag_type_value_3_01_tiff_tag_type_1_1_y_resolution_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>TagTypeValue&lt; TiffTagType::YResolution &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_tag_type_value_3_01_tiff_tag_type_1_1_y_resolution_01_4_1a595a716cddca699792238d54d8a79751" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using TagTypeValue&lt; TiffTagType::YResolution &gt;::type = uint64_t</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>TagTypeValue&lt; TiffTagType::YResolution &gt;::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="99" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="98" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="98" bodyend="100"/>
+    <listofallmembers>
+      <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_y_resolution_01_4_1a595a716cddca699792238d54d8a79751" prot="public" virt="non-virtual"><scope>TagTypeValue&lt; TiffTagType::YResolution &gt;</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

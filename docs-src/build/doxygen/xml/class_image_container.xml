@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_image_container" kind="class" language="C++" prot="public">
+    <compoundname>ImageContainer</compoundname>
+    <includes refid="_image_container_8hpp" local="no">ImageContainer.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename PT</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_image_container_1aad1083283fa974afbf6bad1d0e789d6a" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; PT &gt;</type>
+        <definition>std::vector&lt;PT&gt; ImageContainer&lt; PT &gt;::_img</definition>
+        <argsstring></argsstring>
+        <name>_img</name>
+        <qualifiedname>ImageContainer::_img</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="28" column="17" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_image_container_1a7ce62ec9eced49511948464b9b1822be" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::_row_length</definition>
+        <argsstring></argsstring>
+        <name>_row_length</name>
+        <qualifiedname>ImageContainer::_row_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="30" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_image_container_1a8ef9757dc2878aa2538caa77f626174d" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::_pixel_number_of_colors</definition>
+        <argsstring></argsstring>
+        <name>_pixel_number_of_colors</name>
+        <qualifiedname>ImageContainer::_pixel_number_of_colors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="31" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_image_container_1a5e8d126b6ba7e3f582668545a61490a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ImageContainer&lt; PT &gt;::ImageContainer</definition>
+        <argsstring>(const size_t row_length, const size_t pixel_number_of_colors)</argsstring>
+        <name>ImageContainer</name>
+        <qualifiedname>ImageContainer::ImageContainer</qualifiedname>
+        <param>
+          <type>const size_t</type>
+          <declname>row_length</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pixel_number_of_colors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="34" column="5" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a8905e9423dacb6d35d425b3687ca0d89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ImageContainer&lt; PT &gt;::ImageContainer</definition>
+        <argsstring>(ImageContainer &amp;&amp;other)</argsstring>
+        <name>ImageContainer</name>
+        <qualifiedname>ImageContainer::ImageContainer</qualifiedname>
+        <param>
+          <type><ref refid="class_image_container" kindref="compound">ImageContainer</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="37" column="5" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a5316da6559c414b1600dc223c7d0f1fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ImageContainer&lt; PT &gt;::~ImageContainer</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ImageContainer</name>
+        <qualifiedname>ImageContainer::~ImageContainer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1aef57b88aad224a67e49982109ea0ed9a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::get_column_length</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_column_length</name>
+        <qualifiedname>ImageContainer::get_column_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="44" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a6276a865dc0aff243a1a732342a69993" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::get_height</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_height</name>
+        <qualifiedname>ImageContainer::get_height</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="48" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a629a5791a960e810f7922f41997b04f5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::get_width</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_width</name>
+        <qualifiedname>ImageContainer::get_width</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="53" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1ad33af16fe1626c6edfc6f8a1cce55d9c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::get_total_size</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_total_size</name>
+        <qualifiedname>ImageContainer::get_total_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="57" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a77af01a6d767fa49b5c74733612ae649" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::get_pixel_number_of_colors</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_pixel_number_of_colors</name>
+        <qualifiedname>ImageContainer::get_pixel_number_of_colors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="59" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a7b4052a4d23e5f9c7edccf1556c3c781" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t ImageContainer&lt; PT &gt;::get_bytes_per_row</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_bytes_per_row</name>
+        <qualifiedname>ImageContainer::get_bytes_per_row</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="63" column="12" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a9e501f6a9362bcfb67e06b191d6c5c94" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_image_container" kindref="compound">ImageContainer</ref> &amp;</type>
+        <definition>ImageContainer &amp; ImageContainer&lt; PT &gt;::operator=</definition>
+        <argsstring>(ImageContainer &amp;&amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ImageContainer::operator=</qualifiedname>
+        <param>
+          <type><ref refid="class_image_container" kindref="compound">ImageContainer</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move assignment </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="70" column="20" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="70" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a119a41b9269f922e45b62a4e6c3e7c85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="concept_iterable_size" kindref="compound">IterableSize</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void ImageContainer&lt; PT &gt;::append_row</definition>
+        <argsstring>(T container)</argsstring>
+        <name>append_row</name>
+        <qualifiedname>ImageContainer::append_row</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>container</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="78" column="10" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="78" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1ab48d7cb402902f4df63ed28c514cf60a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ImageContainer&lt; PT &gt;::resize</definition>
+        <argsstring>(size_t rows)</argsstring>
+        <name>resize</name>
+        <qualifiedname>ImageContainer::resize</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>rows</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resize the image size <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of rows of the new image </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="98" column="10" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="98" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1ae38c8875d6ab84b5439c8cc9b13eb1ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ImageContainer&lt; PT &gt;::print</definition>
+        <argsstring>()</argsstring>
+        <name>print</name>
+        <qualifiedname>ImageContainer::print</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="105" column="10" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="105" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a095618585b8a584536cdbbd36c15e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; PT &gt; &amp;</type>
+        <definition>const std::vector&lt; PT &gt; &amp; ImageContainer&lt; PT &gt;::get_data</definition>
+        <argsstring>() const</argsstring>
+        <name>get_data</name>
+        <qualifiedname>ImageContainer::get_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="120" column="23" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1ad7aaeafde43b88a4d09d57c7d2351786" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>PT</type>
+        <definition>PT ImageContainer&lt; PT &gt;::at</definition>
+        <argsstring>(size_t row, size_t col, size_t px) const</argsstring>
+        <name>at</name>
+        <qualifiedname>ImageContainer::at</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>col</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>px</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Easy access function for the image data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="125" column="8" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="125" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_container_1a150c9b165303727997dd3b6d38b94ccb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_image_container" kindref="compound">ImageContainer</ref></type>
+        <definition>ImageContainer ImageContainer&lt; PT &gt;::transpose</definition>
+        <argsstring>()</argsstring>
+        <name>transpose</name>
+        <qualifiedname>ImageContainer::transpose</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create a new image with transposed image data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="153" column="20" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="153" bodyend="165"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Image Container Data is stored in row major order </para>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/ImageContainer.hpp" line="26" column="1" bodyfile="D:/Projects/ImageConverter/src/ImageContainer.hpp" bodystart="26" bodyend="166"/>
+    <listofallmembers>
+      <member refid="class_image_container_1aad1083283fa974afbf6bad1d0e789d6a" prot="private" virt="non-virtual"><scope>ImageContainer</scope><name>_img</name></member>
+      <member refid="class_image_container_1a8ef9757dc2878aa2538caa77f626174d" prot="private" virt="non-virtual"><scope>ImageContainer</scope><name>_pixel_number_of_colors</name></member>
+      <member refid="class_image_container_1a7ce62ec9eced49511948464b9b1822be" prot="private" virt="non-virtual"><scope>ImageContainer</scope><name>_row_length</name></member>
+      <member refid="class_image_container_1a119a41b9269f922e45b62a4e6c3e7c85" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>append_row</name></member>
+      <member refid="class_image_container_1ad7aaeafde43b88a4d09d57c7d2351786" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>at</name></member>
+      <member refid="class_image_container_1a7b4052a4d23e5f9c7edccf1556c3c781" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>get_bytes_per_row</name></member>
+      <member refid="class_image_container_1aef57b88aad224a67e49982109ea0ed9a" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>get_column_length</name></member>
+      <member refid="class_image_container_1a095618585b8a584536cdbbd36c15e045" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>get_data</name></member>
+      <member refid="class_image_container_1a6276a865dc0aff243a1a732342a69993" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>get_height</name></member>
+      <member refid="class_image_container_1a77af01a6d767fa49b5c74733612ae649" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>get_pixel_number_of_colors</name></member>
+      <member refid="class_image_container_1ad33af16fe1626c6edfc6f8a1cce55d9c" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>get_total_size</name></member>
+      <member refid="class_image_container_1a629a5791a960e810f7922f41997b04f5" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>get_width</name></member>
+      <member refid="class_image_container_1a5e8d126b6ba7e3f582668545a61490a6" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>ImageContainer</name></member>
+      <member refid="class_image_container_1a8905e9423dacb6d35d425b3687ca0d89" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>ImageContainer</name></member>
+      <member refid="class_image_container_1a9e501f6a9362bcfb67e06b191d6c5c94" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>operator=</name></member>
+      <member refid="class_image_container_1ae38c8875d6ab84b5439c8cc9b13eb1ff" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>print</name></member>
+      <member refid="class_image_container_1ab48d7cb402902f4df63ed28c514cf60a" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>resize</name></member>
+      <member refid="class_image_container_1a150c9b165303727997dd3b6d38b94ccb" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>transpose</name></member>
+      <member refid="class_image_container_1a5316da6559c414b1600dc223c7d0f1fb" prot="public" virt="non-virtual"><scope>ImageContainer</scope><name>~ImageContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

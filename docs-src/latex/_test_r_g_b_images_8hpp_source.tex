@@ -1,0 +1,44 @@
+\doxysection{Test\+RGBImages.\+hpp}
+\hypertarget{_test_r_g_b_images_8hpp_source}{}\label{_test_r_g_b_images_8hpp_source}\index{D:/Projects/ImageConverter/src/image-\/generation/TestRGBImages.hpp@{D:/Projects/ImageConverter/src/image-\/generation/TestRGBImages.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}TestAbstractImage.hpp"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{class\ }TestImageSingleColor\ :\ \textcolor{keyword}{public}\ TestAbstractImage<uint8\_t>\ \{}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \_color;}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \_rows;}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \_columns;}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \_pixel;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ TestImageSingleColor(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ n,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ m,\ \textcolor{keywordtype}{size\_t}\ pixel,\ \textcolor{keyword}{const}\ uint8\_t\ color);}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_image_single_color_ae0498235ce5afe9779f2cd9cfc9ae4b4}{generateImage}}();}
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum\ class}\ RampType\{HORIZONTAL,\ VERTICAL\};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }TestImageRampRGB\ :\ \textcolor{keyword}{public}\ TestAbstractImage<uint8\_t>\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//member\ variables}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \_color\_min;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \_color\_max;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \_rows;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \_columns;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ RampType\ \_type;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{const}\ std::array<size\_t,\ 3>\ \_idx;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ TestImageRampRGB(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ n,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ m,\ RampType\ type,\ \textcolor{keyword}{const}\ uint8\_t\ color\_min,\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ color\_max,\ \textcolor{keyword}{const}\ std::array<size\_t,\ 3>\ idx);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_image_ramp_r_g_b_a97cba0c1bb17f31f1399edc5e3f9acf5}{generateImage}}();}
+\DoxyCodeLine{00036\ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{inline}\ std::array<uint8\_t,\ 3>\ calc\_function(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ i,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ j);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+
+\end{DoxyCode}

@@ -1,0 +1,55 @@
+\doxysection{tiff-\/writer.hpp}
+\hypertarget{tiff-writer_8hpp_source}{}\label{tiff-writer_8hpp_source}\index{D:/Projects/ImageConverter/src/tiff-\/writer/tiff-\/writer.hpp@{D:/Projects/ImageConverter/src/tiff-\/writer/tiff-\/writer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../io/FileReader.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}tiff-\/writer-\/header.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}tiff\_writer-\/image.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }TiffWriter\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ std::ofstream\ \_file;}
+\DoxyCodeLine{00017\ \ \ \ \ std::unique\_ptr<TiffWriterHeader>\ \_header;}
+\DoxyCodeLine{00018\ \ \ \ \ std::unique\_ptr<TiffWriteData<uint8\_t>>\ \_writer;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{explicit}\ TiffWriter(std::filesystem::path\ image\_path,\ SupportedImageTypes\ type,\ std::shared\_ptr<\doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}>\ img\ )\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ this-\/>\_file\ =\ std::ofstream(image\_path,\ std::ios::binary);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!this-\/>\_file)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(std::format(\textcolor{stringliteral}{"{}Error,\ could\ not\ access\ file\ in\ path\ \{\}\(\backslash\)n"{}},\ 22));}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ throw\ std::runtime\_error(std::format("{}Error,\ could\ not\ access\ file\ in\ path\ \{\}\(\backslash\)n"{},\ image\_path));}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ this-\/>\_header\ =\ std::unique\_ptr<TiffWriterHeader>(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_tiff_writer_header}{TiffWriterHeader}}(this-\/>\_file\ )\ );}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(type)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::Bitlevel:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_bitlevel_image}{BitlevelImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file)\ );}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::Grayscale:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_gray_image}{GrayImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file)\ );}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::RGB:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(\textcolor{keyword}{new}\ \doxymbox{\hyperlink{class_r_g_b_image}{RGBImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file)\ );}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ write()\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ this-\/>\_header-\/>write\_header();\ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ this-\/>\_writer-\/>write();}
+\DoxyCodeLine{00048\ \ \ \ \ \};}
+\DoxyCodeLine{00049\ \};}
+
+\end{DoxyCode}

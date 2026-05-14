@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classtifflib_1_1_tiff_writer" kind="class" language="C++" prot="public">
+    <compoundname>tifflib::TiffWriter</compoundname>
+    <includes refid="tiff-writer_8hpp" local="no">tiff-writer.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_writer_1a6a5cf8fbf094049ff6849311a7ba408f" prot="private" static="no" mutable="no">
+        <type>std::ofstream</type>
+        <definition>std::ofstream tifflib::TiffWriter::_file</definition>
+        <argsstring></argsstring>
+        <name>_file</name>
+        <qualifiedname>tifflib::TiffWriter::_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" line="22" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_writer_1a4e40514b2c0abbf70e22245f32e0a36c" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classtifflib_1_1_tiff_writer_header" kindref="compound">TiffWriterHeader</ref> &gt;</type>
+        <definition>std::optional&lt;TiffWriterHeader&gt; tifflib::TiffWriter::_header</definition>
+        <argsstring></argsstring>
+        <name>_header</name>
+        <qualifiedname>tifflib::TiffWriter::_header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" line="23" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_writer_1abe1583dbff2117cffbd7b80e6a9da843" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classtifflib_1_1_tiff_write_data" kindref="compound">TiffWriteData</ref>&lt; uint8_t &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt; &gt; tifflib::TiffWriter::_writer</definition>
+        <argsstring></argsstring>
+        <name>_writer</name>
+        <qualifiedname>tifflib::TiffWriter::_writer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" line="24" column="21" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtifflib_1_1_tiff_writer_1ad09028cf4950aecf1bdd2133f4301de8" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::TiffWriter::TiffWriter</definition>
+        <argsstring>(std::filesystem::path image_path, SupportedImageTypes type, const ImageContainer&lt; uint8_t &gt; *img, const TiffCompression compression=TiffCompression::None)</argsstring>
+        <name>TiffWriter</name>
+        <qualifiedname>tifflib::TiffWriter::TiffWriter</qualifiedname>
+        <param>
+          <type>std::filesystem::path</type>
+          <declname>image_path</declname>
+        </param>
+        <param>
+          <type>SupportedImageTypes</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; uint8_t &gt; *</type>
+          <declname>img</declname>
+        </param>
+        <param>
+          <type>const TiffCompression</type>
+          <declname>compression</declname>
+          <defval>TiffCompression::None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>image path: path to the image type: which TIFF image type should be used ( e.g. Grayscale, RGB, ... ) img: Image to write </para>
+</listitem>
+</itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" line="32" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" bodystart="32" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_writer_1a4526cda1bd0b68a337f289773a371cc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriter::write</definition>
+        <argsstring>()</argsstring>
+        <name>write</name>
+        <qualifiedname>tifflib::TiffWriter::write</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Perform the writing </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" line="66" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" bodystart="66" bodyend="69"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Write an <ref refid="class_image_container" kindref="compound">ImageContainer</ref> to a Tiff File Usage: <ref refid="classtifflib_1_1_tiff_writer" kindref="compound">TiffWriter</ref> writer(&lt;path&gt;, tifflib::SupportedImageTypes::RGB, image); writer.write(); </para>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" line="21" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer.hpp" bodystart="21" bodyend="70"/>
+    <listofallmembers>
+      <member refid="classtifflib_1_1_tiff_writer_1a6a5cf8fbf094049ff6849311a7ba408f" prot="private" virt="non-virtual"><scope>tifflib::TiffWriter</scope><name>_file</name></member>
+      <member refid="classtifflib_1_1_tiff_writer_1a4e40514b2c0abbf70e22245f32e0a36c" prot="private" virt="non-virtual"><scope>tifflib::TiffWriter</scope><name>_header</name></member>
+      <member refid="classtifflib_1_1_tiff_writer_1abe1583dbff2117cffbd7b80e6a9da843" prot="private" virt="non-virtual"><scope>tifflib::TiffWriter</scope><name>_writer</name></member>
+      <member refid="classtifflib_1_1_tiff_writer_1ad09028cf4950aecf1bdd2133f4301de8" prot="public" virt="non-virtual"><scope>tifflib::TiffWriter</scope><name>TiffWriter</name></member>
+      <member refid="classtifflib_1_1_tiff_writer_1a4526cda1bd0b68a337f289773a371cc9" prot="public" virt="non-virtual"><scope>tifflib::TiffWriter</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

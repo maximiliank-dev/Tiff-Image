@@ -1,0 +1,11 @@
+\doxysection{Sizeable Concept Reference}
+\hypertarget{concept_sizeable}{}\label{concept_sizeable}\index{Sizeable@{Sizeable}}
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\doxymbox{\hyperlink{concept_sizeable}{Sizeable}}\ =\ \textcolor{keyword}{requires}(T\ a)\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ a.size()\ \}\ -\/>\ std::same\_as<std::size\_t>;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

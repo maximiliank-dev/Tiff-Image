@@ -1,0 +1,90 @@
+\doxysection{Gray\+Image Class Reference}
+\hypertarget{class_gray_image}{}\label{class_gray_image}\index{GrayImage@{GrayImage}}
+
+
+{\ttfamily \+\#include $<$tiff\+\_\+writer-\/image.\+hpp$>$}
+
+Inheritance diagram for Gray\+Image:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_gray_image}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gray_image_ae6b8e2090602cb0af8301471213facba}\label{class_gray_image_ae6b8e2090602cb0af8301471213facba} 
+{\bfseries Gray\+Image} (\doxymbox{\hyperlink{class_tiff_writer_header}{Tiff\+Writer\+Header}} header, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ $>$ img, std::\+basic\+\_\+ostream$<$ char $>$ \&stream)
+\item 
+void \doxymbox{\hyperlink{class_gray_image_ac40f9610f2afc5aced6abc10dc96b170}{tags\+\_\+to\+\_\+set}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_bitlevel_image}{Bitlevel\+Image}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Bitlevel\+Image} (\doxymbox{\hyperlink{class_tiff_writer_header}{Tiff\+Writer\+Header}} header, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ $>$ img, std::\+basic\+\_\+ostream$<$ char $>$ \&stream)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Tiff\+Write\+Data} (\doxymbox{\hyperlink{class_tiff_writer_header}{Tiff\+Writer\+Header}} header, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ $>$ img, std::\+basic\+\_\+ostream$<$ char $>$ \&stream)
+\item 
+Set\+Element {\bfseries convert\+\_\+to\+\_\+\+Set\+Element} (Tiff\+Tag\+Type tag, uint64\+\_\+t value)
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_af24727e79177b188e67051b748cd5de8}{write\+\_\+ifd\+\_\+element}} (Tiff\+Tag\+Type tag, Tiff\+Data\+Variant variant, std::\+vector$<$ Tiff\+Data\+Variant $>$ \&rational\+\_\+values)
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_a255115187a8ff6e66df298a19bfa05d4}{write\+\_\+\+IFDs}} ()
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_a92abc3268d0f65f80047ff38e5dcd045}{write\+\_\+image\+\_\+data}} ()
+\item 
+void \doxymbox{\hyperlink{class_tiff_write_data_afc97471637974c130127cf486d9e4001}{write}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries Set\+Element}
+\item 
+using {\bfseries Set\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_tiff_write_data}{Tiff\+Write\+Data$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t {\bfseries \+\_\+offset}
+\item 
+uint16\+\_\+t {\bfseries \+\_\+numer\+TDF}
+\item 
+uint\+\_\+t {\bfseries next\+\_\+offset}
+\item 
+uint64\+\_\+t {\bfseries \+\_\+offset\+\_\+data}
+\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ $>$ {\bfseries \+\_\+img}
+\item 
+std::\+basic\+\_\+ostream$<$ char $>$ \& {\bfseries \+\_\+stream}
+\item 
+Set\+Type {\bfseries \+\_\+values}
+\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ {\bfseries \+\_\+endian\+\_\+handler}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class configuration for Grey Images Data are 8 Bits long White is 0x\+FF, Black is 0x0 
+
+\label{doc-func-members}
+\Hypertarget{class_gray_image_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gray_image_ac40f9610f2afc5aced6abc10dc96b170}\index{GrayImage@{GrayImage}!tags\_to\_set@{tags\_to\_set}}
+\index{tags\_to\_set@{tags\_to\_set}!GrayImage@{GrayImage}}
+\doxysubsubsection{\texorpdfstring{tags\_to\_set()}{tags\_to\_set()}}
+{\footnotesize\ttfamily \label{class_gray_image_ac40f9610f2afc5aced6abc10dc96b170} 
+void Gray\+Image::\+tags\+\_\+to\+\_\+set (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the basic TIFF Settings Must be used in all image types 
+
+Reimplemented from \doxymbox{\hyperlink{class_bitlevel_image_a0b5ca3810a9903a48699dd7aa4b10d8d}{Bitlevel\+Image}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+tiff-\/writer/\+tiff\+\_\+writer-\/image.\+hpp\end{DoxyCompactItemize}

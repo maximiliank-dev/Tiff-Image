@@ -1,0 +1,285 @@
+\doxysection{tiff-\/data-\/variant.hpp}
+\hypertarget{tiff-data-variant_8hpp_source}{}\label{tiff-data-variant_8hpp_source}\index{D:/Projects/ImageConverter/src/tiff-\/config/tiff-\/data-\/variant.hpp@{D:/Projects/ImageConverter/src/tiff-\/config/tiff-\/data-\/variant.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <execution>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}types.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}tiff-\/types.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ }TiffDataVariant\ =\ std::variant<std::vector<uint8\_t>,\ std::vector<ushort\_t>,\ std::vector<uint\_t>,\ std::vector<uint64\_t>,\ std::string>;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//helper\ functions}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//value\ is\ true\ when\ vector\ contains\ an\ integral\ type\ parameter}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector}}\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector}}<std::vector<T>>\ :\ std::bool\_constant<std::is\_integral\_v<T>>\ \{\};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//extract\ the\ vector\ template\ type}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structvector__element}{vector\_element}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00028\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structvector__element}{vector\_element}}<std::vector<T>>\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ T;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00033\ \textcolor{keyword}{inline}\ T\ safe\_convert(uint64\_t\ value)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_integral\_v<T>,\ \textcolor{stringliteral}{"{}T\ must\ be\ integral\ type"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static\_assert}(!std::is\_same\_v<T,\ bool>,\ \textcolor{stringliteral}{"{}T\ must\ not\ be\ bool\ type"{}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}(\ value\ >\ std::numeric\_limits<T>::max())\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ conversion\ failed"{}});}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{return}\ T(value);}
+\DoxyCodeLine{00041\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{inline}\ TiffDataVariant\ make\_variant(\textcolor{keyword}{const}\ TiffDataType\ type)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{switch}(type)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::BYTE:\ \textcolor{keywordflow}{return}\ std::vector<uint8\_t>();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::ASCII:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::SHORT:\ \textcolor{keywordflow}{return}\ std::vector<ushort\_t>();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::LONG:\ \textcolor{keywordflow}{return}\ std::vector<uint\_t>();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::RATIONAL:\ \textcolor{keywordflow}{return}\ std::vector<uint64\_t>();}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ type\ is\ not\ supported"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00062\ \textcolor{keyword}{inline}\ TiffDataVariant\ make\_variant(\textcolor{keyword}{const}\ T\ value)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\ std::is\_same\_v<T,\ uint8\_t>)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<uint8\_t>\{safe\_convert<uint8\_t>(value)\};}
+\DoxyCodeLine{00065\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::string>)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::to\_string(value);}
+\DoxyCodeLine{00067\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ ushort\_t>)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<ushort\_t>\{safe\_convert<ushort\_t>(value)\};}
+\DoxyCodeLine{00069\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(std::is\_same\_v<T,\ uint\_t>)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<uint\_t>\{safe\_convert<uint\_t>(value)\};}
+\DoxyCodeLine{00071\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(std::is\_same\_v<T,\ uint64\_t>)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<uint64\_t>\{safe\_convert<uint64\_t>(value)\};}
+\DoxyCodeLine{00073\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ type\ is\ not\ supported"{}});}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ V>}
+\DoxyCodeLine{00082\ \textcolor{keyword}{inline}\ std::vector<V>\ make\_variant\_vector(std::initializer\_list<T>\ values)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ std::vector<V>\ vec;}
+\DoxyCodeLine{00084\ \ \ \ \ vec.reserve(values.size());}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ T\&\ el\ :\ values)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ vec.push\_back(safe\_convert<V>(el));}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{return}\ vec;}
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{inline}\ TiffDataVariant\ make\_variant(\textcolor{keyword}{const}\ TiffDataType\ type,\ \textcolor{keyword}{const}\ std::initializer\_list<uint64\_t>\ values)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{switch}(type)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::BYTE:\ \ \textcolor{keywordflow}{return}\ make\_variant\_vector<uint64\_t,\ uint8\_t>(values);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::ASCII:\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ s;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ s.reserve(values.size());}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint64\_t\ v\ :\ values)\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.push\_back(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(v));\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::SHORT:\ \textcolor{keywordflow}{return}\ make\_variant\_vector<uint64\_t,\ ushort\_t>(values);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::LONG:\ \ \textcolor{keywordflow}{return}\ make\_variant\_vector<uint64\_t,\ uint\_t>(values);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::RATIONAL:\ \textcolor{keywordflow}{return}\ make\_variant\_vector<uint64\_t,\ uint64\_t>(values);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ type\ is\ not\ supported"{}});}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{inline}\ TiffDataVariant\ make\_variant(\textcolor{keyword}{const}\ TiffTagType\ tag,\ std::initializer\_list<uint64\_t>\ value\ )\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{auto}\ type\ =\ get\_tag\_data\_type(tag);}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{return}\ make\_variant(type,\ value);}
+\DoxyCodeLine{00119\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{//template<typename\ T>}}
+\DoxyCodeLine{00125\ \textcolor{keyword}{inline}\ TiffDataVariant\ make\_variant(\textcolor{keyword}{const}\ TiffTagType\ tag,\ uint64\_t\ value\ )\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return}\ make\_variant(tag,\ \{value\});}
+\DoxyCodeLine{00127\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{inline}\ std::size\_t\ get\_variant\_element\_size(\textcolor{keyword}{const}\ TiffDataVariant\ variant)\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit(\ [](\textcolor{keyword}{auto}\&\ el\ )\{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(T::value\_type);}
+\DoxyCodeLine{00138\ \ \ \ \ \},\ variant);}
+\DoxyCodeLine{00139\ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{template}<\textcolor{keyword}{template}<\textcolor{keyword}{typename}>\ \textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00142\ \textcolor{keyword}{inline}\ TiffDataVariant\ calc\_binary(\textcolor{keyword}{const}\ TiffDataVariant\&\ a,\ \textcolor{keyword}{const}\ TiffDataVariant\&\ b)\ }
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit([](\textcolor{keyword}{auto}\&\ x,\ \textcolor{keyword}{auto}\&\ y)\ -\/>\ TiffDataVariant\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }A\ =\ std::decay\_t<\textcolor{keyword}{decltype}(x)>;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }B\ =\ std::decay\_t<\textcolor{keyword}{decltype}(y)>;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}}\ \&\&\ \doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}}\ )\ \{\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Ta\ =\ A::value\_type;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Tb\ =\ B::value\_type;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint64\_t>\ result(x.size());}
+\DoxyCodeLine{00152\ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ std::transform(x.begin(),\ x.end(),\ y.begin(),\ result.begin(),\ [](\textcolor{keyword}{const}\ Ta\&\ ela,\ \textcolor{keyword}{const}\ Tb\&\ elb)\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//call\ the\ operation\ struct\ of\ the\ STL}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ F<uint64\_t>\{\}(\textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(ela),\ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(elb));}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ operator\ F\ :\ variant\ is\ not\ of\ integral\ type"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \},\ a,\ b);}
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{inline}\ TiffDataVariant\ operator+(\textcolor{keyword}{const}\ TiffDataVariant\&\ a,\ \textcolor{keyword}{const}\ TiffDataVariant\&\ b)}
+\DoxyCodeLine{00166\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit([](\textcolor{keyword}{auto}\&\ x,\ \textcolor{keyword}{auto}\&\ y)\ -\/>\ TiffDataVariant\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }A\ =\ std::decay\_t<\textcolor{keyword}{decltype}(x)>;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }B\ =\ std::decay\_t<\textcolor{keyword}{decltype}(y)>;}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}}\ \&\&\ std::is\_same\_v<A,\ B>\ )\ \{\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Ta\ =\ \doxymbox{\hyperlink{structvector__element}{vector\_element<A>::type}};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Tb\ =\ \doxymbox{\hyperlink{structvector__element}{vector\_element<B>::type}};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::common\_type\_t<Ta,\ Tb>;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint64\_t>\ result(x.size());}
+\DoxyCodeLine{00176\ \ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ std::transform(x.begin(),\ x.end(),\ y.begin(),\ result.begin(),\ [](\textcolor{keyword}{const}\ Ta\&\ ela,\ \textcolor{keyword}{const}\ Tb\&\ elb)\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ static\_cast<uint64\_t>(ela)\ +\ static\_cast<uint64\_t>(elb);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ operator\ +\ :\ variant\ is\ not\ of\ integral\ type"{}});}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \},\ a,\ b);}
+\DoxyCodeLine{00185\ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{inline}\ TiffDataVariant\ operator-\/(\textcolor{keyword}{const}\ TiffDataVariant\&\ a,\ \textcolor{keyword}{const}\ TiffDataVariant\&\ b)}
+\DoxyCodeLine{00188\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{return}\ calc\_binary<std::minus>(a,\ b);}
+\DoxyCodeLine{00190\ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{inline}\ TiffDataVariant\ operator*(\textcolor{keyword}{const}\ TiffDataVariant\&\ a,\ \textcolor{keyword}{const}\ TiffDataVariant\&\ b)}
+\DoxyCodeLine{00193\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{return}\ calc\_binary<std::multiplies>(a,\ b);}
+\DoxyCodeLine{00195\ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00200\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ TiffDataVariant\&\ a,\ \textcolor{keyword}{const}\ TiffDataVariant\&\ b)}
+\DoxyCodeLine{00201\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit([](\textcolor{keyword}{auto}\&\ x,\ \textcolor{keyword}{auto}\&\ y)\ -\/>\ \textcolor{keywordtype}{bool}\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }A\ =\ std::decay\_t<\textcolor{keyword}{decltype}(x)>;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }B\ =\ std::decay\_t<\textcolor{keyword}{decltype}(y)>;}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}}\ \&\&\ \doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}}\ )\ \{\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x.size()\ !=\ y.size())\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::equal(x.begin(),\ x.end(),\ y.begin(),\ y.end(),\ [](\textcolor{keyword}{auto}\ el1,\ \textcolor{keyword}{auto}\ el2)\ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ static\_cast<uint64\_t>(el1)\ ==\ static\_cast<uint64\_t>(el2);}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ operator\ ==\ :\ variant\ is\ not\ of\ integral\ type"{}});}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \},\ a,\ b);\}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \textcolor{keyword}{inline}\ TiffDataVariant\ operator/(\textcolor{keyword}{const}\ TiffDataVariant\&\ a,\ \textcolor{keyword}{const}\ TiffDataVariant\&\ b)}
+\DoxyCodeLine{00219\ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{return}\ calc\_binary<std::divides>(a,\ b);}
+\DoxyCodeLine{00221\ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{keyword}{inline}\ uint64\_t\ to\_ulong(\textcolor{keyword}{const}\ TiffDataVariant\&\ a)\ \{}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit(\ [](\textcolor{keyword}{auto}\&\ el)\ -\/>\ uint64\_t\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }A\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(el.size()\ !=\ 1\ )\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ in\ to\_ulong:\ vector\ size\ must\ be\ 1"{}});}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\ \doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}})\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(el.at(0));}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::domain\_error(std::format(\textcolor{stringliteral}{"{}Conversion\ Error:\ variant\ is\ not\ of\ integral\ type\ got\ \{\}"{}},\ \textcolor{keyword}{typeid}(A).name()));}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \},\ a);}
+\DoxyCodeLine{00238\ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{size\_t}\ to\_size\_t(\textcolor{keyword}{const}\ TiffDataVariant\&\ a)\ \{}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit(\ [](\textcolor{keyword}{auto}\&\ el)\ -\/>\ \textcolor{keywordtype}{size\_t}\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }A\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(el.size()\ !=\ 1\ )\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ in\ to\_ulong:\ vector\ size\ must\ be\ 1"{}});}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\ \doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}})\ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ value\ =\ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(el.at(0));}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ <=\ std::numeric\_limits<size\_t>::max())\ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(value);}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ uint64\_t\ is\ too\ large:\ size\_t\ overflows"{}});}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::domain\_error(std::format(\textcolor{stringliteral}{"{}Conversion\ Error:\ variant\ is\ not\ of\ integral\ type\ got\ \{\}"{}},\ \textcolor{keyword}{typeid}(A).name()));}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \},\ a);}
+\DoxyCodeLine{00260\ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \textcolor{keyword}{inline}\ std::string\ to\_string(TiffDataVariant\ a)\ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit(}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ [](\textcolor{keyword}{auto}\ \&el)\ -\/>\ std::string\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }A\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ s\{\textcolor{stringliteral}{"{}"{}}\};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\doxymbox{\hyperlink{structis__integral__vector}{is\_integral\_vector<A>::value}})\ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ A::value\_type;\ \textcolor{comment}{//element\ type\ of\ a\ vector}}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\&\ v\ :\ el)\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ +=\ std::to\_string(v);}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(std::is\_same\_v<A,\ std::string>)\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ el;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::domain\_error(std::format(\textcolor{stringliteral}{"{}Conversion\ Error:\ variant\ is\ not\ of\ std::vector\ with\ integral\ or\ of\ std::string\ type\ got\ \{\}"{}},\ \textcolor{keyword}{typeid}(A).name()));}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \},\ a);}
+\DoxyCodeLine{00281\ \}}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \textcolor{comment}{//\ /**}}
+\DoxyCodeLine{00284\ \textcolor{comment}{//\ \ *\ Cast\ the\ variant\ to\ an\ array\ of\ size\_n}}
+\DoxyCodeLine{00285\ \textcolor{comment}{//\ \ *\ @throws\ cast\ error,\ if\ the\ data\ type\ does\ not\ fit\ into\ N\ chars}}
+\DoxyCodeLine{00286\ \textcolor{comment}{//\ \ */}}
+\DoxyCodeLine{00287\ \textcolor{comment}{//\ inline\ std::array<char,\ 1>\ make\_array(const\ TiffDataVariant\&\ variant,\ VirtualEndianHandler\&\ handler)\ \{}}
+\DoxyCodeLine{00288\ \textcolor{comment}{//\ \ \ \ \ return\ std::visit([\&handler](auto\ el)\ \ -\/>\ std::array<char,\ 1>\ \{}}
+\DoxyCodeLine{00289\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ using\ T\ =\ std::decay\_t<decltype(el)>;\ }}
+\DoxyCodeLine{00290\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ if\ constexpr(\ std::is\_same<T,\ uint8\_t>::value)\ \{}}
+\DoxyCodeLine{00291\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\&\ el\_loc\ =\ el;}}
+\DoxyCodeLine{00292\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ return\ handler.convert\_to\_array(el\_loc);}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}\ else\ if\ constexpr\ (\ std::is\_same<T,\ std::string>::value)\ \{\ //\ return\ the\ string\ value}}
+\DoxyCodeLine{00295\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ if(el.size()\ ==\ 1)\ \{}}
+\DoxyCodeLine{00296\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ std::array<char,\ 1>\{el.at(0)\};}}
+\DoxyCodeLine{00297\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ \{}}
+\DoxyCodeLine{00298\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ throw\ std::runtime\_error("{}Error\ string\ is\ too\ long,\ max\ length\ must\ be\ 1"{});}}
+\DoxyCodeLine{00299\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00300\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00301\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ throw\ std::runtime\_error("{}Error\ only\ uint8\ or\ string\ can\ be\ casted"{});}}
+\DoxyCodeLine{00302\ \textcolor{comment}{//\ \ \ \ \ \},\ variant);}}
+\DoxyCodeLine{00303\ \textcolor{comment}{//\ \}}}
+
+\end{DoxyCode}

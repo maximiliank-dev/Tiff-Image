@@ -1,0 +1,44 @@
+\doxysection{Tiff\+IFD Class Reference}
+\hypertarget{class_tiff_i_f_d}{}\label{class_tiff_i_f_d}\index{TiffIFD@{TiffIFD}}
+
+
+{\ttfamily \+\#include $<$tiff-\/data.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tiff_i_f_d_a45f97f52254227c65ddf666795453e46}\label{class_tiff_i_f_d_a45f97f52254227c65ddf666795453e46} 
+{\bfseries Tiff\+IFD} (std::\+basic\+\_\+istream$<$ char $>$ \&stream, uint\+\_\+t address, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ endian\+\_\+handler)
+\item 
+\Hypertarget{class_tiff_i_f_d_a42085c2f455603d9b132475bd8a6b204}\label{class_tiff_i_f_d_a42085c2f455603d9b132475bd8a6b204} 
+\doxymbox{\hyperlink{struct_tiff_tag}{Tiff\+Tag}} {\bfseries convert\+\_\+to\+\_\+tag} (std::\+array$<$ char, Tiff\+Tag\+\_\+size $>$ data)
+\item 
+\Hypertarget{class_tiff_i_f_d_ae249ec2028e7b79d45df52ce7076bd61}\label{class_tiff_i_f_d_ae249ec2028e7b79d45df52ce7076bd61} 
+void {\bfseries print\+Tag} (const \doxymbox{\hyperlink{struct_tiff_tag}{Tiff\+Tag}} tag)
+\item 
+\Hypertarget{class_tiff_i_f_d_ac8f6ca56c18d2f556e0f34af8d88a672}\label{class_tiff_i_f_d_ac8f6ca56c18d2f556e0f34af8d88a672} 
+void {\bfseries print\+Tag\+Read} (const \doxymbox{\hyperlink{struct_tiff_tag_read}{Tiff\+Tag\+Read}} tag)
+\item 
+\Hypertarget{class_tiff_i_f_d_a653f919f5ad01d52243d45580eaa5212}\label{class_tiff_i_f_d_a653f919f5ad01d52243d45580eaa5212} 
+std::\+basic\+\_\+istream$<$ char $>$ \& {\bfseries get\+\_\+stream} ()
+\item 
+\Hypertarget{class_tiff_i_f_d_a277993bbed72116130a6693415d3af7d}\label{class_tiff_i_f_d_a277993bbed72116130a6693415d3af7d} 
+\doxymbox{\hyperlink{struct_tiff_tag}{Tiff\+Tag}} {\bfseries get\+Tag} (const Tiff\+Tag\+Type tag\+\_\+type) const
+\item 
+\Hypertarget{class_tiff_i_f_d_a93106a84401ce4ad4c81a26ca0189822}\label{class_tiff_i_f_d_a93106a84401ce4ad4c81a26ca0189822} 
+\doxymbox{\hyperlink{struct_tiff_tag_read}{Tiff\+Tag\+Read}} {\bfseries read\+\_\+tiff\+\_\+tag} (const \doxymbox{\hyperlink{struct_tiff_tag}{Tiff\+Tag}} \&tag) const
+\item 
+\Hypertarget{class_tiff_i_f_d_ac0f0480441b5eedbd258f992d3cc1c74}\label{class_tiff_i_f_d_ac0f0480441b5eedbd258f992d3cc1c74} 
+void {\bfseries read} ()
+\item 
+\Hypertarget{class_tiff_i_f_d_ad64cf3e45e1c4ce333138f5db7d48206}\label{class_tiff_i_f_d_ad64cf3e45e1c4ce333138f5db7d48206} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ {\bfseries get\+\_\+endian\+\_\+handler} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for reading the Tif image file directory 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+tiff-\/reader/\+tiff-\/data.\+hpp\end{DoxyCompactItemize}

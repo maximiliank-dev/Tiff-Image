@@ -1,0 +1,51 @@
+\doxysection{endian\+Handler.\+hpp}
+\hypertarget{endian_handler_8hpp_source}{}\label{endian_handler_8hpp_source}\index{D:/Projects/ImageConverter/src/endianHandler.hpp@{D:/Projects/ImageConverter/src/endianHandler.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/tiff-\/types.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/types.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_virtual_endian_handler}{VirtualEndianHandler}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ conversion\ from\ an\ array}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ ushort\_t\ \doxymbox{\hyperlink{class_virtual_endian_handler_a1cf334d89f60272c790d360b4ae5f5e5}{convert}}(uint\_t\ c,\ \textcolor{keywordtype}{size\_t}\ idx)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ uint8\_t\ \doxymbox{\hyperlink{class_virtual_endian_handler_a1cf334d89f60272c790d360b4ae5f5e5}{convert}}(std::array<char,\ 1>\ c)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ ushort\_t\ \doxymbox{\hyperlink{class_virtual_endian_handler_a1cf334d89f60272c790d360b4ae5f5e5}{convert}}(std::array<char,\ 2>\ c)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ uint\_t\ \doxymbox{\hyperlink{class_virtual_endian_handler_a1cf334d89f60272c790d360b4ae5f5e5}{convert}}(std::array<char,\ 4>\ c)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ uint64\_t\ \doxymbox{\hyperlink{class_virtual_endian_handler_a1cf334d89f60272c790d360b4ae5f5e5}{convert}}(std::array<char,\ 8>\ c)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ conversions\ to\ an\ array}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ std::array<char,\ 1>\ convert\_to\_array(uint8\_t\ v)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ std::array<char,\ 2>\ convert\_to\_array(ushort\_t\ v)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ std::array<char,\ 4>\ convert\_to\_array(uint\_t\ v)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ std::array<char,\ 8>\ convert\_to\_array(uint64\_t\ v)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ tiff\_header\_endian\ get\_endian\_value()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ ASCII\ characters\ are\ not\ effected\ by\ the\ endianess\ ,\ so\ there\ is\ no}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ implementation\ needed}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_virtual_endian_handler}{\string~VirtualEndianHandler}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_little_endian___t_i_f_f}{LittleEndian\_TIFF}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_virtual_endian_handler}{VirtualEndianHandler}}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ uint8\_t\ convert(std::array<char,\ 1>\ c)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00037\ \ \ \ \ ushort\_t\ convert(std::array<char,\ 2>\ c)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00038\ \ \ \ \ uint\_t\ convert(std::array<char,\ 4>\ c)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00039\ \ \ \ \ uint64\_t\ convert(std::array<char,\ 8>\ c)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00040\ \ \ \ \ ushort\_t\ convert(uint\_t\ c,\ \textcolor{keywordtype}{size\_t}\ idx)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::array<char,\ 1>\ convert\_to\_array(uint8\_t\ v)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00043\ \ \ \ \ std::array<char,\ 2>\ convert\_to\_array(ushort\_t\ v)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00044\ \ \ \ \ std::array<char,\ 4>\ convert\_to\_array(uint\_t\ v)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00045\ \ \ \ \ std::array<char,\ 8>\ convert\_to\_array(uint64\_t\ v)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ tiff\_header\_endian\ get\_endian\_value()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00048\ \};}
+
+\end{DoxyCode}

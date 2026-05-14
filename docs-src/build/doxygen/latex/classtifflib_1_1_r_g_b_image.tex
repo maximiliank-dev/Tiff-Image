@@ -1,0 +1,96 @@
+\doxysection{tifflib::\+RGBImage Class Reference}
+\hypertarget{classtifflib_1_1_r_g_b_image}{}\label{classtifflib_1_1_r_g_b_image}\index{tifflib::RGBImage@{tifflib::RGBImage}}
+
+
+{\ttfamily \+\#include $<$tiff\+\_\+writer-\/image.\+hpp$>$}
+
+Inheritance diagram for tifflib::\+RGBImage:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classtifflib_1_1_r_g_b_image}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classtifflib_1_1_r_g_b_image_a6a0c5aa8f248daaeabb4cce2d03313ed}\label{classtifflib_1_1_r_g_b_image_a6a0c5aa8f248daaeabb4cce2d03313ed} 
+{\bfseries RGBImage} (\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_header}{Tiff\+Writer\+Header}} header, const \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ \texorpdfstring{$\ast$}{*}img, std::\+basic\+\_\+ostream$<$ char $>$ \&stream, \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{Tiff\+Writer\+Config}} config)
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_r_g_b_image_aedd86cd69079cbba650f70c072fb7180}{tags\+\_\+to\+\_\+set}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classtifflib_1_1_bitlevel_image}{tifflib::\+\+Bitlevel\+Image}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Bitlevel\+Image} (\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_header}{Tiff\+Writer\+Header}} header, const \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ \texorpdfstring{$\ast$}{*}img, std::\+basic\+\_\+ostream$<$ char $>$ \&stream, \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{Tiff\+Writer\+Config}} config)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data}{tifflib::\+\+Tiff\+Write\+Data$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Tiff\+Write\+Data} (const Tiff\+Write\+Data \&)=delete
+\item 
+{\bfseries Tiff\+Write\+Data} (\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_header}{Tiff\+Writer\+Header}} header, const \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ \texorpdfstring{$\ast$}{*}img, std::\+basic\+\_\+ostream$<$ char $>$ \&stream)
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data_a15f0ab768d2bf2531a6d7660fc4e09ac}{write\+\_\+ifd\+\_\+element}} (Tiff\+Tag\+Type tag, Tiff\+Data\+Variant variant, std::\+vector$<$ Tiff\+Data\+Variant $>$ \&rational\+\_\+values)
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data_a3c72a4be58c86637e9e8ae0991dd9aa0}{write\+\_\+\+IFDs}} ()
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data_af23c876cc8705eb69f06a5d77bea213c}{apply\+\_\+\+Photometric\+Interpretation}} (std::\+vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data_ab685513f1f71f4022d25879c00ac5726}{compress}} (std::\+vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data_a4740a62c6cdad8bf0adc2a213b10b92a}{write\+\_\+image\+\_\+data}} ()
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data_a1a5cf6d41683b069d81d822b1b02c070}{write}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data}{tifflib::\+\+Tiff\+Write\+Data$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries Set\+Element}
+\item 
+using {\bfseries Set\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classtifflib_1_1_tiff_write_data}{tifflib::\+\+Tiff\+Write\+Data$<$ uint8\+\_\+t $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t {\bfseries \+\_\+offset}
+\item 
+uint16\+\_\+t {\bfseries \+\_\+numer\+TDF}
+\item 
+uint\+\_\+t {\bfseries next\+\_\+offset}
+\item 
+uint64\+\_\+t {\bfseries \+\_\+offset\+\_\+data}
+\item 
+size\+\_\+t {\bfseries \+\_\+strip\+\_\+byte\+\_\+count}
+\item 
+const \doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+img}
+\item 
+std::\+basic\+\_\+ostream$<$ char $>$ \& {\bfseries \+\_\+stream}
+\item 
+Set\+Type {\bfseries \+\_\+values}
+\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ {\bfseries \+\_\+endian\+\_\+handler}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class configuration for RGB Images Data are 8 Bits long Max color is 0x\+FF, min color is 0x0 
+
+\label{doc-func-members}
+\Hypertarget{classtifflib_1_1_r_g_b_image_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtifflib_1_1_r_g_b_image_aedd86cd69079cbba650f70c072fb7180}\index{tifflib::RGBImage@{tifflib::RGBImage}!tags\_to\_set@{tags\_to\_set}}
+\index{tags\_to\_set@{tags\_to\_set}!tifflib::RGBImage@{tifflib::RGBImage}}
+\doxysubsubsection{\texorpdfstring{tags\_to\_set()}{tags\_to\_set()}}
+{\footnotesize\ttfamily \label{classtifflib_1_1_r_g_b_image_aedd86cd69079cbba650f70c072fb7180} 
+void tifflib::\+\+RGBImage::\+tags\+\_\+to\+\_\+set (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the basic TIFF Settings Must be used in all image types 
+
+Reimplemented from \doxymbox{\hyperlink{classtifflib_1_1_bitlevel_image_ac8341896307488b03c0f474a05ff53c3}{tifflib::\+\+Bitlevel\+Image}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+tiff-\/writer/\+tiff\+\_\+writer-\/image.\+hpp\end{DoxyCompactItemize}

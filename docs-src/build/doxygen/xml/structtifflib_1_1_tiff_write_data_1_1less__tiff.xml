@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="structtifflib_1_1_tiff_write_data_1_1less__tiff" kind="struct" language="C++" prot="protected">
+    <compoundname>tifflib::TiffWriteData::less_tiff</compoundname>
+    <includes refid="tiff-writer-header_8hpp" local="no">tiff-writer-header.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtifflib_1_1_tiff_write_data_1_1less__tiff_1a3f089ee7fd386b4a1894626bd24b6c0d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tifflib::TiffWriteData&lt; TP &gt;::less_tiff::operator()</definition>
+        <argsstring>(const TiffTagType &amp;lhs, const TiffTagType &amp;rhs) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>tifflib::TiffWriteData::less_tiff::operator()</qualifiedname>
+        <param>
+          <type>const TiffTagType &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const TiffTagType &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="89" column="24" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="89" bodyend="92"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>implement the ascending sorting for SetElement Required from the TIFF spec </para>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="88" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="88" bodyend="93"/>
+    <listofallmembers>
+      <member refid="structtifflib_1_1_tiff_write_data_1_1less__tiff_1a3f089ee7fd386b4a1894626bd24b6c0d" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData::less_tiff</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

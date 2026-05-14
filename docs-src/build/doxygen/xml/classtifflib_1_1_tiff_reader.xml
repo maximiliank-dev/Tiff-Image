@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classtifflib_1_1_tiff_reader" kind="class" language="C++" prot="public">
+    <compoundname>tifflib::TiffReader</compoundname>
+    <includes refid="tiff-reader_8hpp" local="no">tiff-reader.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_reader_1aaef49d5ca434b0f2bf1c85d2c263385b" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classtifflib_1_1_t_i_f_f_header" kindref="compound">TIFFHeader</ref> &gt;</type>
+        <definition>std::optional&lt;TIFFHeader&gt; tifflib::TiffReader::_header</definition>
+        <argsstring></argsstring>
+        <name>_header</name>
+        <qualifiedname>tifflib::TiffReader::_header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="23" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_reader_1a6059f1e8c0d2596d7171f1093281d40d" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classtifflib_1_1_tiff_i_f_d" kindref="compound">TiffIFD</ref> &gt;</type>
+        <definition>std::optional&lt;TiffIFD&gt; tifflib::TiffReader::_ifds</definition>
+        <argsstring></argsstring>
+        <name>_ifds</name>
+        <qualifiedname>tifflib::TiffReader::_ifds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="24" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_reader_1a805180ec5774e4caa466de78b6beb65b" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classtifflib_1_1_tiff_read_strips" kindref="compound">TiffReadStrips</ref> &gt;</type>
+        <definition>std::optional&lt;TiffReadStrips&gt; tifflib::TiffReader::_strips</definition>
+        <argsstring></argsstring>
+        <name>_strips</name>
+        <qualifiedname>tifflib::TiffReader::_strips</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="25" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_reader_1aa7e2026be0c72b00da1feff850252d30" prot="private" static="no" mutable="no">
+        <type>std::ifstream</type>
+        <definition>std::ifstream tifflib::TiffReader::_file</definition>
+        <argsstring></argsstring>
+        <name>_file</name>
+        <qualifiedname>tifflib::TiffReader::_file</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="27" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_reader_1ae589342364a800e51fce77352ebac48a" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tifflib::TiffReader::_data_valid</definition>
+        <argsstring></argsstring>
+        <name>_data_valid</name>
+        <qualifiedname>tifflib::TiffReader::_data_valid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="29" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtifflib_1_1_tiff_reader_1a13f51f042ce45d4b50178672b1edbe7c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::TiffReader::TiffReader</definition>
+        <argsstring>(std::filesystem::path image_path)</argsstring>
+        <name>TiffReader</name>
+        <qualifiedname>tifflib::TiffReader::TiffReader</qualifiedname>
+        <param>
+          <type>std::filesystem::path</type>
+          <declname>image_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="32" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="32" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_reader_1a30f8c03d06fc3062682d31992958193e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffReader::read</definition>
+        <argsstring>()</argsstring>
+        <name>read</name>
+        <qualifiedname>tifflib::TiffReader::read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the reading if a tiff file </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="45" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="45" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_reader_1a8343bf36072340c48fbd5f6ac06d73dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; uint8_t &gt;</type>
+        <definition>ImageContainer&lt; uint8_t &gt; tifflib::TiffReader::get_image</definition>
+        <argsstring>()</argsstring>
+        <name>get_image</name>
+        <qualifiedname>tifflib::TiffReader::get_image</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the image data and reruns the Image <ref refid="classtifflib_1_1_tiff_reader_1a30f8c03d06fc3062682d31992958193e" kindref="member">read()</ref> function must be called befor <simplesect kind="return"><para>The read image, or an image with 0 columns and 0 rows, if the <ref refid="classtifflib_1_1_tiff_reader_1a30f8c03d06fc3062682d31992958193e" kindref="member">read()</ref> function was not called.</para>
+</simplesect>
+<ref refid="classtifflib_1_1_tiff_reader_1a30f8c03d06fc3062682d31992958193e" kindref="member">read()</ref> must be called before </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="69" column="20" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="69" bodyend="75"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Wrapper to read a Tiff Image file the reader must get a valid path to the tiff image</para>
+<para>Usage: <ref refid="classtifflib_1_1_tiff_reader" kindref="compound">TiffReader</ref> reader(&lt;path&gt;); reader.read(); <ref refid="class_image_container" kindref="compound">ImageContainer&lt;uint8_t&gt;</ref> image = reader.get_image(); </para>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" line="22" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-reader.hpp" bodystart="22" bodyend="76"/>
+    <listofallmembers>
+      <member refid="classtifflib_1_1_tiff_reader_1ae589342364a800e51fce77352ebac48a" prot="private" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>_data_valid</name></member>
+      <member refid="classtifflib_1_1_tiff_reader_1aa7e2026be0c72b00da1feff850252d30" prot="private" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>_file</name></member>
+      <member refid="classtifflib_1_1_tiff_reader_1aaef49d5ca434b0f2bf1c85d2c263385b" prot="private" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>_header</name></member>
+      <member refid="classtifflib_1_1_tiff_reader_1a6059f1e8c0d2596d7171f1093281d40d" prot="private" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>_ifds</name></member>
+      <member refid="classtifflib_1_1_tiff_reader_1a805180ec5774e4caa466de78b6beb65b" prot="private" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>_strips</name></member>
+      <member refid="classtifflib_1_1_tiff_reader_1a8343bf36072340c48fbd5f6ac06d73dc" prot="public" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>get_image</name></member>
+      <member refid="classtifflib_1_1_tiff_reader_1a30f8c03d06fc3062682d31992958193e" prot="public" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>read</name></member>
+      <member refid="classtifflib_1_1_tiff_reader_1a13f51f042ce45d4b50178672b1edbe7c" prot="public" virt="non-virtual"><scope>tifflib::TiffReader</scope><name>TiffReader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

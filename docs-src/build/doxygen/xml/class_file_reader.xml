@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_file_reader" kind="class" language="C++" prot="public">
+    <compoundname>FileReader</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_file_reader_1acf020f59228bafca1b2e52eb4c38f803" prot="private" static="no" mutable="no">
+        <type>std::ifstream</type>
+        <definition>std::ifstream FileReader::_fstream</definition>
+        <argsstring></argsstring>
+        <name>_fstream</name>
+        <qualifiedname>FileReader::_fstream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="11" column="19" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_file_reader_1a19a8ea85bc7867ee2845375d6cb2d4fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FileReader::FileReader</definition>
+        <argsstring>(std::string file)</argsstring>
+        <name>FileReader</name>
+        <qualifiedname>FileReader::FileReader</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="14" column="5" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.hpp" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a484b93220c3c21aa9c64a53c88329204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_file_reader" kindref="compound">FileReader</ref> &amp;</type>
+        <definition>FileReader &amp; FileReader::seekg</definition>
+        <argsstring>(std::streampos pos)</argsstring>
+        <name>seekg</name>
+        <qualifiedname>FileReader::seekg</qualifiedname>
+        <param>
+          <type>std::streampos</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="16" column="16" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="4" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a0b46d58a3ccfcac10afde28701cb2835" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ifstream::pos_type</type>
+        <definition>std::ifstream::pos_type FileReader::tellg</definition>
+        <argsstring>()</argsstring>
+        <name>tellg</name>
+        <qualifiedname>FileReader::tellg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="17" column="29" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1adee359bd04534cb513f60b11e424e02f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int FileReader::sync</definition>
+        <argsstring>()</argsstring>
+        <name>sync</name>
+        <qualifiedname>FileReader::sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="18" column="9" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="13" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a24952f157193d2848fd5c24e1c85ac55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_file_reader" kindref="compound">FileReader</ref> &amp;</type>
+        <definition>FileReader &amp; FileReader::read</definition>
+        <argsstring>(std::ifstream::char_type *s, std::streamsize count)</argsstring>
+        <name>read</name>
+        <qualifiedname>FileReader::read</qualifiedname>
+        <param>
+          <type>std::ifstream::char_type *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>std::streamsize</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="19" column="16" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a2382e1713bd66aa987a8d522e418f7f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FileReader::good</definition>
+        <argsstring>() const</argsstring>
+        <name>good</name>
+        <qualifiedname>FileReader::good</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="21" column="10" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a2b7942e92d52897e7630aeb89d3de7d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FileReader::eof</definition>
+        <argsstring>() const</argsstring>
+        <name>eof</name>
+        <qualifiedname>FileReader::eof</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="22" column="10" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a409cfc6623fbcaa6c919c5fef013bf03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FileReader::fail</definition>
+        <argsstring>() const</argsstring>
+        <name>fail</name>
+        <qualifiedname>FileReader::fail</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="23" column="10" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a8ee34ec51879f26732467b967abf72e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FileReader::bad</definition>
+        <argsstring>() const</argsstring>
+        <name>bad</name>
+        <qualifiedname>FileReader::bad</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="24" column="10" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_file_reader_1a54bd5c714b4bff0f914c0fd57eb5d454" prot="public" static="no" const="yes" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>FileReader::operator bool</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>FileReader::operator bool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="28" column="14" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.cpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/io/FileReader.hpp" line="8" column="1" bodyfile="D:/Projects/ImageConverter/src/io/FileReader.hpp" bodystart="8" bodyend="30"/>
+    <listofallmembers>
+      <member refid="class_file_reader_1acf020f59228bafca1b2e52eb4c38f803" prot="private" virt="non-virtual"><scope>FileReader</scope><name>_fstream</name></member>
+      <member refid="class_file_reader_1a8ee34ec51879f26732467b967abf72e8" prot="public" virt="non-virtual"><scope>FileReader</scope><name>bad</name></member>
+      <member refid="class_file_reader_1a2b7942e92d52897e7630aeb89d3de7d4" prot="public" virt="non-virtual"><scope>FileReader</scope><name>eof</name></member>
+      <member refid="class_file_reader_1a409cfc6623fbcaa6c919c5fef013bf03" prot="public" virt="non-virtual"><scope>FileReader</scope><name>fail</name></member>
+      <member refid="class_file_reader_1a19a8ea85bc7867ee2845375d6cb2d4fa" prot="public" virt="non-virtual"><scope>FileReader</scope><name>FileReader</name></member>
+      <member refid="class_file_reader_1a2382e1713bd66aa987a8d522e418f7f5" prot="public" virt="non-virtual"><scope>FileReader</scope><name>good</name></member>
+      <member refid="class_file_reader_1a54bd5c714b4bff0f914c0fd57eb5d454" prot="public" virt="non-virtual"><scope>FileReader</scope><name>operator bool</name></member>
+      <member refid="class_file_reader_1a24952f157193d2848fd5c24e1c85ac55" prot="public" virt="non-virtual"><scope>FileReader</scope><name>read</name></member>
+      <member refid="class_file_reader_1a484b93220c3c21aa9c64a53c88329204" prot="public" virt="non-virtual"><scope>FileReader</scope><name>seekg</name></member>
+      <member refid="class_file_reader_1adee359bd04534cb513f60b11e424e02f" prot="public" virt="non-virtual"><scope>FileReader</scope><name>sync</name></member>
+      <member refid="class_file_reader_1a0b46d58a3ccfcac10afde28701cb2835" prot="public" virt="non-virtual"><scope>FileReader</scope><name>tellg</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

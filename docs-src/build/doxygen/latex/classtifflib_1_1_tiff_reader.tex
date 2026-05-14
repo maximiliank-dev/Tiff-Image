@@ -1,0 +1,46 @@
+\doxysection{tifflib::\+Tiff\+Reader Class Reference}
+\hypertarget{classtifflib_1_1_tiff_reader}{}\label{classtifflib_1_1_tiff_reader}\index{tifflib::TiffReader@{tifflib::TiffReader}}
+
+
+{\ttfamily \+\#include $<$tiff-\/reader.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classtifflib_1_1_tiff_reader_a13f51f042ce45d4b50178672b1edbe7c}\label{classtifflib_1_1_tiff_reader_a13f51f042ce45d4b50178672b1edbe7c} 
+{\bfseries Tiff\+Reader} (std::\+filesystem::\+path image\+\_\+path)
+\item 
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_reader_a30f8c03d06fc3062682d31992958193e}{read}} ()
+\item 
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classtifflib_1_1_tiff_reader_a8343bf36072340c48fbd5f6ac06d73dc}{get\+\_\+image}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wrapper to read a Tiff Image file the reader must get a valid path to the tiff image
+
+Usage:\+ \doxylink{classtifflib_1_1_tiff_reader}{Tiff\+Reader} reader($<$path$>$); reader.\+read(); \doxylink{class_image_container}{Image\+Container$<$uint8\+\_\+t$>$} image = reader.\+get\+\_\+image(); 
+
+\label{doc-func-members}
+\Hypertarget{classtifflib_1_1_tiff_reader_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtifflib_1_1_tiff_reader_a8343bf36072340c48fbd5f6ac06d73dc}\index{tifflib::TiffReader@{tifflib::TiffReader}!get\_image@{get\_image}}
+\index{get\_image@{get\_image}!tifflib::TiffReader@{tifflib::TiffReader}}
+\doxysubsubsection{\texorpdfstring{get\_image()}{get\_image()}}
+{\footnotesize\ttfamily \label{classtifflib_1_1_tiff_reader_a8343bf36072340c48fbd5f6ac06d73dc} 
+\doxymbox{\hyperlink{class_image_container}{Image\+Container}}$<$ uint8\+\_\+t $>$ tifflib::\+\+Tiff\+Reader::\+get\+\_\+image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reads the image data and reruns the Image \doxylink{classtifflib_1_1_tiff_reader_a30f8c03d06fc3062682d31992958193e}{read()} function must be called befor \begin{DoxyReturn}{Returns}
+The read image, or an image with 0 columns and 0 rows, if the \doxylink{classtifflib_1_1_tiff_reader_a30f8c03d06fc3062682d31992958193e}{read()} function was not called.
+\end{DoxyReturn}
+\doxylink{classtifflib_1_1_tiff_reader_a30f8c03d06fc3062682d31992958193e}{read()} must be called before \Hypertarget{classtifflib_1_1_tiff_reader_a30f8c03d06fc3062682d31992958193e}\index{tifflib::TiffReader@{tifflib::TiffReader}!read@{read}}
+\index{read@{read}!tifflib::TiffReader@{tifflib::TiffReader}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classtifflib_1_1_tiff_reader_a30f8c03d06fc3062682d31992958193e} 
+void tifflib::\+\+Tiff\+Reader::\+read (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implements the reading if a tiff file 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+D:\+/\+\+Projects/\+\+Image\+Converter/\+src/\+tiff-\/reader/\+tiff-\/reader.\+hpp\end{DoxyCompactItemize}

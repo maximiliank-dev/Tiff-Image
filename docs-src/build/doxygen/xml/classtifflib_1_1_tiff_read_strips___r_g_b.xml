@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classtifflib_1_1_tiff_read_strips___r_g_b" kind="class" language="C++" prot="public">
+    <compoundname>tifflib::TiffReadStrips_RGB</compoundname>
+    <basecompoundref refid="classtifflib_1_1_tiff_read_strips" prot="public" virt="non-virtual">tifflib::TiffReadStrips</basecompoundref>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtifflib_1_1_tiff_read_strips___r_g_b_1ac0879531020ceec62202733be09dc8cf" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::TiffReadStrips_RGB::TiffReadStrips_RGB</definition>
+        <argsstring>(TiffIFD &amp;ifd, std::shared_ptr&lt; VirtualEndianHandler &gt; endian_handler)</argsstring>
+        <name>TiffReadStrips_RGB</name>
+        <qualifiedname>tifflib::TiffReadStrips_RGB::TiffReadStrips_RGB</qualifiedname>
+        <param>
+          <type><ref refid="classtifflib_1_1_tiff_i_f_d" kindref="compound">TiffIFD</ref> &amp;</type>
+          <declname>ifd</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="class_virtual_endian_handler" kindref="compound">VirtualEndianHandler</ref> &gt;</type>
+          <declname>endian_handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="397" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="397" bodyend="399"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>tifflib::TiffReadStrips</label>
+        <link refid="classtifflib_1_1_tiff_read_strips"/>
+      </node>
+      <node id="1">
+        <label>tifflib::TiffReadStrips_RGB</label>
+        <link refid="classtifflib_1_1_tiff_read_strips___r_g_b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>tifflib::TiffReadStrips</label>
+        <link refid="classtifflib_1_1_tiff_read_strips"/>
+      </node>
+      <node id="1">
+        <label>tifflib::TiffReadStrips_RGB</label>
+        <link refid="classtifflib_1_1_tiff_read_strips___r_g_b"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="396" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="396" bodyend="400"/>
+    <listofallmembers>
+      <member refid="classtifflib_1_1_tiff_read_strips_1aa591a9f93de290f316b1b0c9b27ea05b" prot="public" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>get_image</name></member>
+      <member refid="classtifflib_1_1_tiff_read_strips_1aea7e27f9717519d322aac04309088159" prot="public" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>get_metadata_tag</name></member>
+      <member refid="classtifflib_1_1_tiff_read_strips_1a2f3434878de328111093eb62e4451401" prot="public" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>readStrips</name></member>
+      <member refid="classtifflib_1_1_tiff_read_strips_1a85beb6aab8ddbe779040564d2b47a387" prot="public" virt="virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>reformat_strip</name></member>
+      <member refid="classtifflib_1_1_tiff_read_strips_1a29aac33572cb0ba8d1c74dcfe8142c67" prot="public" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>TiffReadStrips</name></member>
+      <member refid="classtifflib_1_1_tiff_read_strips_1ae416d0de65c0f0cdd990e9aaaba2805d" prot="public" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>TiffReadStrips</name></member>
+      <member refid="classtifflib_1_1_tiff_read_strips___r_g_b_1ac0879531020ceec62202733be09dc8cf" prot="private" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>TiffReadStrips_RGB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classtifflib_1_1_t_i_f_f_header" kind="class" language="C++" prot="public">
+    <compoundname>tifflib::TIFFHeader</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtifflib_1_1_t_i_f_f_header_1afd22946d226afdb6f20f63dcfc2bb762" prot="private" static="no" mutable="no">
+        <type>std::basic_istream&lt; char &gt; &amp;</type>
+        <definition>std::basic_istream&lt;char&gt;&amp; tifflib::TIFFHeader::_stream</definition>
+        <argsstring></argsstring>
+        <name>_stream</name>
+        <qualifiedname>tifflib::TIFFHeader::_stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="17" column="24" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_t_i_f_f_header_1a2835a089aca0b770f4d4a0e54e1c4bea" prot="private" static="no" mutable="no">
+        <type>std::array&lt; char, 2 &gt;</type>
+        <definition>std::array&lt;char, 2&gt; tifflib::TIFFHeader::endian</definition>
+        <argsstring></argsstring>
+        <name>endian</name>
+        <qualifiedname>tifflib::TIFFHeader::endian</qualifiedname>
+        <initializer>= {0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="20" column="16" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="20" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_t_i_f_f_header_1a96684a8ace1a5636f39323ea0f7e4f11" prot="private" static="no" mutable="no">
+        <type>ushort_t</type>
+        <definition>ushort_t tifflib::TIFFHeader::magic_num</definition>
+        <argsstring></argsstring>
+        <name>magic_num</name>
+        <qualifiedname>tifflib::TIFFHeader::magic_num</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="21" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_t_i_f_f_header_1a0b6d7fc1b344a3cc63cc509686545c7a" prot="private" static="no" mutable="no">
+        <type>ushort_t</type>
+        <definition>ushort_t tifflib::TIFFHeader::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <qualifiedname>tifflib::TIFFHeader::version</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="22" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_t_i_f_f_header_1aa613b0084a0f27add2ac066fe85d42e0" prot="private" static="no" mutable="no">
+        <type>uint_t</type>
+        <definition>uint_t tifflib::TIFFHeader::idf_offset</definition>
+        <argsstring></argsstring>
+        <name>idf_offset</name>
+        <qualifiedname>tifflib::TIFFHeader::idf_offset</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="23" column="12" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_t_i_f_f_header_1a2c2fc4a30553b6ebf30d5e4cc39a627f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tifflib::TIFFHeader::err</definition>
+        <argsstring></argsstring>
+        <name>err</name>
+        <qualifiedname>tifflib::TIFFHeader::err</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="25" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_t_i_f_f_header_1a3c5bc2b1a6547737132a7038b926c103" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="class_virtual_endian_handler" kindref="compound">VirtualEndianHandler</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;VirtualEndianHandler&gt; tifflib::TIFFHeader::endian_handler</definition>
+        <argsstring></argsstring>
+        <name>endian_handler</name>
+        <qualifiedname>tifflib::TIFFHeader::endian_handler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="27" column="21" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtifflib_1_1_t_i_f_f_header_1af0d3bfd20ca5adc66592a8d752a01cfd" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::TIFFHeader::TIFFHeader</definition>
+        <argsstring>()</argsstring>
+        <name>TIFFHeader</name>
+        <qualifiedname>tifflib::TIFFHeader::TIFFHeader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="30" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_t_i_f_f_header_1a951ffb196ef8df983316051868fe82b1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::TIFFHeader::TIFFHeader</definition>
+        <argsstring>(std::basic_istream&lt; char &gt; &amp;stream)</argsstring>
+        <name>TIFFHeader</name>
+        <qualifiedname>tifflib::TIFFHeader::TIFFHeader</qualifiedname>
+        <param>
+          <type>std::basic_istream&lt; char &gt; &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="31" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_t_i_f_f_header_1a01524461df0f823d2fe12451a483db3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool tifflib::TIFFHeader::read</definition>
+        <argsstring>(std::array&lt; char, N &gt; &amp;buffer)</argsstring>
+        <name>read</name>
+        <qualifiedname>tifflib::TIFFHeader::read</qualifiedname>
+        <param>
+          <type>std::array&lt; char, N &gt; &amp;</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="34" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="34" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_t_i_f_f_header_1ac375806174788d310bc13de31305b89a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="class_virtual_endian_handler" kindref="compound">VirtualEndianHandler</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; VirtualEndianHandler &gt; tifflib::TIFFHeader::get_endian_handler</definition>
+        <argsstring>()</argsstring>
+        <name>get_endian_handler</name>
+        <qualifiedname>tifflib::TIFFHeader::get_endian_handler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="44" column="21" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_t_i_f_f_header_1a45b07d86fa88ef24a47599ef71920e65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint_t</type>
+        <definition>uint_t tifflib::TIFFHeader::get_idf_offset</definition>
+        <argsstring>()</argsstring>
+        <name>get_idf_offset</name>
+        <qualifiedname>tifflib::TIFFHeader::get_idf_offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="48" column="12" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_t_i_f_f_header_1af44d2968d2e4e713d52687000a471e5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TIFFHeader::parse_header</definition>
+        <argsstring>()</argsstring>
+        <name>parse_header</name>
+        <qualifiedname>tifflib::TIFFHeader::parse_header</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="50" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="50" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="15" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="15" bodyend="85"/>
+    <listofallmembers>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1afd22946d226afdb6f20f63dcfc2bb762" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>_stream</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a2835a089aca0b770f4d4a0e54e1c4bea" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>endian</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a3c5bc2b1a6547737132a7038b926c103" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>endian_handler</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a2c2fc4a30553b6ebf30d5e4cc39a627f" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>err</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1ac375806174788d310bc13de31305b89a" prot="public" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>get_endian_handler</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a45b07d86fa88ef24a47599ef71920e65" prot="public" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>get_idf_offset</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1aa613b0084a0f27add2ac066fe85d42e0" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>idf_offset</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a96684a8ace1a5636f39323ea0f7e4f11" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>magic_num</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1af44d2968d2e4e713d52687000a471e5c" prot="public" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>parse_header</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a01524461df0f823d2fe12451a483db3b" prot="public" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>read</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1af0d3bfd20ca5adc66592a8d752a01cfd" prot="public" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>TIFFHeader</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a951ffb196ef8df983316051868fe82b1" prot="public" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>TIFFHeader</name></member>
+      <member refid="classtifflib_1_1_t_i_f_f_header_1a0b6d7fc1b344a3cc63cc509686545c7a" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

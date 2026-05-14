@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_3bf9da16c5f898b80f45f16c379ffa4a" kind="dir">
+    <compoundname>D:/Projects/ImageConverter/src/image-generation</compoundname>
+    <innerfile refid="_test_abstract_image_8hpp">TestAbstractImage.hpp</innerfile>
+    <innerfile refid="_test_r_g_b_images_8cpp">TestRGBImages.cpp</innerfile>
+    <innerfile refid="_test_r_g_b_images_8hpp">TestRGBImages.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="D:/Projects/ImageConverter/src/image-generation/"/>
+  </compounddef>
+</doxygen>

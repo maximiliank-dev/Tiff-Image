@@ -1,0 +1,435 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classtifflib_1_1_tiff_write_data" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>tifflib::TiffWriteData</compoundname>
+    <innerclass refid="structtifflib_1_1_tiff_write_data_1_1less__tiff" prot="protected">tifflib::TiffWriteData::less_tiff</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename TP</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="classtifflib_1_1_tiff_write_data_1ab643e0357d42fc6cc01d1d4a1aa1bea8" prot="protected" static="no">
+        <type>std::pair&lt; TiffTagType, TiffDataVariant &gt;</type>
+        <definition>using tifflib::TiffWriteData&lt; TP &gt;::SetElement = std::pair&lt;TiffTagType, TiffDataVariant&gt;</definition>
+        <argsstring></argsstring>
+        <name>SetElement</name>
+        <qualifiedname>tifflib::TiffWriteData::SetElement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="82" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classtifflib_1_1_tiff_write_data_1a0a343d64f58fce2c0d1f9bc822f33d9b" prot="protected" static="no">
+        <type>std::map&lt; TiffTagType, TiffDataVariant, <ref refid="structtifflib_1_1_tiff_write_data_1_1less__tiff" kindref="compound">less_tiff</ref> &gt;</type>
+        <definition>using tifflib::TiffWriteData&lt; TP &gt;::SetType = std::map&lt;TiffTagType, TiffDataVariant, less_tiff&gt;</definition>
+        <argsstring></argsstring>
+        <name>SetType</name>
+        <qualifiedname>tifflib::TiffWriteData::SetType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="96" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1a6bc9732d1ced87e9ae128523dbb630b9" prot="private" static="no" mutable="no">
+        <type>TiffTagType</type>
+        <definition>TiffTagType tifflib::TiffWriteData&lt; TP &gt;::_width</definition>
+        <argsstring></argsstring>
+        <name>_width</name>
+        <qualifiedname>tifflib::TiffWriteData::_width</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="68" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1a71b6663fff485fc22bd774dc334525dc" prot="private" static="no" mutable="no">
+        <type>TiffTagType</type>
+        <definition>TiffTagType tifflib::TiffWriteData&lt; TP &gt;::_length</definition>
+        <argsstring></argsstring>
+        <name>_length</name>
+        <qualifiedname>tifflib::TiffWriteData::_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="69" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1a3298e79666585531f35d6f5454d13265" prot="private" static="no" mutable="no">
+        <type>TiffTagType</type>
+        <definition>TiffTagType tifflib::TiffWriteData&lt; TP &gt;::_compression</definition>
+        <argsstring></argsstring>
+        <name>_compression</name>
+        <qualifiedname>tifflib::TiffWriteData::_compression</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="70" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1a70e0fe4b4ba471db7fddb0d8233fe5e4" prot="protected" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tifflib::TiffWriteData&lt; TP &gt;::_offset</definition>
+        <argsstring></argsstring>
+        <name>_offset</name>
+        <qualifiedname>tifflib::TiffWriteData::_offset</qualifiedname>
+        <initializer>= 0x0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="73" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1a269674958e3114558f42c4b6b61c17e5" prot="protected" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t tifflib::TiffWriteData&lt; TP &gt;::_numerTDF</definition>
+        <argsstring></argsstring>
+        <name>_numerTDF</name>
+        <qualifiedname>tifflib::TiffWriteData::_numerTDF</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="74" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1afb47fca05411cff05ebdc7f6a8229cd6" prot="protected" static="no" mutable="no">
+        <type>uint_t</type>
+        <definition>uint_t tifflib::TiffWriteData&lt; TP &gt;::next_offset</definition>
+        <argsstring></argsstring>
+        <name>next_offset</name>
+        <qualifiedname>tifflib::TiffWriteData::next_offset</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="75" column="12" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1aa75f1399a3f47fb186bd07804332f4a6" prot="protected" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t tifflib::TiffWriteData&lt; TP &gt;::_offset_data</definition>
+        <argsstring></argsstring>
+        <name>_offset_data</name>
+        <qualifiedname>tifflib::TiffWriteData::_offset_data</qualifiedname>
+        <initializer>= 0x8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="76" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1ac6e9eb958f8b8877413a50ac39eec62d" prot="protected" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t tifflib::TiffWriteData&lt; TP &gt;::_strip_byte_count</definition>
+        <argsstring></argsstring>
+        <name>_strip_byte_count</name>
+        <qualifiedname>tifflib::TiffWriteData::_strip_byte_count</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="77" column="12" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1a4a68901ea36f348f128ac4a85b3bd4e2" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; TP &gt; *</type>
+        <definition>const ImageContainer&lt;TP&gt;* tifflib::TiffWriteData&lt; TP &gt;::_img</definition>
+        <argsstring></argsstring>
+        <name>_img</name>
+        <qualifiedname>tifflib::TiffWriteData::_img</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="79" column="26" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1a3f58d92217243683fa1d73d8c7c4b768" prot="protected" static="no" mutable="no">
+        <type>std::basic_ostream&lt; char &gt; &amp;</type>
+        <definition>std::basic_ostream&lt;char&gt;&amp; tifflib::TiffWriteData&lt; TP &gt;::_stream</definition>
+        <argsstring></argsstring>
+        <name>_stream</name>
+        <qualifiedname>tifflib::TiffWriteData::_stream</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="80" column="24" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1ada6f0f531e8df58e68e21f850871344f" prot="protected" static="no" mutable="no">
+        <type>SetType</type>
+        <definition>SetType tifflib::TiffWriteData&lt; TP &gt;::_values</definition>
+        <argsstring></argsstring>
+        <name>_values</name>
+        <qualifiedname>tifflib::TiffWriteData::_values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="98" column="13" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtifflib_1_1_tiff_write_data_1aa036c6306728f07cfcc33439408e0393" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="class_virtual_endian_handler" kindref="compound">VirtualEndianHandler</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;VirtualEndianHandler&gt; tifflib::TiffWriteData&lt; TP &gt;::_endian_handler</definition>
+        <argsstring></argsstring>
+        <name>_endian_handler</name>
+        <qualifiedname>tifflib::TiffWriteData::_endian_handler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="99" column="21" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1ae9d9142d9e1de98c3285150f65e6466f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::TiffWriteData&lt; TP &gt;::TiffWriteData</definition>
+        <argsstring>(const TiffWriteData &amp;)=delete</argsstring>
+        <name>TiffWriteData</name>
+        <qualifiedname>tifflib::TiffWriteData::TiffWriteData</qualifiedname>
+        <param>
+          <type>const TiffWriteData &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="103" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1aba9904ba033a16cac7fdc3c0afa9b118" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tifflib::TiffWriteData&lt; TP &gt;::TiffWriteData</definition>
+        <argsstring>(TiffWriterHeader header, const ImageContainer&lt; TP &gt; *img, std::basic_ostream&lt; char &gt; &amp;stream)</argsstring>
+        <name>TiffWriteData</name>
+        <qualifiedname>tifflib::TiffWriteData::TiffWriteData</qualifiedname>
+        <param>
+          <type><ref refid="classtifflib_1_1_tiff_writer_header" kindref="compound">TiffWriterHeader</ref></type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; TP &gt; *</type>
+          <declname>img</declname>
+        </param>
+        <param>
+          <type>std::basic_ostream&lt; char &gt; &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="105" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1a15f0ab768d2bf2531a6d7660fc4e09ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriteData&lt; TP &gt;::write_ifd_element</definition>
+        <argsstring>(TiffTagType tag, TiffDataVariant variant, std::vector&lt; TiffDataVariant &gt; &amp;rational_values)</argsstring>
+        <name>write_ifd_element</name>
+        <qualifiedname>tifflib::TiffWriteData::write_ifd_element</qualifiedname>
+        <param>
+          <type>TiffTagType</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>TiffDataVariant</type>
+          <declname>variant</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; TiffDataVariant &gt; &amp;</type>
+          <declname>rational_values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Write the element to the tiff file modifies the offset field of the class Params: element: the <ref refid="struct_tiff_tag" kindref="compound">TiffTag</ref> rational_values: data structure to store the values of ags with data type RATIONAL </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="118" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="118" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1a3c72a4be58c86637e9e8ae0991dd9aa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriteData&lt; TP &gt;::write_IFDs</definition>
+        <argsstring>()</argsstring>
+        <name>write_IFDs</name>
+        <qualifiedname>tifflib::TiffWriteData::write_IFDs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Write all IDF </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="221" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="221" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1af23c876cc8705eb69f06a5d77bea213c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriteData&lt; TP &gt;::apply_PhotometricInterpretation</definition>
+        <argsstring>(std::vector&lt; TP &gt; &amp;data)</argsstring>
+        <name>apply_PhotometricInterpretation</name>
+        <qualifiedname>tifflib::TiffWriteData::apply_PhotometricInterpretation</qualifiedname>
+        <param>
+          <type>std::vector&lt; TP &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Applies the PhotometricInterpretation setting to the data Modifies the image data in place </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="315" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="315" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1ab685513f1f71f4022d25879c00ac5726" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriteData&lt; TP &gt;::compress</definition>
+        <argsstring>(std::vector&lt; TP &gt; &amp;data)</argsstring>
+        <name>compress</name>
+        <qualifiedname>tifflib::TiffWriteData::compress</qualifiedname>
+        <param>
+          <type>std::vector&lt; TP &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Apply the compression algorithms </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="331" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="331" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1a4740a62c6cdad8bf0adc2a213b10b92a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriteData&lt; TP &gt;::write_image_data</definition>
+        <argsstring>()</argsstring>
+        <name>write_image_data</name>
+        <qualifiedname>tifflib::TiffWriteData::write_image_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Writes the image data to a file </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="342" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="342" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1a75680ae2dcb2cadd9b7d4b5f44913d4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriteData&lt; TP &gt;::tags_to_set</definition>
+        <argsstring>()=0</argsstring>
+        <name>tags_to_set</name>
+        <qualifiedname>tifflib::TiffWriteData::tags_to_set</qualifiedname>
+        <reimplementedby refid="classtifflib_1_1_bitlevel_image_1ac8341896307488b03c0f474a05ff53c3">tags_to_set</reimplementedby>
+        <reimplementedby refid="classtifflib_1_1_gray_image_1af094506b85dedef895792bf56b67d2ff">tags_to_set</reimplementedby>
+        <reimplementedby refid="classtifflib_1_1_r_g_b_image_1aedd86cd69079cbba650f70c072fb7180">tags_to_set</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the basic TIFF Settings Must be used in all image types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="362" column="18" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="381" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="function" id="classtifflib_1_1_tiff_write_data_1a1a5cf6d41683b069d81d822b1b02c070" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tifflib::TiffWriteData&lt; TP &gt;::write</definition>
+        <argsstring>()</argsstring>
+        <name>write</name>
+        <qualifiedname>tifflib::TiffWriteData::write</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Write IFDs and image data image data is written first </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="368" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="368" bodyend="373"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>ImageContainer&lt; TP &gt;</label>
+        <link refid="class_image_container"/>
+      </node>
+      <node id="1">
+        <label>tifflib::TiffWriteData&lt; TP &gt;</label>
+        <link refid="classtifflib_1_1_tiff_write_data"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_img</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="62" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="62" bodyend="374"/>
+    <listofallmembers>
+      <member refid="classtifflib_1_1_tiff_write_data_1a3298e79666585531f35d6f5454d13265" prot="private" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_compression</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1aa036c6306728f07cfcc33439408e0393" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_endian_handler</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a4a68901ea36f348f128ac4a85b3bd4e2" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_img</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a71b6663fff485fc22bd774dc334525dc" prot="private" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_length</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a269674958e3114558f42c4b6b61c17e5" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_numerTDF</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a70e0fe4b4ba471db7fddb0d8233fe5e4" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_offset</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1aa75f1399a3f47fb186bd07804332f4a6" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_offset_data</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a3f58d92217243683fa1d73d8c7c4b768" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_stream</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ac6e9eb958f8b8877413a50ac39eec62d" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_strip_byte_count</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ada6f0f531e8df58e68e21f850871344f" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_values</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a6bc9732d1ced87e9ae128523dbb630b9" prot="private" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>_width</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1af23c876cc8705eb69f06a5d77bea213c" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>apply_PhotometricInterpretation</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ab685513f1f71f4022d25879c00ac5726" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>compress</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1afb47fca05411cff05ebdc7f6a8229cd6" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>next_offset</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ab643e0357d42fc6cc01d1d4a1aa1bea8" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>SetElement</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a0a343d64f58fce2c0d1f9bc822f33d9b" prot="protected" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>SetType</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a75680ae2dcb2cadd9b7d4b5f44913d4e" prot="public" virt="pure-virtual"><scope>tifflib::TiffWriteData</scope><name>tags_to_set</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1ae9d9142d9e1de98c3285150f65e6466f" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>TiffWriteData</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1aba9904ba033a16cac7fdc3c0afa9b118" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>TiffWriteData</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a1a5cf6d41683b069d81d822b1b02c070" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>write</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a15f0ab768d2bf2531a6d7660fc4e09ac" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>write_ifd_element</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a3c72a4be58c86637e9e8ae0991dd9aa0" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>write_IFDs</name></member>
+      <member refid="classtifflib_1_1_tiff_write_data_1a4740a62c6cdad8bf0adc2a213b10b92a" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData</scope><name>write_image_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
