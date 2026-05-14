@@ -17,6 +17,7 @@ add_executable(
   src/tests/test_rgb.cpp
   src/tests/test_metadata.cpp
   src/tests/test_ramp_image.cpp
+  src/tests/test_compression.cpp
 )
 
 target_compile_features(hello_test PUBLIC cxx_std_20)
