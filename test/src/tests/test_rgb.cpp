@@ -26,7 +26,7 @@ struct Config {
     size_t color;
 };
 
-class SingleColorTB : public testing::TestWithParam<std::tuple<size_t, size_t, size_t, uint8_t>> {
+class SingleColorTB : public testing::TestWithParam<std::tuple<size_t, size_t, size_t, uint8_t, tiff_header_endian>> {
 protected:
   size_t get_rows() {
     return std::get<0>(GetParam());
@@ -40,10 +40,14 @@ protected:
   uint8_t get_color() {
     return std::get<3>(GetParam());
   }
+  tiff_header_endian get_endian() {
+    return std::get<4>(GetParam());
+  }
 
   std::string get_file_extension() {
+    std::string endian_str = get_endian() == tiff_header_endian::LITTLE ? "LE" : "BE";
     return "row-" + std::to_string(get_rows()) + "col-" + std::to_string(get_cols()) + "px-" + std::to_string(get_px_position())
-       + "color-" + std::to_string(get_color());
+       + "color-" + std::to_string(get_color()) + "endian-" + endian_str;
   }
 };
 
@@ -135,8 +139,8 @@ TEST_P(SingleColorTB, BasicAssertions) {
 
   ImageContainer<uint8_t> img_ptr(0, 0);
   std::filesystem::path test_path;
-  std::tie(img_ptr, test_path) = write_image_and_read(filename, im.get_image());
-  
+  std::tie(img_ptr, test_path) = write_image_and_read(filename, im.get_image(), get_endian());
+
   cv::Mat M = get_tiff_image_opencv(test_path);
 
   //check the channels and the image dimensions
@@ -153,9 +157,9 @@ TEST_P(SingleColorTB, BasicAssertions) {
         uint8_t M_el = el[k];
         uint8_t I_el = img_ptr.at(i,j,k);
 
-        // std::cout << "i " << i << " j " << j << " k " << k << " M " << 
-        //   static_cast<int>(M_el) << " img " << 
-        //   static_cast<int>(I_el) << std::endl; 
+        // std::cout << "i " << i << " j " << j << " k " << k << " M " <<
+        //   static_cast<int>(M_el) << " img " <<
+        //   static_cast<int>(I_el) << std::endl;
         EXPECT_EQ(M_el, I_el);
         if( k == get_px_position() ) {
           EXPECT_EQ(I_el, get_color()) << "Color is not " << get_color() << " at pixel position " << get_px_position();
@@ -171,9 +175,10 @@ INSTANTIATE_TEST_SUITE_P(
     SingleColorTB,
     ::testing::Combine(
         ::testing::Values(6, 20, 100),             // width
-        ::testing::Values(5, 20, 100),         // height
-        ::testing::Values(0, 1, 2),       // Color pixel
-        ::testing::Values(250, 125, 90)       // Color levels
+        ::testing::Values(5, 20, 100),             // height
+        ::testing::Values(0, 1, 2),                // Color pixel
+        ::testing::Values(250, 125, 90),            // Color levels
+        ::testing::Values(tiff_header_endian::LITTLE, tiff_header_endian::BIG)  // Endianness
     )
 );
 
@@ -181,7 +186,7 @@ INSTANTIATE_TEST_SUITE_P(
 
 // test ramp
 
-class RampTB : public testing::TestWithParam<std::tuple<size_t, size_t, size_t, uint8_t, uint8_t>> {
+class RampTB : public testing::TestWithParam<std::tuple<size_t, size_t, size_t, uint8_t, uint8_t, tiff_header_endian>> {
 protected:
   size_t get_rows() {
     return std::get<0>(GetParam());
@@ -198,10 +203,14 @@ protected:
   uint8_t get_color_max() {
     return std::get<4>(GetParam());
   }
+  tiff_header_endian get_endian() {
+    return std::get<5>(GetParam());
+  }
 
   std::string get_file_extension() {
+    std::string endian_str = get_endian() == tiff_header_endian::LITTLE ? "LE" : "BE";
     return "row-" + std::to_string(get_rows()) + "col-" + std::to_string(get_cols()) + "px-" + std::to_string(get_px_position())
-      + "color_min-" + std::to_string(get_color_min()) + "color_max-" + std::to_string(get_color_max());
+      + "color_min-" + std::to_string(get_color_min()) + "color_max-" + std::to_string(get_color_max()) + "endian-" + endian_str;
   }
 };
 
@@ -234,8 +243,7 @@ TEST_P(RampTB, BasicAssertions) {
 
   ImageContainer<uint8_t> img_ptr(0, 0);
   std::filesystem::path test_path;
-  std::tie(img_ptr, test_path) = write_image_and_read(filename, im.get_image());
-  // ImageContainer<uint8_t> img_ptr = write_image_and_read(filename, im.get_image(), test_path);
+  std::tie(img_ptr, test_path) = write_image_and_read(filename, im.get_image(), get_endian());
   
   cv::Mat M = get_tiff_image_opencv(test_path);
 
@@ -271,9 +279,10 @@ INSTANTIATE_TEST_SUITE_P(
     RampTB,
     ::testing::Combine(
         ::testing::Values(6, 20, 100),             // width
-        ::testing::Values(5, 20, 100),         // height
-        ::testing::Values(1, 2),       // Color pixel
-        ::testing::Values(0, 10),       // Color min level
-        ::testing::Values(250)       // Color max level
+        ::testing::Values(5, 20, 100),             // height
+        ::testing::Values(1, 2),                   // Color pixel
+        ::testing::Values(0, 10),                  // Color min level
+        ::testing::Values(250),                    // Color max level
+        ::testing::Values(tiff_header_endian::LITTLE, tiff_header_endian::BIG)  // Endianness
     )
 );

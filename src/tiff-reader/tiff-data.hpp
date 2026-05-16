@@ -142,6 +142,7 @@ class TiffIFD {
         TiffTagRead tag_read{TiffTagType(tag.TagID),
                              std::vector<TiffDataVariant>()};
 
+        // read directly from the offset value
         if (get_variant_element_size(make_variant(data_type)) *
                 size_t(data_count) <=
             4) {
@@ -150,8 +151,14 @@ class TiffIFD {
                 std::visit(
                     [&, this](auto& el) {
                         using T = std::decay_t<decltype(el)>;
-
-                        if constexpr (std::is_same_v<T,
+                        
+                        if constexpr (std::is_same_v<T, std::vector<uint8_t>>) {
+                            if (i > 3) {
+                                throw std::runtime_error("Error: i must <= 3");
+                            }
+                            el.push_back(
+                                this->_endian_handler->convert8(offset, i));
+                        } else if constexpr (std::is_same_v<T,
                                                      std::vector<ushort_t>>) {
                             if (i > 1) {
                                 throw std::runtime_error("Error: i must <= 1");
@@ -216,7 +223,13 @@ class TiffIFD {
                         } else if constexpr (std::is_same_v<T, std::string>) {
                             el = read_char_str(this->_stream, data_count);
                         } else {
-                            static_assert(0, "Error unhandled variant type");
+                            // C++ trap, !sizeof(T) fires only when T is instantiated
+                            // !sizeof(T) is always false since sizeof(T) > 0
+                            static_assert(!sizeof(T), "Error unhandled variant type");
+
+                            //fires always even if the branch is never used
+                            //unsure if this is better
+                            //static_assert(0, "Error unhandled variant type");
                         }
                     },
                     variant);
@@ -251,8 +264,8 @@ class TiffIFD {
             this->printTag(tag);
         }
 
-        std::array<char, 2> next_idf_offset_char;
-        read_char<2>(next_idf_offset_char, this->_stream);
+        std::array<char, 4> next_idf_offset_char;
+        read_char<4>(next_idf_offset_char, this->_stream);
         this->_NextIFDOffset =
             this->_endian_handler->convert(next_idf_offset_char);
 

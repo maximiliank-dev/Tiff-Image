@@ -48,10 +48,16 @@ class TIFFHeader {
     uint_t get_idf_offset() { return this->idf_offset; }
 
     void parse_header() {
+
+
         // endian
         this->err = read<2>(endian);
 
+#if PRINT == 1
+        std::cout << "Tiff Reader\n";
         std::cout << endian[0] << " 1 " << endian[1] << "\n";
+#endif
+
 
         if (endian[0] == 'I' && endian[1] == 'I') {
             std::cout << "Little endian \n";
@@ -59,6 +65,7 @@ class TIFFHeader {
 
         } else if (endian[0] == 'M' && endian[1] == 'M') {
             std::cout << "Big endian \n";
+            this->endian_handler = std::make_shared<BigEndian_TIFF>();
         } else {
             std::cout << "Error got " << this->endian[0] << " "
                       << this->endian[1] << "\n";
@@ -66,14 +73,19 @@ class TIFFHeader {
 
         std::array<char, 2> arr_magic_number{0, 0};
         read<2>(arr_magic_number);
-        std::cout << "got "
-                  << std::format(
-                         "{:02X} {:02X}\n",
-                         static_cast<unsigned char>(arr_magic_number[0]),
-                         static_cast<unsigned char>(arr_magic_number[1]));
-        this->magic_num = this->endian_handler->convert(arr_magic_number);
 
-        std::cout << "magic num " << this->magic_num << "\n";
+        if(this->endian_handler->convert(arr_magic_number) != 42) {
+            std::cout << "got "
+                    << std::format(
+                            "{:02X} {:02X}\n",
+                            static_cast<unsigned char>(arr_magic_number[0]),
+                            static_cast<unsigned char>(arr_magic_number[1]));
+            this->magic_num = this->endian_handler->convert(arr_magic_number);
+
+            std::cout << "magic num " << this->magic_num << "\n";
+            throw std::runtime_error("Error magic number is wrong in the Tiff Image");
+        }
+
 
         std::array<char, 4> ifd_arr;
         read<4>(ifd_arr);

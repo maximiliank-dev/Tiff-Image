@@ -39,17 +39,29 @@ class TiffWriterHeader {
 
     uint_t get_idf_offset() { return this->_idf_offset; }
 
+    /**
+     * Write the first 8 Header bytes:
+     * Byte Order , Magic Number , Offset of the 0th IFD
+     */
     void write_header() {
+        auto endian_handler = create_endian_handler();
+
         this->_stream.write(reinterpret_cast<char*>(&this->_endian), 2);
-        this->_stream.write(reinterpret_cast<char*>(&this->_magic_num), 2);
-        this->_stream.write(reinterpret_cast<char*>(&this->_idf_offset), 4);
+
+        std::array<char, 2> magic_num_array = endian_handler->convert_to_array(
+                this->_magic_num);
+        write_char<2>(magic_num_array, this->_stream);
+
+        std::array<char, 4> idf_offset_array = endian_handler->convert_to_array(
+                this->_idf_offset);
+        write_char<4>(idf_offset_array, this->_stream);
     }
 
     std::shared_ptr<VirtualEndianHandler> create_endian_handler() {
         if (this->_endian == tiff_header_endian::LITTLE) {
             return std::make_shared<LittleEndian_TIFF>();
         }
-        return std::make_shared<LittleEndian_TIFF>();
+        return std::make_shared<BigEndian_TIFF>();
     }
 
     std::basic_ostream<char>& get_stream() { return this->_stream; }
@@ -153,20 +165,32 @@ class TiffWriteData {
                     if (el.size() == 0) {
                         throw std::runtime_error(
                             "Error: TiffDataVariant's vector length is 0");
-                    } else if (el.size() == 1) {
+                    } else if (sizeof(typename T::value_type) * el.size() <= 4) {
+                        constexpr size_t elem_size = sizeof(typename T::value_type);
+
                         // data count
                         std::array<char, 4> tag_count =
                             this->_endian_handler->convert_to_array(
-                                static_cast<uint_t>(1));
+                                static_cast<uint_t>(el.size()));
                         write_char<4>(tag_count, this->_stream);
 
-                        auto data = el.at(0);
-                        // convert the value to int
-                        uint_t offset_value = static_cast<uint_t>(data);
-                        std::array<char, 4> array =
-                            this->_endian_handler->convert_to_array(
-                                offset_value);
-                        write_char<4>(array, this->_stream);
+                        // write all values inline
+                        for (auto& val : el) {
+                            if constexpr (std::is_same_v<typename T::value_type, uint8_t>) {
+                                write_char<1>(this->_endian_handler->convert_to_array(
+                                    static_cast<uint8_t>(val)), this->_stream);
+                            } else if constexpr (std::is_same_v<typename T::value_type, ushort_t>) {
+                                write_char<2>(this->_endian_handler->convert_to_array(
+                                    static_cast<ushort_t>(val)), this->_stream);
+                            } else {
+                                write_char<4>(this->_endian_handler->convert_to_array(
+                                    static_cast<uint_t>(val)), this->_stream);
+                            }
+                        }
+                        // pad remaining bytes to fill the 4-byte Value/Offset field
+                        for (size_t i = elem_size * el.size(); i < 4; ++i) {
+                            write_char('\0', this->_stream);
+                        }
                     } else {
                         // data count
                         std::array<char, 4> tag_count =

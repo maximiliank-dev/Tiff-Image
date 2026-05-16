@@ -18,9 +18,7 @@ namespace compression {
  */
 class LZW {
 
-
-public:
-
+private:
 static void init_map_encode(std::unordered_map<std::string, uint16_t>& map) {
     for (uint16_t i = 0; i < 256; i++) {
         map[std::string(1, static_cast<char>(i))] = i;
@@ -33,7 +31,11 @@ static void init_map_decode(std::unordered_map<uint16_t, std::string>& map) {
     }
 }
 
-// template<std::ranges::range Container>
+public:
+
+/**
+ * LZW Compressor
+ */
 static std::vector<uint16_t> compress(std::vector<uint8_t>& c) {
     std::vector<uint16_t> compressed;
     compressed.reserve(2*c.size());
@@ -75,7 +77,9 @@ static std::vector<uint16_t> compress(std::vector<uint8_t>& c) {
     return compressed;
 };
 
-//according to pseudocode
+/**
+ * LZW Decompressor
+ */
 static std::vector<uint8_t> decompress(std::vector<uint16_t>& c) {
     std::vector<uint8_t> decompressed;
     decompressed.reserve(2*c.size());

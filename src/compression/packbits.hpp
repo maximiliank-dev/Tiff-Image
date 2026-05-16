@@ -10,7 +10,6 @@ class PackBits {
 
 public:
 
-// template<std::ranges::range Container>
 static std::vector<uint8_t> compress(std::vector<uint8_t>& c) {
     std::vector<uint8_t> compressed;
 
