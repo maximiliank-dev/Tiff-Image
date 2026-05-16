@@ -13,6 +13,7 @@ class VirtualEndianHandler {
      */
    public:
     // conversion from an array
+    virtual uint8_t convert8(uint_t c, size_t idx) const = 0;
     virtual ushort_t convert(uint_t c, size_t idx) const = 0;
     virtual uint8_t convert(std::array<char, 1> c) const = 0;
     virtual ushort_t convert(std::array<char, 2> c) const = 0;
@@ -32,11 +33,28 @@ class VirtualEndianHandler {
     virtual ~VirtualEndianHandler() = default;
 };
 
+class BigEndian_TIFF : public VirtualEndianHandler {
+    uint8_t convert(std::array<char, 1> c) const override;
+    ushort_t convert(std::array<char, 2> c) const override;
+    uint_t convert(std::array<char, 4> c) const override;
+    uint64_t convert(std::array<char, 8> c) const override;
+    uint8_t convert8(uint_t c, size_t idx) const override;
+    ushort_t convert(uint_t c, size_t idx) const override;
+
+    std::array<char, 1> convert_to_array(uint8_t v) const override;
+    std::array<char, 2> convert_to_array(ushort_t v) const override;
+    std::array<char, 4> convert_to_array(uint_t v) const override;
+    std::array<char, 8> convert_to_array(uint64_t v) const override;
+
+    tiff_header_endian get_endian_value() const override;
+};
+
 class LittleEndian_TIFF : public VirtualEndianHandler {
     uint8_t convert(std::array<char, 1> c) const override;
     ushort_t convert(std::array<char, 2> c) const override;
     uint_t convert(std::array<char, 4> c) const override;
     uint64_t convert(std::array<char, 8> c) const override;
+    uint8_t convert8(uint_t c, size_t idx) const override;
     ushort_t convert(uint_t c, size_t idx) const override;
 
     std::array<char, 1> convert_to_array(uint8_t v) const override;
