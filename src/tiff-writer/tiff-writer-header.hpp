@@ -10,6 +10,7 @@
 #include "../endianHandler.hpp"
 #include "../tiff-config/tiff-types.hpp"
 #include "../tiff-config/types.hpp"
+#include "../compression/lzw.hpp"
 #include "../compression/packbits.hpp"
 
 namespace tifflib {
@@ -355,8 +356,18 @@ class TiffWriteData {
     void compress(std::vector<TP>& data) {
         if (this->_values[TiffTagType::Compression] ==
             make_variant(TiffTagType::Compression,
-                static_cast<uint64_t>(TiffCompression::PackBits)) ) {
+                static_cast<uint64_t>(TiffCompression::PackBits))) {
             data = compression::PackBits::compress(data);
+        } else if (this->_values[TiffTagType::Compression] ==
+                   make_variant(TiffTagType::Compression,
+                       static_cast<uint64_t>(TiffCompression::LZW))) {
+            std::vector<uint16_t> codes = compression::LZW::compress(data);
+            data.clear();
+            for (uint16_t code : codes) {
+                std::array<char, 2> arr = this->_endian_handler->convert_to_array(code);
+                data.push_back(static_cast<uint8_t>(arr[0]));
+                data.push_back(static_cast<uint8_t>(arr[1]));
+            }
         }
     }
 

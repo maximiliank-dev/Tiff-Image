@@ -12,10 +12,11 @@
 
 inline std::tuple<ImageContainer<uint8_t>, std::filesystem::path> write_image_and_read(std::string filename,
     std::shared_ptr<ImageContainer<uint8_t>> img,
-    tiff_header_endian endian = tiff_header_endian::LITTLE
+    tiff_header_endian endian = tiff_header_endian::LITTLE,
+    TiffCompression compression = TiffCompression::None
     ) {
 
-    tifflib::TiffWriter tiff_writer(filename, tifflib::SupportedImageTypes::RGB, img.get(), TiffCompression::None, endian);
+    tifflib::TiffWriter tiff_writer(filename, tifflib::SupportedImageTypes::RGB, img.get(), compression, endian);
     tiff_writer.write();
 
     const std::filesystem::path test_path = filename;

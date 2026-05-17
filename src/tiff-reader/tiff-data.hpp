@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "ImageContainer.hpp"
+#include "compression/lzw.hpp"
 #include "endianHandler.hpp"
 #include "tiff-config/tiff-data-variant.hpp"
 #include "tiff-config/tiff-types.hpp"
@@ -349,6 +350,9 @@ class TiffReadStrips {
             this->get_metadata_tag(TiffTagType::RowsPerStrip, 1);
         const TiffTagRead samples_per_pixel =
             this->get_metadata_tag(TiffTagType::SamplesPerPixel, 1);
+        const TiffTagRead compression_tag =
+            this->get_metadata_tag(TiffTagType::Compression, 1);
+        const uint64_t compression_val = to_ulong(compression_tag.data[0]);
 
         std::cout << "samples_per_pixel " << to_ulong(samples_per_pixel.data[0])
                   << "\n";
@@ -383,6 +387,18 @@ class TiffReadStrips {
 
                 std::string strip = read_char_str(this->_stream, bytes_read);
                 reformat_strip(strip);
+
+                if (compression_val == static_cast<uint64_t>(TiffCompression::LZW)) {
+                    std::vector<uint16_t> codes;
+                    codes.reserve(strip.size() / 2);
+                    for (size_t j = 0; j + 1 < strip.size(); j += 2) {
+                        std::array<char, 2> arr{strip[j], strip[j + 1]};
+                        codes.push_back(this->_endian_handler->convert(arr));
+                    }
+                    std::vector<uint8_t> decompressed = compression::LZW::decompress(codes);
+                    strip = std::string(decompressed.begin(), decompressed.end());
+                }
+
                 image_data.append(strip);
             }
         }

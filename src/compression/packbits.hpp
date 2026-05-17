@@ -86,6 +86,7 @@ static std::vector<uint8_t> decompress(std::vector<uint8_t>& c) {
         it++;
     }
 
+    return decompressed;
 }
 
 };

@@ -25,8 +25,9 @@ enum class TiffDataType {
     RATIONAL = 5
 };
 
-enum class TiffCompression { 
-    None=1, 
+enum class TiffCompression {
+    None=1,
+    LZW=5,
     PackBits=32773
 };
 
