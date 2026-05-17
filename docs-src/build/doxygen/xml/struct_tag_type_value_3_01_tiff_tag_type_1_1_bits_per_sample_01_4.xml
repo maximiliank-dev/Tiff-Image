@@ -17,14 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="79" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="79" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="80" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="78" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="78" bodyend="80"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="79" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="79" bodyend="81"/>
     <listofallmembers>
       <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_bits_per_sample_01_4_1a415229b23aa875855d7f151e207ef028" prot="public" virt="non-virtual"><scope>TagTypeValue&lt; TiffTagType::BitsPerSample &gt;</scope><name>type</name></member>
     </listofallmembers>

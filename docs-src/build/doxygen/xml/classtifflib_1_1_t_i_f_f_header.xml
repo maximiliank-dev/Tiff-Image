@@ -205,14 +205,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="50" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="50" bodyend="84"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="50" column="10" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="50" bodyend="96"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="15" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="15" bodyend="85"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" line="15" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-header.hpp" bodystart="15" bodyend="97"/>
     <listofallmembers>
       <member refid="classtifflib_1_1_t_i_f_f_header_1afd22946d226afdb6f20f63dcfc2bb762" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>_stream</name></member>
       <member refid="classtifflib_1_1_t_i_f_f_header_1a2835a089aca0b770f4d4a0e54e1c4bea" prot="private" virt="non-virtual"><scope>tifflib::TIFFHeader</scope><name>endian</name></member>

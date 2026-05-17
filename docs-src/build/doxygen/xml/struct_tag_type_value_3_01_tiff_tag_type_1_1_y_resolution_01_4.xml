@@ -17,14 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="99" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="99" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="100" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="98" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="98" bodyend="100"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="99" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="99" bodyend="101"/>
     <listofallmembers>
       <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_y_resolution_01_4_1a595a716cddca699792238d54d8a79751" prot="public" virt="non-virtual"><scope>TagTypeValue&lt; TiffTagType::YResolution &gt;</scope><name>type</name></member>
     </listofallmembers>

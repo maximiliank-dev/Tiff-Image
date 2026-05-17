@@ -104,8 +104,7 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight"><b>TiffWriterHeader</b> (std::basic_ostream&lt; char &gt; &amp;stream, const tiff_header_endian endian, const uint_t idf_offset)</td></tr>
 <tr class="memitem:a5f7088a43913946a860ac7edec909031" id="r_a5f7088a43913946a860ac7edec909031"><td class="memItemLeft"><a id="a5f7088a43913946a860ac7edec909031" name="a5f7088a43913946a860ac7edec909031"></a>
 uint_t&#160;</td><td class="memItemRight"><b>get_idf_offset</b> ()</td></tr>
-<tr class="memitem:a316de801be75d38374706f035eefe574" id="r_a316de801be75d38374706f035eefe574"><td class="memItemLeft"><a id="a316de801be75d38374706f035eefe574" name="a316de801be75d38374706f035eefe574"></a>
-void&#160;</td><td class="memItemRight"><b>write_header</b> ()</td></tr>
+<tr class="memitem:a316de801be75d38374706f035eefe574" id="r_a316de801be75d38374706f035eefe574"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a316de801be75d38374706f035eefe574">write_header</a> ()</td></tr>
 <tr class="memitem:a307dfbfb0695681d845d015779fd395b" id="r_a307dfbfb0695681d845d015779fd395b"><td class="memItemLeft"><a id="a307dfbfb0695681d845d015779fd395b" name="a307dfbfb0695681d845d015779fd395b"></a>
 std::shared_ptr&lt; <a class="el" href="class_virtual_endian_handler.html">VirtualEndianHandler</a> &gt;&#160;</td><td class="memItemRight"><b>create_endian_handler</b> ()</td></tr>
 <tr class="memitem:a5ed18d82eda04b81fb0a5880640ea7b0" id="r_a5ed18d82eda04b81fb0a5880640ea7b0"><td class="memItemLeft"><a id="a5ed18d82eda04b81fb0a5880640ea7b0" name="a5ed18d82eda04b81fb0a5880640ea7b0"></a>
@@ -113,7 +112,34 @@ std::basic_ostream&lt; char &gt; &amp;&#160;</td><td class="memItemRight"><b>get
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Writes the basic tiff Header @Params: endian: sets ths the endianess of the image stream: the ofstream owning the file on disk </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a316de801be75d38374706f035eefe574" name="a316de801be75d38374706f035eefe574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a316de801be75d38374706f035eefe574">&#9670;&#160;</a></span>write_header()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tifflib::TiffWriterHeader::write_header </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Write the first 8 Header bytes: Byte Order , Magic Number , Offset of the 0th IFD </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>D:/Projects/ImageConverter/src/tiff-writer/<a class="el" href="tiff-writer-header_8hpp_source.html">tiff-writer-header.hpp</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,5 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.16.1" xml:lang="en-US">
+  <compound refid="class_big_endian___t_i_f_f" kind="class"><name>BigEndian_TIFF</name>
+    <member refid="class_big_endian___t_i_f_f_1a515d8c670941d4d5cccfc5351850c7b3" kind="function"><name>convert</name></member>
+    <member refid="class_big_endian___t_i_f_f_1afb7f62085a62323b471a46f4dfabdc3b" kind="function"><name>convert</name></member>
+    <member refid="class_big_endian___t_i_f_f_1a40b565d5f664922b3af54a2a7fd44818" kind="function"><name>convert</name></member>
+    <member refid="class_big_endian___t_i_f_f_1a9a40198dce72b02253f90c05700e7d53" kind="function"><name>convert</name></member>
+    <member refid="class_big_endian___t_i_f_f_1af6a82e0ab87f35f3d4f610bc55df37f0" kind="function"><name>convert8</name></member>
+    <member refid="class_big_endian___t_i_f_f_1a85aa2d29f92a7c0ccd1d569d591fbda5" kind="function"><name>convert</name></member>
+    <member refid="class_big_endian___t_i_f_f_1a62a7a887aa706e035430be36083c2471" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_big_endian___t_i_f_f_1ad44c1adf113d38e977b1ec465ae960f5" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_big_endian___t_i_f_f_1a524860614575cdd9c37f930246b44fbb" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_big_endian___t_i_f_f_1ad4f8abd5f030847f0c360c00be0f4528" kind="function"><name>convert_to_array</name></member>
+    <member refid="class_big_endian___t_i_f_f_1ab423d0ebe4c9e3a3dfac36c6ba1a4ccc" kind="function"><name>get_endian_value</name></member>
+  </compound>
   <compound refid="classtifflib_1_1_bitlevel_image" kind="class"><name>tifflib::BitlevelImage</name>
     <member refid="classtifflib_1_1_bitlevel_image_1af6c7245310985cd1ffa705b1a2bd6a78" kind="variable"><name>_config</name></member>
     <member refid="classtifflib_1_1_bitlevel_image_1a72d99bdc8d991f6ae6b3bc437e7ee2d7" kind="function"><name>BitlevelImage</name></member>
@@ -58,12 +71,25 @@
     <member refid="class_little_endian___t_i_f_f_1a1a771dc9cf9f7d86e88945acb07859f1" kind="function"><name>convert</name></member>
     <member refid="class_little_endian___t_i_f_f_1a0a6ca26a62add2b581b6a8b3ab7ff7b6" kind="function"><name>convert</name></member>
     <member refid="class_little_endian___t_i_f_f_1ad7092a83acd0b84cf83ef306855bc296" kind="function"><name>convert</name></member>
+    <member refid="class_little_endian___t_i_f_f_1a93884e7d39c89255cfaf5fa377b349d0" kind="function"><name>convert8</name></member>
     <member refid="class_little_endian___t_i_f_f_1af97e3db5638d4d8e6513ebdaf40f350a" kind="function"><name>convert</name></member>
     <member refid="class_little_endian___t_i_f_f_1a266864560f3240c19c4d30ffcb0634d5" kind="function"><name>convert_to_array</name></member>
     <member refid="class_little_endian___t_i_f_f_1a949221a7957b03b68b24029ea4cee441" kind="function"><name>convert_to_array</name></member>
     <member refid="class_little_endian___t_i_f_f_1a9e3753cc5c6b9312af6d1b3e12454a2e" kind="function"><name>convert_to_array</name></member>
     <member refid="class_little_endian___t_i_f_f_1aabe4a91ee42ff32a07664f2995d63f81" kind="function"><name>convert_to_array</name></member>
     <member refid="class_little_endian___t_i_f_f_1afb920ba7255242bf13ceecea08d48b13" kind="function"><name>get_endian_value</name></member>
+  </compound>
+  <compound refid="classcompression_1_1_l_z_w" kind="class"><name>compression::LZW</name>
+    <member refid="classcompression_1_1_l_z_w_1a46449b9352822f72cb09e63373f3f0a7" kind="variable"><name>compression_data_left</name></member>
+    <member refid="classcompression_1_1_l_z_w_1aaa4f15d0ba5a78cbddd92d6b3f3829cd" kind="variable"><name>compression_number_bits_left</name></member>
+    <member refid="classcompression_1_1_l_z_w_1aad53af53979819b45516beceb860295b" kind="function"><name>init_map_encode</name></member>
+    <member refid="classcompression_1_1_l_z_w_1a14c90ff0c2ffebe5739b6dc291d0c404" kind="function"><name>init_map_decode</name></member>
+    <member refid="classcompression_1_1_l_z_w_1a19b03acbf535cf5974bf9cc22de2b814" kind="function"><name>compress</name></member>
+    <member refid="classcompression_1_1_l_z_w_1abcf064457e63f97b172be6e0f042adb0" kind="function"><name>decompress</name></member>
+    <member refid="classcompression_1_1_l_z_w_1af7bb9327410521090246066fcd1179e7" kind="function"><name>append_to_byte_vector</name></member>
+    <member refid="classcompression_1_1_l_z_w_1a2fc6e12b61449204e8157fd56f2df17a" kind="function"><name>decode_byte_queue</name></member>
+    <member refid="classcompression_1_1_l_z_w_1a8424159cb281d2237736c4b9d662d6e6" kind="function"><name>compress_tiff</name></member>
+    <member refid="classcompression_1_1_l_z_w_1a41c51472d48aded88d70cf852a7537a1" kind="function"><name>decompress_tiff</name></member>
   </compound>
   <compound refid="classcompression_1_1_pack_bits" kind="class"><name>compression::PackBits</name>
     <member refid="classcompression_1_1_pack_bits_1a35751f6fcd1ff404f15ad0fc9d073544" kind="function"><name>compress</name></member>
@@ -232,7 +258,7 @@
     <member refid="classtifflib_1_1_tiff_writer_1a6a5cf8fbf094049ff6849311a7ba408f" kind="variable"><name>_file</name></member>
     <member refid="classtifflib_1_1_tiff_writer_1a4e40514b2c0abbf70e22245f32e0a36c" kind="variable"><name>_header</name></member>
     <member refid="classtifflib_1_1_tiff_writer_1abe1583dbff2117cffbd7b80e6a9da843" kind="variable"><name>_writer</name></member>
-    <member refid="classtifflib_1_1_tiff_writer_1ad09028cf4950aecf1bdd2133f4301de8" kind="function"><name>TiffWriter</name></member>
+    <member refid="classtifflib_1_1_tiff_writer_1a3dd07d2cdc7be50e14d55ebb055bf209" kind="function"><name>TiffWriter</name></member>
     <member refid="classtifflib_1_1_tiff_writer_1a4526cda1bd0b68a337f289773a371cc9" kind="function"><name>write</name></member>
   </compound>
   <compound refid="structtifflib_1_1_tiff_writer_config" kind="struct"><name>tifflib::TiffWriterConfig</name>
@@ -257,6 +283,7 @@
     <member refid="structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4_1aff8a4dce5e6335d95d86df5cb4596057" kind="typedef"><name>type</name></member>
   </compound>
   <compound refid="class_virtual_endian_handler" kind="class"><name>VirtualEndianHandler</name>
+    <member refid="class_virtual_endian_handler_1adae37e200325f34e0cf17218acc43944" kind="function"><name>convert8</name></member>
     <member refid="class_virtual_endian_handler_1a1cf334d89f60272c790d360b4ae5f5e5" kind="function"><name>convert</name></member>
     <member refid="class_virtual_endian_handler_1aca9a966dd27e3542361a1c1a750e7e7c" kind="function"><name>convert</name></member>
     <member refid="class_virtual_endian_handler_1a4f36a353fb35559f459d779f85cbea55" kind="function"><name>convert</name></member>
@@ -276,6 +303,13 @@
   <compound refid="concept_sizeable" kind="concept"><name>Sizeable</name>
   </compound>
   <compound refid="namespacecompression" kind="namespace"><name>compression</name>
+    <member refid="lzw_8hpp_1ad94cd88290895ebbdb41508358d85ab6" kind="variable"><name>CLEAR</name></member>
+    <member refid="lzw_8hpp_1a1db33dc8e62b4f51505712e27a7359e1" kind="variable"><name>EOI</name></member>
+    <member refid="lzw_8hpp_1aa071afba50d340f13670d227a8914317" kind="variable"><name>FIRST</name></member>
+    <member refid="lzw_8hpp_1af961729cc19dc5f82fe53376e9fcd23a" kind="variable"><name>MIN_W</name></member>
+    <member refid="lzw_8hpp_1af8cea298d594e1a7a78200e4b494a5c3" kind="variable"><name>MAX_W</name></member>
+    <member refid="lzw_8hpp_1ac38b527337b5dae14458ae46876fdfa9" kind="variable"><name>MAX_SZ</name></member>
+    <member refid="lzw_8hpp_1a46e5e01699ef994d0f7fffdd01ce2782" kind="function"><name>msb_position</name></member>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
@@ -286,6 +320,8 @@
     <member refid="tiff__writer-image_8hpp_1aeb9ba6719e2c14beae6898b4d9d5f4ada889574aebacda6bfd3e534e2b49b8028" kind="enumvalue"><name>RGB</name></member>
     <member refid="tiff__writer-image_8hpp_1a3fe015659010bb2e1a2995c1abfe8db1" kind="typedef"><name>TiffWriterImgType</name></member>
     <member refid="tiff-data_8hpp_1afd5e7b63939a75b508b1433420aaded4" kind="function"><name>read_char_str</name></member>
+  </compound>
+  <compound refid="lzw_8hpp" kind="file"><name>lzw.hpp</name>
   </compound>
   <compound refid="packbits_8hpp" kind="file"><name>packbits.hpp</name>
   </compound>
@@ -347,6 +383,7 @@
     <member refid="tiff-types_8hpp_1a485c5b197ea1f90fd2f161a25ab5573ea75e33ef57f63402e3e5f003a10841651" kind="enumvalue"><name>RATIONAL</name></member>
     <member refid="tiff-types_8hpp_1afa0395a434e2c26e44275061087d1c4d" kind="enum"><name>TiffCompression</name></member>
     <member refid="tiff-types_8hpp_1afa0395a434e2c26e44275061087d1c4da6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
+    <member refid="tiff-types_8hpp_1afa0395a434e2c26e44275061087d1c4dad599e15ab53f2d308552d73483c8d0da" kind="enumvalue"><name>LZW</name></member>
     <member refid="tiff-types_8hpp_1afa0395a434e2c26e44275061087d1c4da307876499c0fd2e24399514f7cbf9360" kind="enumvalue"><name>PackBits</name></member>
     <member refid="tiff-types_8hpp_1ac7f8aac2ff2f06fbf2a9fe47e171b09b" kind="enum"><name>TiffPhotometricInterpretation</name></member>
     <member refid="tiff-types_8hpp_1ac7f8aac2ff2f06fbf2a9fe47e171b09ba27f254f841c0e52db717b32b1f8f3df3" kind="enumvalue"><name>WhiteIsZero</name></member>

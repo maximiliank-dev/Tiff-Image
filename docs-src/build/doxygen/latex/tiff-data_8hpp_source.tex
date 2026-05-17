@@ -17,375 +17,404 @@
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00014\ }
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}ImageContainer.hpp"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}endianHandler.hpp"{}}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/tiff-\/data-\/variant.hpp"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/tiff-\/types.hpp"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/types.hpp"{}}}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }tifflib\ \{}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ TiffTagType\ TagID;}
-\DoxyCodeLine{00025\ \ \ \ \ std::vector<TiffDataVariant>\ data;}
-\DoxyCodeLine{00026\ \};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{keyword}{inline}\ std::string\ read\_char\_str(std::basic\_istream<char>\&\ stream,}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ length)\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (!stream)\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Fail\ "{}}\ <<\ stream.rdstate()\ <<\ \textcolor{stringliteral}{"{}\ pos\ "{}}\ <<\ stream.tellg()}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}File\ Stream\ is\ invalid"{}});}
-\DoxyCodeLine{00034\ \ \ \ \ \}}
-\DoxyCodeLine{00035\ \ \ \ \ std::string\ s(length,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{char}*\ buf\ =\ s.data();}
-\DoxyCodeLine{00037\ \ \ \ \ stream.read(buf,\ s.size());}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (!stream)\ \{}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Fail\ "{}}\ <<\ stream.rdstate()\ <<\ \textcolor{stringliteral}{"{}\ pos\ "{}}\ <<\ stream.tellg()}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}File\ Stream\ is\ invalid"{}});}
-\DoxyCodeLine{00043\ \ \ \ \ \}}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
-\DoxyCodeLine{00045\ \}}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }TiffIFD\ \{}
-\DoxyCodeLine{00053\ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00054\ \ \ \ \ std::basic\_istream<char>\&\ \_stream;}
-\DoxyCodeLine{00055\ \ \ \ \ uint\_t\ \_address;}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ ushort\_t\ \_NumDirEntries;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ Tags\ in\ IFD}}
-\DoxyCodeLine{00058\ \ \ \ \ uint\_t\ \_NextIFDOffset;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Offset\ to\ next\ IFD}}
-\DoxyCodeLine{00059\ \ \ \ \ std::vector<TiffTag>\ \_tagList;\ \ \textcolor{comment}{//\ List\ of\ Tags}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ \_endian\_handler;}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ delete\ the\ default\ constructor,\ such\ that\ the\ user\ always\ has\ a\ valid}}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ stream}}
-\DoxyCodeLine{00066\ \ \ \ \ TiffIFD()\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ TiffIFD(std::basic\_istream<char>\&\ stream,\ uint\_t\ address,}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ endian\_handler)}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ :\ \_stream(stream),\ \_address(address),\ \_endian\_handler(endian\_handler)\ \{\}}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ convert\_to\_tag(std::array<char,\ TiffTag\_size>\ data)\ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ tag;}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ \textcolor{keywordtype}{id}\{data.at(0),\ data.at(1)\};}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ tag.TagID\ =\ this-\/>\_endian\_handler-\/>convert(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ tag.DataType\ =\ this-\/>\_endian\_handler-\/>convert(}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 2>\{data.at(2),\ data.at(3)\});}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ tag.DataCount\ =}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(std::array<char,\ 4>\{data.at(4),}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(5),}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(6),}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(7)\});}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ tag.DataOffset\ =}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(std::array<char,\ 4>\{data.at(8),}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(9),}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(10),}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(11)\});}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tag;}
-\DoxyCodeLine{00092\ \ \ \ \ \}}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ printTag(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ tag)\ \{}
-\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#if\ PRINT\ ==\ 1}}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}TagID\ "{}}\ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:02X\}\ "{}},\ tag.TagID)}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(TiffTagType(tag.TagID))\ <<\ \textcolor{stringliteral}{"{}\ DataType\ "{}}}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:02X\}\ "{}},\ tag.DataType)}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(TiffDataType(tag.DataType))\ <<\ \textcolor{stringliteral}{"{}\ DataCount\ "{}}}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:04X\}"{}},\ tag.DataCount)\ <<\ \textcolor{stringliteral}{"{}\ DataOffset\ "{}}}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:04X\}"{}},\ tag.DataOffset)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00103\ \ \ \ \ \}}
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ printTagRead(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ tag)\ \{}
-\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#if\ PRINT\ ==\ 1}}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}};}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}TagID:\ "{}}\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(tag.TagID)\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(tag.TagID)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ :\ tag.data)\ \{}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ std::visit([](\textcolor{keyword}{auto}\ el)\ \{\ std::cout\ <<\ to\_string(el);\ \},\ i);}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00116\ \ \ \ \ \}}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \ \ \ \ std::basic\_istream<char>\&\ get\_stream()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\_stream;\ \}}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ getTag(\textcolor{keyword}{const}\ TiffTagType\ tag\_type)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ ret\ =}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ std::find\_if(this-\/>\_tagList.begin(),}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tagList.end(),}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&tag\_type](\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\&\ tag)\ -\/>\ \textcolor{keywordtype}{bool}\ \{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ (TiffTagType(tag.TagID)\ ==\ tag\_type);}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ret\ ==\ this-\/>\_tagList.end())\ \{}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::range\_error(std::format(\textcolor{stringliteral}{"{}TiffTagType\ was\ not\ found\ \{\}"{}},}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(tag\_type)));}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *ret;}
-\DoxyCodeLine{00134\ \ \ \ \ \}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ read\_tiff\_tag(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\&\ tag)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint\_t\ offset\ =\ tag.DataOffset;}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ TiffDataType\ data\_type\ =\ TiffDataType(tag.DataType);}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint\_t\ data\_count\ =\ tag.DataCount;}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ tag\_read\{TiffTagType(tag.TagID),}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<TiffDataVariant>()\};}
-\DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (get\_variant\_element\_size(make\_variant(data\_type))\ *}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}(data\_count)\ <=}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ 4)\ \{}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint\_t\ i\ =\ 0;\ i\ <\ data\_count;\ i++)\ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TiffDataVariant\ variant\ =\ make\_variant(data\_type);}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::visit(}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&,\ \textcolor{keyword}{this}](\textcolor{keyword}{auto}\&\ el)\ \{}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
-\DoxyCodeLine{00153\ }
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ushort\_t>>)\ \{}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 1)\ \{}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ i\ must\ <=\ 1"{}});}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(offset,\ i));}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint\_t>>)\ \{}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 0)\ \{}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ i\ must\ be\ 0"{}});}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}compression/lzw.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}endianHandler.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/tiff-\/data-\/variant.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/tiff-\/types.hpp"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}tiff-\/config/types.hpp"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }tifflib\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ TiffTagType\ TagID;}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<TiffDataVariant>\ data;}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{inline}\ std::string\ read\_char\_str(std::basic\_istream<char>\&\ stream,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ length)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (!stream)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Fail\ "{}}\ <<\ stream.rdstate()\ <<\ \textcolor{stringliteral}{"{}\ pos\ "{}}\ <<\ stream.tellg()}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}File\ Stream\ is\ invalid"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ std::string\ s(length,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}*\ buf\ =\ s.data();}
+\DoxyCodeLine{00038\ \ \ \ \ stream.read(buf,\ s.size());}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!stream)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Fail\ "{}}\ <<\ stream.rdstate()\ <<\ \textcolor{stringliteral}{"{}\ pos\ "{}}\ <<\ stream.tellg()}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}File\ Stream\ is\ invalid"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }TiffIFD\ \{}
+\DoxyCodeLine{00054\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ std::basic\_istream<char>\&\ \_stream;}
+\DoxyCodeLine{00056\ \ \ \ \ uint\_t\ \_address;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ ushort\_t\ \_NumDirEntries;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Number\ of\ Tags\ in\ IFD}}
+\DoxyCodeLine{00059\ \ \ \ \ uint\_t\ \_NextIFDOffset;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Offset\ to\ next\ IFD}}
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<TiffTag>\ \_tagList;\ \ \textcolor{comment}{//\ List\ of\ Tags}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ \_endian\_handler;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ delete\ the\ default\ constructor,\ such\ that\ the\ user\ always\ has\ a\ valid}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ stream}}
+\DoxyCodeLine{00067\ \ \ \ \ TiffIFD()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ TiffIFD(std::basic\_istream<char>\&\ stream,\ uint\_t\ address,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ endian\_handler)}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ :\ \_stream(stream),\ \_address(address),\ \_endian\_handler(endian\_handler)\ \{\}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ convert\_to\_tag(std::array<char,\ TiffTag\_size>\ data)\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ tag;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ \textcolor{keywordtype}{id}\{data.at(0),\ data.at(1)\};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ tag.TagID\ =\ this-\/>\_endian\_handler-\/>convert(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ tag.DataType\ =\ this-\/>\_endian\_handler-\/>convert(}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 2>\{data.at(2),\ data.at(3)\});}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ tag.DataCount\ =}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(std::array<char,\ 4>\{data.at(4),}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(5),}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(6),}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(7)\});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ tag.DataOffset\ =}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(std::array<char,\ 4>\{data.at(8),}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(9),}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(10),}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.at(11)\});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tag;}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ printTag(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ tag)\ \{}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#if\ PRINT\ ==\ 1}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}TagID\ "{}}\ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:02X\}\ "{}},\ tag.TagID)}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(TiffTagType(tag.TagID))\ <<\ \textcolor{stringliteral}{"{}\ DataType\ "{}}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:02X\}\ "{}},\ tag.DataType)}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(TiffDataType(tag.DataType))\ <<\ \textcolor{stringliteral}{"{}\ DataCount\ "{}}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:04X\}"{}},\ tag.DataCount)\ <<\ \textcolor{stringliteral}{"{}\ DataOffset\ "{}}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(\textcolor{stringliteral}{"{}0x\{:04X\}"{}},\ tag.DataOffset)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ printTagRead(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ tag)\ \{}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#if\ PRINT\ ==\ 1}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}TagID:\ "{}}\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(tag.TagID)\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(tag.TagID)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ :\ tag.data)\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ std::visit([](\textcolor{keyword}{auto}\ el)\ \{\ std::cout\ <<\ to\_string(el);\ \},\ i);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ std::basic\_istream<char>\&\ get\_stream()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\_stream;\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ getTag(\textcolor{keyword}{const}\ TiffTagType\ tag\_type)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ ret\ =}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ std::find\_if(this-\/>\_tagList.begin(),}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tagList.end(),}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&tag\_type](\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\&\ tag)\ -\/>\ \textcolor{keywordtype}{bool}\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ (TiffTagType(tag.TagID)\ ==\ tag\_type);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ret\ ==\ this-\/>\_tagList.end())\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::range\_error(std::format(\textcolor{stringliteral}{"{}TiffTagType\ was\ not\ found\ \{\}"{}},}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(tag\_type)));}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *ret;}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ read\_tiff\_tag(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\&\ tag)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint\_t\ offset\ =\ tag.DataOffset;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ TiffDataType\ data\_type\ =\ TiffDataType(tag.DataType);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint\_t\ data\_count\ =\ tag.DataCount;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ tag\_read\{TiffTagType(tag.TagID),}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<TiffDataVariant>()\};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ read\ directly\ from\ the\ offset\ value}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (get\_variant\_element\_size(make\_variant(data\_type))\ *}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}(data\_count)\ <=}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ 4)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint\_t\ i\ =\ 0;\ i\ <\ data\_count;\ i++)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TiffDataVariant\ variant\ =\ make\_variant(data\_type);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::visit(}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&,\ \textcolor{keyword}{this}](\textcolor{keyword}{auto}\&\ el)\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::vector<uint8\_t>>)\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 3)\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ i\ must\ <=\ 3"{}});}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert8(offset,\ i));}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ushort\_t>>)\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 1)\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ i\ must\ <=\ 1"{}});}
 \DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(offset);}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint64\_t>>)\ \{}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}uint64\ not\ valid"{}});}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint8\_t>>)\ \{}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}uint8\_t\ not\ valid"{}});}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::string>)\ \{}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}string\ not\ valid"{}});}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(0,\ \textcolor{stringliteral}{"{}Error\ unhandled\ variant\ type"{}});}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variant);}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tag\_read.data.push\_back(variant);}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_stream.seekg(offset);}
-\DoxyCodeLine{00187\ }
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint\_t\ i\ =\ 0;\ i\ <\ data\_count;\ i++)\ \{}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TiffDataVariant\ variant\ =\ make\_variant(data\_type);}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::visit(}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&,\ \textcolor{keyword}{this}](\textcolor{keyword}{auto}\&\ el)\ \{}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
-\DoxyCodeLine{00193\ }
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::vector<uint8\_t>>)\ \{}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 1>\ arr;}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<1>(arr,\ this-\/>\_stream);}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ushort\_t>>)\ \{}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ arr;}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<2>(arr,\ this-\/>\_stream);}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint\_t>>)\ \{}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 4>\ arr;}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<4>(arr,\ this-\/>\_stream);}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint64\_t>>)\ \{}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 8>\ arr;}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<8>(arr,\ this-\/>\_stream);}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::string>)\ \{}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el\ =\ read\_char\_str(this-\/>\_stream,\ data\_count);}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(0,\ \textcolor{stringliteral}{"{}Error\ unhandled\ variant\ type"{}});}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variant);}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tag\_read.data.push\_back(variant);}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stop\ loop\ when\ variant\ type\ is\ std::string}}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ then\ all\ data\ are\ stored\ in\ the\ string}}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<std::string>(tag\_read.data.back()))}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tag\_read;}
-\DoxyCodeLine{00232\ \ \ \ \ \}}
-\DoxyCodeLine{00233\ }
-\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{void}\ read()\ \{}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ this-\/>\_stream.seekg(this-\/>\_address);}
-\DoxyCodeLine{00236\ }
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ numEntries\_char;}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ read\_char<2>(numEntries\_char,\ this-\/>\_stream);}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ this-\/>\_NumDirEntries\ =\ this-\/>\_endian\_handler-\/>convert(numEntries\_char);}
-\DoxyCodeLine{00240\ }
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ pos0\ =\ this-\/>\_stream.tellg();}
-\DoxyCodeLine{00242\ }
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ std::array<char,\ TiffTag\_size>\ tag\_char;}
-\DoxyCodeLine{00244\ }
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint\_t\ i\ =\ 0;\ i\ <\ this-\/>\_NumDirEntries;\ i++)\ \{}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ std::streampos\ pos\ =\ this-\/>\_stream.tellg();}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<TiffTag\_size>(tag\_char,\ this-\/>\_stream);}
-\DoxyCodeLine{00248\ }
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tag\ =\ this-\/>convert\_to\_tag(tag\_char);}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tagList.push\_back(tag);}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>printTag(tag);}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00253\ }
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ next\_idf\_offset\_char;}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ read\_char<2>(next\_idf\_offset\_char,\ this-\/>\_stream);}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ this-\/>\_NextIFDOffset\ =}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(next\_idf\_offset\_char);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(offset,\ i));}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint\_t>>)\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 0)\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ i\ must\ be\ 0"{}});}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(offset);}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint64\_t>>)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}uint64\ not\ valid"{}});}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint8\_t>>)\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}uint8\_t\ not\ valid"{}});}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::string>)\ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}string\ not\ valid"{}});}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(0,\ \textcolor{stringliteral}{"{}Error\ unhandled\ variant\ type"{}});}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variant);}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tag\_read.data.push\_back(variant);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_stream.seekg(offset);}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint\_t\ i\ =\ 0;\ i\ <\ data\_count;\ i++)\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TiffDataVariant\ variant\ =\ make\_variant(data\_type);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::visit(}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&,\ \textcolor{keyword}{this}](\textcolor{keyword}{auto}\&\ el)\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }T\ =\ std::decay\_t<\textcolor{keyword}{decltype}(el)>;}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::vector<uint8\_t>>)\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 1>\ arr;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<1>(arr,\ this-\/>\_stream);}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ushort\_t>>)\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ arr;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<2>(arr,\ this-\/>\_stream);}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint\_t>>)\ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 4>\ arr;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<4>(arr,\ this-\/>\_stream);}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T,}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint64\_t>>)\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 8>\ arr;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<8>(arr,\ this-\/>\_stream);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::string>)\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ el\ =\ read\_char\_str(this-\/>\_stream,\ data\_count);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ C++\ trap,\ !sizeof(T)\ fires\ only\ when\ T\ is\ instantiated}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ !sizeof(T)\ is\ always\ false\ since\ sizeof(T)\ >\ 0}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(!\textcolor{keyword}{sizeof}(T),\ \textcolor{stringliteral}{"{}Error\ unhandled\ variant\ type"{}});}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fires\ always\ even\ if\ the\ branch\ is\ never\ used}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//unsure\ if\ this\ is\ better}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//static\_assert(0,\ "{}Error\ unhandled\ variant\ type"{});}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variant);}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tag\_read.data.push\_back(variant);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stop\ loop\ when\ variant\ type\ is\ std::string}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ then\ all\ data\ are\ stored\ in\ the\ string}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<std::string>(tag\_read.data.back()))}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tag\_read;}
+\DoxyCodeLine{00246\ \ \ \ \ \}}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordtype}{void}\ read()\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ this-\/>\_stream.seekg(this-\/>\_address);}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ numEntries\_char;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ read\_char<2>(numEntries\_char,\ this-\/>\_stream);}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ this-\/>\_NumDirEntries\ =\ this-\/>\_endian\_handler-\/>convert(numEntries\_char);}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ pos0\ =\ this-\/>\_stream.tellg();}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ std::array<char,\ TiffTag\_size>\ tag\_char;}
 \DoxyCodeLine{00258\ }
-\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#if\ PRINT\ ==\ 1}}
-\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\_NextIFDOffset\ "{}}\ <<\ this-\/>\_NextIFDOffset\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}stream\ good\ "{}}\ <<\ this-\/>\_stream.good()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00263\ }
-\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ el\ :\ this-\/>\_tagList)\ \{}
-\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ tag0\ =\ this-\/>read\_tiff\_tag(el);}
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>printTagRead(tag0);}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00268\ \ \ \ \ \};}
-\DoxyCodeLine{00269\ }
-\DoxyCodeLine{00270\ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ get\_endian\_handler()\ \{}
-\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\_endian\_handler;}
-\DoxyCodeLine{00272\ \ \ \ \ \}}
-\DoxyCodeLine{00273\ \};}
-\DoxyCodeLine{00274\ }
-\DoxyCodeLine{00279\ \textcolor{keyword}{class\ }TiffReadStrips\ \{}
-\DoxyCodeLine{00280\ \ \ \ \ std::basic\_istream<char>\&\ \_stream;}
-\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_i_f_d}{TiffIFD}}\&\ \_ifd;}
-\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<VirtualEndianHandler>\ \_endian\_handler;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint\_t\ i\ =\ 0;\ i\ <\ this-\/>\_NumDirEntries;\ i++)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ std::streampos\ pos\ =\ this-\/>\_stream.tellg();}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ read\_char<TiffTag\_size>(tag\_char,\ this-\/>\_stream);}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tag\ =\ this-\/>convert\_to\_tag(tag\_char);}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_tagList.push\_back(tag);}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>printTag(tag);}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ std::array<char,\ 4>\ next\_idf\_offset\_char;}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ read\_char<4>(next\_idf\_offset\_char,\ this-\/>\_stream);}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ this-\/>\_NextIFDOffset\ =}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_endian\_handler-\/>convert(next\_idf\_offset\_char);}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#if\ PRINT\ ==\ 1}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\_NextIFDOffset\ "{}}\ <<\ this-\/>\_NextIFDOffset\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}stream\ good\ "{}}\ <<\ this-\/>\_stream.good()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ el\ :\ this-\/>\_tagList)\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ tag0\ =\ this-\/>read\_tiff\_tag(el);}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>printTagRead(tag0);}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \};}
 \DoxyCodeLine{00283\ }
-\DoxyCodeLine{00284\ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00285\ \ \ \ \ \textcolor{comment}{//\ delete\ the\ default\ constructor.}}
-\DoxyCodeLine{00286\ \ \ \ \ TiffReadStrips()\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00287\ }
-\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keyword}{explicit}\ TiffReadStrips(}
-\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classtifflib_1_1_tiff_i_f_d}{TiffIFD}}\&\ ifd,\ std::shared\_ptr<VirtualEndianHandler>\ endian\_handler)}
-\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ :\ \_ifd(ifd),}
-\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \_stream(ifd.get\_stream()),}
-\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \_endian\_handler(endian\_handler)\ \{\}}
-\DoxyCodeLine{00293\ }
-\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ reformat\_strip(std::string\&\ strip)\ \{\}}
-\DoxyCodeLine{00295\ }
-\DoxyCodeLine{00299\ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType\ tag,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_stream)\ \{}
-\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ file\ stream\ not\ valid"{}});}
-\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00303\ }
-\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ width\ =\ this-\/>\_ifd.getTag(tag);}
-\DoxyCodeLine{00305\ }
-\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ res\ =\ this-\/>\_ifd.read\_tiff\_tag(width);}
+\DoxyCodeLine{00284\ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ get\_endian\_handler()\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\_endian\_handler;}
+\DoxyCodeLine{00286\ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \};}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00293\ \textcolor{keyword}{class\ }TiffReadStrips\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ std::basic\_istream<char>\&\ \_stream;}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_i_f_d}{TiffIFD}}\&\ \_ifd;}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<VirtualEndianHandler>\ \_endian\_handler;}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{comment}{//\ delete\ the\ default\ constructor.}}
+\DoxyCodeLine{00300\ \ \ \ \ TiffReadStrips()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{explicit}\ TiffReadStrips(}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classtifflib_1_1_tiff_i_f_d}{TiffIFD}}\&\ ifd,\ std::shared\_ptr<VirtualEndianHandler>\ endian\_handler)}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ :\ \_ifd(ifd),}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \_stream(ifd.get\_stream()),}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \_endian\_handler(endian\_handler)\ \{\}}
 \DoxyCodeLine{00307\ }
-\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (res.data.size()\ !=\ size)\ \{}
-\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
-\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Error\ tag\ data\ size\ is\ \{\}\ expected\ \{\}\(\backslash\)n"{}},}
-\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.data.size(),}
-\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size));}
-\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00314\ }
-\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
-\DoxyCodeLine{00316\ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ reformat\_strip(std::string\&\ strip)\ \{\}}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00313\ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType\ tag,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_stream)\ \{}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ file\ stream\ not\ valid"{}});}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00317\ }
-\DoxyCodeLine{00321\ \ \ \ \ std::string\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_a2f3434878de328111093eb62e4451401}{readStrips}}()\ \{}
-\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_stream)\ \{}
-\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ file\ stream\ not\ valid"{}});}
-\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TiffTag\ getTag}}
-\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImageX}}
-\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_width\ =}
-\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::ImageWidth,\ 1);}
-\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_length\ =}
-\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::ImageLength,\ 1);}
-\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ strip\_byte\_count\ =}
-\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::StripByteCounts,\ 1);}
-\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ strip\_offset\ =}
-\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::StripOffsets,\ 1);}
-\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ rows\_per\_strip\ =}
-\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::RowsPerStrip,\ 1);}
-\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ samples\_per\_pixel\ =}
-\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::SamplesPerPixel,\ 1);}
-\DoxyCodeLine{00339\ }
-\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}samples\_per\_pixel\ "{}}\ <<\ to\_ulong(samples\_per\_pixel.data[0])}
-\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00342\ }
-\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ TiffDataVariant\ one\ =\ make\_variant(uint\_t\{1\});}
-\DoxyCodeLine{00344\ }
-\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (samples\_per\_pixel.data[0]\ !=\ one)\ \{}
-\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ planar\_config\ =}
-\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::PlanarConfiguration,\ 1);}
-\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}planar\_config\ "{}}\ <<\ to\_ulong(planar\_config.data[0])}
-\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00351\ }
-\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ TiffDataVariant\ strips\_in\_image\_var\ =}
-\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ (image\_length.data[0]\ +\ rows\_per\_strip.data[0]\ -\/\ one)\ /}
-\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ rows\_per\_strip.data[0];}
-\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ uint64\_t\ strips\_in\_image\ =\ to\_ulong(strips\_in\_image\_var);}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_tiff_tag}{TiffTag}}\ width\ =\ this-\/>\_ifd.getTag(tag);}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ res\ =\ this-\/>\_ifd.read\_tiff\_tag(width);}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (res.data.size()\ !=\ size)\ \{}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Error\ tag\ data\ size\ is\ \{\}\ expected\ \{\}\(\backslash\)n"{}},}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.data.size(),}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size));}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00330\ \ \ \ \ \}}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00335\ \ \ \ \ std::string\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_a2f3434878de328111093eb62e4451401}{readStrips}}()\ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_stream)\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error:\ file\ stream\ not\ valid"{}});}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TiffTag\ getTag}}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImageX}}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_width\ =}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::ImageWidth,\ 1);}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_length\ =}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::ImageLength,\ 1);}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ strip\_byte\_count\ =}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::StripByteCounts,\ 1);}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ strip\_offset\ =}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::StripOffsets,\ 1);}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ rows\_per\_strip\ =}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::RowsPerStrip,\ 1);}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ samples\_per\_pixel\ =}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::SamplesPerPixel,\ 1);}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ compression\_tag\ =}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::Compression,\ 1);}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ compression\_val\ =\ to\_ulong(compression\_tag.data[0]);}
 \DoxyCodeLine{00356\ }
-\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Data\ length\ "{}}}
-\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(image\_length.data[0]\ +\ rows\_per\_strip.data[0]\ -\/}
-\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ one)}
-\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}strips\_in\_image\ "{}}\ <<\ strips\_in\_image\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00362\ }
-\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ std::string\ image\_data;}
-\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint64\_t\ i\ =\ 0;\ i\ <\ strips\_in\_image;\ ++i)\ \{}
-\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ strip\_offset.data.size())\ \{}
-\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_stream.seekg(\textcolor{keyword}{static\_cast<}std::streamoff\textcolor{keyword}{>}(}
-\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ to\_size\_t(strip\_offset.data.at(i))));}
-\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ bytes\_read\ =}
-\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(to\_ulong(strip\_byte\_count.data[0]));}
-\DoxyCodeLine{00370\ }
-\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ strip\ =\ read\_char\_str(this-\/>\_stream,\ bytes\_read);}
-\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reformat\_strip(strip);}
-\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image\_data.append(strip);}
-\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ image\_data;}
-\DoxyCodeLine{00377\ \ \ \ \ \}}
-\DoxyCodeLine{00378\ }
-\DoxyCodeLine{00382\ \ \ \ \ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aa591a9f93de290f316b1b0c9b27ea05b}{get\_image}}()\ \{}
-\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_width\ =}
-\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::ImageWidth,\ 1);}
-\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_ppc\ =}
-\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::SamplesPerPixel,\ 1);}
-\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}\ result(to\_size\_t(image\_width.data[0]),\ 3);}
-\DoxyCodeLine{00388\ }
-\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ std::string\ strips\ =\ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_a2f3434878de328111093eb62e4451401}{readStrips}}();}
-\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ result.append\_row<std::string>(strips);}
-\DoxyCodeLine{00391\ }
-\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00393\ \ \ \ \ \}}
-\DoxyCodeLine{00394\ \};}
-\DoxyCodeLine{00395\ }
-\DoxyCodeLine{00396\ \textcolor{keyword}{class\ }TiffReadStrips\_RGB\ :\ \textcolor{keyword}{public}\ TiffReadStrips\ \{}
-\DoxyCodeLine{00397\ \ \ \ \ TiffReadStrips\_RGB(\doxymbox{\hyperlink{classtifflib_1_1_tiff_i_f_d}{TiffIFD}}\&\ ifd,}
-\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ endian\_handler)}
-\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ :\ TiffReadStrips(ifd,\ endian\_handler)\ \{\}}
-\DoxyCodeLine{00400\ \};}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}samples\_per\_pixel\ "{}}\ <<\ to\_ulong(samples\_per\_pixel.data[0])}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ TiffDataVariant\ one\ =\ make\_variant(uint\_t\{1\});}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (samples\_per\_pixel.data[0]\ !=\ one)\ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ planar\_config\ =}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::PlanarConfiguration,\ 1);}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}planar\_config\ "{}}\ <<\ to\_ulong(planar\_config.data[0])}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ TiffDataVariant\ strips\_in\_image\_var\ =}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ (image\_length.data[0]\ +\ rows\_per\_strip.data[0]\ -\/\ one)\ /}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ rows\_per\_strip.data[0];}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ uint64\_t\ strips\_in\_image\ =\ to\_ulong(strips\_in\_image\_var);}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Data\ length\ "{}}}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ to\_string(image\_length.data[0]\ +\ rows\_per\_strip.data[0]\ -\/}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ one)}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}strips\_in\_image\ "{}}\ <<\ strips\_in\_image\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ std::string\ image\_data;}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint64\_t\ i\ =\ 0;\ i\ <\ strips\_in\_image;\ ++i)\ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ strip\_offset.data.size())\ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_stream.seekg(\textcolor{keyword}{static\_cast<}std::streamoff\textcolor{keyword}{>}(}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ to\_size\_t(strip\_offset.data.at(i))));}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ bytes\_read\ =}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(to\_ulong(strip\_byte\_count.data[0]));}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ strip\ =\ read\_char\_str(this-\/>\_stream,\ bytes\_read);}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reformat\_strip(strip);}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (compression\_val\ ==\ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(TiffCompression::LZW))\ \{}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint16\_t>\ codes;}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ codes.reserve(strip.size()\ /\ 2);}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ +\ 1\ <\ strip.size();\ j\ +=\ 2)\ \{}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ arr\{strip[j],\ strip[j\ +\ 1]\};}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ codes.push\_back(this-\/>\_endian\_handler-\/>convert(arr));}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint8\_t>\ decompressed\ =\ \doxymbox{\hyperlink{classcompression_1_1_l_z_w_abcf064457e63f97b172be6e0f042adb0}{compression::LZW::decompress}}(codes);}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strip\ =\ std::string(decompressed.begin(),\ decompressed.end());}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00401\ }
-\DoxyCodeLine{00402\ \};\ \ \textcolor{comment}{//\ namespace\ tifflib}}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image\_data.append(strip);}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ image\_data;}
+\DoxyCodeLine{00406\ \ \ \ \ \}}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00411\ \ \ \ \ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aa591a9f93de290f316b1b0c9b27ea05b}{get\_image}}()\ \{}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_width\ =}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::ImageWidth,\ 1);}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structtifflib_1_1_tiff_tag_read}{TiffTagRead}}\ image\_ppc\ =}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_aea7e27f9717519d322aac04309088159}{get\_metadata\_tag}}(TiffTagType::SamplesPerPixel,\ 1);}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}\ result(to\_size\_t(image\_width.data[0]),\ 3);}
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ std::string\ strips\ =\ this-\/>\doxymbox{\hyperlink{classtifflib_1_1_tiff_read_strips_a2f3434878de328111093eb62e4451401}{readStrips}}();}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ result.append\_row<std::string>(strips);}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00422\ \ \ \ \ \}}
+\DoxyCodeLine{00423\ \};}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \textcolor{keyword}{class\ }TiffReadStrips\_RGB\ :\ \textcolor{keyword}{public}\ TiffReadStrips\ \{}
+\DoxyCodeLine{00426\ \ \ \ \ TiffReadStrips\_RGB(\doxymbox{\hyperlink{classtifflib_1_1_tiff_i_f_d}{TiffIFD}}\&\ ifd,}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<VirtualEndianHandler>\ endian\_handler)}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ :\ TiffReadStrips(ifd,\ endian\_handler)\ \{\}}
+\DoxyCodeLine{00429\ \};}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00431\ \};\ \ \textcolor{comment}{//\ namespace\ tifflib}}
 
 \end{DoxyCode}

@@ -97,13 +97,16 @@ Inheritance diagram for VirtualEndianHandler:</div>
  <div class="center">
   <img src="class_virtual_endian_handler.png" usemap="#VirtualEndianHandler_map" alt=""/>
   <map id="VirtualEndianHandler_map" name="VirtualEndianHandler_map">
-<area href="class_little_endian___t_i_f_f.html" alt="LittleEndian_TIFF" shape="rect" coords="0,56,133,80"/>
+<area href="class_big_endian___t_i_f_f.html" alt="BigEndian_TIFF" shape="rect" coords="0,56,133,80"/>
+<area href="class_little_endian___t_i_f_f.html" alt="LittleEndian_TIFF" shape="rect" coords="143,56,276,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1cf334d89f60272c790d360b4ae5f5e5" id="r_a1cf334d89f60272c790d360b4ae5f5e5"><td class="memItemLeft">virtual ushort_t&#160;</td><td class="memItemRight"><a class="el" href="#a1cf334d89f60272c790d360b4ae5f5e5">convert</a> (uint_t c, size_t idx) const =0</td></tr>
+<tr class="memitem:adae37e200325f34e0cf17218acc43944" id="r_adae37e200325f34e0cf17218acc43944"><td class="memItemLeft">virtual uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#adae37e200325f34e0cf17218acc43944">convert8</a> (uint_t c, size_t idx) const =0</td></tr>
+<tr class="memitem:a1cf334d89f60272c790d360b4ae5f5e5" id="r_a1cf334d89f60272c790d360b4ae5f5e5"><td class="memItemLeft"><a id="a1cf334d89f60272c790d360b4ae5f5e5" name="a1cf334d89f60272c790d360b4ae5f5e5"></a>
+virtual ushort_t&#160;</td><td class="memItemRight"><b>convert</b> (uint_t c, size_t idx) const =0</td></tr>
 <tr class="memitem:aca9a966dd27e3542361a1c1a750e7e7c" id="r_aca9a966dd27e3542361a1c1a750e7e7c"><td class="memItemLeft"><a id="aca9a966dd27e3542361a1c1a750e7e7c" name="aca9a966dd27e3542361a1c1a750e7e7c"></a>
 virtual uint8_t&#160;</td><td class="memItemRight"><b>convert</b> (std::array&lt; char, 1 &gt; c) const =0</td></tr>
 <tr class="memitem:a4f36a353fb35559f459d779f85cbea55" id="r_a4f36a353fb35559f459d779f85cbea55"><td class="memItemLeft"><a id="a4f36a353fb35559f459d779f85cbea55" name="a4f36a353fb35559f459d779f85cbea55"></a>
@@ -124,8 +127,8 @@ virtual std::array&lt; char, 8 &gt;&#160;</td><td class="memItemRight"><b>conver
 virtual tiff_header_endian&#160;</td><td class="memItemRight"><b>get_endian_value</b> () const =0</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a1cf334d89f60272c790d360b4ae5f5e5" name="a1cf334d89f60272c790d360b4ae5f5e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cf334d89f60272c790d360b4ae5f5e5">&#9670;&#160;</a></span>convert()</h2>
+<a id="adae37e200325f34e0cf17218acc43944" name="adae37e200325f34e0cf17218acc43944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adae37e200325f34e0cf17218acc43944">&#9670;&#160;</a></span>convert8()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,7 +137,7 @@ virtual tiff_header_endian&#160;</td><td class="memItemRight"><b>get_endian_valu
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual ushort_t VirtualEndianHandler::convert </td>
+          <td class="memname">virtual uint8_t VirtualEndianHandler::convert8 </td>
           <td>(</td>
           <td class="paramtype">uint_t</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
         </tr>

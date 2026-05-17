@@ -16,48 +16,49 @@
 \DoxyCodeLine{00012\ }
 \DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }tifflib\ \{}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_ad09028cf4950aecf1bdd2133f4301de8}{TiffWriter}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_a3dd07d2cdc7be50e14d55ebb055bf209}{TiffWriter}}\ \{}
 \DoxyCodeLine{00022\ \ \ \ \ std::ofstream\ \_file;}
 \DoxyCodeLine{00023\ \ \ \ \ std::optional<TiffWriterHeader>\ \_header;}
 \DoxyCodeLine{00024\ \ \ \ \ std::unique\_ptr<TiffWriteData<uint8\_t>>\ \_writer;}
 \DoxyCodeLine{00025\ }
 \DoxyCodeLine{00026\ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_ad09028cf4950aecf1bdd2133f4301de8}{TiffWriter}}(std::filesystem::path\ image\_path,}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_a3dd07d2cdc7be50e14d55ebb055bf209}{TiffWriter}}(std::filesystem::path\ image\_path,}
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SupportedImageTypes\ type,}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}*\ img,\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ TiffCompression\ compression\ =\ TiffCompression::None)\ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ this-\/>\_file\ =\ std::ofstream(image\_path,\ std::ios::binary);}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_file)\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Error,\ could\ not\ access\ file\ in\ path\ \{\}\(\backslash\)n"{}},}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image\_path.string()));}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ this-\/>\_header.emplace(this-\/>\_file);}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{TiffWriterConfig}}\ config;}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ config.compression\ =\ compression;}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::Bitlevel:}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classtifflib_1_1_bitlevel_image}{BitlevelImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file,\ config));}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::Grayscale:}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classtifflib_1_1_gray_image}{GrayImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file,\ config));}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::RGB:}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classtifflib_1_1_r_g_b_image}{RGBImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file,\ config));}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00061\ \ \ \ \ \};}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_a4526cda1bd0b68a337f289773a371cc9}{write}}()\ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ this-\/>\_header-\/>write\_header();}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ this-\/>\_writer-\/>write();}
-\DoxyCodeLine{00069\ \ \ \ \ \};}
-\DoxyCodeLine{00070\ \};}
-\DoxyCodeLine{00071\ \};\ \ \textcolor{comment}{//\ namespace\ tifflib}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_image_container}{ImageContainer<uint8\_t>}}*\ img,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ TiffCompression\ compression\ =\ TiffCompression::None,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tiff\_header\_endian\ endian\ =\ tiff\_header\_endian::LITTLE)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ this-\/>\_file\ =\ std::ofstream(image\_path,\ std::ios::binary);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\_file)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Error,\ could\ not\ access\ file\ in\ path\ \{\}\(\backslash\)n"{}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image\_path.string()));}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ this-\/>\_header.emplace(this-\/>\_file,\ endian);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structtifflib_1_1_tiff_writer_config}{TiffWriterConfig}}\ config;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ config.compression\ =\ compression;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::Bitlevel:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classtifflib_1_1_bitlevel_image}{BitlevelImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file,\ config));}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::Grayscale:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classtifflib_1_1_gray_image}{GrayImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file,\ config));}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SupportedImageTypes::RGB:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_writer\ =\ std::unique\_ptr<TiffWriteData<uint8\_t>>(}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \doxymbox{\hyperlink{classtifflib_1_1_r_g_b_image}{RGBImage}}(*(this-\/>\_header),\ img,\ this-\/>\_file,\ config));}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_a4526cda1bd0b68a337f289773a371cc9}{write}}()\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ this-\/>\_header-\/>write\_header();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ this-\/>\_writer-\/>write();}
+\DoxyCodeLine{00070\ \ \ \ \ \};}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ \};\ \ \textcolor{comment}{//\ namespace\ tifflib}}
 
 \end{DoxyCode}

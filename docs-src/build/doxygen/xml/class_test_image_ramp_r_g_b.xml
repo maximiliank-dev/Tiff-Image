@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="37" column="14" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="34" bodyend="44"/>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="37" column="14" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="35" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_test_image_ramp_r_g_b_1a97cba0c1bb17f31f1399edc5e3f9acf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="40" column="10" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="85" bodyend="130"/>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="40" column="10" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="86" bodyend="132"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -197,7 +197,7 @@
         <inbodydescription>
 <para>max_{x, y \in D} x·cosθ + y·sinθ the max is for a given θ at the points: [ (0,0), (0,y_max), (x_max, 0), (x_max, y_max) ] since the function is linear and constant for a given θ</para>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="51" column="23" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="46" bodyend="83"/>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="51" column="23" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="47" bodyend="84"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

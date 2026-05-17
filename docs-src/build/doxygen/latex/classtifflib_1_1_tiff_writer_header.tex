@@ -19,8 +19,7 @@
 \Hypertarget{classtifflib_1_1_tiff_writer_header_a5f7088a43913946a860ac7edec909031}\label{classtifflib_1_1_tiff_writer_header_a5f7088a43913946a860ac7edec909031} 
 uint\+\_\+t {\bfseries get\+\_\+idf\+\_\+offset} ()
 \item 
-\Hypertarget{classtifflib_1_1_tiff_writer_header_a316de801be75d38374706f035eefe574}\label{classtifflib_1_1_tiff_writer_header_a316de801be75d38374706f035eefe574} 
-void {\bfseries write\+\_\+header} ()
+void \doxymbox{\hyperlink{classtifflib_1_1_tiff_writer_header_a316de801be75d38374706f035eefe574}{write\+\_\+header}} ()
 \item 
 \Hypertarget{classtifflib_1_1_tiff_writer_header_a307dfbfb0695681d845d015779fd395b}\label{classtifflib_1_1_tiff_writer_header_a307dfbfb0695681d845d015779fd395b} 
 std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{class_virtual_endian_handler}{Virtual\+Endian\+Handler}} $>$ {\bfseries create\+\_\+endian\+\_\+handler} ()
@@ -32,6 +31,17 @@ std::\+basic\+\_\+ostream$<$ char $>$ \& {\bfseries get\+\_\+stream} ()
 
 \doxysubsection{Detailed Description}
 Writes the basic tiff Header @\+Params:\+ endian:\+ sets ths the endianess of the image stream:\+ the ofstream owning the file on disk 
+
+\label{doc-func-members}
+\Hypertarget{classtifflib_1_1_tiff_writer_header_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtifflib_1_1_tiff_writer_header_a316de801be75d38374706f035eefe574}\index{tifflib::TiffWriterHeader@{tifflib::TiffWriterHeader}!write\_header@{write\_header}}
+\index{write\_header@{write\_header}!tifflib::TiffWriterHeader@{tifflib::TiffWriterHeader}}
+\doxysubsubsection{\texorpdfstring{write\_header()}{write\_header()}}
+{\footnotesize\ttfamily \label{classtifflib_1_1_tiff_writer_header_a316de801be75d38374706f035eefe574} 
+void tifflib::\+\+Tiff\+Writer\+Header::\+write\+\_\+header (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write the first 8 Header bytes:\+ Byte Order , Magic Number , Offset of the 0th IFD 
 
 The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
 \item 

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="280" column="24" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="280" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="294" column="24" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="294" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtifflib_1_1_tiff_read_strips_1ab2831d6beb774771986b89c931e0f7b5" prot="private" static="no" mutable="no">
         <type>const <ref refid="classtifflib_1_1_tiff_i_f_d" kindref="compound">TiffIFD</ref> &amp;</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="281" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="281" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="295" column="19" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="295" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtifflib_1_1_tiff_read_strips_1a88ec9b83bd7e008294d67f72b0b86f77" prot="private" static="no" mutable="no">
         <type>const std::shared_ptr&lt; <ref refid="class_virtual_endian_handler" kindref="compound">VirtualEndianHandler</ref> &gt;</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="282" column="27" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="282" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="296" column="27" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="296" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="286" column="5"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="300" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classtifflib_1_1_tiff_read_strips_1ae416d0de65c0f0cdd990e9aaaba2805d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="288" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="288" bodyend="292"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="302" column="14" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="302" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="classtifflib_1_1_tiff_read_strips_1a85beb6aab8ddbe779040564d2b47a387" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="294" column="18" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="294" bodyend="294"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="308" column="18" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="308" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="classtifflib_1_1_tiff_read_strips_1aea7e27f9717519d322aac04309088159" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structtifflib_1_1_tiff_tag_read" kindref="compound">TiffTagRead</ref></type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="299" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="299" bodyend="316"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="313" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="313" bodyend="330"/>
       </memberdef>
       <memberdef kind="function" id="classtifflib_1_1_tiff_read_strips_1a2f3434878de328111093eb62e4451401" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="321" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="321" bodyend="377"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="335" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="335" bodyend="406"/>
       </memberdef>
       <memberdef kind="function" id="classtifflib_1_1_tiff_read_strips_1aa591a9f93de290f316b1b0c9b27ea05b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_image_container" kindref="compound">ImageContainer</ref>&lt; uint8_t &gt;</type>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="382" column="20" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="382" bodyend="393"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="411" column="20" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="411" bodyend="422"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -174,7 +174,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="279" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="279" bodyend="394"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="293" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="293" bodyend="423"/>
     <listofallmembers>
       <member refid="classtifflib_1_1_tiff_read_strips_1a88ec9b83bd7e008294d67f72b0b86f77" prot="private" virt="non-virtual"><scope>tifflib::TiffReadStrips</scope><name>_endian_handler</name></member>
       <member refid="classtifflib_1_1_tiff_read_strips_1ab2831d6beb774771986b89c931e0f7b5" prot="private" virt="non-virtual"><scope>tifflib::TiffReadStrips</scope><name>_ifd</name></member>

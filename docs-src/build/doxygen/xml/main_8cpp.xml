@@ -29,10 +29,26 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="25">
+        <label>compression/lzw.hpp</label>
+        <link refid="lzw_8hpp_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
         <label>../compression/packbits.hpp</label>
         <link refid="packbits_8hpp_source"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -49,7 +65,7 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="32">
         <label>io/FileReader.hpp</label>
         <link refid="_file_reader_8hpp_source"/>
         <childnode refid="3" relation="include">
@@ -76,21 +92,21 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="29">
         <label>tiff-config/tiff-data-variant.hpp</label>
         <link refid="tiff-data-variant_8hpp_source"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -154,9 +170,11 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -181,18 +199,18 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="34">
         <label>tiff-writer-header.hpp</label>
         <link refid="tiff-writer-header_8hpp_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -202,13 +220,15 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="33">
         <label>tiff-writer/tiff_writer-image.hpp</label>
         <link refid="tiff__writer-image_8hpp_source"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -223,7 +243,10 @@
       <node id="14">
         <label>cstdint</label>
       </node>
-      <node id="26">
+      <node id="28">
+        <label>deque</label>
+      </node>
+      <node id="30">
         <label>execution</label>
       </node>
       <node id="5">
@@ -232,7 +255,7 @@
       <node id="3">
         <label>fstream</label>
       </node>
-      <node id="27">
+      <node id="31">
         <label>functional</label>
       </node>
       <node id="2">
@@ -247,7 +270,7 @@
       <node id="20">
         <label>limits</label>
       </node>
-      <node id="31">
+      <node id="35">
         <label>map</label>
       </node>
       <node id="6">
@@ -256,10 +279,10 @@
       <node id="16">
         <label>ostream</label>
       </node>
-      <node id="35">
+      <node id="26">
         <label>ranges</label>
       </node>
-      <node id="32">
+      <node id="36">
         <label>sstream</label>
       </node>
       <node id="10">
@@ -268,11 +291,14 @@
       <node id="12">
         <label>string</label>
       </node>
-      <node id="33">
+      <node id="37">
         <label>tuple</label>
       </node>
       <node id="21">
         <label>type_traits</label>
+      </node>
+      <node id="27">
+        <label>unordered_map</label>
       </node>
       <node id="22">
         <label>variant</label>

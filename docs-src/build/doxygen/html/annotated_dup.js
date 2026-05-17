@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "compression", null, [
+      [ "LZW", "classcompression_1_1_l_z_w.html", "classcompression_1_1_l_z_w" ],
       [ "PackBits", "classcompression_1_1_pack_bits.html", null ]
     ] ],
     [ "tifflib", null, [
@@ -10,7 +11,7 @@ var annotated_dup =
       [ "TiffReadStrips_RGB", "classtifflib_1_1_tiff_read_strips___r_g_b.html", null ],
       [ "TIFFHeader", "classtifflib_1_1_t_i_f_f_header.html", null ],
       [ "TiffReader", "classtifflib_1_1_tiff_reader.html", "classtifflib_1_1_tiff_reader" ],
-      [ "TiffWriterHeader", "classtifflib_1_1_tiff_writer_header.html", null ],
+      [ "TiffWriterHeader", "classtifflib_1_1_tiff_writer_header.html", "classtifflib_1_1_tiff_writer_header" ],
       [ "TiffWriteData", "classtifflib_1_1_tiff_write_data.html", "classtifflib_1_1_tiff_write_data" ],
       [ "TiffWriter", "classtifflib_1_1_tiff_writer.html", "classtifflib_1_1_tiff_writer" ],
       [ "TiffWriterConfig", "structtifflib_1_1_tiff_writer_config.html", null ],
@@ -18,6 +19,7 @@ var annotated_dup =
       [ "GrayImage", "classtifflib_1_1_gray_image.html", "classtifflib_1_1_gray_image" ],
       [ "RGBImage", "classtifflib_1_1_r_g_b_image.html", "classtifflib_1_1_r_g_b_image" ]
     ] ],
+    [ "BigEndian_TIFF", "class_big_endian___t_i_f_f.html", null ],
     [ "FileReader", "class_file_reader.html", null ],
     [ "ImageContainer", "class_image_container.html", "class_image_container" ],
     [ "ImageSolidColor", "class_image_solid_color.html", null ],

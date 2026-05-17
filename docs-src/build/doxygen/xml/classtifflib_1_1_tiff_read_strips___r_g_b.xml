@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="397" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="397" bodyend="399"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="426" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="426" bodyend="428"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -55,7 +55,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="396" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="396" bodyend="400"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="425" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="425" bodyend="429"/>
     <listofallmembers>
       <member refid="classtifflib_1_1_tiff_read_strips_1aa591a9f93de290f316b1b0c9b27ea05b" prot="public" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>get_image</name></member>
       <member refid="classtifflib_1_1_tiff_read_strips_1aea7e27f9717519d322aac04309088159" prot="public" virt="non-virtual"><scope>tifflib::TiffReadStrips_RGB</scope><name>get_metadata_tag</name></member>

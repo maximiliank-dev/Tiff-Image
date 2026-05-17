@@ -1,4 +1,4 @@
 var class_virtual_endian_handler =
 [
-    [ "convert", "class_virtual_endian_handler.html#a1cf334d89f60272c790d360b4ae5f5e5", null ]
+    [ "convert8", "class_virtual_endian_handler.html#adae37e200325f34e0cf17218acc43944", null ]
 ];

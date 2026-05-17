@@ -96,14 +96,14 @@ $(function(){initNavTree('classtifflib_1_1_tiff_writer.html','','classtifflib_1_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad09028cf4950aecf1bdd2133f4301de8" id="r_ad09028cf4950aecf1bdd2133f4301de8"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ad09028cf4950aecf1bdd2133f4301de8">TiffWriter</a> (std::filesystem::path image_path, SupportedImageTypes type, const <a class="el" href="class_image_container.html">ImageContainer</a>&lt; uint8_t &gt; *img, const TiffCompression compression=TiffCompression::None)</td></tr>
+<tr class="memitem:a3dd07d2cdc7be50e14d55ebb055bf209" id="r_a3dd07d2cdc7be50e14d55ebb055bf209"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a3dd07d2cdc7be50e14d55ebb055bf209">TiffWriter</a> (std::filesystem::path image_path, SupportedImageTypes type, const <a class="el" href="class_image_container.html">ImageContainer</a>&lt; uint8_t &gt; *img, const TiffCompression compression=TiffCompression::None, const tiff_header_endian endian=tiff_header_endian::LITTLE)</td></tr>
 <tr class="memitem:a4526cda1bd0b68a337f289773a371cc9" id="r_a4526cda1bd0b68a337f289773a371cc9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4526cda1bd0b68a337f289773a371cc9">write</a> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Write an <a class="el" href="class_image_container.html">ImageContainer</a> to a Tiff File Usage: <a class="el" href="classtifflib_1_1_tiff_writer.html">TiffWriter</a> writer(&lt;path&gt;, tifflib::SupportedImageTypes::RGB, image); writer.write(); </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad09028cf4950aecf1bdd2133f4301de8" name="ad09028cf4950aecf1bdd2133f4301de8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad09028cf4950aecf1bdd2133f4301de8">&#9670;&#160;</a></span>TiffWriter()</h2>
+<a id="a3dd07d2cdc7be50e14d55ebb055bf209" name="a3dd07d2cdc7be50e14d55ebb055bf209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dd07d2cdc7be50e14d55ebb055bf209">&#9670;&#160;</a></span>TiffWriter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +129,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const TiffCompression</td>          <td class="paramname"><span class="paramname"><em>compression</em></span><span class="paramdefsep"> = </span><span class="paramdefval">TiffCompression::None</span>&#160;)</td>
+          <td class="paramtype">const TiffCompression</td>          <td class="paramname"><span class="paramname"><em>compression</em></span><span class="paramdefsep"> = </span><span class="paramdefval">TiffCompression::None</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const tiff_header_endian</td>          <td class="paramname"><span class="paramname"><em>endian</em></span><span class="paramdefsep"> = </span><span class="paramdefval">tiff_header_endian::LITTLE</span>&#160;)</td>
         </tr>
       </table>
   </td>

@@ -13,6 +13,7 @@ var hierarchy =
       [ "ImageSolidColor", "class_image_solid_color.html", null ]
     ] ],
     [ "tifflib::TiffWriteData&lt; TP &gt;::less_tiff", "structtifflib_1_1_tiff_write_data_1_1less__tiff.html", null ],
+    [ "compression::LZW", "classcompression_1_1_l_z_w.html", null ],
     [ "compression::PackBits", "classcompression_1_1_pack_bits.html", null ],
     [ "TagTypeValue&lt; t &gt;", "struct_tag_type_value.html", null ],
     [ "TagTypeValue&lt; TiffTagType::BitsPerSample &gt;", "struct_tag_type_value_3_01_tiff_tag_type_1_1_bits_per_sample_01_4.html", null ],
@@ -50,6 +51,7 @@ var hierarchy =
     [ "vector_element&lt; T &gt;", "structvector__element.html", null ],
     [ "vector_element&lt; std::vector&lt; T &gt; &gt;", "structvector__element_3_01std_1_1vector_3_01_t_01_4_01_4.html", null ],
     [ "VirtualEndianHandler", "class_virtual_endian_handler.html", [
+      [ "BigEndian_TIFF", "class_big_endian___t_i_f_f.html", null ],
       [ "LittleEndian_TIFF", "class_little_endian___t_i_f_f.html", null ]
     ] ]
 ];

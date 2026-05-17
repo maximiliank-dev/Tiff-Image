@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="12" column="14" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="9" bodyend="15"/>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="12" column="14" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="10" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="class_test_image_single_color_1ae0498235ce5afe9779f2cd9cfc9ae4b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="14" column="10" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="17" bodyend="33"/>
+        <location file="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.hpp" line="14" column="10" bodyfile="D:/Projects/ImageConverter/src/image-generation/TestRGBImages.cpp" bodystart="18" bodyend="34"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

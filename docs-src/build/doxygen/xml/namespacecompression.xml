@@ -2,11 +2,124 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="namespacecompression" kind="namespace" language="C++">
     <compoundname>compression</compoundname>
+    <innerclass refid="classcompression_1_1_l_z_w" prot="public">compression::LZW</innerclass>
     <innerclass refid="classcompression_1_1_pack_bits" prot="public">compression::PackBits</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="lzw_8hpp_1ad94cd88290895ebbdb41508358d85ab6" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t compression::CLEAR</definition>
+        <argsstring></argsstring>
+        <name>CLEAR</name>
+        <qualifiedname>compression::CLEAR</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="39" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/lzw.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="lzw_8hpp_1a1db33dc8e62b4f51505712e27a7359e1" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t compression::EOI</definition>
+        <argsstring></argsstring>
+        <name>EOI</name>
+        <qualifiedname>compression::EOI</qualifiedname>
+        <initializer>= 257</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="40" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/lzw.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="lzw_8hpp_1aa071afba50d340f13670d227a8914317" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t compression::FIRST</definition>
+        <argsstring></argsstring>
+        <name>FIRST</name>
+        <qualifiedname>compression::FIRST</qualifiedname>
+        <initializer>= 258</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="41" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/lzw.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="lzw_8hpp_1af961729cc19dc5f82fe53376e9fcd23a" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int compression::MIN_W</definition>
+        <argsstring></argsstring>
+        <name>MIN_W</name>
+        <qualifiedname>compression::MIN_W</qualifiedname>
+        <initializer>= 9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="42" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/lzw.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="lzw_8hpp_1af8cea298d594e1a7a78200e4b494a5c3" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int compression::MAX_W</definition>
+        <argsstring></argsstring>
+        <name>MAX_W</name>
+        <qualifiedname>compression::MAX_W</qualifiedname>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="43" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/lzw.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="lzw_8hpp_1ac38b527337b5dae14458ae46876fdfa9" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t compression::MAX_SZ</definition>
+        <argsstring></argsstring>
+        <name>MAX_SZ</name>
+        <qualifiedname>compression::MAX_SZ</qualifiedname>
+        <initializer>= 4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="44" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/lzw.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="lzw_8hpp_1a46e5e01699ef994d0f7fffdd01ce2782" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int compression::msb_position</definition>
+        <argsstring>(uint32_t x) noexcept</argsstring>
+        <name>msb_position</name>
+        <qualifiedname>compression::msb_position</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="22" column="12" bodyfile="D:/Projects/ImageConverter/src/compression/lzw.hpp" bodystart="22" bodyend="36"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/compression/packbits.hpp" line="6" column="1"/>
+    <location file="D:/Projects/ImageConverter/src/compression/lzw.hpp" line="16" column="1"/>
   </compounddef>
 </doxygen>

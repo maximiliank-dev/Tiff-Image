@@ -17,14 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="87" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="87" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="88" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="86" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="86" bodyend="88"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="87" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="87" bodyend="89"/>
     <listofallmembers>
       <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_photometric_interpretation_01_4_1a18e746cc7c97459f3931bcffbef4660f" prot="public" virt="non-virtual"><scope>TagTypeValue&lt; TiffTagType::PhotometricInterpretation &gt;</scope><name>type</name></member>
     </listofallmembers>

@@ -17,14 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="71" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="71" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="72" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="70" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="70" bodyend="72"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="71" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="71" bodyend="73"/>
     <listofallmembers>
       <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_image_width_01_4_1a0ce43e85ddd567614c79fbe3055f2009" prot="public" virt="non-virtual"><scope>TagTypeValue&lt; TiffTagType::ImageWidth &gt;</scope><name>type</name></member>
     </listofallmembers>

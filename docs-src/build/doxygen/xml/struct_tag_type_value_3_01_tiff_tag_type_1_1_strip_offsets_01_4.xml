@@ -17,14 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="91" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="91" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="92" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="90" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="90" bodyend="92"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" line="91" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-config/tiff-types.hpp" bodystart="91" bodyend="93"/>
     <listofallmembers>
       <member refid="struct_tag_type_value_3_01_tiff_tag_type_1_1_strip_offsets_01_4_1a377e916f7c77df49552cf093eb542868" prot="public" virt="non-virtual"><scope>TagTypeValue&lt; TiffTagType::StripOffsets &gt;</scope><name>type</name></member>
     </listofallmembers>

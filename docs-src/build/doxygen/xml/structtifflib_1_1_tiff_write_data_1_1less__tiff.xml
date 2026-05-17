@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="89" column="24" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="89" bodyend="92"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="102" column="24" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="102" bodyend="105"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -32,7 +32,7 @@
     <detaileddescription>
 <para>implement the ascending sorting for SetElement Required from the TIFF spec </para>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="88" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="88" bodyend="93"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" line="101" column="5" bodyfile="D:/Projects/ImageConverter/src/tiff-writer/tiff-writer-header.hpp" bodystart="101" bodyend="106"/>
     <listofallmembers>
       <member refid="structtifflib_1_1_tiff_write_data_1_1less__tiff_1a3f089ee7fd386b4a1894626bd24b6c0d" prot="public" virt="non-virtual"><scope>tifflib::TiffWriteData::less_tiff</scope><name>operator()</name></member>
     </listofallmembers>

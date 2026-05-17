@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/compression/packbits.hpp" line="14" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/packbits.hpp" bodystart="14" bodyend="44"/>
+        <location file="D:/Projects/ImageConverter/src/compression/packbits.hpp" line="13" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/packbits.hpp" bodystart="13" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classcompression_1_1_pack_bits_1a2bf8e68b6df8d4e36833f86154ad7b38" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; uint8_t &gt;</type>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/compression/packbits.hpp" line="49" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/packbits.hpp" bodystart="49" bodyend="90"/>
+        <location file="D:/Projects/ImageConverter/src/compression/packbits.hpp" line="48" column="20" bodyfile="D:/Projects/ImageConverter/src/compression/packbits.hpp" bodystart="48" bodyend="90"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

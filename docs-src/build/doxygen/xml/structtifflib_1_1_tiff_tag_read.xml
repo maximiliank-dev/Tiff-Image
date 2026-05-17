@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="24" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="24" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="25" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtifflib_1_1_tiff_tag_read_1a404884d3d04b55de682839295b7a1dce" prot="public" static="no" mutable="no">
         <type>std::vector&lt; TiffDataVariant &gt;</type>
@@ -29,14 +29,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="25" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="25" bodyend="-1"/>
+        <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="26" column="17" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="23" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="23" bodyend="26"/>
+    <location file="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" line="24" column="1" bodyfile="D:/Projects/ImageConverter/src/tiff-reader/tiff-data.hpp" bodystart="24" bodyend="27"/>
     <listofallmembers>
       <member refid="structtifflib_1_1_tiff_tag_read_1a404884d3d04b55de682839295b7a1dce" prot="public" virt="non-virtual"><scope>tifflib::TiffTagRead</scope><name>data</name></member>
       <member refid="structtifflib_1_1_tiff_tag_read_1a9a07e0d883d54ea3b503a7452975f5f8" prot="public" virt="non-virtual"><scope>tifflib::TiffTagRead</scope><name>TagID</name></member>

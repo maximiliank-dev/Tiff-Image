@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="dir_40ed6a89610fc2370cf3ffcd6469b940" kind="dir">
     <compoundname>D:/Projects/ImageConverter/src/compression</compoundname>
+    <innerfile refid="lzw_8hpp">lzw.hpp</innerfile>
     <innerfile refid="packbits_8hpp">packbits.hpp</innerfile>
     <briefdescription>
     </briefdescription>

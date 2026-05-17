@@ -24,7 +24,7 @@ var searchData=
   ['tifftagread_21',['TiffTagRead',['../structtifflib_1_1_tiff_tag_read.html',1,'tifflib']]],
   ['tiffwritedata_22',['TiffWriteData',['../classtifflib_1_1_tiff_write_data.html',1,'tifflib']]],
   ['tiffwritedata_3c_20uint8_5ft_20_3e_23',['TiffWriteData&lt; uint8_t &gt;',['../classtifflib_1_1_tiff_write_data.html',1,'tifflib']]],
-  ['tiffwriter_24',['TiffWriter',['../classtifflib_1_1_tiff_writer.html',1,'tifflib::TiffWriter'],['../classtifflib_1_1_tiff_writer.html#ad09028cf4950aecf1bdd2133f4301de8',1,'tifflib::TiffWriter::TiffWriter()']]],
+  ['tiffwriter_24',['TiffWriter',['../classtifflib_1_1_tiff_writer.html',1,'tifflib::TiffWriter'],['../classtifflib_1_1_tiff_writer.html#a3dd07d2cdc7be50e14d55ebb055bf209',1,'tifflib::TiffWriter::TiffWriter()']]],
   ['tiffwriterconfig_25',['TiffWriterConfig',['../structtifflib_1_1_tiff_writer_config.html',1,'tifflib']]],
   ['tiffwriterheader_26',['TiffWriterHeader',['../classtifflib_1_1_tiff_writer_header.html',1,'tifflib']]],
   ['transpose_27',['transpose',['../class_image_container.html#a150c9b165303727997dd3b6d38b94ccb',1,'ImageContainer']]]

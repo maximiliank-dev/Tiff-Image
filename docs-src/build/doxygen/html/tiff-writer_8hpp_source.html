@@ -106,60 +106,61 @@ $(function(){initNavTree('tiff-writer_8hpp_source.html','',''); });
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span>tifflib {</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span></div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classtifflib_1_1_tiff_writer.html">   21</a></span><span class="keyword">class </span><a class="code hl_function" href="classtifflib_1_1_tiff_writer.html#ad09028cf4950aecf1bdd2133f4301de8">TiffWriter</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classtifflib_1_1_tiff_writer.html">   21</a></span><span class="keyword">class </span><a class="code hl_function" href="classtifflib_1_1_tiff_writer.html#a3dd07d2cdc7be50e14d55ebb055bf209">TiffWriter</a> {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    std::ofstream _file;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    std::optional&lt;TiffWriterHeader&gt; _header;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt; _writer;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>   <span class="keyword">public</span>:</div>
 <div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classtifflib_1_1_tiff_writer.html#ad09028cf4950aecf1bdd2133f4301de8">   32</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classtifflib_1_1_tiff_writer.html#ad09028cf4950aecf1bdd2133f4301de8">TiffWriter</a>(std::filesystem::path image_path,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classtifflib_1_1_tiff_writer.html#a3dd07d2cdc7be50e14d55ebb055bf209">   32</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classtifflib_1_1_tiff_writer.html#a3dd07d2cdc7be50e14d55ebb055bf209">TiffWriter</a>(std::filesystem::path image_path,</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                        SupportedImageTypes type,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                        <span class="keyword">const</span> <a class="code hl_class" href="class_image_container.html">ImageContainer&lt;uint8_t&gt;</a>* img, </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                        <span class="keyword">const</span> TiffCompression compression = TiffCompression::None) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        this-&gt;_file = std::ofstream(image_path, std::ios::binary);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">if</span> (!this-&gt;_file) {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                std::format(<span class="stringliteral">&quot;Error, could not access file in path {}\n&quot;</span>,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                            image_path.string()));</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        this-&gt;_header.emplace(this-&gt;_file);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_struct" href="structtifflib_1_1_tiff_writer_config.html">TiffWriterConfig</a> config;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        config.compression = compression;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">case</span> SupportedImageTypes::Bitlevel:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                this-&gt;_writer = std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    <span class="keyword">new</span> <a class="code hl_class" href="classtifflib_1_1_bitlevel_image.html">BitlevelImage</a>(*(this-&gt;_header), img, this-&gt;_file, config));</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">case</span> SupportedImageTypes::Grayscale:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                this-&gt;_writer = std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    <span class="keyword">new</span> <a class="code hl_class" href="classtifflib_1_1_gray_image.html">GrayImage</a>(*(this-&gt;_header), img, this-&gt;_file, config));</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">case</span> SupportedImageTypes::RGB:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                this-&gt;_writer = std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                    <span class="keyword">new</span> <a class="code hl_class" href="classtifflib_1_1_r_g_b_image.html">RGBImage</a>(*(this-&gt;_header), img, this-&gt;_file, config));</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                        <span class="keyword">const</span> <a class="code hl_class" href="class_image_container.html">ImageContainer&lt;uint8_t&gt;</a>* img,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                        <span class="keyword">const</span> TiffCompression compression = TiffCompression::None,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                        <span class="keyword">const</span> tiff_header_endian endian = tiff_header_endian::LITTLE) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        this-&gt;_file = std::ofstream(image_path, std::ios::binary);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">if</span> (!this-&gt;_file) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">throw</span> std::runtime_error(</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                std::format(<span class="stringliteral">&quot;Error, could not access file in path {}\n&quot;</span>,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                            image_path.string()));</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        this-&gt;_header.emplace(this-&gt;_file, endian);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_struct" href="structtifflib_1_1_tiff_writer_config.html">TiffWriterConfig</a> config;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        config.compression = compression;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">switch</span> (type) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">case</span> SupportedImageTypes::Bitlevel:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                this-&gt;_writer = std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    <span class="keyword">new</span> <a class="code hl_class" href="classtifflib_1_1_bitlevel_image.html">BitlevelImage</a>(*(this-&gt;_header), img, this-&gt;_file, config));</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">case</span> SupportedImageTypes::Grayscale:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                this-&gt;_writer = std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    <span class="keyword">new</span> <a class="code hl_class" href="classtifflib_1_1_gray_image.html">GrayImage</a>(*(this-&gt;_header), img, this-&gt;_file, config));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">case</span> SupportedImageTypes::RGB:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                this-&gt;_writer = std::unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;(</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    <span class="keyword">new</span> <a class="code hl_class" href="classtifflib_1_1_r_g_b_image.html">RGBImage</a>(*(this-&gt;_header), img, this-&gt;_file, config));</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    };</div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
-<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classtifflib_1_1_tiff_writer.html#a4526cda1bd0b68a337f289773a371cc9">   66</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtifflib_1_1_tiff_writer.html#a4526cda1bd0b68a337f289773a371cc9">write</a>() {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        this-&gt;_header-&gt;write_header();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        this-&gt;_writer-&gt;write();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    };</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classtifflib_1_1_tiff_writer.html#a4526cda1bd0b68a337f289773a371cc9">   67</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtifflib_1_1_tiff_writer.html#a4526cda1bd0b68a337f289773a371cc9">write</a>() {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        this-&gt;_header-&gt;write_header();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        this-&gt;_writer-&gt;write();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    };</div>
 </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};  <span class="comment">// namespace tifflib</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};  <span class="comment">// namespace tifflib</span></div>
 <div class="ttc" id="aclass_image_container_html"><div class="ttname"><a href="class_image_container.html">ImageContainer</a></div><div class="ttdef"><b>Definition</b> ImageContainer.hpp:26</div></div>
 <div class="ttc" id="aclasstifflib_1_1_bitlevel_image_html"><div class="ttname"><a href="classtifflib_1_1_bitlevel_image.html">tifflib::BitlevelImage</a></div><div class="ttdef"><b>Definition</b> tiff_writer-image.hpp:18</div></div>
 <div class="ttc" id="aclasstifflib_1_1_gray_image_html"><div class="ttname"><a href="classtifflib_1_1_gray_image.html">tifflib::GrayImage</a></div><div class="ttdef"><b>Definition</b> tiff_writer-image.hpp:53</div></div>
 <div class="ttc" id="aclasstifflib_1_1_r_g_b_image_html"><div class="ttname"><a href="classtifflib_1_1_r_g_b_image.html">tifflib::RGBImage</a></div><div class="ttdef"><b>Definition</b> tiff_writer-image.hpp:73</div></div>
-<div class="ttc" id="aclasstifflib_1_1_tiff_writer_html_a4526cda1bd0b68a337f289773a371cc9"><div class="ttname"><a href="classtifflib_1_1_tiff_writer.html#a4526cda1bd0b68a337f289773a371cc9">tifflib::TiffWriter::write</a></div><div class="ttdeci">void write()</div><div class="ttdef"><b>Definition</b> tiff-writer.hpp:66</div></div>
-<div class="ttc" id="aclasstifflib_1_1_tiff_writer_html_ad09028cf4950aecf1bdd2133f4301de8"><div class="ttname"><a href="classtifflib_1_1_tiff_writer.html#ad09028cf4950aecf1bdd2133f4301de8">tifflib::TiffWriter::TiffWriter</a></div><div class="ttdeci">TiffWriter(std::filesystem::path image_path, SupportedImageTypes type, const ImageContainer&lt; uint8_t &gt; *img, const TiffCompression compression=TiffCompression::None)</div><div class="ttdef"><b>Definition</b> tiff-writer.hpp:32</div></div>
+<div class="ttc" id="aclasstifflib_1_1_tiff_writer_html_a3dd07d2cdc7be50e14d55ebb055bf209"><div class="ttname"><a href="classtifflib_1_1_tiff_writer.html#a3dd07d2cdc7be50e14d55ebb055bf209">tifflib::TiffWriter::TiffWriter</a></div><div class="ttdeci">TiffWriter(std::filesystem::path image_path, SupportedImageTypes type, const ImageContainer&lt; uint8_t &gt; *img, const TiffCompression compression=TiffCompression::None, const tiff_header_endian endian=tiff_header_endian::LITTLE)</div><div class="ttdef"><b>Definition</b> tiff-writer.hpp:32</div></div>
+<div class="ttc" id="aclasstifflib_1_1_tiff_writer_html_a4526cda1bd0b68a337f289773a371cc9"><div class="ttname"><a href="classtifflib_1_1_tiff_writer.html#a4526cda1bd0b68a337f289773a371cc9">tifflib::TiffWriter::write</a></div><div class="ttdeci">void write()</div><div class="ttdef"><b>Definition</b> tiff-writer.hpp:67</div></div>
 <div class="ttc" id="astructtifflib_1_1_tiff_writer_config_html"><div class="ttname"><a href="structtifflib_1_1_tiff_writer_config.html">tifflib::TiffWriterConfig</a></div><div class="ttdef"><b>Definition</b> tiff_writer-image.hpp:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

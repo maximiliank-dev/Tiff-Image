@@ -2,15 +2,17 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="class_virtual_endian_handler" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>VirtualEndianHandler</compoundname>
+    <derivedcompoundref refid="class_big_endian___t_i_f_f" prot="public" virt="non-virtual">BigEndian_TIFF</derivedcompoundref>
     <derivedcompoundref refid="class_little_endian___t_i_f_f" prot="public" virt="non-virtual">LittleEndian_TIFF</derivedcompoundref>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_virtual_endian_handler_1a1cf334d89f60272c790d360b4ae5f5e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>ushort_t</type>
-        <definition>virtual ushort_t VirtualEndianHandler::convert</definition>
+      <memberdef kind="function" id="class_virtual_endian_handler_1adae37e200325f34e0cf17218acc43944" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>uint8_t</type>
+        <definition>virtual uint8_t VirtualEndianHandler::convert8</definition>
         <argsstring>(uint_t c, size_t idx) const =0</argsstring>
-        <name>convert</name>
-        <qualifiedname>VirtualEndianHandler::convert</qualifiedname>
-        <reimplementedby refid="class_little_endian___t_i_f_f_1af97e3db5638d4d8e6513ebdaf40f350a">convert</reimplementedby>
+        <name>convert8</name>
+        <qualifiedname>VirtualEndianHandler::convert8</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1af6a82e0ab87f35f3d4f610bc55df37f0">convert8</reimplementedby>
+        <reimplementedby refid="class_little_endian___t_i_f_f_1a93884e7d39c89255cfaf5fa377b349d0">convert8</reimplementedby>
         <param>
           <type>uint_t</type>
           <declname>c</declname>
@@ -26,7 +28,31 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="16" column="22"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="16" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_virtual_endian_handler_1a1cf334d89f60272c790d360b4ae5f5e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>ushort_t</type>
+        <definition>virtual ushort_t VirtualEndianHandler::convert</definition>
+        <argsstring>(uint_t c, size_t idx) const =0</argsstring>
+        <name>convert</name>
+        <qualifiedname>VirtualEndianHandler::convert</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1a85aa2d29f92a7c0ccd1d569d591fbda5">convert</reimplementedby>
+        <reimplementedby refid="class_little_endian___t_i_f_f_1af97e3db5638d4d8e6513ebdaf40f350a">convert</reimplementedby>
+        <param>
+          <type>uint_t</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="17" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1aca9a966dd27e3542361a1c1a750e7e7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>uint8_t</type>
@@ -34,6 +60,7 @@
         <argsstring>(std::array&lt; char, 1 &gt; c) const =0</argsstring>
         <name>convert</name>
         <qualifiedname>VirtualEndianHandler::convert</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1a515d8c670941d4d5cccfc5351850c7b3">convert</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1a4571b09f756ada53262e1756f5cf71ea">convert</reimplementedby>
         <param>
           <type>std::array&lt; char, 1 &gt;</type>
@@ -45,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="17" column="21"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="18" column="21"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1a4f36a353fb35559f459d779f85cbea55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>ushort_t</type>
@@ -53,6 +80,7 @@
         <argsstring>(std::array&lt; char, 2 &gt; c) const =0</argsstring>
         <name>convert</name>
         <qualifiedname>VirtualEndianHandler::convert</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1afb7f62085a62323b471a46f4dfabdc3b">convert</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1a1a771dc9cf9f7d86e88945acb07859f1">convert</reimplementedby>
         <param>
           <type>std::array&lt; char, 2 &gt;</type>
@@ -64,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="18" column="22"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="19" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1add666b26317a6d8873907bab09a9c562" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>uint_t</type>
@@ -72,6 +100,7 @@
         <argsstring>(std::array&lt; char, 4 &gt; c) const =0</argsstring>
         <name>convert</name>
         <qualifiedname>VirtualEndianHandler::convert</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1a40b565d5f664922b3af54a2a7fd44818">convert</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1a0a6ca26a62add2b581b6a8b3ab7ff7b6">convert</reimplementedby>
         <param>
           <type>std::array&lt; char, 4 &gt;</type>
@@ -83,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="19" column="20"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="20" column="20"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1a92c8324c32146015018b458a5fda3c02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>uint64_t</type>
@@ -91,6 +120,7 @@
         <argsstring>(std::array&lt; char, 8 &gt; c) const =0</argsstring>
         <name>convert</name>
         <qualifiedname>VirtualEndianHandler::convert</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1a9a40198dce72b02253f90c05700e7d53">convert</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1ad7092a83acd0b84cf83ef306855bc296">convert</reimplementedby>
         <param>
           <type>std::array&lt; char, 8 &gt;</type>
@@ -102,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="20" column="22"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="21" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1ab8b50e8722e40c0a9a87d3162a4d7401" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::array&lt; char, 1 &gt;</type>
@@ -110,6 +140,7 @@
         <argsstring>(uint8_t v) const =0</argsstring>
         <name>convert_to_array</name>
         <qualifiedname>VirtualEndianHandler::convert_to_array</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1a62a7a887aa706e035430be36083c2471">convert_to_array</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1a266864560f3240c19c4d30ffcb0634d5">convert_to_array</reimplementedby>
         <param>
           <type>uint8_t</type>
@@ -121,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="23" column="24"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="24" column="24"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1a11280abbd96e76c8d47e2274d42459df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::array&lt; char, 2 &gt;</type>
@@ -129,6 +160,7 @@
         <argsstring>(ushort_t v) const =0</argsstring>
         <name>convert_to_array</name>
         <qualifiedname>VirtualEndianHandler::convert_to_array</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1ad44c1adf113d38e977b1ec465ae960f5">convert_to_array</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1a949221a7957b03b68b24029ea4cee441">convert_to_array</reimplementedby>
         <param>
           <type>ushort_t</type>
@@ -140,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="24" column="24"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="25" column="24"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1ab9a64b068884ead9624649f84320d4e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::array&lt; char, 4 &gt;</type>
@@ -148,6 +180,7 @@
         <argsstring>(uint_t v) const =0</argsstring>
         <name>convert_to_array</name>
         <qualifiedname>VirtualEndianHandler::convert_to_array</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1a524860614575cdd9c37f930246b44fbb">convert_to_array</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1a9e3753cc5c6b9312af6d1b3e12454a2e">convert_to_array</reimplementedby>
         <param>
           <type>uint_t</type>
@@ -159,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="25" column="24"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="26" column="24"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1a8a895096163549a9d2a3fd312bc070a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::array&lt; char, 8 &gt;</type>
@@ -167,6 +200,7 @@
         <argsstring>(uint64_t v) const =0</argsstring>
         <name>convert_to_array</name>
         <qualifiedname>VirtualEndianHandler::convert_to_array</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1ad4f8abd5f030847f0c360c00be0f4528">convert_to_array</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1aabe4a91ee42ff32a07664f2995d63f81">convert_to_array</reimplementedby>
         <param>
           <type>uint64_t</type>
@@ -178,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="26" column="24"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="27" column="24"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1a0cc8e299945cf7ef020ae6fdffeea9ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>tiff_header_endian</type>
@@ -186,6 +220,7 @@
         <argsstring>() const =0</argsstring>
         <name>get_endian_value</name>
         <qualifiedname>VirtualEndianHandler::get_endian_value</qualifiedname>
+        <reimplementedby refid="class_big_endian___t_i_f_f_1ab423d0ebe4c9e3a3dfac36c6ba1a4ccc">get_endian_value</reimplementedby>
         <reimplementedby refid="class_little_endian___t_i_f_f_1afb920ba7255242bf13ceecea08d48b13">get_endian_value</reimplementedby>
         <briefdescription>
         </briefdescription>
@@ -193,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="28" column="32"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="29" column="32"/>
       </memberdef>
       <memberdef kind="function" id="class_virtual_endian_handler_1a072b536340cff2460e7b38ca11b95739" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -207,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="32" column="13"/>
+        <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="33" column="13"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -216,6 +251,12 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
+        <label>BigEndian_TIFF</label>
+        <link refid="class_big_endian___t_i_f_f"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
         <label>LittleEndian_TIFF</label>
         <link refid="class_little_endian___t_i_f_f"/>
         <childnode refid="1" relation="public-inheritance">
@@ -226,13 +267,14 @@
         <link refid="class_virtual_endian_handler"/>
       </node>
     </inheritancegraph>
-    <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="10" column="1" bodyfile="D:/Projects/ImageConverter/src/endianHandler.hpp" bodystart="10" bodyend="33"/>
+    <location file="D:/Projects/ImageConverter/src/endianHandler.hpp" line="10" column="1" bodyfile="D:/Projects/ImageConverter/src/endianHandler.hpp" bodystart="10" bodyend="34"/>
     <listofallmembers>
       <member refid="class_virtual_endian_handler_1a1cf334d89f60272c790d360b4ae5f5e5" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert</name></member>
       <member refid="class_virtual_endian_handler_1aca9a966dd27e3542361a1c1a750e7e7c" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert</name></member>
       <member refid="class_virtual_endian_handler_1a4f36a353fb35559f459d779f85cbea55" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert</name></member>
       <member refid="class_virtual_endian_handler_1add666b26317a6d8873907bab09a9c562" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert</name></member>
       <member refid="class_virtual_endian_handler_1a92c8324c32146015018b458a5fda3c02" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert</name></member>
+      <member refid="class_virtual_endian_handler_1adae37e200325f34e0cf17218acc43944" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert8</name></member>
       <member refid="class_virtual_endian_handler_1ab8b50e8722e40c0a9a87d3162a4d7401" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert_to_array</name></member>
       <member refid="class_virtual_endian_handler_1a11280abbd96e76c8d47e2274d42459df" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert_to_array</name></member>
       <member refid="class_virtual_endian_handler_1ab9a64b068884ead9624649f84320d4e6" prot="public" virt="pure-virtual"><scope>VirtualEndianHandler</scope><name>convert_to_array</name></member>

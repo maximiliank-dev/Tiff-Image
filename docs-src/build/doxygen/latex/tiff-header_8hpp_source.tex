@@ -52,42 +52,54 @@
 \DoxyCodeLine{00048\ \ \ \ \ uint\_t\ get\_idf\_offset()\ \{\ \textcolor{keywordflow}{return}\ this-\/>idf\_offset;\ \}}
 \DoxyCodeLine{00049\ }
 \DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ parse\_header()\ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ endian}}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ this-\/>err\ =\ read<2>(endian);}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ std::cout\ <<\ endian[0]\ <<\ \textcolor{stringliteral}{"{}\ 1\ "{}}\ <<\ endian[1]\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ endian}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ this-\/>err\ =\ read<2>(endian);}
 \DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (endian[0]\ ==\ \textcolor{charliteral}{'I'}\ \&\&\ endian[1]\ ==\ \textcolor{charliteral}{'I'})\ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Little\ endian\ \(\backslash\)n"{}};}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>endian\_handler\ =\ std::make\_shared<LittleEndian\_TIFF>();}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (endian[0]\ ==\ \textcolor{charliteral}{'M'}\ \&\&\ endian[1]\ ==\ \textcolor{charliteral}{'M'})\ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Big\ endian\ \(\backslash\)n"{}};}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ got\ "{}}\ <<\ this-\/>endian[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ this-\/>endian[1]\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ arr\_magic\_number\{0,\ 0\};}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ read<2>(arr\_magic\_number);}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}got\ "{}}}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\{:02X\}\ \{:02X\}\(\backslash\)n"{}},}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(arr\_magic\_number[0]),}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(arr\_magic\_number[1]));}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ this-\/>magic\_num\ =\ this-\/>endian\_handler-\/>convert(arr\_magic\_number);}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}magic\ num\ "{}}\ <<\ this-\/>magic\_num\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ std::array<char,\ 4>\ ifd\_arr;}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ read<4>(ifd\_arr);}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ this-\/>idf\_offset\ =\ this-\/>endian\_handler-\/>convert(ifd\_arr);}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}idf\_offset\ "{}}\ <<\ this-\/>idf\_offset\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00084\ \ \ \ \ \}}
-\DoxyCodeLine{00085\ \};}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \};\ \ \textcolor{comment}{//\ namespace\ tifflib}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#if\ PRINT\ ==\ 1}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Tiff\ Reader\(\backslash\)n"{}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::cout\ <<\ endian[0]\ <<\ \textcolor{stringliteral}{"{}\ 1\ "{}}\ <<\ endian[1]\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (endian[0]\ ==\ \textcolor{charliteral}{'I'}\ \&\&\ endian[1]\ ==\ \textcolor{charliteral}{'I'})\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Little\ endian\ \(\backslash\)n"{}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>endian\_handler\ =\ std::make\_shared<LittleEndian\_TIFF>();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (endian[0]\ ==\ \textcolor{charliteral}{'M'}\ \&\&\ endian[1]\ ==\ \textcolor{charliteral}{'M'})\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Big\ endian\ \(\backslash\)n"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>endian\_handler\ =\ std::make\_shared<BigEndian\_TIFF>();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ got\ "{}}\ <<\ this-\/>endian[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ this-\/>endian[1]\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ std::array<char,\ 2>\ arr\_magic\_number\{0,\ 0\};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ read<2>(arr\_magic\_number);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>endian\_handler-\/>convert(arr\_magic\_number)\ !=\ 42)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}got\ "{}}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::format(}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\{:02X\}\ \{:02X\}\(\backslash\)n"{}},}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(arr\_magic\_number[0]),}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(arr\_magic\_number[1]));}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>magic\_num\ =\ this-\/>endian\_handler-\/>convert(arr\_magic\_number);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}magic\ num\ "{}}\ <<\ this-\/>magic\_num\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ magic\ number\ is\ wrong\ in\ the\ Tiff\ Image"{}});}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ std::array<char,\ 4>\ ifd\_arr;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ read<4>(ifd\_arr);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ this-\/>idf\_offset\ =\ this-\/>endian\_handler-\/>convert(ifd\_arr);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}idf\_offset\ "{}}\ <<\ this-\/>idf\_offset\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \};\ \ \textcolor{comment}{//\ namespace\ tifflib}}
 
 \end{DoxyCode}

@@ -26,220 +26,221 @@
 \DoxyCodeLine{00025\ \ \ \ \ RATIONAL\ =\ 5}
 \DoxyCodeLine{00026\ \};}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{keyword}{enum\ class}\ TiffCompression\ \{\ }
-\DoxyCodeLine{00029\ \ \ \ \ None=1,\ }
-\DoxyCodeLine{00030\ \ \ \ \ PackBits=32773}
-\DoxyCodeLine{00031\ \};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{enum\ class}\ TiffPhotometricInterpretation\ \{\ }
-\DoxyCodeLine{00034\ \ \ \ \ WhiteIsZero=0,\ }
-\DoxyCodeLine{00035\ \ \ \ \ BlackIsZero=1}
-\DoxyCodeLine{00036\ \};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \textcolor{comment}{//\ List\ of\ suported\ tags}}
-\DoxyCodeLine{00039\ \textcolor{keyword}{enum\ class}\ TiffTagType\ \{}
-\DoxyCodeLine{00040\ \ \ \ \ NewSubfileType\ =\ 254,}
-\DoxyCodeLine{00041\ \ \ \ \ ImageWidth\ =\ 256,}
-\DoxyCodeLine{00042\ \ \ \ \ ImageLength\ =\ 257,}
-\DoxyCodeLine{00043\ \ \ \ \ BitsPerSample\ =\ 258,}
-\DoxyCodeLine{00044\ \ \ \ \ Compression\ =\ 259,}
-\DoxyCodeLine{00045\ \ \ \ \ PhotometricInterpretation\ =\ 262,}
-\DoxyCodeLine{00046\ \ \ \ \ StripOffsets\ =\ 273,}
-\DoxyCodeLine{00047\ \ \ \ \ Orientation\ =\ 274,}
-\DoxyCodeLine{00048\ \ \ \ \ SamplesPerPixel\ =\ 277,}
-\DoxyCodeLine{00049\ \ \ \ \ RowsPerStrip\ =\ 278,}
-\DoxyCodeLine{00050\ \ \ \ \ StripByteCounts\ =\ 279,}
-\DoxyCodeLine{00051\ \ \ \ \ XResolution\ =\ 282,}
-\DoxyCodeLine{00052\ \ \ \ \ YResolution\ =\ 283,}
-\DoxyCodeLine{00053\ \ \ \ \ PlanarConfiguration\ =\ 284,}
-\DoxyCodeLine{00054\ \ \ \ \ PageName\ =\ 285,}
-\DoxyCodeLine{00055\ \ \ \ \ ResolutionUnit\ =\ 296,}
-\DoxyCodeLine{00056\ \ \ \ \ PageNumber\ =\ 287,}
-\DoxyCodeLine{00057\ \ \ \ \ TileWidth\ =\ 322,}
-\DoxyCodeLine{00058\ \ \ \ \ TileLength\ =\ 323,}
-\DoxyCodeLine{00059\ \ \ \ \ TileOffsets\ =\ 324,}
-\DoxyCodeLine{00060\ \ \ \ \ TileByteCounts\ =\ 325,}
-\DoxyCodeLine{00061\ \ \ \ \ ExtraSamples\ =\ 338,}
-\DoxyCodeLine{00062\ \ \ \ \ SampleFormat\ =\ 339}
-\DoxyCodeLine{00063\ \};}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \textcolor{comment}{//\ define\ the\ type\ for\ each\ Tiff\ Tag\ Field}}
-\DoxyCodeLine{00066\ \textcolor{keyword}{template}\ <TiffTagType\ t>}
-\DoxyCodeLine{00067\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00070\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::ImageWidth>\ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
-\DoxyCodeLine{00072\ \};}
-\DoxyCodeLine{00073\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00074\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::ImageLength>\ \{}
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
-\DoxyCodeLine{00076\ \};}
-\DoxyCodeLine{00077\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00078\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::BitsPerSample>\ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
-\DoxyCodeLine{00080\ \};}
-\DoxyCodeLine{00081\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00082\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::Compression>\ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
-\DoxyCodeLine{00084\ \};}
-\DoxyCodeLine{00085\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00086\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::PhotometricInterpretation>\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
-\DoxyCodeLine{00088\ \};}
-\DoxyCodeLine{00089\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00090\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::StripOffsets>\ \{}
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
-\DoxyCodeLine{00092\ \};}
-\DoxyCodeLine{00093\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00094\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::XResolution>\ \{}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ uint64\_t;}
-\DoxyCodeLine{00096\ \};}
-\DoxyCodeLine{00097\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{00098\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::YResolution>\ \{}
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ uint64\_t;}
-\DoxyCodeLine{00100\ \};}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00105\ \textcolor{keyword}{inline}\ TiffDataType\ get\_tag\_data\_type(TiffTagType\ tag)\ \{}
-\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{switch}\ (tag)\ \{}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::NewSubfileType:}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::LONG;}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PhotometricInterpretation:}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Compression:}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageWidth:}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageLength:}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ResolutionUnit:}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::BitsPerSample:}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::XResolution:}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::RATIONAL;}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::YResolution:}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::RATIONAL;}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::RowsPerStrip:}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripOffsets:}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripByteCounts:}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SamplesPerPixel:}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PlanarConfiguration:}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ExtraSamples:}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SampleFormat:}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Orientation:}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ tag\ data\ type\ not\ specified"{}});}
-\DoxyCodeLine{00143\ \ \ \ \ \}}
-\DoxyCodeLine{00144\ \}}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ \textcolor{keyword}{inline}\ std::string\ to\_string(TiffDataType\ type)\ \{}
-\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::BYTE:}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}BYTE"{}};}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::ASCII:}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ASCII"{}};}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::SHORT:}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SHORT"{}};}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::LONG:}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}LONG"{}};}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::RATIONAL:}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RATIONAL"{}};}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}unknown"{}};}
-\DoxyCodeLine{00160\ \ \ \ \ \}}
-\DoxyCodeLine{00161\ \}}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00167\ \textcolor{keyword}{inline}\ uint16\_t\ get\_tiff\_type\_size(TiffDataType\ type)\ \{}
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::BYTE:}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ case\ TiffDataType::ASCII:\ return\ 1;\ //only\ 1\ byte}}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::SHORT:}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2;}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::LONG:}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 4;}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::RATIONAL:}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 8;}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ convert\ to\ unsigned\ int,\ otherwise\ MSVC\ complains}}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Error\ type\ \{\}\ is\ not\ supported\ "{}},}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(type)));}
-\DoxyCodeLine{00183\ \ \ \ \ \}}
-\DoxyCodeLine{00184\ \}}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00186\ \textcolor{keyword}{inline}\ std::string\ to\_string(TiffTagType\ type)\ \{}
-\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::NewSubfileType:}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}NewSubfileType"{}};}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageWidth:}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ImageWidth"{}};}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageLength:}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ImageLength"{}};}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::BitsPerSample:}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}BitsPerSample"{}};}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Compression:}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Compression"{}};}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PhotometricInterpretation:}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PhotometricInterpretation"{}};}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripOffsets:}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}StripOffsets"{}};}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Orientation:}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Orientation"{}};}
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SamplesPerPixel:}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SamplesPerPixel"{}};}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::RowsPerStrip:}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RowsPerStrip"{}};}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripByteCounts:}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}StripByteCounts"{}};}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::XResolution:}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}XResolution"{}};}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::YResolution:}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}YResolution"{}};}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PlanarConfiguration:}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PlanarConfiguration"{}};}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ResolutionUnit:}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ResolutionUnit"{}};}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PageNumber:}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PageNumber"{}};}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileWidth:}
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileWidth"{}};}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileLength:}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileLength"{}};}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileOffsets:}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileOffsets"{}};}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileByteCounts:}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileByteCounts"{}};}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PageName:}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PageName"{}};}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SampleFormat:}
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SampleFormat"{}};}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ExtraSamples:}
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ExtraSamples"{}};}
-\DoxyCodeLine{00234\ \ \ \ \ \}}
-\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{return}\ std::format(\textcolor{stringliteral}{"{}unkwon\ -\/\ \{\}"{}},\ 0);}
-\DoxyCodeLine{00236\ \}}
-\DoxyCodeLine{00237\ }
-\DoxyCodeLine{00238\ \textcolor{keyword}{enum\ class}\ tiff\_header\_endian\ :\ uint16\_t\ \{\ LITTLE\ =\ 0x4949,\ BIG\ =\ 0x4D4D\ \};}
-\DoxyCodeLine{00239\ }
-\DoxyCodeLine{00240\ \textcolor{keyword}{enum\ class}\ tiff\_photometric\_interpretation\ \{}
-\DoxyCodeLine{00241\ \ \ \ \ WhiteIsZero\ =\ 0,}
-\DoxyCodeLine{00242\ \ \ \ \ BlackIsZero\ =\ 1,}
-\DoxyCodeLine{00243\ \ \ \ \ RGB\ =\ 2,}
-\DoxyCodeLine{00244\ \ \ \ \ PaletteColor\ =\ 3,}
-\DoxyCodeLine{00245\ \ \ \ \ TransparencyMask\ =\ 4}
-\DoxyCodeLine{00246\ \};}
-\DoxyCodeLine{00247\ \textcolor{keyword}{inline}\ ushort\_t\ to\_uint64(tiff\_photometric\_interpretation\ pi)\ \{}
-\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}ushort\_t\textcolor{keyword}{>}(pi);}
-\DoxyCodeLine{00249\ \}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{enum\ class}\ TiffCompression\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ None=1,}
+\DoxyCodeLine{00030\ \ \ \ \ LZW=5,}
+\DoxyCodeLine{00031\ \ \ \ \ PackBits=32773}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{enum\ class}\ TiffPhotometricInterpretation\ \{\ }
+\DoxyCodeLine{00035\ \ \ \ \ WhiteIsZero=0,\ }
+\DoxyCodeLine{00036\ \ \ \ \ BlackIsZero=1}
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ List\ of\ suported\ tags}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{enum\ class}\ TiffTagType\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ NewSubfileType\ =\ 254,}
+\DoxyCodeLine{00042\ \ \ \ \ ImageWidth\ =\ 256,}
+\DoxyCodeLine{00043\ \ \ \ \ ImageLength\ =\ 257,}
+\DoxyCodeLine{00044\ \ \ \ \ BitsPerSample\ =\ 258,}
+\DoxyCodeLine{00045\ \ \ \ \ Compression\ =\ 259,}
+\DoxyCodeLine{00046\ \ \ \ \ PhotometricInterpretation\ =\ 262,}
+\DoxyCodeLine{00047\ \ \ \ \ StripOffsets\ =\ 273,}
+\DoxyCodeLine{00048\ \ \ \ \ Orientation\ =\ 274,}
+\DoxyCodeLine{00049\ \ \ \ \ SamplesPerPixel\ =\ 277,}
+\DoxyCodeLine{00050\ \ \ \ \ RowsPerStrip\ =\ 278,}
+\DoxyCodeLine{00051\ \ \ \ \ StripByteCounts\ =\ 279,}
+\DoxyCodeLine{00052\ \ \ \ \ XResolution\ =\ 282,}
+\DoxyCodeLine{00053\ \ \ \ \ YResolution\ =\ 283,}
+\DoxyCodeLine{00054\ \ \ \ \ PlanarConfiguration\ =\ 284,}
+\DoxyCodeLine{00055\ \ \ \ \ PageName\ =\ 285,}
+\DoxyCodeLine{00056\ \ \ \ \ ResolutionUnit\ =\ 296,}
+\DoxyCodeLine{00057\ \ \ \ \ PageNumber\ =\ 287,}
+\DoxyCodeLine{00058\ \ \ \ \ TileWidth\ =\ 322,}
+\DoxyCodeLine{00059\ \ \ \ \ TileLength\ =\ 323,}
+\DoxyCodeLine{00060\ \ \ \ \ TileOffsets\ =\ 324,}
+\DoxyCodeLine{00061\ \ \ \ \ TileByteCounts\ =\ 325,}
+\DoxyCodeLine{00062\ \ \ \ \ ExtraSamples\ =\ 338,}
+\DoxyCodeLine{00063\ \ \ \ \ SampleFormat\ =\ 339}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ define\ the\ type\ for\ each\ Tiff\ Tag\ Field}}
+\DoxyCodeLine{00067\ \textcolor{keyword}{template}\ <TiffTagType\ t>}
+\DoxyCodeLine{00068\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00071\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::ImageWidth>\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00075\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::ImageLength>\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00079\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::BitsPerSample>\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
+\DoxyCodeLine{00081\ \};}
+\DoxyCodeLine{00082\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00083\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::Compression>\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
+\DoxyCodeLine{00085\ \};}
+\DoxyCodeLine{00086\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00087\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::PhotometricInterpretation>\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00091\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::StripOffsets>\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ ushort\_t;}
+\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00094\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00095\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::XResolution>\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ uint64\_t;}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00099\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tag_type_value}{TagTypeValue}}<TiffTagType::YResolution>\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ uint64\_t;}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{inline}\ TiffDataType\ get\_tag\_data\_type(TiffTagType\ tag)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{switch}\ (tag)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::NewSubfileType:}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::LONG;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PhotometricInterpretation:}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Compression:}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageWidth:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageLength:}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ResolutionUnit:}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::BitsPerSample:}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::XResolution:}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::RATIONAL;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::YResolution:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::RATIONAL;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::RowsPerStrip:}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripOffsets:}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripByteCounts:}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SamplesPerPixel:}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PlanarConfiguration:}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ExtraSamples:}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SampleFormat:}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Orientation:}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TiffDataType::SHORT;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ tag\ data\ type\ not\ specified"{}});}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{keyword}{inline}\ std::string\ to\_string(TiffDataType\ type)\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::BYTE:}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}BYTE"{}};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::ASCII:}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ASCII"{}};}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::SHORT:}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SHORT"{}};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::LONG:}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}LONG"{}};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::RATIONAL:}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RATIONAL"{}};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}unknown"{}};}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{inline}\ uint16\_t\ get\_tiff\_type\_size(TiffDataType\ type)\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::BYTE:}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ case\ TiffDataType::ASCII:\ return\ 1;\ //only\ 1\ byte}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::SHORT:}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::LONG:}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 4;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffDataType::RATIONAL:}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 8;}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ convert\ to\ unsigned\ int,\ otherwise\ MSVC\ complains}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Error\ type\ \{\}\ is\ not\ supported\ "{}},}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(type)));}
+\DoxyCodeLine{00184\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{inline}\ std::string\ to\_string(TiffTagType\ type)\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::NewSubfileType:}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}NewSubfileType"{}};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageWidth:}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ImageWidth"{}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ImageLength:}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ImageLength"{}};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::BitsPerSample:}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}BitsPerSample"{}};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Compression:}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Compression"{}};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PhotometricInterpretation:}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PhotometricInterpretation"{}};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripOffsets:}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}StripOffsets"{}};}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::Orientation:}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Orientation"{}};}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SamplesPerPixel:}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SamplesPerPixel"{}};}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::RowsPerStrip:}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RowsPerStrip"{}};}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::StripByteCounts:}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}StripByteCounts"{}};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::XResolution:}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}XResolution"{}};}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::YResolution:}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}YResolution"{}};}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PlanarConfiguration:}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PlanarConfiguration"{}};}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ResolutionUnit:}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ResolutionUnit"{}};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PageNumber:}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PageNumber"{}};}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileWidth:}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileWidth"{}};}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileLength:}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileLength"{}};}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileOffsets:}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileOffsets"{}};}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::TileByteCounts:}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}TileByteCounts"{}};}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::PageName:}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PageName"{}};}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::SampleFormat:}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SampleFormat"{}};}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TiffTagType::ExtraSamples:}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ExtraSamples"{}};}
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{return}\ std::format(\textcolor{stringliteral}{"{}unkwon\ -\/\ \{\}"{}},\ 0);}
+\DoxyCodeLine{00237\ \}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \textcolor{keyword}{enum\ class}\ tiff\_header\_endian\ :\ uint16\_t\ \{\ LITTLE\ =\ 0x4949,\ BIG\ =\ 0x4D4D\ \};}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \textcolor{keyword}{enum\ class}\ tiff\_photometric\_interpretation\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ WhiteIsZero\ =\ 0,}
+\DoxyCodeLine{00243\ \ \ \ \ BlackIsZero\ =\ 1,}
+\DoxyCodeLine{00244\ \ \ \ \ RGB\ =\ 2,}
+\DoxyCodeLine{00245\ \ \ \ \ PaletteColor\ =\ 3,}
+\DoxyCodeLine{00246\ \ \ \ \ TransparencyMask\ =\ 4}
+\DoxyCodeLine{00247\ \};}
+\DoxyCodeLine{00248\ \textcolor{keyword}{inline}\ ushort\_t\ to\_uint64(tiff\_photometric\_interpretation\ pi)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}ushort\_t\textcolor{keyword}{>}(pi);}
+\DoxyCodeLine{00250\ \}}
 
 \end{DoxyCode}
