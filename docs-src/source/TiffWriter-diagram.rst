@@ -9,16 +9,22 @@ TiffWriter Class Hierarchy
        node [shape=none, margin=0, fontname="Helvetica", fontsize=10]
        edge [fontname="Helvetica", fontsize=9]
 
+       {rank=same; TiffWriterHeader; TiffWriteData}
+       {rank=same; BitlevelImage; VirtualEndianHandler}
+       {rank=same; GrayImage; RGBImage; LittleEndian_TIFF; BigEndian_TIFF}
+       {rank=same; ImageContainer; PackBits; LZW}
+
        TiffWriter [label=<
            <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
            <TR><TD BGCOLOR="#922B21" ALIGN="CENTER"><FONT COLOR="white"><B>TiffWriter</B></FONT></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
                - _file : ofstream<BR ALIGN="LEFT"/>
                - _header : optional&lt;TiffWriterHeader&gt;<BR ALIGN="LEFT"/>
-               - _writer : unique_ptr&lt;TiffWriteData&gt;<BR ALIGN="LEFT"/>
+               - _writer : unique_ptr&lt;TiffWriteData&lt;uint8_t&gt;&gt;<BR ALIGN="LEFT"/>
            </TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + write()<BR ALIGN="LEFT"/>
+               + TiffWriter(path, type, img, compression, endian)<BR ALIGN="LEFT"/>
+               + write() : void<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
@@ -33,9 +39,10 @@ TiffWriter Class Hierarchy
                - _idf_offset : uint_t<BR ALIGN="LEFT"/>
            </TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + write_header()<BR ALIGN="LEFT"/>
+               + write_header() : void<BR ALIGN="LEFT"/>
                + get_idf_offset() : uint_t<BR ALIGN="LEFT"/>
-               + create_endian_handler()<BR ALIGN="LEFT"/>
+               + create_endian_handler() : shared_ptr&lt;VirtualEndianHandler&gt;<BR ALIGN="LEFT"/>
+               + get_stream() : ostream&amp;<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
@@ -47,17 +54,17 @@ TiffWriter Class Hierarchy
                # _img : ImageContainer&lt;TP&gt;*<BR ALIGN="LEFT"/>
                # _stream : ostream&amp;<BR ALIGN="LEFT"/>
                # _values : map&lt;TiffTagType, TiffDataVariant&gt;<BR ALIGN="LEFT"/>
-               # _endian_handler : shared_ptr<BR ALIGN="LEFT"/>
+               # _endian_handler : shared_ptr&lt;VirtualEndianHandler&gt;<BR ALIGN="LEFT"/>
                # _strip_byte_count : size_t<BR ALIGN="LEFT"/>
                # _offset_data : uint64_t<BR ALIGN="LEFT"/>
            </TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + write()<BR ALIGN="LEFT"/>
-               + write_IFDs()<BR ALIGN="LEFT"/>
-               + write_image_data()<BR ALIGN="LEFT"/>
-               + compress(data)<BR ALIGN="LEFT"/>
-               + apply_PhotometricInterpretation(data)<BR ALIGN="LEFT"/>
-               + tags_to_set() «pure virtual»<BR ALIGN="LEFT"/>
+               + write() : void<BR ALIGN="LEFT"/>
+               + write_IFDs() : void<BR ALIGN="LEFT"/>
+               + write_image_data() : void<BR ALIGN="LEFT"/>
+               + compress(data) : void<BR ALIGN="LEFT"/>
+               + apply_PhotometricInterpretation(data) : void<BR ALIGN="LEFT"/>
+               + tags_to_set() : void «pure virtual»<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
@@ -69,7 +76,8 @@ TiffWriter Class Hierarchy
                - _config : TiffWriterConfig<BR ALIGN="LEFT"/>
            </TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + tags_to_set() «override»<BR ALIGN="LEFT"/>
+               + BitlevelImage(header, img, stream, config)<BR ALIGN="LEFT"/>
+               + tags_to_set() : void «override»<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
@@ -79,7 +87,7 @@ TiffWriter Class Hierarchy
            <TR><TD BGCOLOR="#FADBD8" ALIGN="CENTER"><B>GrayImage</B></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT"><I>(inherits all)</I></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + tags_to_set() «override»<BR ALIGN="LEFT"/>
+               + tags_to_set() : void «override»<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
@@ -89,7 +97,7 @@ TiffWriter Class Hierarchy
            <TR><TD BGCOLOR="#FADBD8" ALIGN="CENTER"><B>RGBImage</B></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT"><I>(inherits all)</I></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + tags_to_set() «override»<BR ALIGN="LEFT"/>
+               + tags_to_set() : void «override»<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
@@ -99,8 +107,9 @@ TiffWriter Class Hierarchy
            <TR><TD BGCOLOR="#1E8449" ALIGN="CENTER"><FONT COLOR="white"><B>VirtualEndianHandler</B></FONT><BR/><FONT COLOR="white" POINT-SIZE="8">«abstract»</FONT></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT"><I>(no fields)</I></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + convert(...) «pure virtual»<BR ALIGN="LEFT"/>
-               + convert_to_array(...) «pure virtual»<BR ALIGN="LEFT"/>
+               + convert(...) : T «pure virtual»<BR ALIGN="LEFT"/>
+               + convert_to_array(...) : array «pure virtual»<BR ALIGN="LEFT"/>
+               + get_endian_value() : tiff_header_endian «pure virtual»<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
@@ -110,15 +119,28 @@ TiffWriter Class Hierarchy
            <TR><TD BGCOLOR="#52BE80" ALIGN="CENTER"><B>LittleEndian_TIFF</B></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT"><I>(no fields)</I></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + convert(...) «override»<BR ALIGN="LEFT"/>
-               + convert_to_array(...) «override»<BR ALIGN="LEFT"/>
+               + convert(...) : T «override»<BR ALIGN="LEFT"/>
+               + convert_to_array(...) : array «override»<BR ALIGN="LEFT"/>
+               + get_endian_value() : tiff_header_endian «override»<BR ALIGN="LEFT"/>
+           </TD></TR>
+           </TABLE>
+       >]
+
+       BigEndian_TIFF [label=<
+           <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+           <TR><TD BGCOLOR="#52BE80" ALIGN="CENTER"><B>BigEndian_TIFF</B></TD></TR>
+           <TR><TD ALIGN="LEFT" BALIGN="LEFT"><I>(no fields)</I></TD></TR>
+           <TR><TD ALIGN="LEFT" BALIGN="LEFT">
+               + convert(...) : T «override»<BR ALIGN="LEFT"/>
+               + convert_to_array(...) : array «override»<BR ALIGN="LEFT"/>
+               + get_endian_value() : tiff_header_endian «override»<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
 
        ImageContainer [label=<
            <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
-           <TR><TD BGCOLOR="#7D3C98" ALIGN="CENTER"><FONT COLOR="white"><B>ImageContainer&lt;PT&gt;</B></FONT></TD></TR>
+           <TR><TD BGCOLOR="#7D3C98" ALIGN="CENTER"><FONT COLOR="white"><B>ImageContainer&lt;PT&gt;</B></FONT><BR/><FONT COLOR="white" POINT-SIZE="8">«template»</FONT></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
                - _img : vector&lt;PT&gt;<BR ALIGN="LEFT"/>
                - _row_length : size_t<BR ALIGN="LEFT"/>
@@ -126,7 +148,8 @@ TiffWriter Class Hierarchy
            </TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
                + at(row, col, px) : PT<BR ALIGN="LEFT"/>
-               + get_width() / get_height()<BR ALIGN="LEFT"/>
+               + get_width() : size_t<BR ALIGN="LEFT"/>
+               + get_height() : size_t<BR ALIGN="LEFT"/>
                + get_data() : vector&lt;PT&gt;<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
@@ -137,24 +160,43 @@ TiffWriter Class Hierarchy
            <TR><TD BGCOLOR="#616A6B" ALIGN="CENTER"><FONT COLOR="white"><B>PackBits</B></FONT><BR/><FONT COLOR="white" POINT-SIZE="8">«utility»</FONT></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT"><I>(no fields)</I></TD></TR>
            <TR><TD ALIGN="LEFT" BALIGN="LEFT">
-               + compress(data) «static»<BR ALIGN="LEFT"/>
-               + decompress(data) «static»<BR ALIGN="LEFT"/>
+               + compress(data) : vector&lt;uint8_t&gt; «static»<BR ALIGN="LEFT"/>
+               + decompress(data) : vector&lt;uint8_t&gt; «static»<BR ALIGN="LEFT"/>
            </TD></TR>
            </TABLE>
        >]
 
-       // Inheritance (hollow triangle)
-       BitlevelImage     -> TiffWriteData    [arrowhead=onormal, style=solid]
-       GrayImage         -> BitlevelImage    [arrowhead=onormal, style=solid]
-       RGBImage          -> BitlevelImage    [arrowhead=onormal, style=solid]
-       LittleEndian_TIFF -> VirtualEndianHandler [arrowhead=onormal, style=solid]
+       LZW [label=<
+           <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+           <TR><TD BGCOLOR="#616A6B" ALIGN="CENTER"><FONT COLOR="white"><B>LZW</B></FONT><BR/><FONT COLOR="white" POINT-SIZE="8">«utility»</FONT></TD></TR>
+           <TR><TD ALIGN="LEFT" BALIGN="LEFT">
+               - compression_data_left : uint8_t<BR ALIGN="LEFT"/>
+               - compression_number_bits_left : size_t<BR ALIGN="LEFT"/>
+           </TD></TR>
+           <TR><TD ALIGN="LEFT" BALIGN="LEFT">
+               + compress(data) : vector&lt;uint16_t&gt; «static»<BR ALIGN="LEFT"/>
+               + decompress(data) : vector&lt;uint8_t&gt; «static»<BR ALIGN="LEFT"/>
+               + compress_tiff(data) : vector&lt;uint8_t&gt;<BR ALIGN="LEFT"/>
+               + decompress_tiff(data) : vector&lt;uint8_t&gt;<BR ALIGN="LEFT"/>
+           </TD></TR>
+           </TABLE>
+       >]
 
-       // TiffWriter composes its parts
-       TiffWriter -> TiffWriterHeader [arrowhead=open, style=dashed, label="uses"]
-       TiffWriter -> TiffWriteData    [arrowhead=open, style=dashed, label="owns"]
+       // Inheritance (hollow triangle arrowhead)
+       BitlevelImage     -> TiffWriteData        [arrowhead=onormal, style=solid]
+       GrayImage         -> BitlevelImage         [arrowhead=onormal, style=solid]
+       RGBImage          -> BitlevelImage         [arrowhead=onormal, style=solid]
+       LittleEndian_TIFF -> VirtualEndianHandler  [arrowhead=onormal, style=solid]
+       BigEndian_TIFF    -> VirtualEndianHandler  [arrowhead=onormal, style=solid]
 
-       // TiffWriteData dependencies
-       TiffWriteData -> VirtualEndianHandler [arrowhead=open, style=dashed]
-       TiffWriteData -> ImageContainer       [arrowhead=open, style=dashed, label="reads"]
-       TiffWriteData -> PackBits             [arrowhead=open, style=dashed, label="uses"]
+       // Composition: TiffWriter owns its components (filled diamond at owner)
+       TiffWriter -> TiffWriterHeader [arrowhead=none, arrowtail=diamond, dir=back]
+       TiffWriter -> TiffWriteData    [arrowhead=none, arrowtail=diamond, dir=back]
+
+       // Dependencies (dashed open arrows)
+       TiffWriterHeader -> VirtualEndianHandler [arrowhead=open, style=dashed, label="«creates»"]
+       TiffWriteData    -> VirtualEndianHandler [arrowhead=open, style=dashed, label="«uses»"]
+       TiffWriteData    -> ImageContainer       [arrowhead=open, style=dashed, label="«reads»"]
+       TiffWriteData    -> PackBits             [arrowhead=open, style=dashed, label="«uses»"]
+       TiffWriteData    -> LZW                  [arrowhead=open, style=dashed, label="«uses»"]
    }
